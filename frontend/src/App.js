@@ -1,56 +1,38 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { LangProvider } from './context/LangContext';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Landing from './pages/Landing';
+import Test from './pages/Test';
+import Result from './pages/Result';
+import Types from './pages/Types';
+import TypeDetail from './pages/TypeDetail';
+import About from './pages/About';
+import Privacy from './pages/Privacy';
 
 function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+    return (
+        <LangProvider>
+            <BrowserRouter>
+                <div className="min-h-screen flex flex-col bg-brand-bg text-brand-ink">
+                    <Header />
+                    <main className="flex-1">
+                        <Routes>
+                            <Route path="/" element={<Landing />} />
+                            <Route path="/test" element={<Test />} />
+                            <Route path="/result/:id" element={<Result />} />
+                            <Route path="/types" element={<Types />} />
+                            <Route path="/types/:code" element={<TypeDetail />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/privacy" element={<Privacy />} />
+                        </Routes>
+                    </main>
+                    <Footer />
+                </div>
+            </BrowserRouter>
+        </LangProvider>
+    );
 }
 
 export default App;
