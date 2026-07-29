@@ -1,0 +1,109 @@
+{
+  "theme": "light",
+  "typography": {
+    "fonts": {
+      "heading_hindi": "Tiro Devanagari Hindi",
+      "heading_latin": "Philosopher",
+      "body_hindi": "Hind",
+      "body_latin": "Outfit"
+    },
+    "rules": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none font-bold",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "body": "text-base sm:text-lg leading-relaxed text-slate-700",
+      "labels": "text-sm uppercase tracking-[0.2em] font-semibold text-slate-500",
+      "note": "For Hindi text, increase line-height slightly compared to Latin (e.g. leading-loose) due to Devanagari matras. Always load Google Fonts for both Devanagari and Latin."
+    }
+  },
+  "colors": {
+    "archetype": "ORGANIC & EARTHY with an INDIAN TWIST",
+    "base": {
+      "background": "#FDFBF7",
+      "surface": "#FFFFFF",
+      "surface_alt": "#F4F1EA",
+      "text_primary": "#2D2825",
+      "text_secondary": "#5C554F",
+      "border": "#E8E2D9"
+    },
+    "brand": {
+      "saffron": "#E87A5D",
+      "peacock_teal": "#1F6C7D",
+      "plum": "#6E4555",
+      "sand": "#DAB49D"
+    },
+    "dimension_colors": {
+      "Mind": {"color": "#1F6C7D", "name": "Teal - I/E"},
+      "Energy": {"color": "#E87A5D", "name": "Saffron - S/N"},
+      "Nature": {"color": "#6E4555", "name": "Plum - T/F"},
+      "Tactics": {"color": "#DAB49D", "name": "Sand - J/P"}
+    },
+    "types_palette": {
+      "Analysts": ["#4A2B4D", "#5D3760", "#704374", "#824F87"],
+      "Diplomats": ["#164E59", "#1B5D6B", "#1F6C7D", "#237C8F"],
+      "Sentinels": ["#B35841", "#C76249", "#DB6C50", "#E87A5D"],
+      "Explorers": ["#A38370", "#B5927D", "#C7A18A", "#DAB49D"]
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Use a subtle SVG noise filter (`mix-blend-mode: multiply`, `opacity: 0.03`) over the base background to remove the 'digital flatness'.",
+    "shapes": "Use organic, blobbish, overlapping shapes mimicking liquid colors (saffron/teal/purple) in the background. Blur them aggressively (`blur-3xl`).",
+    "shadows": "Ambient shadows only. `shadow-[0_8px_30px_rgb(0,0,0,0.04)]`.",
+    "borders": "1px solid `#E8E2D9` on cards to ground them.",
+    "icons": "Use `lucide-react`. Ensure icons map nicely to Hindi concepts (e.g., Compass for दिशा, Brain for विचार)."
+  },
+  "layouts": {
+    "general": "Mobile-first. Wrap main container in `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`.",
+    "header": "Sticky nav. Glassmorphism `bg-white/70 backdrop-blur-xl border-b border-white/20`. Include Logo (मेरा व्यक्तित्व), About Link, and EN/HI toggle.",
+    "hero": "Bento or split layout. Left: Big Hindi H1 'अपने असली स्वरूप को पहचानें' (Discover your true self), soft subtitle, Pill-shaped primary CTA 'मुफ्त परीक्षण शुरू करें'. Right: Overlapping organic colored shapes.",
+    "test_flow": "Single-question-per-screen approach. Huge question text (`text-3xl`). 5-point Likert scale using massive, tappable radio circles. Colors mapping: Green (Agree) to Red (Disagree), but muted (Teal to Saffron). Top bar: Progress bar (`h-2` rounded-full), back button.",
+    "results_page": "Dashboard bento grid. Top: Type Code (e.g. INTJ) + Hindi Nickname (e.g. 'वास्तुकार'). Center: Radar chart or 4 horizontal percentage bars. Bottom: Detailed sections (Strengths, Weaknesses, Career) in cards.",
+    "types_grid": "CSS Grid `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6`. Each card has a subtle gradient background matching its role (Analysts/Diplomats/Sentinels/Explorers)."
+  },
+  "components": {
+    "button": "Pill-shaped (`rounded-full`). Primary: `bg-peacock_teal text-white hover:bg-[#164E59]`. Secondary: `bg-surface_alt text-text_primary hover:bg-[#E8E2D9]`.",
+    "card": "Rounded corners (`rounded-2xl` or `rounded-3xl`), `bg-white border border-border shadow-sm p-6 sm:p-8`.",
+    "progress_bar": "Use Framer Motion to animate width smoothly on each question change.",
+    "likert_scale": "5 massive circles. Mobile: vertical stack or wrap. Desktop: horizontal line. Size matters for touch targets."
+  },
+  "motion": {
+    "page_transitions": "Fade and slight slide up (`y: 20, opacity: 0` to `y: 0, opacity: 1`).",
+    "question_transition": "When Next is clicked, current question slides left (`x: -50, opacity: 0`), new question slides in from right (`x: 50` to `x: 0`).",
+    "hover_states": "Cards lift slightly (`-translate-y-1`) and shadow deepens. Buttons scale slightly (`scale: 0.98` on tap)."
+  },
+  "image_urls": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1759223293148-52173d3a70b3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMG9yZ2FuaWMlMjBzaGFwZXMlMjB3YXJtJTIwY29sb3JzfGVufDB8fHx8MTc4NTMwMTI1NHww&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract swirls of orange and yellow light to be used lightly with low opacity for hero background"
+    },
+    "results_header": {
+      "url": "https://images.unsplash.com/photo-1620121684840-edffcfc4b878?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG9yZ2FuaWMlMjBzaGFwZXMlMjB3YXJtJTIwY29sb3JzfGVufDB8fHx8MTc4NTMwMTI1NHww&ixlib=rb-4.1.0&q=85",
+      "description": "Red yellow and pink abstract painting for results page hero section"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use standard React context or zustand for state management to handle the 60 answers, current question index, and language (EN/HI).",
+    "Implement language toggle seamlessly. Store strings in a dictionary object `const i18n = { en: {...}, hi: {...} }`.",
+    "For the 60 questions, generate a realistic array of 60 MBTI-style questions in both Hindi and English. Group them by dimensions (E/I, S/N, T/F, J/P).",
+    "Implement autosave: Save current answers and question index to `localStorage` on every selection. Load on mount.",
+    "Do NOT use HTML inputs for the Likert scale; build custom tappable divs with Framer Motion for selection feedback.",
+    "For the Results chart, use Recharts for a clean horizontal bar chart showing percentages of the 4 traits.",
+    "Create 16 unique dummy profiles (nickname in Hindi + English, description) for the results generation logic.",
+    "Use framer-motion for smooth transitions between questions. This is critical for the UX.",
+    "Ensure the Hindi text uses the loaded Devanagari web font correctly, and fallback to `sans-serif` if it fails."
+  ],
+  "accessibility": {
+    "contrast": "Ensure text over colored backgrounds meets 4.5:1 ratio.",
+    "touch_targets": "All Likert options and buttons must be at least 48x48px for mobile users.",
+    "focus": "Custom focus rings (`focus:ring-2 focus:ring-peacock_teal focus:ring-offset-2`)."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Make creative, distinctive frontends that surprise and delight.",
+    "Do not make generic centered layouts. Create depth through layered design elements with z-index hierarchy.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons. Use lucide-react.",
+    "Every interaction needs micro-animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "All interactive and key informational elements MUST include a `data-testid` attribute.",
+    "Do not use complete transparent background in header or overlays."
+  ]
+}
