@@ -1,13 +1,17 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, Request
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from typing import List, Dict, Optional
 import uuid
+import asyncio
+import html
+import smtplib
+from email.message import EmailMessage
 from datetime import datetime, timezone
 
 
@@ -51,6 +55,50 @@ class SubmissionResponse(BaseModel):
 
 class CountResponse(BaseModel):
     total: int
+
+
+class ContactSubmission(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True, extra="ignore")
+    name: str = Field(..., min_length=1, max_length=100)
+    email: EmailStr
+    subject: str = Field(..., min_length=1, max_length=150)
+    message: str = Field(..., min_length=1, max_length=5000)
+    website: str = Field(default="", max_length=0)  # Honeypot: real users leave this blank.
+    started_at: int = Field(..., ge=0)
+
+
+CONTACT_RATE_LIMIT = {}
+CONTACT_MIN_DELAY_MS = 1500
+CONTACT_MAX_PER_HOUR = 5
+CONTACT_FALLBACK_MESSAGE = "Thanks for reaching out. Our contact service is currently being finalized. Please email us directly at nikhil.s.workz@gmail.com."
+
+
+def send_contact_email(payload: ContactSubmission, submitted_at: datetime, user_agent: str):
+    smtp_host = os.environ.get("SMTP_HOST")
+    smtp_user = os.environ.get("SMTP_USER")
+    smtp_password = os.environ.get("SMTP_PASSWORD")
+    sender = os.environ.get("CONTACT_FROM_EMAIL", smtp_user or "")
+    recipient = os.environ.get("CONTACT_RECIPIENT_EMAIL", "nikhil.s.workz@gmail.com")
+    if not all([smtp_host, sender, recipient]):
+        raise RuntimeError("Contact email is not configured")
+
+    message = EmailMessage()
+    message["Subject"] = "New Contact Form Submission - KalQLater"
+    message["From"] = sender
+    message["To"] = recipient
+    message["Reply-To"] = payload.email
+    message.set_content(
+        f"Name: {payload.name}\nEmail: {payload.email}\nSubject: {payload.subject}\n"
+        f"Message:\n{payload.message}\n\nSubmission Time: {submitted_at.isoformat()}\n"
+        f"User Agent: {user_agent or 'Unavailable'}"
+    )
+    port = int(os.environ.get("SMTP_PORT", "587"))
+    with smtplib.SMTP(smtp_host, port, timeout=15) as smtp:
+        if os.environ.get("SMTP_USE_TLS", "true").lower() == "true":
+            smtp.starttls()
+        if smtp_user and smtp_password:
+            smtp.login(smtp_user, smtp_password)
+        smtp.send_message(message)
 
 
 # ---------- Routes ----------
@@ -108,6 +156,33 @@ async def type_stats():
     async for row in cursor:
         results.append({"type_code": row["_id"], "count": row["count"]})
     return {"types": results}
+
+
+@api_router.post("/contact")
+async def submit_contact(payload: ContactSubmission, request: Request):
+    if payload.website:
+        raise HTTPException(status_code=400, detail="Unable to submit this form")
+    now = datetime.now(timezone.utc)
+    now_ms = int(now.timestamp() * 1000)
+    if now_ms - payload.started_at < CONTACT_MIN_DELAY_MS:
+        raise HTTPException(status_code=400, detail="Unable to submit this form")
+    client_ip = request.client.host if request.client else "unknown"
+    window_start = now.timestamp() - 3600
+    attempts = [stamp for stamp in CONTACT_RATE_LIMIT.get(client_ip, []) if stamp > window_start]
+    if len(attempts) >= CONTACT_MAX_PER_HOUR:
+        raise HTTPException(status_code=429, detail="Please try again later")
+    CONTACT_RATE_LIMIT[client_ip] = attempts + [now.timestamp()]
+
+    clean = ContactSubmission(
+        name=html.escape(payload.name), email=payload.email, subject=html.escape(payload.subject),
+        message=html.escape(payload.message), website="", started_at=payload.started_at,
+    )
+    try:
+        await asyncio.to_thread(send_contact_email, clean, now, request.headers.get("user-agent", ""))
+    except Exception:
+        logger.exception("Contact email delivery failed")
+        return {"message": CONTACT_FALLBACK_MESSAGE, "delivered": False}
+    return {"message": "Thank you for contacting us. We'll get back to you soon."}
 
 
 app.include_router(api_router)

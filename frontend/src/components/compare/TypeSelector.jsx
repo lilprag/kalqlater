@@ -1,0 +1,3 @@
+import React from 'react';
+import { TYPES } from '../../data/types';
+export default function TypeSelector({ label, value, onChange, lang }) { return <label className="block"><span className="text-xs font-semibold uppercase tracking-[.2em] text-brand-subtle">{label}</span><select value={value} onChange={(e) => onChange(e.target.value)} className="mt-2 w-full rounded-2xl border border-brand-line bg-white px-4 py-3 text-brand-ink focus:border-brand-teal">{Object.values(TYPES).map((t) => <option key={t.code} value={t.code}>{t.code} · {(lang === 'hi' ? t.hi : t.en).nickname}</option>)}</select></label>; }

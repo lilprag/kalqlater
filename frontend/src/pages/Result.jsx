@@ -6,6 +6,13 @@ import { ArrowRight, Copy, RotateCcw, Share2 } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 import { TYPES } from '../data/types';
 import Blobs from '../components/Blobs';
+import LeadershipCard from '../components/result/LeadershipCard';
+import CommunicationCard from '../components/result/CommunicationCard';
+import CognitiveCard from '../components/result/CognitiveCard';
+import GrowthBlueprintCard from '../components/result/GrowthBlueprintCard';
+import DashboardOverview from '../components/result/DashboardOverview';
+import PersonalityDNA from '../components/result/PersonalityDNA';
+import AICoachCard from '../components/result/AICoachCard';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -94,8 +101,12 @@ export default function Result() {
                 </div>
             </section>
 
+            <DashboardOverview typeCode={data.code} lang={lang} />
+            <PersonalityDNA typeCode={data.code} lang={lang} />
+            <AICoachCard typeCode={data.code} lang={lang} />
+
             {/* Traits bars */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-testid="result-traits">
                 <h2 className={`text-2xl sm:text-3xl text-brand-ink mb-8 ${clsH}`}>{t.result.traits}</h2>
                 <div className="grid md:grid-cols-2 gap-5">
                     {AXIS.map((a, i) => {
@@ -147,14 +158,19 @@ export default function Result() {
 
             {/* Grid sections */}
             <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6 pb-16">
-                <Card title={t.result.strengths} items={info.strengths} accent={type.color} cls={cls} clsH={clsH} tid="strengths" />
-                <Card title={t.result.weaknesses} items={info.weaknesses} accent="#B35841" cls={cls} clsH={clsH} tid="weaknesses" />
-                <Card title={t.result.careers} items={info.careers} accent="#1F6C7D" cls={cls} clsH={clsH} tid="careers" />
+                <Card title={t.result.strengths} items={info.strengths} accent={type.color} cls={cls} tid="strengths" />
+                <Card title={t.result.weaknesses} items={info.weaknesses} accent="#B35841" cls={cls} tid="weaknesses" />
+                <Card title={t.result.careers} items={info.careers} accent="#1F6C7D" cls={cls} tid="careers" />
                 <div className="rounded-3xl bg-white border border-brand-line p-6" data-testid="relationships">
                     <div className={`text-xs tracking-[0.25em] uppercase text-brand-subtle mb-3 ${cls}`}>{t.result.relationships}</div>
                     <p className={`text-brand-ink leading-relaxed ${cls}`}>{info.relationships}</p>
                 </div>
             </section>
+
+            <LeadershipCard typeCode={data.code} lang={lang} />
+            <CommunicationCard typeCode={data.code} lang={lang} />
+            <CognitiveCard typeCode={data.code} lang={lang} />
+            <GrowthBlueprintCard typeCode={data.code} lang={lang} />
 
             <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 text-center">
                 <Link to="/types" data-testid="explore-all" className={`inline-flex items-center gap-2 rounded-full bg-brand-teal text-white px-6 py-3 hover:bg-[#164E59] ${cls}`}>
@@ -165,7 +181,7 @@ export default function Result() {
     );
 }
 
-function Card({ title, items, accent, cls, clsH, tid }) {
+function Card({ title, items, accent, cls, tid }) {
     return (
         <div className="rounded-3xl bg-white border border-brand-line p-6" data-testid={tid}>
             <div className={`text-xs tracking-[0.25em] uppercase text-brand-subtle mb-3 ${cls}`}>{title}</div>

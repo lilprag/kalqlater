@@ -12,10 +12,13 @@ export default function Header() {
         { to: '/test', label: t.nav.test, id: 'nav-test' },
         { to: '/types', label: t.nav.types, id: 'nav-types' },
         { to: '/about', label: t.nav.about, id: 'nav-about' },
+        { to: '/compare', label: lang === 'hi' ? 'तुलना' : 'Compare', id: 'nav-compare' },
+        { to: '/contact', label: lang === 'hi' ? 'संपर्क' : 'Contact', id: 'nav-contact' },
     ];
 
     return (
         <header className="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-brand-line">
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-brand-teal focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 <Link to="/" data-testid="logo-link" className="flex items-center gap-2 group">
                     <span className="w-9 h-9 rounded-2xl bg-gradient-to-br from-brand-saffron to-brand-plum flex items-center justify-center text-white shadow-sm">
@@ -59,6 +62,9 @@ export default function Header() {
                     <button
                         data-testid="mobile-menu-toggle"
                         onClick={() => setOpen(!open)}
+                        aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+                        aria-expanded={open}
+                        aria-controls="mobile-navigation"
                         className="md:hidden w-9 h-9 rounded-full border border-brand-line flex items-center justify-center"
                     >
                         {open ? <X size={18} /> : <Menu size={18} />}
@@ -67,7 +73,7 @@ export default function Header() {
             </div>
 
             {open && (
-                <div className="md:hidden border-t border-brand-line bg-white">
+                <div id="mobile-navigation" className="md:hidden border-t border-brand-line bg-white">
                     <div className="px-4 py-4 space-y-2">
                         {links.map((l) => (
                             <NavLink

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LangProvider } from './context/LangContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Landing from './pages/Landing';
-import Test from './pages/Test';
-import Result from './pages/Result';
-import Types from './pages/Types';
-import TypeDetail from './pages/TypeDetail';
-import About from './pages/About';
-import Privacy from './pages/Privacy';
+const Landing = lazy(() => import('./pages/Landing'));
+const Test = lazy(() => import('./pages/Test'));
+const Result = lazy(() => import('./pages/Result'));
+const Types = lazy(() => import('./pages/Types'));
+const TypeDetail = lazy(() => import('./pages/TypeDetail'));
+const About = lazy(() => import('./pages/About'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const PremiumReport = lazy(() => import('./pages/PremiumReport'));
+const Compare = lazy(() => import('./pages/Compare'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
     return (
@@ -17,7 +20,8 @@ function App() {
             <BrowserRouter>
                 <div className="min-h-screen flex flex-col bg-brand-bg text-brand-ink">
                     <Header />
-                    <main className="flex-1">
+                    <main id="main-content" className="flex-1" tabIndex="-1">
+                        <Suspense fallback={<div className="max-w-2xl mx-auto px-4 py-32 text-center text-brand-subtle">Loading…</div>}>
                         <Routes>
                             <Route path="/" element={<Landing />} />
                             <Route path="/test" element={<Test />} />
@@ -26,7 +30,11 @@ function App() {
                             <Route path="/types/:code" element={<TypeDetail />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/privacy" element={<Privacy />} />
+                            <Route path="/report/:id" element={<PremiumReport />} />
+                            <Route path="/compare" element={<Compare />} />
+                            <Route path="/contact" element={<Contact />} />
                         </Routes>
+                        </Suspense>
                     </main>
                     <Footer />
                 </div>
