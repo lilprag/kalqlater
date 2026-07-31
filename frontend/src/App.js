@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RouteMeta from './components/RouteMeta';
+import Analytics from './components/Analytics';
 const Landing = lazy(() => import('./pages/Landing'));
 const Test = lazy(() => import('./pages/Test'));
 const Result = lazy(() => import('./pages/Result'));
@@ -29,6 +30,7 @@ function App() {
             <AuthProvider>
             <BrowserRouter>
                 <RouteMeta />
+                <Analytics />
                 <div className="min-h-screen flex flex-col bg-brand-bg text-brand-ink">
                     <Header />
                     <main id="main-content" className="flex-1" tabIndex="-1">
