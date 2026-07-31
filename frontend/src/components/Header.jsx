@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useLang } from '../context/LangContext';
 import { Menu, X, Sparkles } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { CONNECTIONS_CHANGED, getPendingConnectionCount } from '../services/connectionService';
 
 export default function Header() {
     const { lang, toggle, t } = useLang();
+    const { user, logout } = useAuth();
     const [open, setOpen] = useState(false);
+    const [pendingCount, setPendingCount] = useState(0);
 
-    const links = [
+    const baseLinks = [
         { to: '/', label: t.nav.home, id: 'nav-home' },
         { to: '/test', label: t.nav.test, id: 'nav-test' },
         { to: '/types', label: t.nav.types, id: 'nav-types' },
         { to: '/about', label: t.nav.about, id: 'nav-about' },
         { to: '/compare', label: lang === 'hi' ? 'तुलना' : 'Compare', id: 'nav-compare' },
+        { to: '/community', label: lang === 'hi' ? 'कम्युनिटी' : 'Community', id: 'nav-community' },
         { to: '/contact', label: lang === 'hi' ? 'संपर्क' : 'Contact', id: 'nav-contact' },
     ];
+    const links = user ? [...baseLinks, { to: '/community/connections', label: lang === 'hi' ? 'कनेक्शन' : 'Connections', id: 'nav-connections', badge: pendingCount }] : baseLinks;
+
+    const refreshPendingCount = useCallback(async () => {
+        if (!user) { setPendingCount(0); return; }
+        try { setPendingCount((await getPendingConnectionCount()).count || 0); } catch { setPendingCount(0); }
+    }, [user]);
+
+    useEffect(() => {
+        refreshPendingCount();
+        window.addEventListener(CONNECTIONS_CHANGED, refreshPendingCount);
+        return () => window.removeEventListener(CONNECTIONS_CHANGED, refreshPendingCount);
+    }, [refreshPendingCount]);
 
     return (
         <header className="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-brand-line">
@@ -44,12 +61,15 @@ export default function Header() {
                                 } ${lang === 'hi' ? 'font-body-hi' : ''}`
                             }
                         >
-                            {l.label}
+                            {l.label}{l.badge > 0 && <span className="ml-1 inline-grid min-w-5 place-items-center rounded-full bg-brand-saffron px-1.5 py-0.5 text-xs font-bold text-brand-ink" aria-label={`${l.badge} pending connection requests`}>{l.badge}</span>}
                         </NavLink>
                     ))}
                 </nav>
 
                 <div className="flex items-center gap-2">
+                    <div className="hidden md:flex items-center gap-2">
+                            {user ? <><Link to="/community/profile" className="px-3 py-2 text-sm text-brand-ink hover:text-brand-teal">My Profile</Link><button onClick={logout} className="rounded-full border border-brand-line px-3 py-2 text-sm text-brand-ink">Logout</button></> : <><Link to="/login" className="px-3 py-2 text-sm text-brand-ink hover:text-brand-teal">Login</Link><Link to="/signup" className="rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white">Sign Up</Link></>}
+                    </div>
                     <button
                         data-testid="lang-toggle"
                         onClick={toggle}
@@ -88,9 +108,10 @@ export default function Header() {
                                     } ${lang === 'hi' ? 'font-body-hi' : ''}`
                                 }
                             >
-                                {l.label}
+                                {l.label}{l.badge > 0 ? ` (${l.badge})` : ''}
                             </NavLink>
                         ))}
+                        <div className="border-t border-brand-line pt-2">{user ? <><Link to="/community/profile" onClick={() => setOpen(false)} className="block px-4 py-3 text-brand-ink">My Profile</Link><button onClick={() => { logout(); setOpen(false); }} className="w-full px-4 py-3 text-left text-brand-ink">Logout</button></> : <><Link to="/login" onClick={() => setOpen(false)} className="block px-4 py-3 text-brand-ink">Login</Link><Link to="/signup" onClick={() => setOpen(false)} className="block rounded-2xl bg-brand-teal px-4 py-3 font-semibold text-white">Sign Up</Link></>}</div>
                         <button
                             data-testid="mobile-lang-toggle"
                             onClick={toggle}

@@ -5,7 +5,7 @@ import { LS_LANG } from '../utils/scoring';
 const LangContext = createContext(null);
 
 export function LangProvider({ children }) {
-    const [lang, setLang] = useState('hi');
+    const [lang, setLang] = useState('en');
 
     useEffect(() => {
         try {

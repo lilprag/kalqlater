@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /login
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /community/profile
+Disallow: /community/connections
 Sitemap: https://kalqlater.com/sitemap.xml

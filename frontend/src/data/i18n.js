@@ -1,6 +1,6 @@
 export const STRINGS = {
     hi: {
-        siteName: 'मेरा व्यक्तित्व',
+        siteName: 'KalQLater',
         tagline: 'अपने असली स्वरूप को पहचानें',
         nav: { home: 'मुख्य पृष्ठ', test: 'परीक्षण', types: '16 प्रकार', about: 'हमारे बारे में' },
         hero: {
@@ -58,7 +58,7 @@ export const STRINGS = {
         },
         about: {
             title: 'हमारे बारे में',
-            p1: 'मेरा व्यक्तित्व एक हिंदी-प्रथम मंच है, जो कार्ल जुंग और मायर्स-ब्रिग्स के दशकों पुराने काम पर आधारित है। हमने भारतीय संदर्भ में मूल प्रश्न और विवरण लिखे हैं ताकि परिणाम आपके रोज़मर्रा के जीवन में अर्थपूर्ण लगें।',
+            p1: 'KalQLater एक हिंदी-प्रथम मंच है, जो कार्ल जुंग और मायर्स-ब्रिग्स के दशकों पुराने काम पर आधारित है। हमने भारतीय संदर्भ में मूल प्रश्न और विवरण लिखे हैं ताकि परिणाम आपके रोज़मर्रा के जीवन में अर्थपूर्ण लगें।',
             p2: 'व्यक्तित्व प्रकार बताते हैं कि आप ऊर्जा कहाँ से पाते हैं (E/I), जानकारी कैसे लेते हैं (S/N), निर्णय कैसे लेते हैं (T/F), और बाहरी दुनिया से कैसे मिलते हैं (J/P)। ये सिर्फ़ लेबल नहीं, बल्कि आत्म-समझ की एक भाषा हैं।',
             p3: 'यह परीक्षण एक चिकित्सीय निदान नहीं है — यह आत्म-चिंतन का एक उपकरण है।',
         },
@@ -74,7 +74,7 @@ export const STRINGS = {
         },
     },
     en: {
-        siteName: 'Mera Vyaktitva',
+        siteName: 'KalQLater',
         tagline: 'Discover who you truly are',
         nav: { home: 'Home', test: 'Take Test', types: '16 Types', about: 'About' },
         hero: {
@@ -131,8 +131,8 @@ export const STRINGS = {
             groups: { Analysts: 'Analysts', Diplomats: 'Diplomats', Sentinels: 'Sentinels', Explorers: 'Explorers' },
         },
         about: {
-            title: 'About Mera Vyaktitva',
-            p1: 'Mera Vyaktitva is a Hindi-first personality platform rooted in the decades-old work of Carl Jung and Myers-Briggs. We wrote original questions and descriptions from an Indian lens so that the results feel meaningful in your everyday life.',
+            title: 'About KalQLater',
+            p1: 'KalQLater is a Hindi-first personality platform rooted in the decades-old work of Carl Jung and Myers-Briggs. We wrote original questions and descriptions from an Indian lens so that the results feel meaningful in your everyday life.',
             p2: 'Personality type describes where you draw energy from (E/I), how you take in information (S/N), how you make decisions (T/F), and how you meet the outer world (J/P). It is not a label — it is a shared language for self-understanding.',
             p3: 'This test is not a clinical diagnosis — it is a tool for reflection.',
         },

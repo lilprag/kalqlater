@@ -1,0 +1,10 @@
+import axios from 'axios';
+import { API_URL } from './apiConfig';
+const KEY='kalqlater_auth_token';
+export const AUTH_EXPIRED = 'kalqlater:auth-expired';
+export const token=()=>localStorage.getItem(KEY); export const request=(config={})=>axios({baseURL:API_URL,...config,headers:{...(config.headers||{}),...(token()?{Authorization:`Bearer ${token()}`}:{})}}).catch((error)=>{if(error?.response?.status===401&&token()){clearToken();window.dispatchEvent(new Event(AUTH_EXPIRED));}throw error});
+export const login=(email,password)=>request({url:'/auth/login',method:'post',data:{email,password}}).then(r=>r.data);
+export const signup=(email,password)=>request({url:'/auth/signup',method:'post',data:{email,password}}).then(r=>r.data);
+export const forgotPassword=(email)=>request({url:'/auth/forgot-password',method:'post',data:{email}});
+export const resetPassword=(token,password)=>request({url:'/auth/reset-password',method:'post',data:{token,password}});
+export const saveToken=(value)=>localStorage.setItem(KEY,value); export const clearToken=()=>localStorage.removeItem(KEY);

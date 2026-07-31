@@ -6,8 +6,10 @@ import axios from 'axios';
 import { useLang } from '../context/LangContext';
 import { QUESTIONS } from '../data/questions';
 import { computeResult, LS_KEY } from '../utils/scoring';
+import { saveLatestPersonalityType } from '../services/communityService';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+import { API_URL } from '../services/apiConfig';
+const API = API_URL;
 
 export default function Test() {
     const { lang, t } = useLang();
@@ -73,6 +75,7 @@ export default function Test() {
     const submit = async () => {
         setSubmitting(true);
         const result = computeResult(answers);
+        saveLatestPersonalityType(result.code);
         try {
             const res = await axios.post(`${API}/submissions`, {
                 type_code: result.code,

@@ -1,8 +1,73 @@
-const profile = (en, hi) => ({ en, hi });
-const A = profile({ motivation: 'Building clarity, capability, and meaningful progress.', communication: 'Direct, idea-led, and most comfortable with substance.', leadership: 'Sets direction through structure and long-range thinking.', decisions: 'Tests choices against logic and future impact.', conflict: 'Names the issue and looks for a clean resolution.', work: 'Independent focus and purposeful autonomy.', friendship: 'Loyal to a small circle built on trust.' }, { motivation: 'स्पष्टता, क्षमता और अर्थपूर्ण प्रगति बनाना।', communication: 'सीधा, विचार-केंद्रित और सार वाली बातचीत में सहज।', leadership: 'संरचना और दूर की सोच से दिशा देता है।', decisions: 'तर्क और भविष्य के आधार पर चुनाव परखता है।', conflict: 'मुद्दा स्पष्ट कर साफ़ हल खोजता है।', work: 'स्वतंत्र फोकस और उद्देश्यपूर्ण स्वायत्तता।', friendship: 'भरोसे वाले छोटे समूह के प्रति वफ़ादार।' });
-const B = profile({ motivation: 'Creating possibility, belonging, and a life aligned with values.', communication: 'Expressive, encouraging, and people-aware.', leadership: 'Builds momentum by connecting people to purpose.', decisions: 'Balances values, potential, and people impact.', conflict: 'Seeks understanding first, then a dignified path.', work: 'Collaborative energy and room for meaning.', friendship: 'Warm, invested, and attentive.' }, { motivation: 'संभावना, अपनापन और मूल्यों से मेल खाती ज़िंदगी बनाना।', communication: 'अभिव्यक्त, प्रोत्साहित और लोगों के प्रति सजग।', leadership: 'लोगों को उद्देश्य से जोड़कर गति बनाता है।', decisions: 'मूल्य, संभावना और लोगों पर प्रभाव का संतुलन।', conflict: 'पहले समझ, फिर गरिमा वाला रास्ता।', work: 'सहयोगी ऊर्जा और अर्थ की जगह।', friendship: 'गरमजोशी भरा और ध्यान देने वाला।' });
-const C = profile({ motivation: 'Creating stability, trust, and dependable outcomes.', communication: 'Considerate, practical, and clear about commitments.', leadership: 'Leads through consistency and visible follow-through.', decisions: 'Uses evidence, responsibility, and experience.', conflict: 'Prefers calm discussion and concrete repair.', work: 'Organized, reliable, and detail-aware.', friendship: 'Steady, supportive, and present.' }, { motivation: 'स्थिरता, भरोसा और भरोसेमंद परिणाम बनाना।', communication: 'विचारशील, व्यावहारिक और प्रतिबद्धताओं में स्पष्ट।', leadership: 'निरंतरता और काम पूरा करके नेतृत्व करता है।', decisions: 'प्रमाण, जिम्मेदारी और अनुभव अपनाता है।', conflict: 'शांत चर्चा और ठोस सुधार पसंद करता है।', work: 'संगठित, भरोसेमंद और बारीकी पर सजग।', friendship: 'स्थिर, सहयोगी और उपस्थित।' });
-const D = profile({ motivation: 'Experiencing life fully and turning opportunity into momentum.', communication: 'Present, candid, and responsive to what is happening now.', leadership: 'Acts decisively when the moment calls for it.', decisions: 'Uses immediate reality, adaptability, and practical upside.', conflict: 'Engages directly, then moves to a workable next step.', work: 'Hands-on, flexible, and energized by change.', friendship: 'Authentic, playful, and generous.' }, { motivation: 'जीवन को पूरी तरह जीना और अवसर को गति में बदलना।', communication: 'वर्तमान, स्पष्ट और अभी की बात के प्रति उत्तरदायी।', leadership: 'पल की मांग पर निर्णायक कार्रवाई करता है।', decisions: 'वास्तविकता, अनुकूलन और व्यावहारिक लाभ अपनाता है।', conflict: 'सीधे जुड़ता है, फिर कारगर अगले कदम की ओर बढ़ता है।', work: 'हाथों-हाथ, लचीला और बदलाव से ऊर्जावान।', friendship: 'सच्चा, चंचल और उदार।' });
-export const COMPARISON_PROFILES = { INTJ:A, INTP:A, ENTJ:A, ENTP:A, INFJ:B, INFP:B, ENFJ:B, ENFP:B, ISTJ:C, ISFJ:C, ESTJ:C, ESFJ:C, ISTP:D, ISFP:D, ESTP:D, ESFP:D };
-const groups = { INTJ:'a', INTP:'a', ENTJ:'a', ENTP:'a', INFJ:'b', INFP:'b', ENFJ:'b', ENFP:'b', ISTJ:'c', ISFJ:'c', ESTJ:'c', ESFJ:'c', ISTP:'d', ISFP:'d', ESTP:'d', ESFP:'d' };
-export function getPairInsight(one, two, lang = 'en') { const same = groups[one] === groups[two]; return lang === 'hi' ? { score:same?78:84, common:same?'आप दोनों एक जैसी गति और प्राथमिकताएँ पहचानते हैं।':'अलग दृष्टियाँ मिलकर व्यापक तस्वीर बना सकती हैं।', friction:same?'एक ही अंधे स्थान को अनदेखा करने का जोखिम है।':'गति और संवाद शैली में गलतफ़हमी हो सकती है।', together:same?'स्पष्ट भूमिकाएँ तय करें ताकि समानता उपयोगी बने।':'पहले साझा परिणाम तय करें, फिर अलग तरीकों को योगदान मानें।' } : { score:same?78:84, common:same?'You naturally recognize each other’s pace and priorities.':'Different lenses can create a wider, more balanced picture.', friction:same?'You may share the same blind spot.':'Pace and communication style can be easy to misread.', together:same?'Set distinct roles so similarity becomes productive.':'Agree on the outcome first, then treat different approaches as contributions.' }; }
+const GROUPS = {
+  INTJ:'strategist', INTP:'strategist', ENTJ:'strategist', ENTP:'strategist', INFJ:'connector', INFP:'connector', ENFJ:'connector', ENFP:'connector',
+  ISTJ:'steward', ISFJ:'steward', ESTJ:'steward', ESFJ:'steward', ISTP:'catalyst', ISFP:'catalyst', ESTP:'catalyst', ESFP:'catalyst',
+};
+const pairs = {
+  'connector-catalyst': ['Exceptional Match', 'Heart meets momentum: one creates meaning while the other makes life feel immediate.', 'Emotional depth can be mistaken for hesitation; spontaneity can be mistaken for carelessness.', 'Keep plans light but explicit, and name feelings before reacting.'],
+  'connector-strategist': ['Complementary Match', 'Vision and empathy combine: one sees the system, the other sees the humans inside it.', 'Logic may feel cold while emotion can feel indirect.', 'Translate intent: explain the why, then agree on the next action.'],
+  'connector-steward': ['Growth Match', 'Care and reliability create a deeply supportive rhythm.', 'Both may preserve harmony instead of naming a difficult truth.', 'Schedule honest check-ins before small disappointments grow.'],
+  'catalyst-strategist': ['Intense Match', 'One generates immediate movement while the other gives it a strategic destination.', 'Speed can collide with deliberation.', 'Separate exploration time from commitment time.'],
+  'catalyst-steward': ['Growth Match', 'Adaptability and dependability can make each person more capable.', 'Freedom and routine may compete for the same space.', 'Agree on non-negotiables, then leave room for improvisation.'],
+  'strategist-steward': ['Strong Match', 'Shared standards and complementary time horizons make this a steady alliance.', 'Both can become overly fixed on the right way to proceed.', 'Invite one experimental option before locking the plan.'],
+  same: ['Strong Match', 'Shared instincts make trust and momentum easier to establish.', 'Similar blind spots can remain unchallenged.', 'Use differences in experience—not only preference—to keep perspective broad.'],
+};
+const hindiPairs = {
+  'connector-catalyst': ['असाधारण मेल', 'दिल और गति मिलते हैं: एक अर्थ बनाता है, दूसरा जीवन को तत्काल महसूस कराता है।', 'भावनात्मक गहराई को हिचक और सहजता को लापरवाही समझा जा सकता है।', 'योजनाएँ हल्की लेकिन स्पष्ट रखें और प्रतिक्रिया से पहले भावना का नाम लें।'],
+  'connector-strategist': ['पूरक मेल', 'दृष्टि और सहानुभूति मिलती हैं: एक व्यवस्था देखता है, दूसरा उसके भीतर के लोगों को।', 'तर्क ठंडा लग सकता है और भावना अप्रत्यक्ष।', 'इरादा अनुवाद करें: क्यों बताएं, फिर अगली कार्रवाई तय करें।'],
+  'connector-steward': ['विकास मेल', 'देखभाल और भरोसेमंदी गहरा सहयोगी ताल बनाती हैं।', 'दोनों कठिन सच कहने के बजाय सामंजस्य बचा सकते हैं।', 'छोटी निराशा बढ़ने से पहले ईमानदार बातचीत तय करें।'],
+  'catalyst-strategist': ['गहन मेल', 'एक तत्काल गति बनाता है, दूसरा उसे रणनीतिक दिशा देता है।', 'तेज़ी और सोच-विचार टकरा सकते हैं।', 'खोजने और प्रतिबद्ध होने का समय अलग रखें।'],
+  'catalyst-steward': ['विकास मेल', 'लचीलापन और भरोसेमंदी दोनों को अधिक सक्षम बनाते हैं।', 'स्वतंत्रता और दिनचर्या एक ही जगह के लिए प्रतिस्पर्धा कर सकती हैं।', 'गैर-परक्राम्य बातें तय करें, फिर सहजता की जगह छोड़ें।'],
+  'strategist-steward': ['मज़बूत मेल', 'साझा मानक और अलग समय-दृष्टि इस गठजोड़ को स्थिर बनाते हैं।', 'दोनों सही तरीके पर अधिक अड़ सकते हैं।', 'योजना तय करने से पहले एक प्रयोगात्मक विकल्प आमंत्रित करें।'],
+  same: ['मज़बूत मेल', 'साझा प्रवृत्तियाँ भरोसा और गति को आसान बनाती हैं।', 'समान अंधे स्थान अनदेखे रह सकते हैं।', 'दृष्टि व्यापक रखने के लिए अनुभवों के अंतर का उपयोग करें।'],
+};
+const order = ['connector','catalyst','strategist','steward'];
+const pairKey = (a,b) => a === b ? 'same' : [a,b].sort((x,y) => order.indexOf(x)-order.indexOf(y)).join('-');
+const decisionLenses = {
+  strategist: ['tests leverage, logic, and long-term consequences', 'लाभ, तर्क और दूरगामी परिणामों को परखता है'],
+  connector: ['weighs values, people, and the future potential of everyone involved', 'मूल्यों, लोगों और सभी की भविष्य क्षमता को तौलता है'],
+  steward: ['uses evidence, responsibility, and what has proved dependable', 'तथ्य, ज़िम्मेदारी और सिद्ध भरोसेमंदी पर भरोसा करता है'],
+  catalyst: ['tests what works in the moment and adapts through action', 'क्षण में क्या काम करता है उसे परखता है और कार्रवाई से ढलता है'],
+};
+const businessLabels = {
+  en: { innovation: 'Innovation', execution: 'Execution', leadership: 'Leadership', planning: 'Planning', risk: 'Risk', communication: 'Communication' },
+  hi: { innovation: 'नवाचार', execution: 'क्रियान्वयन', leadership: 'नेतृत्व', planning: 'योजना', risk: 'जोखिम', communication: 'संवाद' },
+};
+const labelFor = (value, hindi) => {
+  const translations = { 'Exceptional Match':'असाधारण मेल', 'Strong Match':'मज़बूत मेल', 'Complementary Match':'पूरक मेल', 'Growth Match':'विकास मेल', 'Challenging Match':'चुनौतीपूर्ण मेल', 'Intense Match':'गहन मेल' };
+  return hindi ? translations[value] || value : value;
+};
+export function getRelationshipIntelligence(typeA, typeB, lang = 'en') {
+  const a=GROUPS[typeA], b=GROUPS[typeB], key=pairKey(a,b); const text=(lang==='hi'?hindiPairs:pairs)[key] || (lang==='hi'?hindiPairs.same:pairs.same);
+  const [label, attraction, conflict, advice] = text;
+  const hindi=lang==='hi';
+  const aLens = decisionLenses[a] || decisionLenses.strategist;
+  const bLens = decisionLenses[b] || decisionLenses.connector;
+  const business = {
+    innovation: labelFor(a === 'catalyst' || b === 'catalyst' || a === 'strategist' || b === 'strategist' ? 'Complementary Match' : label, hindi),
+    execution: labelFor(a === 'steward' || b === 'steward' ? 'Strong Match' : 'Growth Match', hindi),
+    leadership: labelFor(a === b ? 'Strong Match' : label, hindi),
+    planning: labelFor(a === 'strategist' || b === 'strategist' || a === 'steward' || b === 'steward' ? 'Strong Match' : 'Growth Match', hindi),
+    risk: labelFor(a === 'catalyst' || b === 'catalyst' ? 'Intense Match' : 'Growth Match', hindi),
+    communication: labelFor(a === b ? 'Strong Match' : label, hindi),
+  };
+  return { label, attraction, conflict, advice,
+    communication: hindi ? `${typeA} पहले अपना इरादा और संदर्भ बताए; ${typeB} प्रतिक्रिया देने से पहले अपनी ज़रूरत स्पष्ट करे।` : `${typeA} should lead with intent and context; ${typeB} should name their need before reacting.`,
+    communicationA: hindi ? `${typeA} से ${typeB}: पहले उद्देश्य और संदर्भ बताएं, फिर दूसरे व्यक्ति के विचार के लिए रुकें।` : `${typeA} to ${typeB}: lead with the purpose and context, then pause for their perspective.`,
+    communicationB: hindi ? `${typeB} से ${typeA}: अपनी ज़रूरत साफ़ कहें और अनुमान लगाने के बजाय एक ठोस अनुरोध करें।` : `${typeB} to ${typeA}: name your need clearly and make one concrete request instead of asking them to infer it.`,
+    decisions: hindi ? `अलग निर्णय-गति को सम्मान दें: विकल्प लिखें, निर्णय-स्वामी तय करें और समीक्षा का समय रखें।` : `Respect different decision speeds: write options down, name an owner, and set a review point.`,
+    decisionA: hindi ? `${typeA} ${aLens[1]}।` : `${typeA} ${aLens[0]}.`,
+    decisionB: hindi ? `${typeB} ${bLens[1]}।` : `${typeB} ${bLens[0]}.`,
+    pressure: hindi ? `दबाव में दूरी को अस्वीकृति न मानें। विराम दें, फिर एक छोटे अगले कदम पर लौटें।` : `Under pressure, do not mistake distance for rejection. Offer a pause, then return to one small next step.`,
+    business,
+    businessLabels: businessLabels[hindi ? 'hi' : 'en'],
+    romantic: {
+      chemistry: attraction,
+      trust: hindi ? 'भरोसा तब बनता है जब अपेक्षाएँ स्पष्ट हों और छोटे वादे लगातार निभाए जाएँ।' : 'Trust builds when expectations are explicit and small promises are kept consistently.',
+      conflict: conflict,
+      longTerm: hindi ? 'लंबे समय की ताक़त कठिन बातचीत के बाद फिर जुड़ने और दिनचर्या को साथ बनाने में है।' : 'Long-term strength comes from reconnecting after hard conversations and building rituals together.',
+      communication: advice,
+    },
+    friendship: hindi ? `दोस्ती तब फलती है जब दोनों एक-दूसरे की गति का सम्मान करें और साझा अनुभव बनाएं।` : `Friendship thrives when both respect each other’s pace and make room for shared experiences.`,
+    growth: hindi ? `${typeA} ${typeB} से अलग गति को अपनाना सीख सकता है; ${typeB} ${typeA} से अपने इरादे को स्पष्ट करना सीख सकता है।` : `${typeA} can learn to welcome a different pace from ${typeB}; ${typeB} can learn to make their intent clearer to ${typeA}.`,
+  };
+}

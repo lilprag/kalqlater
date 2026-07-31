@@ -14,7 +14,8 @@ import DashboardOverview from '../components/result/DashboardOverview';
 import PersonalityDNA from '../components/result/PersonalityDNA';
 import AICoachCard from '../components/result/AICoachCard';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+import { API_URL } from '../services/apiConfig';
+const API = API_URL;
 
 const AXIS = [
     { key: 'EI', letters: ['E', 'I'] },

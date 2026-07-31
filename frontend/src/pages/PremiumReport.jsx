@@ -11,7 +11,8 @@ import { COGNITIVE_INSIGHTS } from '../data/insights/cognitive';
 import { GROWTH_BLUEPRINTS } from '../data/insights/growth';
 import './PremiumReport.css';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+import { API_URL } from '../services/apiConfig';
+const API = API_URL;
 const cognitiveLabels = { en: ['Thinking Style', 'Pattern Recognition', 'Problem Solving', 'Decision Speed', 'Creativity', 'Analytical Ability', 'Biggest Cognitive Bias', 'Cognitive Superpower'], hi: ['सोचने की शैली', 'पैटर्न पहचान', 'समस्या समाधान', 'निर्णय की गति', 'रचनात्मकता', 'विश्लेषण क्षमता', 'सबसे बड़ा संज्ञानात्मक पक्षपात', 'संज्ञानात्मक महाशक्ति'] };
 const dnaLabels = { en: { leadership: 'Leadership', communication: 'Communication', cognition: 'Cognition', growth: 'Growth', career: 'Career', relationships: 'Relationships', stress: 'Stress', creativity: 'Creativity' }, hi: { leadership: 'नेतृत्व', communication: 'संवाद', cognition: 'संज्ञान', growth: 'विकास', career: 'करियर', relationships: 'रिश्ते', stress: 'तनाव', creativity: 'रचनात्मकता' } };
 

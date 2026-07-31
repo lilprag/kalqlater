@@ -5,8 +5,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Compass, Zap, Heart, Layers, ShieldCheck, Sparkles, Users } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 import Blobs from '../components/Blobs';
+import { API_URL } from '../services/apiConfig';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = API_URL;
 
 export default function Landing() {
     const { lang, t } = useLang();

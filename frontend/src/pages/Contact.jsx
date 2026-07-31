@@ -3,7 +3,8 @@ import axios from 'axios';
 import { CheckCircle2, Send } from 'lucide-react';
 import { useLang } from '../context/LangContext';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+import { API_URL } from '../services/apiConfig';
+const API = API_URL;
 const initial = { name: '', email: '', subject: '', message: '', website: '' };
 const copy = {
     en: { eyebrow: 'Get in touch', title: 'Contact us', sub: 'Questions, feedback, or partnership ideas — we would love to hear from you.', name: 'Name', email: 'Email', subject: 'Subject', message: 'Message', send: 'Send message', sending: 'Sending…', success: "Thank you for contacting us. We'll get back to you soon.", error: 'We could not send your message right now. Please try again later.', required: 'Please complete all required fields.', invalid: 'Please enter a valid email address.' },

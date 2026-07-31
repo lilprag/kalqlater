@@ -19,6 +19,8 @@ export default function Footer() {
                         <Link to="/about" data-testid="footer-about" className="hover:text-brand-teal">{t.nav.about}</Link>
                         <Link to="/types" data-testid="footer-types" className="hover:text-brand-teal">{t.nav.types}</Link>
                         <Link to="/privacy" data-testid="footer-privacy" className="hover:text-brand-teal">{t.footer.privacy}</Link>
+                        <Link to="/terms" className="hover:text-brand-teal">{t.footer.terms}</Link>
+                        <Link to="/contact" className="hover:text-brand-teal">{lang === 'hi' ? 'संपर्क' : 'Contact'}</Link>
                     </div>
                 </div>
                 <div className={`text-sm text-brand-subtle ${cls}`}>

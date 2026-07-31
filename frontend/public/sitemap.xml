@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://kalqlater.com/</loc></url>
+  <url><loc>https://kalqlater.com</loc></url>
   <url><loc>https://kalqlater.com/test</loc></url>
   <url><loc>https://kalqlater.com/types</loc></url>
   <url><loc>https://kalqlater.com/about</loc></url>
   <url><loc>https://kalqlater.com/privacy</loc></url>
-  <url><loc>https://kalqlater.com/compare</loc></url>
+  <url><loc>https://kalqlater.com/terms</loc></url>
   <url><loc>https://kalqlater.com/contact</loc></url>
   <url><loc>https://kalqlater.com/types/INTJ</loc></url>
   <url><loc>https://kalqlater.com/types/INTP</loc></url>
@@ -23,4 +23,124 @@
   <url><loc>https://kalqlater.com/types/ISFP</loc></url>
   <url><loc>https://kalqlater.com/types/ESTP</loc></url>
   <url><loc>https://kalqlater.com/types/ESFP</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-intp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-entj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-entp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-infj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-infp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-enfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-enfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-entj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-entp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-infj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-infp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-enfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-enfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/intp-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-entp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-infj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-infp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-enfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-enfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-infj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-infp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-enfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-enfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/entp-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-infp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-enfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-enfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-enfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-enfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/infp-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-enfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-istj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/enfp-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/istj-vs-isfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/istj-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/istj-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/istj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/istj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/istj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/istj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfj-vs-estj</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfj-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/estj-vs-esfj</loc></url>
+  <url><loc>https://kalqlater.com/compare/estj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/estj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/estj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/estj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/esfj-vs-istp</loc></url>
+  <url><loc>https://kalqlater.com/compare/esfj-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/esfj-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/esfj-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/istp-vs-isfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/istp-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/istp-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfp-vs-estp</loc></url>
+  <url><loc>https://kalqlater.com/compare/isfp-vs-esfp</loc></url>
+  <url><loc>https://kalqlater.com/compare/estp-vs-esfp</loc></url>
 </urlset>
