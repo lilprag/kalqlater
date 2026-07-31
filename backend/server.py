@@ -16,8 +16,7 @@ import jwt
 from urllib.parse import urlparse
 import asyncio
 import html
-import smtplib
-from email.message import EmailMessage
+import requests
 from datetime import datetime, timezone
 
 
@@ -76,7 +75,7 @@ class ContactSubmission(BaseModel):
 CONTACT_RATE_LIMIT = {}
 CONTACT_MIN_DELAY_MS = 1500
 CONTACT_MAX_PER_HOUR = 5
-CONTACT_FALLBACK_MESSAGE = "Thanks for reaching out. Our contact service is currently being finalized. Please email us directly at nikhil.s.workz@gmail.com."
+CONTACT_TO_EMAIL = os.environ.get("CONTACT_TO_EMAIL", "nikhil.s.workz@gmail.com")
 JWT_SECRET = os.environ.get("JWT_SECRET")
 if not JWT_SECRET:
     raise RuntimeError("JWT_SECRET must be configured")
@@ -182,32 +181,31 @@ async def current_user(authorization: Optional[str] = Header(None)):
     return user
 
 
-def send_contact_email(payload: ContactSubmission, submitted_at: datetime, user_agent: str):
-    smtp_host = os.environ.get("SMTP_HOST")
-    smtp_user = os.environ.get("SMTP_USER")
-    smtp_password = os.environ.get("SMTP_PASSWORD")
-    sender = os.environ.get("CONTACT_FROM_EMAIL", smtp_user or "")
-    recipient = os.environ.get("CONTACT_RECIPIENT_EMAIL", "nikhil.s.workz@gmail.com")
-    if not all([smtp_host, sender, recipient]):
-        raise RuntimeError("Contact email is not configured")
+def send_contact_email(payload: ContactSubmission, submitted_at: datetime):
+    """Deliver a contact message through Resend without exposing provider errors."""
+    api_key = os.environ.get("RESEND_API_KEY")
+    sender = os.environ.get("CONTACT_FROM_EMAIL")
+    if not api_key or not sender:
+        raise RuntimeError("Contact email delivery is not configured")
 
-    message = EmailMessage()
-    message["Subject"] = "New Contact Form Submission - KalQLater"
-    message["From"] = sender
-    message["To"] = recipient
-    message["Reply-To"] = payload.email
-    message.set_content(
-        f"Name: {payload.name}\nEmail: {payload.email}\nSubject: {payload.subject}\n"
-        f"Message:\n{payload.message}\n\nSubmission Time: {submitted_at.isoformat()}\n"
-        f"User Agent: {user_agent or 'Unavailable'}"
+    response = requests.post(
+        "https://api.resend.com/emails",
+        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+        json={
+            "from": sender,
+            "to": [CONTACT_TO_EMAIL],
+            "reply_to": str(payload.email),
+            "subject": f"New Contact Form Submission - KalQLater: {payload.subject}",
+            "text": (
+                f"Name: {payload.name}\nEmail: {payload.email}\nSubject: {payload.subject}\n\n"
+                f"Message:\n{payload.message}\n\nTimestamp: {submitted_at.isoformat()}"
+            ),
+        },
+        timeout=15,
     )
-    port = int(os.environ.get("SMTP_PORT", "587"))
-    with smtplib.SMTP(smtp_host, port, timeout=15) as smtp:
-        if os.environ.get("SMTP_USE_TLS", "true").lower() == "true":
-            smtp.starttls()
-        if smtp_user and smtp_password:
-            smtp.login(smtp_user, smtp_password)
-        smtp.send_message(message)
+    if not response.ok:
+        logger.warning("Resend rejected contact email with status %s", response.status_code)
+        raise RuntimeError("Contact email delivery failed")
 
 
 # ---------- Routes ----------
@@ -508,16 +506,12 @@ async def submit_contact(payload: ContactSubmission, request: Request):
         raise HTTPException(status_code=429, detail="Please try again later")
     CONTACT_RATE_LIMIT[client_ip] = attempts + [now.timestamp()]
 
-    clean = ContactSubmission(
-        name=html.escape(payload.name), email=payload.email, subject=html.escape(payload.subject),
-        message=html.escape(payload.message), website="", started_at=payload.started_at,
-    )
     try:
-        await asyncio.to_thread(send_contact_email, clean, now, request.headers.get("user-agent", ""))
+        await asyncio.to_thread(send_contact_email, payload, now)
     except Exception:
         logger.exception("Contact email delivery failed")
-        return {"message": CONTACT_FALLBACK_MESSAGE, "delivered": False}
-    return {"message": "Thank you for contacting us. We'll get back to you soon."}
+        raise HTTPException(status_code=502, detail="We could not send your message right now. Please try again later.")
+    return {"message": "Thank you for contacting us. We'll get back to you soon.", "delivered": True}
 
 
 app.include_router(api_router)
