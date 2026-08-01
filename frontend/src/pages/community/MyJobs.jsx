@@ -36,12 +36,14 @@ export default function MyJobs() {
       <Link to="/community/jobs/new" className="rounded-full bg-brand-teal px-5 py-3 font-semibold text-white">Post a job</Link>
     </div>
     {error && <p role="alert" className="mt-6 text-red-700">{error}</p>}
-    {jobs.length === 0 ? <p className="mt-6 rounded-2xl border border-brand-line bg-white p-6 text-brand-subtle">You have not posted any jobs yet.</p> : <div className="mt-6 space-y-4">
+    {jobs.length === 0 ? <div className="mt-6 rounded-2xl border border-brand-line bg-white p-6 text-brand-subtle"><p>You have not posted any jobs yet.</p><Link to="/community/jobs/new" className="mt-4 inline-flex rounded-full bg-brand-teal px-4 py-2 font-semibold text-white">Post your first job</Link></div> : <div className="mt-6 space-y-4">
       {jobs.map((job) => <article key={job.id} className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-brand-line bg-white p-5">
-        <div><p className="text-xs text-brand-teal">{job.status}</p><h2 className="font-display text-2xl">{job.title}</h2><p className="text-sm text-brand-subtle">{job.company_name}</p></div>
+        <div><p className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${job.status === 'active' ? 'bg-emerald-50 text-emerald-700' : 'bg-brand-cream text-brand-subtle'}`}>{job.status}</p><h2 className="mt-2 font-display text-2xl">{job.title}</h2><p className="text-sm text-brand-subtle">{job.company_name}</p></div>
         <div className="flex flex-wrap gap-2">
+          <Link to={`/community/jobs/${job.id}`} className="rounded-full border px-4 py-2">View</Link>
           <Link to={`/community/jobs/${job.id}/edit`} className="rounded-full border px-4 py-2">Edit</Link>
           <button type="button" onClick={async () => { await updateJobStatus(job.id, job.status === 'active' ? 'closed' : 'active'); load(); }} className="rounded-full border px-4 py-2">{job.status === 'active' ? 'Close' : 'Reopen'}</button>
+          {job.status === 'active' && <button type="button" onClick={() => navigator.clipboard?.writeText(`${window.location.origin}/community/jobs/${job.id}`)} className="rounded-full border px-4 py-2">Share to Community</button>}
           <button type="button" disabled={deletingId === job.id} onClick={() => remove(job)} className="rounded-full border border-red-200 px-4 py-2 text-red-700 disabled:opacity-60">{deletingId === job.id ? 'Deleting…' : 'Delete job'}</button>
         </div>
       </article>)}

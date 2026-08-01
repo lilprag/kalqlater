@@ -179,7 +179,7 @@ def validate_profile(payload):
     if not re.fullmatch(r"[a-z0-9_-]{3,30}", username) or username in RESERVED_USERNAMES: raise HTTPException(422, "Username is unavailable")
     if payload.personality_type.upper() not in VALID_TYPES or payload.visibility not in VALID_VISIBILITY or payload.availability not in VALID_AVAILABILITY: raise HTTPException(422, "Invalid profile value")
     if payload.visibility == "Public profile" and not payload.publish_consent: raise HTTPException(422, "Publishing consent is required")
-    payload.social_links = {key: value.strip() for key, value in payload.social_links.items() if isinstance(value, str) and value.strip()}
+    payload.social_links = {key: normalize_http_url(value) for key, value in payload.social_links.items() if isinstance(value, str) and value.strip()}
     if any(key not in SOCIAL_KEYS or urlparse(url).scheme not in {"http", "https"} or not urlparse(url).netloc for key, url in payload.social_links.items()): raise HTTPException(422, "Invalid social link")
     payload.visible_social_links = [key for key in payload.visible_social_links if key in payload.social_links]
     if any(key not in payload.social_links for key in payload.visible_social_links): raise HTTPException(422, "Invalid visible social link")
@@ -190,7 +190,18 @@ def public_profile(doc):
 
 def valid_http_url(value):
     parsed = urlparse(value)
-    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc) and not bool(re.search(r"\s", value))
+
+def normalize_http_url(value):
+    """Accept a human-entered domain while preserving HTTP(S)-only server validation."""
+    value = value.strip()
+    if not value:
+        return ""
+    candidate = value if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*://", value) else f"https://{value}"
+    parsed = urlparse(candidate)
+    if not valid_http_url(candidate) or parsed.hostname is None or ("." not in parsed.hostname and parsed.hostname != "localhost"):
+        raise HTTPException(422, "Invalid URL")
+    return candidate
 
 def clean_job_list(values, limit):
     return list(dict.fromkeys(clean_text(value, limit) for value in values if isinstance(value, str) and clean_text(value, limit)))
@@ -214,10 +225,7 @@ def validate_job(payload):
     if payload.salary_min is not None and payload.salary_max is not None and payload.salary_min > payload.salary_max:
         raise HTTPException(422, "Minimum salary cannot exceed maximum salary")
     for field in ("company_website", "company_logo_url", "application_url"):
-        value = getattr(payload, field).strip()
-        setattr(payload, field, value)
-        if value and not valid_http_url(value):
-            raise HTTPException(422, "Invalid URL")
+        setattr(payload, field, normalize_http_url(getattr(payload, field)))
     payload.application_email = payload.application_email.strip().lower()
     if payload.application_email and not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", payload.application_email):
         raise HTTPException(422, "Invalid application email")

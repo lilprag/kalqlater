@@ -90,3 +90,19 @@ def test_cleanup_is_idempotent_when_the_qa_account_is_already_gone():
         server.db = original_db
     assert response["success"] is True
     assert response["deleted"]["users"] == 0
+
+
+def test_job_url_fields_accept_protocol_less_domains_and_reject_unsafe_urls():
+    payload = server.JobPayload(
+        title="QA product role", company_name="KalQLater", description="A detailed local test description that meets the required length.",
+        remote_mode="Remote", employment_type="Full-time", skills=["Product"], career_categories=["Product Management"],
+        application_method="external_url", company_website=" kalqlater.com ", company_logo_url="www.kalqlater.com", application_url="kalqlater.com/apply",
+    )
+    server.validate_job(payload)
+    assert payload.company_website == "https://kalqlater.com"
+    assert payload.company_logo_url == "https://www.kalqlater.com"
+    assert payload.application_url == "https://kalqlater.com/apply"
+    payload.application_url = "javascript:alert(1)"
+    with pytest.raises(HTTPException) as error:
+        server.validate_job(payload)
+    assert error.value.status_code == 422
