@@ -2,6 +2,7 @@ const measurementId = process.env.REACT_APP_GA_MEASUREMENT_ID;
 const enabled = process.env.NODE_ENV === 'production' && Boolean(measurementId);
 let initialized = false;
 let lastPagePath = '';
+const dispatchedEvents = new Set();
 
 export function initializeAnalytics() {
   if (!enabled || initialized) return false;
@@ -30,4 +31,13 @@ export function trackPageView(path) {
     page_title: document.title,
   });
   lastPagePath = path;
+}
+
+/** Tracks product interactions only. Callers must never pass personal data. */
+export function trackEvent(name, parameters = {}, dedupeKey) {
+  if (!enabled) return;
+  if (dedupeKey && dispatchedEvents.has(dedupeKey)) return;
+  initializeAnalytics();
+  window.gtag('event', name, parameters);
+  if (dedupeKey) dispatchedEvents.add(dedupeKey);
 }

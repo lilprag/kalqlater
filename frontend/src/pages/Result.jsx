@@ -13,6 +13,10 @@ import GrowthBlueprintCard from '../components/result/GrowthBlueprintCard';
 import DashboardOverview from '../components/result/DashboardOverview';
 import PersonalityDNA from '../components/result/PersonalityDNA';
 import AICoachCard from '../components/result/AICoachCard';
+import ResultNetwork from '../components/result/ResultNetwork';
+import { profileFor } from '../data/resultNetwork/profiles';
+import { useAuth } from '../context/AuthContext';
+import { trackEvent } from '../services/analytics';
 
 import { API_URL } from '../services/apiConfig';
 const API = API_URL;
@@ -28,6 +32,7 @@ export default function Result() {
     const { id } = useParams();
     const location = useLocation();
     const { lang, t } = useLang();
+    const { user } = useAuth();
     const hi = lang === 'hi';
     const cls = hi ? 'font-body-hi' : '';
     const clsH = hi ? 'font-display-hi' : 'font-display';
@@ -45,6 +50,11 @@ export default function Result() {
         }).catch(() => setLoading(false));
     }, [id, data]);
 
+    useEffect(() => {
+        if (!data?.code) return;
+        trackEvent('result_viewed', { personality_type: data.code, logged_in: Boolean(user), language: lang }, `result-viewed:${window.location.pathname}`);
+    }, [data?.code, lang, user]);
+
     if (loading) {
         return <div className="max-w-2xl mx-auto px-4 py-32 text-center text-brand-subtle">Loading…</div>;
     }
@@ -60,6 +70,7 @@ export default function Result() {
     const type = TYPES[data.code];
     const p = data.percentages;
     const info = hi ? type.hi : type.en;
+    const identity = profileFor(data.code, lang);
 
     const shareUrl = window.location.href;
     const shareMsg = `${t.result.summaryPrefix} ${data.code} — ${info.nickname} ${t.result.summarySuffix}`;
@@ -82,10 +93,11 @@ export default function Result() {
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                         <div className={`inline-block rounded-full bg-white/80 backdrop-blur border border-brand-line px-4 py-1.5 text-xs tracking-[0.25em] uppercase text-brand-subtle ${cls}`}>{t.result.yourType}</div>
                         <div className="mt-6 flex flex-wrap items-baseline gap-4">
-                            <div className={`text-6xl sm:text-7xl lg:text-8xl tracking-tight text-brand-ink ${clsH}`} data-testid="type-code" style={{ color: type.color }}>{type.code}</div>
-                            <div className={`text-3xl sm:text-4xl text-brand-ink ${clsH}`} data-testid="type-nickname">{info.nickname}</div>
+                            <h1 className={`text-3xl sm:text-4xl lg:text-5xl text-brand-ink ${clsH}`} data-testid="type-nickname">{identity?.name || info.nickname}</h1>
+                            <div className={`text-5xl sm:text-6xl lg:text-7xl tracking-tight text-brand-ink ${clsH}`} data-testid="type-code" style={{ color: type.color }}>{type.code}</div>
                         </div>
                         <p className={`mt-4 max-w-2xl text-lg text-brand-subtle ${cls}`} data-testid="type-headline">{info.headline}</p>
+                        {identity && <div className="mt-6 flex flex-wrap gap-2"><span className={`rounded-full bg-brand-ink px-3 py-1.5 text-xs text-white ${cls}`}>{hi ? `केवल ${identity.rarity} लोग` : `Only ${identity.rarity} of people`}</span>{identity.badges.map((badge) => <span key={badge} className={`rounded-full border border-brand-line bg-white/75 px-3 py-1.5 text-xs text-brand-subtle ${cls}`}>{badge}</span>)}</div>}
 
                         <div className="mt-8 flex flex-wrap gap-3">
                             <a data-testid="share-whatsapp" href={waLink} target="_blank" rel="noreferrer" className={`inline-flex items-center gap-2 rounded-full bg-brand-teal text-white px-6 py-3 hover:bg-[#164E59] ${cls}`}>
@@ -103,6 +115,7 @@ export default function Result() {
             </section>
 
             <DashboardOverview typeCode={data.code} lang={lang} />
+            <ResultNetwork typeCode={data.code} lang={lang} signedIn={Boolean(user)} hasProfile={Boolean(user?.profile)} returnTo={`${location.pathname}${location.search}`} />
             <PersonalityDNA typeCode={data.code} lang={lang} />
             <AICoachCard typeCode={data.code} lang={lang} />
 

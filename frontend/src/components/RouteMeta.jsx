@@ -13,7 +13,7 @@ export default function RouteMeta() {
       robots.setAttribute('name', 'robots');
       document.head.appendChild(robots);
     }
-    robots.setAttribute('content', privatePaths.includes(pathname) ? 'noindex, nofollow' : 'index, follow');
+    robots.setAttribute('content', privatePaths.includes(pathname) || pathname.startsWith('/result/') || pathname.startsWith('/report/') ? 'noindex, nofollow' : 'index, follow');
   }, [pathname]);
 
   return null;

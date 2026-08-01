@@ -68,7 +68,7 @@ export default function Header() {
 
                 <div className="flex items-center gap-2">
                     <div className="hidden md:flex items-center gap-2">
-                            {user ? <><Link to="/community/profile" className="px-3 py-2 text-sm text-brand-ink hover:text-brand-teal">My Profile</Link><button onClick={logout} className="rounded-full border border-brand-line px-3 py-2 text-sm text-brand-ink">Logout</button></> : <><Link to="/login" className="px-3 py-2 text-sm text-brand-ink hover:text-brand-teal">Login</Link><Link to="/signup" className="rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white">Sign Up</Link></>}
+                            {user ? <><Link to="/community/me" className="px-3 py-2 text-sm text-brand-ink hover:text-brand-teal">My Profile</Link><button onClick={logout} className="rounded-full border border-brand-line px-3 py-2 text-sm text-brand-ink">Logout</button></> : <><Link to="/login" className="px-3 py-2 text-sm text-brand-ink hover:text-brand-teal">Login</Link><Link to="/signup" className="rounded-full bg-brand-teal px-4 py-2 text-sm font-semibold text-white">Sign Up</Link></>}
                     </div>
                     <button
                         data-testid="lang-toggle"
@@ -111,7 +111,7 @@ export default function Header() {
                                 {l.label}{l.badge > 0 ? ` (${l.badge})` : ''}
                             </NavLink>
                         ))}
-                        <div className="border-t border-brand-line pt-2">{user ? <><Link to="/community/profile" onClick={() => setOpen(false)} className="block px-4 py-3 text-brand-ink">My Profile</Link><button onClick={() => { logout(); setOpen(false); }} className="w-full px-4 py-3 text-left text-brand-ink">Logout</button></> : <><Link to="/login" onClick={() => setOpen(false)} className="block px-4 py-3 text-brand-ink">Login</Link><Link to="/signup" onClick={() => setOpen(false)} className="block rounded-2xl bg-brand-teal px-4 py-3 font-semibold text-white">Sign Up</Link></>}</div>
+                        <div className="border-t border-brand-line pt-2">{user ? <><Link to="/community/me" onClick={() => setOpen(false)} className="block px-4 py-3 text-brand-ink">My Profile</Link><button onClick={() => { logout(); setOpen(false); }} className="w-full px-4 py-3 text-left text-brand-ink">Logout</button></> : <><Link to="/login" onClick={() => setOpen(false)} className="block px-4 py-3 text-brand-ink">Login</Link><Link to="/signup" onClick={() => setOpen(false)} className="block rounded-2xl bg-brand-teal px-4 py-3 font-semibold text-white">Sign Up</Link></>}</div>
                         <button
                             data-testid="mobile-lang-toggle"
                             onClick={toggle}

@@ -49,6 +49,7 @@ function App() {
                             <Route path="/compare/:pair" element={<Compare />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/community" element={<Community />} />
+                            <Route path="/community/me" element={<ProfileSetup />} />
                             <Route path="/community/profile" element={<ProfileSetup />} />
                             <Route path="/community/member/:username" element={<MemberProfile />} />
                             <Route path="/community/connections" element={<Connections />} />
