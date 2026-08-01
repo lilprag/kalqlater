@@ -5,5 +5,6 @@ export const getJob = (id) => unwrap(request({ url: `/community/jobs/${encodeURI
 export const getMyJobs = () => unwrap(request({ url: '/community/jobs/mine' }));
 export const createJob = (data) => unwrap(request({ url: '/community/jobs', method: 'post', data }));
 export const updateJob = (id, data) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}`, method: 'put', data }));
+export const deleteJob = (id) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}`, method: 'delete' }));
 export const updateJobStatus = (id, status) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}/status`, method: 'patch', data: { status } }));
 export const recordApplyIntent = (id, method) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}/apply-intent`, method: 'post', data: { method } }));

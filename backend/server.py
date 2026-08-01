@@ -6,6 +6,7 @@ from pymongo import ReturnDocument
 from pymongo.errors import DuplicateKeyError
 import os
 import logging
+import hmac
 from pathlib import Path
 from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from typing import List, Dict, Optional
@@ -93,6 +94,8 @@ JOB_VISIBILITIES = {"public", "members_only"}
 JOB_CATEGORIES = {"Product Management", "Strategy", "Entrepreneurship", "Growth Marketing", "Data Science", "Software Engineering", "Research", "Design", "Operations", "Sales", "Writing", "Education", "Finance", "Healthcare", "Human Resources", "Customer Success"}
 JOB_RATE_LIMIT = {}
 JOB_MAX_POSTS_PER_HOUR = 10
+QA_CLEANUP_RATE_LIMIT = {}
+QA_CLEANUP_MAX_PER_HOUR = 12
 
 class SignupPayload(BaseModel):
     email: EmailStr
@@ -163,6 +166,12 @@ class JobStatusPayload(BaseModel):
 
 class JobApplyIntent(BaseModel):
     method: str = Field(..., min_length=3, max_length=30)
+
+class QAAccountCreatePayload(SignupPayload):
+    """Server-only disposable-account creation; never exposed to the frontend."""
+
+class QACleanupPayload(BaseModel):
+    user_id: str = Field(..., min_length=36, max_length=36)
 
 def clean_text(value, limit): return value.strip()[:limit]
 def validate_profile(payload):
@@ -316,6 +325,45 @@ async def current_user(authorization: Optional[str] = Header(None)):
     if not user: raise HTTPException(401, "Authentication required")
     return user
 
+def require_qa_cleanup_secret(request: Request, x_qa_cleanup_secret: Optional[str] = Header(None)):
+    """Gate QA-only lifecycle tools behind a configured server secret and rate limit."""
+    configured_secret = os.environ.get("QA_CLEANUP_SECRET")
+    if not configured_secret or not x_qa_cleanup_secret or not hmac.compare_digest(configured_secret, x_qa_cleanup_secret):
+        # A 404 avoids advertising an administrative surface when it is not configured.
+        raise HTTPException(404, "Not found")
+    now = datetime.now(timezone.utc).timestamp()
+    client_ip = request.client.host if request.client else "unknown"
+    attempts = [stamp for stamp in QA_CLEANUP_RATE_LIMIT.get(client_ip, []) if stamp > now - 3600]
+    if len(attempts) >= QA_CLEANUP_MAX_PER_HOUR:
+        raise HTTPException(429, "Please wait before trying again")
+    QA_CLEANUP_RATE_LIMIT[client_ip] = attempts + [now]
+
+async def cleanup_qa_account(user_id: str):
+    """Idempotently remove records owned by an explicitly marked disposable QA account."""
+    user = await db.community_users.find_one({"id": user_id})
+    empty_counts = {"users": 0, "profiles": 0, "jobs": 0, "job_apply_intents": 0, "connections": 0, "posts": 0, "comments": 0, "reactions": 0, "notifications": 0, "invitations": 0, "messages": 0, "conversations": 0}
+    if not user:
+        return {"success": True, "deleted": empty_counts}
+    if not user.get("is_qa_account"):
+        raise HTTPException(404, "Not found")
+
+    owned_jobs = [job["id"] async for job in db.community_jobs.find({"owner_id": user_id}, {"_id": 0, "id": 1})]
+    counts = empty_counts
+    if owned_jobs:
+        counts["job_apply_intents"] = (await db.community_job_apply_intents.delete_many({"job_id": {"$in": owned_jobs}})).deleted_count
+        counts["jobs"] = (await db.community_jobs.delete_many({"id": {"$in": owned_jobs}})).deleted_count
+
+    counts["job_apply_intents"] += (await db.community_job_apply_intents.delete_many({"viewer_id": user_id})).deleted_count
+    counts["connections"] = (await db.community_connections.delete_many({"$or": [{"requester_user_id": user_id}, {"recipient_user_id": user_id}]})).deleted_count
+    # These collections are optional today. Deleting only records directly owned by the QA user preserves shared content.
+    for collection, label in [("community_posts", "posts"), ("community_comments", "comments"), ("community_reactions", "reactions"), ("community_notifications", "notifications"), ("community_invitations", "invitations"), ("community_messages", "messages")]:
+        counts[label] = (await db[collection].delete_many({"owner_id": user_id})).deleted_count
+    counts["conversations"] = (await db.community_conversations.delete_many({"participant_ids": user_id})).deleted_count
+    counts["profiles"] = (await db.community_profiles.delete_many({"owner_id": user_id})).deleted_count
+    counts["users"] = (await db.community_users.delete_many({"id": user_id, "is_qa_account": True})).deleted_count
+    logger.info("QA cleanup completed for account %s: %s", user_id, counts)
+    return {"success": True, "deleted": counts}
+
 
 def send_contact_email(payload: ContactSubmission, submitted_at: datetime):
     """Deliver a contact message through Resend without exposing provider errors."""
@@ -408,6 +456,22 @@ async def signup(payload: SignupPayload):
     user = {"id":str(uuid.uuid4()), "email":email, "password_hash":bcrypt.hashpw(payload.password.encode(), bcrypt.gensalt()).decode(), "created_at":datetime.now(timezone.utc).isoformat()}
     await db.community_users.insert_one(user)
     return {"token":token_for(user["id"]), "user":{"email":email}}
+
+@api_router.post("/admin/qa-accounts")
+async def create_qa_account(payload: QAAccountCreatePayload, request: Request, x_qa_cleanup_secret: Optional[str] = Header(None)):
+    require_qa_cleanup_secret(request, x_qa_cleanup_secret)
+    email = str(payload.email).lower()
+    if await db.community_users.find_one({"email": email}):
+        raise HTTPException(409, "Account already exists")
+    user = {"id": str(uuid.uuid4()), "email": email, "password_hash": bcrypt.hashpw(payload.password.encode(), bcrypt.gensalt()).decode(), "created_at": datetime.now(timezone.utc).isoformat(), "is_qa_account": True}
+    await db.community_users.insert_one(user)
+    logger.info("Disposable QA account created: %s", user["id"])
+    return {"token": token_for(user["id"]), "user": {"id": user["id"], "email": email}}
+
+@api_router.post("/admin/qa-cleanup")
+async def qa_cleanup(payload: QACleanupPayload, request: Request, x_qa_cleanup_secret: Optional[str] = Header(None)):
+    require_qa_cleanup_secret(request, x_qa_cleanup_secret)
+    return await cleanup_qa_account(payload.user_id)
 
 @api_router.post("/auth/login")
 async def login(payload: LoginPayload):
@@ -691,6 +755,19 @@ async def update_job(job_id: str, payload: JobPayload, user=Depends(current_user
     for field, limit in [("title", 140), ("company_name", 140), ("description", 8000), ("responsibilities", 5000), ("requirements", 5000), ("location", 140), ("country", 80), ("city", 80)]: data[field] = clean_text(data[field], limit)
     await db.community_jobs.update_one({"id": job_id, "owner_id": user["id"]}, {"$set": data})
     return public_job({**existing, **data})
+
+@api_router.delete("/community/jobs/{job_id}")
+async def delete_job(job_id: str, user=Depends(current_user)):
+    existing = await db.community_jobs.find_one({"id": job_id})
+    if not existing:
+        raise HTTPException(404, "Job unavailable")
+    if existing["owner_id"] != user["id"]:
+        raise HTTPException(403, "You can only delete your own job")
+    await db.community_job_apply_intents.delete_many({"job_id": job_id})
+    await db.community_feed_posts.delete_many({"job_id": job_id})
+    await db.community_job_invitations.delete_many({"job_id": job_id})
+    await db.community_jobs.delete_one({"id": job_id, "owner_id": user["id"]})
+    return {"success": True, "message": "Job deleted"}
 
 @api_router.patch("/community/jobs/{job_id}/status")
 async def update_job_status(job_id: str, payload: JobStatusPayload, user=Depends(current_user)):
