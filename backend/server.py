@@ -85,6 +85,14 @@ VALID_TYPES = {"INTJ","INTP","ENTJ","ENTP","INFJ","INFP","ENFJ","ENFP","ISTJ","I
 VALID_VISIBILITY = {"Public profile", "Community members only", "Hidden profile"}
 VALID_AVAILABILITY = {"Actively looking", "Open to opportunities", "Just exploring", "Not currently available"}
 SOCIAL_KEYS = {"linkedin", "x", "instagram", "github", "portfolio", "website"}
+JOB_REMOTE_MODES = {"Remote", "Hybrid", "On-site"}
+JOB_EMPLOYMENT_TYPES = {"Full-time", "Part-time", "Contract", "Freelance", "Internship", "Volunteer"}
+JOB_APPLICATION_METHODS = {"external_url", "public_email", "connection", "multiple"}
+JOB_STATUSES = {"draft", "active", "closed"}
+JOB_VISIBILITIES = {"public", "members_only"}
+JOB_CATEGORIES = {"Product Management", "Strategy", "Entrepreneurship", "Growth Marketing", "Data Science", "Software Engineering", "Research", "Design", "Operations", "Sales", "Writing", "Education", "Finance", "Healthcare", "Human Resources", "Customer Success"}
+JOB_RATE_LIMIT = {}
+JOB_MAX_POSTS_PER_HOUR = 10
 
 class SignupPayload(BaseModel):
     email: EmailStr
@@ -118,6 +126,44 @@ class ConnectionCreatePayload(BaseModel):
     recipient_username: str = Field(..., min_length=3, max_length=30)
     message: str = Field(default="", max_length=300)
 
+class JobPayload(BaseModel):
+    model_config = ConfigDict(extra="ignore", str_strip_whitespace=True)
+    title: str = Field(..., min_length=2, max_length=140)
+    company_name: str = Field(..., min_length=2, max_length=140)
+    company_website: str = Field(default="", max_length=300)
+    company_logo_url: str = Field(default="", max_length=300)
+    description: str = Field(..., min_length=20, max_length=8000)
+    responsibilities: str = Field(default="", max_length=5000)
+    requirements: str = Field(default="", max_length=5000)
+    location: str = Field(default="", max_length=140)
+    country: str = Field(default="", max_length=80)
+    city: str = Field(default="", max_length=80)
+    remote_mode: str
+    employment_type: str
+    experience_min: Optional[int] = Field(default=None, ge=0, le=60)
+    experience_max: Optional[int] = Field(default=None, ge=0, le=60)
+    salary_min: Optional[int] = Field(default=None, ge=0, le=100000000)
+    salary_max: Optional[int] = Field(default=None, ge=0, le=100000000)
+    salary_currency: str = Field(default="", max_length=8)
+    salary_period: str = Field(default="", max_length=20)
+    skills: List[str] = Field(..., min_length=1, max_length=20)
+    industries: List[str] = Field(default_factory=list, max_length=12)
+    recommended_personality_types: List[str] = Field(default_factory=list, max_length=16)
+    career_categories: List[str] = Field(..., min_length=1, max_length=8)
+    application_method: str
+    application_url: str = Field(default="", max_length=300)
+    application_email: str = Field(default="", max_length=254)
+    allow_connection_application: bool = False
+    status: str = "active"
+    visibility: str = "public"
+    expires_at: Optional[str] = Field(default=None, max_length=40)
+
+class JobStatusPayload(BaseModel):
+    status: str
+
+class JobApplyIntent(BaseModel):
+    method: str = Field(..., min_length=3, max_length=30)
+
 def clean_text(value, limit): return value.strip()[:limit]
 def validate_profile(payload):
     username = payload.username.lower()
@@ -132,6 +178,96 @@ def validate_profile(payload):
 def public_profile(doc):
     text = lambda value: html.unescape(value) if isinstance(value, str) else value
     return {"display_name":text(doc["display_name"]),"username":doc["username"],"personality_type":doc["personality_type"],"bio":text(doc["bio"]),"country":text(doc["country"]),"city":text(doc["city"]),"languages":[text(value) for value in doc["languages"]],"profession":text(doc["profession"]),"skills":[text(value) for value in doc["skills"]],"industries":[text(value) for value in doc["industries"]],"years_experience":doc["years_experience"],"connection_intents":doc["connection_intents"],"availability":doc["availability"],"social_links":{key:doc["social_links"][key] for key in doc["visible_social_links"]},"created_at":doc["created_at"],"updated_at":doc["updated_at"]}
+
+def valid_http_url(value):
+    parsed = urlparse(value)
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+def clean_job_list(values, limit):
+    return list(dict.fromkeys(clean_text(value, limit) for value in values if isinstance(value, str) and clean_text(value, limit)))
+
+def parse_expiry(value):
+    if not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return parsed.astimezone(timezone.utc).isoformat()
+    except ValueError:
+        raise HTTPException(422, "Invalid expiry date")
+
+def validate_job(payload):
+    if payload.remote_mode not in JOB_REMOTE_MODES or payload.employment_type not in JOB_EMPLOYMENT_TYPES:
+        raise HTTPException(422, "Invalid job value")
+    if payload.application_method not in JOB_APPLICATION_METHODS or payload.status not in JOB_STATUSES or payload.visibility not in JOB_VISIBILITIES:
+        raise HTTPException(422, "Invalid job value")
+    if payload.experience_min is not None and payload.experience_max is not None and payload.experience_min > payload.experience_max:
+        raise HTTPException(422, "Minimum experience cannot exceed maximum experience")
+    if payload.salary_min is not None and payload.salary_max is not None and payload.salary_min > payload.salary_max:
+        raise HTTPException(422, "Minimum salary cannot exceed maximum salary")
+    for field in ("company_website", "company_logo_url", "application_url"):
+        value = getattr(payload, field).strip()
+        setattr(payload, field, value)
+        if value and not valid_http_url(value):
+            raise HTTPException(422, "Invalid URL")
+    payload.application_email = payload.application_email.strip().lower()
+    if payload.application_email and not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", payload.application_email):
+        raise HTTPException(422, "Invalid application email")
+    if payload.application_method == "external_url" and not payload.application_url:
+        raise HTTPException(422, "An application URL is required")
+    if payload.application_method == "public_email" and not payload.application_email:
+        raise HTTPException(422, "An application email is required")
+    if payload.application_method == "connection" and not payload.allow_connection_application:
+        raise HTTPException(422, "Connection applications must be enabled")
+    payload.skills = clean_job_list(payload.skills, 50)
+    payload.industries = clean_job_list(payload.industries, 50)
+    payload.career_categories = clean_job_list(payload.career_categories, 60)
+    payload.recommended_personality_types = list(dict.fromkeys(value.upper() for value in payload.recommended_personality_types))
+    if any(value not in VALID_TYPES for value in payload.recommended_personality_types):
+        raise HTTPException(422, "Invalid recommended personality type")
+    if not payload.skills or not payload.career_categories or any(value not in JOB_CATEGORIES for value in payload.career_categories):
+        raise HTTPException(422, "Invalid job categories or skills")
+    payload.expires_at = parse_expiry(payload.expires_at)
+
+def job_is_expired(job):
+    if not job.get("expires_at"):
+        return False
+    try:
+        return datetime.fromisoformat(job["expires_at"].replace("Z", "+00:00")) <= datetime.now(timezone.utc)
+    except ValueError:
+        return True
+
+def public_job(job, include_application=True):
+    safe = {key: job.get(key) for key in ["id", "owner_username", "title", "company_name", "company_website", "company_logo_url", "description", "responsibilities", "requirements", "location", "country", "city", "remote_mode", "employment_type", "experience_min", "experience_max", "salary_min", "salary_max", "salary_currency", "salary_period", "skills", "industries", "recommended_personality_types", "career_categories", "application_method", "allow_connection_application", "status", "visibility", "created_at", "updated_at", "expires_at"]}
+    if include_application:
+        if job.get("application_method") in {"external_url", "multiple"} and job.get("application_url"):
+            safe["application_url"] = job["application_url"]
+        if job.get("application_method") in {"public_email", "multiple"} and job.get("application_email"):
+            safe["application_email"] = job["application_email"]
+    return safe
+
+async def optional_user(request):
+    try:
+        return await current_user(request.headers.get("authorization"))
+    except HTTPException:
+        return None
+
+def enforce_job_post_rate_limit(request: Request, user_id: str):
+    """Small in-process guard against accidental or scripted job-post bursts."""
+    now = datetime.now(timezone.utc).timestamp()
+    key = f"{user_id}:{request.client.host if request.client else 'unknown'}"
+    attempts = [stamp for stamp in JOB_RATE_LIMIT.get(key, []) if stamp > now - 3600]
+    if len(attempts) >= JOB_MAX_POSTS_PER_HOUR:
+        raise HTTPException(429, "Please wait before posting another job")
+    JOB_RATE_LIMIT[key] = attempts + [now]
+
+async def job_viewer_context(job, user):
+    context = {"is_owner": bool(user and job["owner_id"] == user["id"]), "connection_status": "none"}
+    if not user or context["is_owner"]:
+        return context
+    connection = await db.community_connections.find_one({"pair_key": connection_pair_key(user["id"], job["owner_id"])})
+    if connection and connection["status"] == "accepted": context["connection_status"] = "connected"
+    elif connection and connection["status"] == "pending": context["connection_status"] = "outgoing_pending" if connection["requester_user_id"] == user["id"] else "incoming_pending"
+    return context
 
 def connection_pair_key(first_user_id, second_user_id):
     return ":".join(sorted([first_user_id, second_user_id]))
@@ -491,6 +627,91 @@ async def decline_connection(connection_id: str, user=Depends(current_user)):
 async def cancel_connection(connection_id: str, user=Depends(current_user)):
     return await update_connection_status(connection_id, user["id"], "cancel")
 
+@api_router.get("/community/jobs")
+async def list_jobs(request: Request, page:int=1, limit:int=18, search:Optional[str]=None, type:Optional[str]=None, career:Optional[str]=None, skill:Optional[str]=None, industry:Optional[str]=None, country:Optional[str]=None, city:Optional[str]=None, remote_mode:Optional[str]=None, employment_type:Optional[str]=None, sort:Optional[str]="newest"):
+    viewer = await optional_user(request)
+    limit = max(1, min(limit, 50)); page = max(1, page)
+    visibility = ["public", "members_only"] if viewer else ["public"]
+    now = datetime.now(timezone.utc).isoformat()
+    query = {"status": "active", "visibility": {"$in": visibility}, "$or": [{"expires_at": None}, {"expires_at": {"$gt": now}}]}
+    for field, value in [("recommended_personality_types", type), ("career_categories", career), ("skills", skill), ("industries", industry), ("country", country), ("city", city), ("remote_mode", remote_mode), ("employment_type", employment_type)]:
+        if value: query[field] = {"$regex": re.escape(value), "$options": "i"}
+    if career and "," in career:
+        query["career_categories"] = {"$in": [item.strip() for item in career.split(",") if item.strip()]}
+    if search:
+        query["$and"] = [{"$or": [{field: {"$regex": re.escape(search), "$options": "i"}} for field in ["title", "company_name", "description", "skills", "career_categories", "location"]]}]
+    sort_field, sort_order = {"oldest": ("created_at", 1), "closing_soon": ("expires_at", 1), "relevance": ("updated_at", -1)}.get(sort, ("created_at", -1))
+    cursor = db.community_jobs.find(query, {"_id": 0, "owner_id": 0, "application_count": 0, "view_count": 0}).sort(sort_field, sort_order).skip((page - 1) * limit).limit(limit)
+    items = [public_job(job, include_application=False) async for job in cursor]
+    return {"items": items, "page": page, "has_more": len(items) == limit}
+
+@api_router.get("/community/jobs/mine")
+async def my_jobs(page:int=1, limit:int=18, user=Depends(current_user)):
+    limit = max(1, min(limit, 50)); page = max(1, page)
+    cursor = db.community_jobs.find({"owner_id": user["id"]}, {"_id": 0, "owner_id": 0}).sort("updated_at", -1).skip((page - 1) * limit).limit(limit)
+    return {"items": [public_job(job) async for job in cursor], "page": page, "has_more": False}
+
+@api_router.get("/community/jobs/{job_id}")
+async def get_job(job_id: str, request: Request):
+    if not re.fullmatch(r"[0-9a-f-]{36}", job_id): raise HTTPException(404, "Job unavailable")
+    job = await db.community_jobs.find_one({"id": job_id})
+    if not job: raise HTTPException(404, "Job unavailable")
+    viewer = await optional_user(request)
+    context = await job_viewer_context(job, viewer)
+    visible = job["visibility"] == "public" or viewer
+    if not visible or (job["status"] != "active" or job_is_expired(job)) and not context["is_owner"]:
+        raise HTTPException(404, "Job unavailable")
+    await db.community_jobs.update_one({"id": job_id}, {"$inc": {"view_count": 1}})
+    owner = await db.community_profiles.find_one({"owner_id": job["owner_id"]})
+    result = public_job(job)
+    result["owner"] = {"username": job["owner_username"], "display_name": html.unescape(owner.get("display_name", job["owner_username"])), "personality_type": owner.get("personality_type"), "profession": html.unescape(owner.get("profession", ""))} if owner else {"username": job["owner_username"]}
+    result.update(context)
+    return result
+
+@api_router.post("/community/jobs", status_code=201)
+async def create_job(payload: JobPayload, request: Request, user=Depends(current_user)):
+    profile = await db.community_profiles.find_one({"owner_id": user["id"]})
+    if not profile: raise HTTPException(403, "Create a community profile before posting a job")
+    validate_job(payload)
+    enforce_job_post_rate_limit(request, user["id"])
+    now = datetime.now(timezone.utc).isoformat()
+    data = payload.model_dump()
+    for field, limit in [("title", 140), ("company_name", 140), ("description", 8000), ("responsibilities", 5000), ("requirements", 5000), ("location", 140), ("country", 80), ("city", 80)]: data[field] = clean_text(data[field], limit)
+    data.update({"id": str(uuid.uuid4()), "owner_id": user["id"], "owner_username": profile["username"], "created_at": now, "updated_at": now, "application_count": 0, "view_count": 0})
+    await db.community_jobs.insert_one(data)
+    return public_job(data)
+
+@api_router.put("/community/jobs/{job_id}")
+async def update_job(job_id: str, payload: JobPayload, user=Depends(current_user)):
+    validate_job(payload)
+    existing = await db.community_jobs.find_one({"id": job_id})
+    if not existing: raise HTTPException(404, "Job unavailable")
+    if existing["owner_id"] != user["id"]: raise HTTPException(403, "You can only edit your own job")
+    data = payload.model_dump(); data["updated_at"] = datetime.now(timezone.utc).isoformat()
+    for field, limit in [("title", 140), ("company_name", 140), ("description", 8000), ("responsibilities", 5000), ("requirements", 5000), ("location", 140), ("country", 80), ("city", 80)]: data[field] = clean_text(data[field], limit)
+    await db.community_jobs.update_one({"id": job_id, "owner_id": user["id"]}, {"$set": data})
+    return public_job({**existing, **data})
+
+@api_router.patch("/community/jobs/{job_id}/status")
+async def update_job_status(job_id: str, payload: JobStatusPayload, user=Depends(current_user)):
+    if payload.status not in {"active", "closed"}: raise HTTPException(422, "Invalid job status")
+    existing = await db.community_jobs.find_one({"id": job_id})
+    if not existing: raise HTTPException(404, "Job unavailable")
+    if existing["owner_id"] != user["id"]: raise HTTPException(403, "You can only update your own job")
+    job = await db.community_jobs.find_one_and_update({"id": job_id, "owner_id": user["id"]}, {"$set": {"status": payload.status, "updated_at": datetime.now(timezone.utc).isoformat()}}, return_document=ReturnDocument.AFTER)
+    return public_job(job)
+
+@api_router.post("/community/jobs/{job_id}/apply-intent")
+async def job_apply_intent(job_id: str, payload: JobApplyIntent, request: Request, user=Depends(current_user)):
+    job = await db.community_jobs.find_one({"id": job_id, "status": "active"})
+    if not job or job_is_expired(job): raise HTTPException(404, "Job unavailable")
+    method = payload.method
+    allowed = {"external_url": bool(job.get("application_url")), "public_email": bool(job.get("application_email")), "connection": bool(job.get("allow_connection_application"))}
+    if not allowed.get(method): raise HTTPException(422, "This application option is unavailable")
+    await db.community_jobs.update_one({"id": job_id}, {"$inc": {"application_count": 1}})
+    await db.community_job_apply_intents.insert_one({"id": str(uuid.uuid4()), "job_id": job_id, "viewer_id": user["id"], "method": method, "created_at": datetime.now(timezone.utc).isoformat()})
+    return {"ok": True}
+
 @api_router.post("/contact")
 async def submit_contact(payload: ContactSubmission, request: Request):
     if payload.website:
@@ -556,3 +777,10 @@ async def initialize_community_indexes():
     await db.community_connections.create_index("pair_key", unique=True)
     await db.community_connections.create_index([("requester_user_id", 1), ("status", 1), ("updated_at", -1)])
     await db.community_connections.create_index([("recipient_user_id", 1), ("status", 1), ("updated_at", -1)])
+    await db.community_jobs.create_index([("status", 1), ("created_at", -1)])
+    await db.community_jobs.create_index([("recommended_personality_types", 1), ("status", 1)])
+    await db.community_jobs.create_index([("career_categories", 1), ("status", 1)])
+    await db.community_jobs.create_index([("owner_id", 1), ("status", 1)])
+    await db.community_jobs.create_index([("country", 1), ("city", 1), ("remote_mode", 1)])
+    await db.community_jobs.create_index("expires_at")
+    await db.community_job_apply_intents.create_index([("job_id", 1), ("created_at", -1)])

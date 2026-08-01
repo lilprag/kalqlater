@@ -36,7 +36,7 @@ function ConnectionActions({ username, status, setStatus }) {
   };
 
   if (!status) return <span className="text-sm text-brand-subtle" role="status">Loading connection options…</span>;
-  if (status.status === 'connected') return <span className="rounded-full bg-brand-teal/10 px-4 py-2 text-sm font-semibold text-brand-teal">Connected</span>;
+  if (status.status === 'connected') return <Link to="/community/messages" className="rounded-full bg-brand-teal/10 px-4 py-2 text-sm font-semibold text-brand-teal">Message</Link>;
 
   return (
     <div className="flex flex-wrap items-center gap-2">

@@ -1,0 +1,9 @@
+import { request } from './authService';
+const unwrap = (promise) => promise.then((response) => response.data).catch((error) => { throw new Error(error?.response?.data?.detail || 'We could not complete that job request.'); });
+export const getJobs = (filters = {}, page = 1, limit = 18) => unwrap(request({ url: '/community/jobs', params: { ...filters, page, limit } }));
+export const getJob = (id) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}` }));
+export const getMyJobs = () => unwrap(request({ url: '/community/jobs/mine' }));
+export const createJob = (data) => unwrap(request({ url: '/community/jobs', method: 'post', data }));
+export const updateJob = (id, data) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}`, method: 'put', data }));
+export const updateJobStatus = (id, status) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}/status`, method: 'patch', data: { status } }));
+export const recordApplyIntent = (id, method) => unwrap(request({ url: `/community/jobs/${encodeURIComponent(id)}/apply-intent`, method: 'post', data: { method } }));

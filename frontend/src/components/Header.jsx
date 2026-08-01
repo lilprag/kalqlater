@@ -18,6 +18,7 @@ export default function Header() {
         { to: '/about', label: t.nav.about, id: 'nav-about' },
         { to: '/compare', label: lang === 'hi' ? 'तुलना' : 'Compare', id: 'nav-compare' },
         { to: '/community', label: lang === 'hi' ? 'कम्युनिटी' : 'Community', id: 'nav-community' },
+        { to: '/community/jobs', label: lang === 'hi' ? 'नौकरियाँ' : 'Jobs', id: 'nav-jobs' },
         { to: '/contact', label: lang === 'hi' ? 'संपर्क' : 'Contact', id: 'nav-contact' },
     ];
     const links = user ? [...baseLinks, { to: '/community/connections', label: lang === 'hi' ? 'कनेक्शन' : 'Connections', id: 'nav-connections', badge: pendingCount }] : baseLinks;

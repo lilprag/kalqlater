@@ -20,6 +20,12 @@ const Community = lazy(() => import('./pages/community/Community'));
 const ProfileSetup = lazy(() => import('./pages/community/ProfileSetup'));
 const MemberProfile = lazy(() => import('./pages/community/MemberProfile'));
 const Connections = lazy(() => import('./pages/community/Connections'));
+const Jobs = lazy(() => import('./pages/community/Jobs'));
+const JobForm = lazy(() => import('./pages/community/JobForm'));
+const JobDetail = lazy(() => import('./pages/community/JobDetail'));
+const MyJobs = lazy(() => import('./pages/community/MyJobs'));
+const MyProfile = lazy(() => import('./pages/community/MyProfile'));
+const MessagesPlaceholder = lazy(() => import('./pages/community/MessagesPlaceholder'));
 const Auth = lazy(() => import('./pages/Auth'));
 const Terms = lazy(() => import('./pages/Terms'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -49,10 +55,16 @@ function App() {
                             <Route path="/compare/:pair" element={<Compare />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/community" element={<Community />} />
-                            <Route path="/community/me" element={<ProfileSetup />} />
+                            <Route path="/community/me" element={<MyProfile />} />
                             <Route path="/community/profile" element={<ProfileSetup />} />
                             <Route path="/community/member/:username" element={<MemberProfile />} />
                             <Route path="/community/connections" element={<Connections />} />
+                            <Route path="/community/jobs" element={<Jobs />} />
+                            <Route path="/community/jobs/new" element={<JobForm />} />
+                            <Route path="/community/jobs/mine" element={<MyJobs />} />
+                            <Route path="/community/jobs/:id/edit" element={<JobForm />} />
+                            <Route path="/community/jobs/:id" element={<JobDetail />} />
+                            <Route path="/community/messages" element={<MessagesPlaceholder />} />
                             <Route path="/login" element={<Auth mode="login" />} /><Route path="/signup" element={<Auth mode="signup" />} /><Route path="/forgot-password" element={<Auth mode="forgot" />} /><Route path="/reset-password" element={<Auth mode="reset" />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
