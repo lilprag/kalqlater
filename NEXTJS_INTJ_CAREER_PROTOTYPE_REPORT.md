@@ -1,76 +1,90 @@
-# INTJ Career Page Prototype
+# INTJ Career Page Prototype — Editorial Redesign
 
 ## Scope
 
-This prototype adds only these static Next.js routes:
+Only the existing static Next.js prototype routes are redesigned:
 
 - `/en/personality/intj/careers`
 - `/hi/personality/intj/careers`
 
-No other personality-type career route is generated. The existing CRA application,
-backend, Community directory work, hosting configuration, and hybrid routing contract
-remain untouched.
+No other personality career page is generated. No backend, CRA, Community, jobs API,
+hosting, deployment, or hybrid routing file is changed.
 
-## Experience
+## What changed
 
-The page is a server-rendered, bilingual career-exploration guide with:
+The former report-like page had many equal-weight card grids, a dense seven-column table,
+and supporting advice that appeared before the central career recommendation. The redesign
+uses an editorial sequence that answers the main question immediately:
 
-- breadcrumb navigation and a premium INTJ hero;
-- an eight-part qualitative work-style snapshot (no aptitude scores or predictions);
-- values, frustrations, ten career directions with lightweight profession glyphs, a
-  responsive seven-column comparison table, work-environment map, ten industry cards,
-  and remote/hybrid/office guidance;
-- a practical roadmap, growth edges, advice for six career stages, and a decision checklist;
-- an explicit guide disclaimer, eight visible FAQ items, FAQ JSON-LD, and related actions.
+1. illustrated two-column hero;
+2. five prominent career directions, with Software Engineering as the primary feature;
+3. Career Compass infographic;
+4. grouped Career Path Explorer;
+5. compact five-direction comparison;
+6. four-axis work-environment spectrum;
+7. remote, hybrid, and office mini-guides;
+8. connected skill path and toolkit;
+9. career-stage choices plus one five-question checklist;
+10. six industry tiles, a static future-jobs fallback, FAQ, and final action area.
 
-Career content is intentionally exploratory. It does not make salary, hiring,
-qualification, ability, or scientific-certainty claims. The live jobs area is linked as
-an optional existing product destination; this prototype does not fetch jobs or add a
-new client-side data dependency.
+Values, frustrations, growth edges, broad stage guidance, and the former checklist were
+merged into the Career Compass, concise career facts, skills path, and stage guide. The
+large comparison table and repetitive snapshot cards were removed.
+
+## Content and language
+
+`frontend-next/data/intj-careers.js` contains aligned English and Hindi INTJ content for
+twelve concise career directions and eight visible FAQ items. The page uses exploratory
+language only: working-style alignment is not eligibility, ability, a hiring signal, or a
+prediction. It contains no salaries, demand claims, company claims, fit scores, or other
+unsupported factual assertions.
+
+The live Jobs API is intentionally not called. The page includes a polished static empty
+state with links to the existing Jobs, posting, and Community destinations; future jobs
+integration can be isolated without changing the editorial content.
+
+## Visual and performance design
+
+The page uses server components only. It adds no client components, chart libraries,
+animation libraries, raster assets, or runtime API requests. Visuals are lightweight inline
+SVGs: a hero systems/strategy illustration, profession glyphs, compass/format/industry
+icons, and CSS spectrum bands. The largest inline SVG is the hero illustration; it is
+decorative and hidden from assistive technology.
+
+Core content stays in raw server HTML, including all explorer directions, FAQ answers,
+comparison content, and bilingual labels. Responsive grids collapse at mobile widths. The
+comparison becomes vertical cards below the `md` breakpoint, so it cannot cause page-level
+horizontal scrolling.
 
 ## SEO and access
 
-Both pages use the existing `pageMetadata` helper for localized title, description,
-canonical, Open Graph, Twitter, and hreflang metadata. Both are listed in the Next
-sitemap. Their visible FAQ content is mirrored in JSON-LD. They are raw server HTML
-and have no client-only data dependency.
+Existing `pageMetadata` produces locale-specific title, description, canonical, Open
+Graph, Twitter and hreflang tags. BreadcrumbList and FAQPage JSON-LD mirror visible page
+content. Both prototype routes remain in the sitemap and the contextual INTJ parent-page
+link remains in place. Unsupported routes such as `/en/personality/intp/careers` remain
+404.
 
-The page uses server components only. Its visual elements are Tailwind/CSS cards,
-responsive grids, table overflow containment, and lightweight decorative geometry—no
-chart library, images, runtime API request, or new client component. This avoids layout
-shift from remote data and keeps the career dataset on the server.
+Accessibility includes one H1, semantic breadcrumbs, a captioned desktop comparison table,
+text equivalents around non-textual visuals, keyboard-native FAQ disclosure controls with
+visible focus treatment, non-colour text labels, and decorative SVGs marked `aria-hidden`.
 
-The INTJ personality page now includes a localized link to this guide. Unsupported
-career routes, such as `/en/personality/intp/careers`, remain 404 through static route
-generation.
-
-## Validation required
+## Validation
 
 Run from `frontend-next`:
 
 ```bash
-npm install
 npm run lint
 npm run build
 npm test
 git diff --check
 ```
 
-The project crawlability test covers both career pages, their metadata, self canonicals,
-server-rendered featured careers/table/FAQ content, numerical-score guard, sitemap
-entries, parent INTJ link, JSON-LD parsing, and an unsupported career-route 404.
+The crawlability test validates both locales, visible server-rendered career/table/FAQ
+content, metadata, JSON-LD parsing, sitemap entries, parent link, and unsupported-route
+404 behavior.
 
-## Accessibility and responsive review
+## Recommendation
 
-The pages contain one H1, sequential section headings, visible breadcrumb navigation,
-semantic table headers and caption, keyboard-native FAQ disclosure controls with visible
-focus treatment, and text equivalents for visual indicators. Decorative hero geometry
-and career glyphs are hidden from assistive technology. Grid layouts collapse at small
-breakpoints; the wide table is contained in its own horizontal scroll region rather than
-causing page overflow.
-
-## Recommendation before scaling
-
-Approve the visual hierarchy and bilingual editorial tone with product review before
-creating the other fifteen content modules. Any future live-jobs panel should be a small
-isolated client component with a safe empty state; it is intentionally not included here.
+Review this one INTJ page at desktop and mobile widths before approving the information
+architecture for the remaining fifteen types. Keep any future live Jobs integration as a
+small isolated enhancement rather than moving core guide content to the client.

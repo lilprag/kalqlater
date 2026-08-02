@@ -24,7 +24,9 @@ const english = {
     ['Strategy consultant', 'Worth exploring', 'Frame difficult choices and create a coherent path through ambiguity.', 'Adapt analytical depth to client pace and relationship-building.'],
     ['Financial analyst', 'Worth exploring', 'Use structured evidence to support investment, planning or operating decisions.', 'Keep practical constraints visible alongside elegant models.'],
     ['UX researcher', 'Situational fit', 'Study behavioural patterns and turn learning into product direction.', 'Develop qualitative listening alongside analysis.'],
-    ['Founder or operator', 'Requires intentional growth', 'Shape a long-term thesis into repeated small experiments.', 'Share ownership early and invite challenge before decisions harden.'],
+    ['Operations strategist', 'Worth exploring', 'Improve the systems that help people make and carry out decisions.', 'Bring people into the improvement process early.'],
+    ['Policy or legal researcher', 'Situational fit', 'Investigate rules, evidence and long-term consequences with care.', 'Translate complex reasoning for non-specialist audiences.'],
+    ['Health systems analyst', 'Worth exploring', 'Use systems thinking to improve how complex care work is coordinated.', 'Keep lived experience and practical constraints close to the analysis.'],
   ],
   industries: ['Technology & platforms', 'Research & education', 'Finance & analytics', 'Healthcare systems', 'Law & policy', 'Design & product', 'Public service', 'Climate & infrastructure', 'Entrepreneurship', 'Operations'],
   formats: [
@@ -88,7 +90,9 @@ const hindi = {
     ['स्ट्रैटेजी कंसल्टेंट', 'खोजने योग्य', 'कठिन विकल्पों को स्पष्ट करें और अनिश्चितता में सुसंगत रास्ता बनाएं।', 'क्लाइंट की गति और संबंध-निर्माण के अनुसार विश्लेषण को ढालें।'],
     ['फाइनेंशियल एनालिस्ट', 'खोजने योग्य', 'निवेश, योजना या संचालन निर्णयों के लिए प्रमाण का उपयोग करें।', 'सुंदर मॉडल के साथ व्यावहारिक सीमाएँ भी ध्यान में रखें।'],
     ['UX रिसर्चर', 'परिस्थिति पर निर्भर', 'व्यवहार के पैटर्न समझें और सीख को उत्पाद दिशा में बदलें।', 'विश्लेषण के साथ गुणात्मक सुनने का कौशल विकसित करें।'],
-    ['फाउंडर या ऑपरेटर', 'सचेत विकास आवश्यक', 'दीर्घ दृष्टि को बार-बार होने वाले छोटे प्रयोगों में बदलें।', 'निर्णय पक्के होने से पहले जिम्मेदारी साझा करें और चुनौती आमंत्रित करें।'],
+    ['ऑपरेशंस स्ट्रैटेजिस्ट', 'खोजने योग्य', 'लोगों को निर्णय लेने और उन्हें पूरा करने में मदद करने वाले सिस्टम बेहतर बनाएं।', 'सुधार प्रक्रिया में लोगों को जल्दी शामिल करें।'],
+    ['पॉलिसी या लीगल रिसर्चर', 'परिस्थिति पर निर्भर', 'नियम, प्रमाण और दीर्घ परिणामों की सावधानी से जाँच करें।', 'जटिल तर्क को गैर-विशेषज्ञों के लिए स्पष्ट बनाएं।'],
+    ['हेल्थ सिस्टम्स एनालिस्ट', 'खोजने योग्य', 'जटिल देखभाल कार्य के समन्वय को बेहतर बनाने में सिस्टम सोच लगाएं।', 'विश्लेषण के साथ वास्तविक अनुभव और व्यावहारिक सीमाएँ रखें।'],
   ],
   industries: ['टेक्नोलॉजी और प्लेटफॉर्म', 'रिसर्च और शिक्षा', 'फाइनेंस और एनालिटिक्स', 'हेल्थकेयर सिस्टम्स', 'कानून और पॉलिसी', 'डिज़ाइन और प्रोडक्ट', 'पब्लिक सर्विस', 'जलवायु और इंफ्रास्ट्रक्चर', 'उद्यमिता', 'ऑपरेशंस'],
   formats: [
