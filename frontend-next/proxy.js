@@ -19,8 +19,14 @@ function comparisonDestination(request, pair) {
 }
 
 function legacyPersonalityResponse(request) {
-  const match = /^\/types\/([a-z]{4})$/i.exec(request.nextUrl.pathname);
-  if (!match) return NextResponse.next();
+  if (request.nextUrl.pathname === '/types/') return NextResponse.next();
+  const match = /^\/types\/([^/]+)$/i.exec(request.nextUrl.pathname);
+  if (!match) {
+    return new NextResponse('Not Found', {
+      status: 404,
+      headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' },
+    });
+  }
   const type = match[1].toUpperCase();
   if (!typeOrder.includes(type)) {
     return new NextResponse('Not Found', {
@@ -29,7 +35,7 @@ function legacyPersonalityResponse(request) {
     });
   }
 
-  const locale = request.nextUrl.searchParams.get('lang') === 'hi' ? 'hi' : 'en';
+  const locale = request.nextUrl.searchParams.get('lang') === 'hi' || request.nextUrl.searchParams.get('locale') === 'hi' ? 'hi' : 'en';
   const url = request.nextUrl.clone();
   url.pathname = `/${locale}/personality/${type.toLowerCase()}`;
   url.search = '';

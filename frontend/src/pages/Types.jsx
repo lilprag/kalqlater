@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLang } from '../context/LangContext';
 import { TYPES, GROUPS } from '../data/types';
+import { getPersonalityUrl } from '../utils/personalityUrl';
 
 export default function Types() {
     const { lang, t } = useLang();
@@ -32,8 +32,8 @@ export default function Types() {
                                             viewport={{ once: true }}
                                             transition={{ delay: i * 0.05 }}
                                         >
-                                            <Link
-                                                to={`/types/${tp.code}`}
+                                            <a
+                                                href={getPersonalityUrl(tp.code, lang)}
                                                 data-testid={`type-card-${tp.code}`}
                                                 className="group block rounded-3xl bg-white border border-brand-line p-6 h-full hover:-translate-y-1 hover:shadow-[0_20px_50px_rgb(46,40,37,0.06)] transition-all relative overflow-hidden"
                                             >
@@ -44,7 +44,7 @@ export default function Types() {
                                                 <div className={`mt-4 text-sm text-brand-teal font-medium ${cls}`}>
                                                     {hi ? 'विस्तार से पढ़ें →' : 'Read more →'}
                                                 </div>
-                                            </Link>
+                                            </a>
                                         </motion.div>
                                     );
                                 })}

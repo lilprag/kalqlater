@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { JsonLd } from '../../../../components/JsonLd';
 import { breadcrumbJsonLd, pageMetadata } from '../../../../lib/metadata';
 import { isLocale, localePath, productionAppUrl } from '../../../../lib/site';
-import { personalityProfile, TYPE_ORDER, typeFaq, typeFromSlug } from '../../../../lib/personality';
+import { getPersonalityUrl, personalityProfile, TYPE_ORDER, typeFaq, typeFromSlug } from '../../../../lib/personality';
 import { pairSlug } from '../../../../lib/comparisons';
 
 export function generateStaticParams() { return ['en', 'hi'].flatMap((locale) => TYPE_ORDER.map((code) => ({ locale, type: code.toLowerCase() }))); }
@@ -52,7 +52,7 @@ export default async function PersonalityPage({ params }) {
     <section className="content-card mt-8 rounded-[1.75rem] border border-brand-line bg-white p-7 sm:p-8"><p className="section-kicker">{labels.relationships}</p><h2 className="display-font mt-2 text-3xl">{hi ? 'रिश्तों में' : 'In relationships'}</h2><p className="mt-4 max-w-3xl leading-relaxed text-brand-subtle">{profile.relationshipStyle}</p></section>
     <section className="mt-8 rounded-[1.75rem] bg-brand-cream/70 p-7 sm:p-8"><p className="section-kicker">{labels.tips}</p><h2 className="display-font mt-2 text-3xl">{hi ? 'अभ्यास में अंतर्दृष्टि' : 'Put insight into practice'}</h2><List items={profile.developmentTips} /></section>
     <section className="mt-10"><p className="section-kicker">{labels.faq}</p><h2 className="display-font mt-2 text-3xl">{hi ? 'कुछ सामान्य सवाल' : 'A few common questions'}</h2><div className="mt-5 space-y-3">{faq.map((item) => <details key={item.q} className="content-card rounded-2xl border border-brand-line bg-white p-5"><summary className="cursor-pointer font-semibold text-brand-ink">{item.q}</summary><p className="mt-3 leading-relaxed text-brand-subtle">{item.a}</p></details>)}</div></section>
-    <section className="mt-10"><p className="section-kicker">{labels.related}</p><div className="mt-4 flex flex-wrap gap-3">{profile.relatedTypes.map((item) => <Link key={item} href={localePath(locale, `personality/${item.toLowerCase()}`)} className="button-secondary min-h-0 px-4 py-2">{item}</Link>)}</div></section>
+    <section className="mt-10"><p className="section-kicker">{labels.related}</p><div className="mt-4 flex flex-wrap gap-3">{profile.relatedTypes.map((item) => <Link key={item} href={getPersonalityUrl(item, locale)} className="button-secondary min-h-0 px-4 py-2">{item}</Link>)}</div></section>
     <div className="mt-10 flex flex-wrap gap-3"><a href={productionAppUrl('/test')} className="button-primary">{labels.test}<span aria-hidden="true">→</span></a><Link href={compareHref} className="button-secondary">{labels.compare}</Link></div>
   </article></>;
 }

@@ -42,10 +42,22 @@ const legacyPair = await fetch(`${baseUrl}/compare/enfp-vs-intj`, { redirect: 'm
 assert(legacyPair.status === 308 && legacyPair.headers.get('location') === '/en/compare/intj-vs-enfp', 'legacy pair: expected localized canonical redirect');
 const legacyQuery = await fetch(`${baseUrl}/compare?type1=INTJ&type2=ENFP&lang=hi`, { redirect: 'manual' });
 assert(legacyQuery.status === 308 && legacyQuery.headers.get('location') === '/hi/compare/intj-vs-enfp', 'legacy query: expected localized canonical redirect');
-const legacyType = await fetch(`${baseUrl}/types/intj`, { redirect: 'manual' });
-assert(legacyType.status === 308 && legacyType.headers.get('location') === '/en/personality/intj', 'legacy type: expected localized canonical redirect');
-const legacyHindiType = await fetch(`${baseUrl}/types/intj?lang=hi`, { redirect: 'manual' });
-assert(legacyHindiType.status === 308 && legacyHindiType.headers.get('location') === '/hi/personality/intj', 'legacy Hindi type: expected localized canonical redirect');
+const legacyTypes = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
+for (const type of legacyTypes) {
+  const variants = [type, type.toLowerCase(), `${type.slice(0, 1)}${type.slice(1, 2).toLowerCase()}${type.slice(2, 3)}${type.slice(3).toLowerCase()}`];
+  for (const variant of variants) {
+    const response = await fetch(`${baseUrl}/types/${variant}`, { redirect: 'manual' });
+    assert(response.status === 308 && response.headers.get('location') === `/en/personality/${type.toLowerCase()}`, `legacy type ${variant}: expected localized canonical redirect`);
+  }
+}
+for (const parameter of ['lang', 'locale']) {
+  const response = await fetch(`${baseUrl}/types/ENFP?${parameter}=hi`, { redirect: 'manual' });
+  assert(response.status === 308 && response.headers.get('location') === '/hi/personality/enfp', `legacy Hindi ${parameter}: expected localized canonical redirect`);
+}
+for (const path of ['/types/UNKNOWN', '/types/ABC', '/types/INTJ123']) {
+  const response = await fetch(`${baseUrl}${path}`, { redirect: 'manual' });
+  assert(response.status === 404 && response.headers.get('x-robots-tag') === 'noindex', `${path}: expected noindex 404`);
+}
 for (const path of ['/compare/intj-vs-intj', '/compare?type1=INTJ&type2=INTJ']) {
   const response = await fetch(`${baseUrl}${path}`, { redirect: 'manual' });
   assert(response.status === 404, `${path}: expected legacy invalid pair to return 404`);

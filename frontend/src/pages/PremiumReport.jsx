@@ -3,6 +3,7 @@ import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import axios from 'axios';
 import { ArrowLeft, Printer } from 'lucide-react';
 import { TYPES } from '../data/types';
+import { getPersonalityUrl } from '../utils/personalityUrl';
 import { DASHBOARD_INSIGHTS } from '../data/insights/dashboard';
 import { PERSONALITY_DNA } from '../data/insights/dna';
 import { LEADERSHIP_INSIGHTS } from '../data/insights/leadership';
@@ -50,7 +51,7 @@ function Report({ type, lang, onPrint }) {
     const date = new Intl.DateTimeFormat(lang === 'hi' ? 'hi-IN' : 'en-IN', { dateStyle: 'long' }).format(new Date());
 
     return <div className="premium-report">
-        <div className="premium-report__actions"><Link to={`/types/${type.code}`} className="premium-report__back"><ArrowLeft size={16} /> Back to profile</Link><button onClick={onPrint}><Printer size={16} /> Print / Save PDF</button></div>
+        <div className="premium-report__actions"><a href={getPersonalityUrl(type.code, lang)} className="premium-report__back"><ArrowLeft size={16} /> Back to profile</a><button onClick={onPrint}><Printer size={16} /> Print / Save PDF</button></div>
         <main className="report-print">
             <section className="report-page report-cover">
                 <div className="report-cover__orb report-cover__orb--one" /><div className="report-cover__orb report-cover__orb--two" />

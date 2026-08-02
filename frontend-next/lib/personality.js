@@ -1,11 +1,18 @@
 import { TYPES, TYPE_CODES } from '../data/types';
 import { LEADERSHIP_INSIGHTS } from '../data/leadership';
 import { COMMUNICATION_INSIGHTS } from '../data/communication';
+import { isLocale, localePath } from './site';
 
 export const TYPE_ORDER = TYPE_CODES;
 
 export function typeSlug(code) { return code.toLowerCase(); }
 export function typeFromSlug(slug) { const code = String(slug || '').toUpperCase(); return TYPE_CODES.includes(code) ? code : null; }
+
+export function getPersonalityUrl(type, locale = 'en') {
+  const code = typeFromSlug(type);
+  if (!code) return null;
+  return localePath(isLocale(locale) ? locale : 'en', `personality/${typeSlug(code)}`);
+}
 
 export function personalityProfile(code, locale) {
   const type = TYPES[code];
