@@ -1,6 +1,6 @@
 export const COPY = {
   en: {
-    nav: { home: 'Home', test: 'Test', compare: 'Compare', community: 'Community', jobs: 'Jobs', contact: 'Contact', login: 'Log in', signup: 'Sign up', menu: 'Open navigation', close: 'Close navigation' },
+    nav: { home: 'Home', test: 'Take Test', types: '16 Types', about: 'About', compare: 'Compare', community: 'Community', jobs: 'Jobs', contact: 'Contact', connections: 'Connections', profile: 'My Profile', logout: 'Logout', login: 'Log in', signup: 'Sign up', checking: 'Checking account…', menu: 'Open navigation', close: 'Close navigation' },
     hero: { eyebrow: 'Original personality insights', title: 'Understand your patterns. Choose your next step with clarity.', body: 'KalQLater offers an original 16-type personality assessment for reflection, practical growth, and more thoughtful connection.', cta: 'Take the personality test', secondary: 'Explore personality types' },
     benefits: [
       ['Reflect with more clarity', 'See your preferences across energy, information, decisions, and structure.'],
@@ -16,7 +16,7 @@ export const COPY = {
     notFound: { title: 'Page not found', body: 'The page you requested is not available in this preview.', cta: 'Return home' },
   },
   hi: {
-    nav: { home: 'होम', test: 'टेस्ट', compare: 'तुलना', community: 'कम्युनिटी', jobs: 'जॉब्स', contact: 'संपर्क', login: 'लॉग इन', signup: 'साइन अप', menu: 'नेविगेशन खोलें', close: 'नेविगेशन बंद करें' },
+    nav: { home: 'होम', test: 'टेस्ट दें', types: '16 प्रकार', about: 'हमारे बारे में', compare: 'तुलना', community: 'कम्युनिटी', jobs: 'जॉब्स', contact: 'संपर्क', connections: 'कनेक्शन', profile: 'मेरी प्रोफ़ाइल', logout: 'लॉग आउट', login: 'लॉग इन', signup: 'साइन अप', checking: 'अकाउंट जाँचा जा रहा है…', menu: 'नेविगेशन खोलें', close: 'नेविगेशन बंद करें' },
     hero: { eyebrow: 'मौलिक व्यक्तित्व अंतर्दृष्टि', title: 'अपने पैटर्न समझें। स्पष्टता के साथ अपना अगला कदम चुनें।', body: 'KalQLater आत्मचिंतन, व्यावहारिक विकास और अधिक विचारशील जुड़ाव के लिए एक मौलिक 16-टाइप व्यक्तित्व आकलन देता है।', cta: 'व्यक्तित्व टेस्ट दें', secondary: 'व्यक्तित्व प्रकार देखें' },
     benefits: [
       ['अधिक स्पष्टता से आत्मचिंतन करें', 'ऊर्जा, जानकारी, निर्णय और संरचना के प्रति अपनी पसंद को समझें।'],

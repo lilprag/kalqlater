@@ -18,6 +18,24 @@ function comparisonDestination(request, pair) {
   return url;
 }
 
+function legacyPersonalityResponse(request) {
+  const match = /^\/types\/([a-z]{4})$/i.exec(request.nextUrl.pathname);
+  if (!match) return NextResponse.next();
+  const type = match[1].toUpperCase();
+  if (!typeOrder.includes(type)) {
+    return new NextResponse('Not Found', {
+      status: 404,
+      headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' },
+    });
+  }
+
+  const locale = request.nextUrl.searchParams.get('lang') === 'hi' ? 'hi' : 'en';
+  const url = request.nextUrl.clone();
+  url.pathname = `/${locale}/personality/${type.toLowerCase()}`;
+  url.search = '';
+  return NextResponse.redirect(url, 308);
+}
+
 function legacyComparisonResponse(request) {
   const path = request.nextUrl.pathname;
   if (path === '/compare') {
@@ -33,6 +51,7 @@ function legacyComparisonResponse(request) {
 }
 
 export function proxy(request) {
+  if (request.nextUrl.pathname.startsWith('/types/')) return legacyPersonalityResponse(request);
   if (request.nextUrl.pathname === '/compare' || request.nextUrl.pathname.startsWith('/compare/')) return legacyComparisonResponse(request);
 
   const locale = request.nextUrl.pathname.split('/')[1];
@@ -51,4 +70,4 @@ export function proxy(request) {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-export const config = { matcher: ['/en/:path*', '/hi/:path*', '/compare', '/compare/:path*'] };
+export const config = { matcher: ['/en/:path*', '/hi/:path*', '/types/:path*', '/compare', '/compare/:path*'] };

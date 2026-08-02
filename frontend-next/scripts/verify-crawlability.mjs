@@ -42,6 +42,10 @@ const legacyPair = await fetch(`${baseUrl}/compare/enfp-vs-intj`, { redirect: 'm
 assert(legacyPair.status === 308 && legacyPair.headers.get('location') === '/en/compare/intj-vs-enfp', 'legacy pair: expected localized canonical redirect');
 const legacyQuery = await fetch(`${baseUrl}/compare?type1=INTJ&type2=ENFP&lang=hi`, { redirect: 'manual' });
 assert(legacyQuery.status === 308 && legacyQuery.headers.get('location') === '/hi/compare/intj-vs-enfp', 'legacy query: expected localized canonical redirect');
+const legacyType = await fetch(`${baseUrl}/types/intj`, { redirect: 'manual' });
+assert(legacyType.status === 308 && legacyType.headers.get('location') === '/en/personality/intj', 'legacy type: expected localized canonical redirect');
+const legacyHindiType = await fetch(`${baseUrl}/types/intj?lang=hi`, { redirect: 'manual' });
+assert(legacyHindiType.status === 308 && legacyHindiType.headers.get('location') === '/hi/personality/intj', 'legacy Hindi type: expected localized canonical redirect');
 for (const path of ['/compare/intj-vs-intj', '/compare?type1=INTJ&type2=INTJ']) {
   const response = await fetch(`${baseUrl}${path}`, { redirect: 'manual' });
   assert(response.status === 404, `${path}: expected legacy invalid pair to return 404`);
