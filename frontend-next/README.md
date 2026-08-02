@@ -15,6 +15,7 @@ This is an isolated Next.js App Router foundation created from production baseli
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID`: GA4 measurement ID. GA loads only when `NODE_ENV=production` and this value is present.
 - `NEXT_PUBLIC_BACKEND_URL`: public FastAPI origin, without a trailing slash. The client contact form sends to `${NEXT_PUBLIC_BACKEND_URL}/api/contact`.
 - `NEXT_PUBLIC_SITE_URL`: canonical public origin. Use the preview origin for preview validation; production will use `https://kalqlater.com` at cutover.
+- `LEGACY_CRA_ORIGIN`: server-only stable CRA Vercel origin used by fallback rewrites. It must be a public, non-redirecting deployment alias; never point it at `kalqlater.com`, or a proxy loop will result.
 
 These variables are public configuration values, not secret storage. Resend credentials remain exclusively in the FastAPI/Render environment.
 
@@ -43,6 +44,7 @@ The existing Google Search Console file is unchanged at `public/google41232c0c0c
 - Build Command: `npm run build`
 - Output Directory: Next.js default (leave unset)
 - Preview variables: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_BACKEND_URL`, and optionally `NEXT_PUBLIC_GA_MEASUREMENT_ID` (leave GA unset for preview if analytics is not desired).
+  Add `LEGACY_CRA_ORIGIN` to Preview and Production when hybrid routing is enabled.
 
 Do not change the existing CRA Vercel project, its root directory, routes, or environment variables.
 
