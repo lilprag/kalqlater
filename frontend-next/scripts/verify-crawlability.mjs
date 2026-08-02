@@ -1,9 +1,10 @@
 const baseUrl = (process.env.CRAWL_BASE_URL || 'http://127.0.0.1:3100').replace(/\/$/, '');
+const careerTypes = ['intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp'];
 const pages = [
   ['/en', 'en', 'Meet the person you already are'], ['/hi', 'hi', 'अपने भीतर के व्यक्तित्व से मिलें'],
   ['/en/privacy', 'en', 'Privacy'], ['/en/terms', 'en', 'Terms of Use'], ['/en/contact', 'en', 'Contact us'],
   ['/en/personality/intj', 'en', 'INTJ'], ['/hi/personality/intj', 'hi', 'INTJ'], ['/en/personality/enfp', 'en', 'ENFP'], ['/hi/personality/enfp', 'hi', 'ENFP'],
-  ['/en/personality/intj/careers', 'en', 'INTJ Career Guide'], ['/hi/personality/intj/careers', 'hi', 'INTJ करियर गाइड'],
+  ['/en/personality/intj/careers', 'en', 'Best Careers for INTJ'], ['/hi/personality/intj/careers', 'hi', 'INTJ के लिए करियर दिशाएँ'],
   ['/en/compare/intj-vs-enfp', 'en', 'INTJ'], ['/hi/compare/intj-vs-enfp', 'hi', 'INTJ'],
 ];
 
@@ -30,27 +31,37 @@ for (const path of ['/google41232c0c0c01eadd.html', '/robots.txt', '/sitemap.xml
   const response = await fetch(`${baseUrl}${path}`);
   assert(response.ok, `${path}: expected HTTP 200, received ${response.status}`);
 }
-for (const [locale, text] of [['en', 'Software engineer'], ['hi', 'सॉफ्टवेयर इंजीनियर']]) {
-  const response = await fetch(`${baseUrl}/${locale}/personality/intj/careers`);
+const careerTitles = new Set();
+const careerDescriptions = new Set();
+for (const locale of ['en', 'hi']) for (const type of careerTypes) {
+  const response = await fetch(`${baseUrl}/${locale}/personality/${type}/careers`);
   const html = await response.text();
-  assert(html.includes(text), `${locale} INTJ career guide: missing featured career content`);
-  assert(html.includes('<table'), `${locale} INTJ career guide: missing comparison table`);
-  assert(html.includes('FAQPage'), `${locale} INTJ career guide: missing FAQ JSON-LD`);
-  assert(!/\b\d{1,3}%\b/.test(html), `${locale} INTJ career guide: unexpected numerical score claim`);
-  assert(html.includes(`https://kalqlater.com/${locale}/personality/intj/careers`), `${locale} INTJ career guide: missing self canonical`);
+  assert(response.ok, `${locale}/${type} career guide: expected HTTP 200, received ${response.status}`);
+  assert(html.includes(type.toUpperCase()), `${locale}/${type} career guide: missing type content`);
+  assert(html.includes('<table'), `${locale}/${type} career guide: missing comparison table`);
+  assert(html.includes('FAQPage'), `${locale}/${type} career guide: missing FAQ JSON-LD`);
+  assert((html.match(/<details/g) || []).length >= 8, `${locale}/${type} career guide: fewer than eight visible FAQs`);
+  assert(!/\b\d{1,3}%\b/.test(html), `${locale}/${type} career guide: unexpected numerical score claim`);
+  assert(html.includes(`https://kalqlater.com/${locale}/personality/${type}/careers`), `${locale}/${type} career guide: missing self canonical`);
+  const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
+  const description = html.match(/<meta[^>]+name="description"[^>]+content="([^"]+)"/)?.[1];
+  assert(title && description, `${locale}/${type} career guide: missing unique metadata`);
+  careerTitles.add(title);
+  careerDescriptions.add(description);
 }
+assert(careerTitles.size === 32, 'career guides: titles must be unique across all locales');
+assert(careerDescriptions.size === 32, 'career guides: descriptions must be unique across all locales');
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
-assert(sitemapXml.includes('/en/personality/intj/careers') && sitemapXml.includes('/hi/personality/intj/careers'), 'sitemap: missing INTJ career prototypes');
-const intj = await fetch(`${baseUrl}/en/personality/intj`);
-assert((await intj.text()).includes('/en/personality/intj/careers'), 'INTJ profile: missing career guide link');
+for (const locale of ['en', 'hi']) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
+for (const locale of ['en', 'hi']) for (const type of careerTypes) { const profile = await fetch(`${baseUrl}/${locale}/personality/${type}`); assert((await profile.text()).includes(`/${locale}/personality/${type}/careers`), `${locale}/${type} profile: missing career guide link`); }
 const selector = await fetch(`${baseUrl}/compare`);
 const selectorHtml = await selector.text();
 assert(selector.ok && selectorHtml.includes('Explore a personality dynamic'), '/compare: expected the interactive selector');
 
 const missing = await fetch(`${baseUrl}/en/this-route-does-not-exist`);
 assert(missing.status === 404, `404 route: expected HTTP 404, received ${missing.status}`);
-for (const path of ['/en/personality/not-a-type', '/en/personality/intp/careers', '/en/compare/intj-vs-intj']) { const response = await fetch(`${baseUrl}${path}`); assert(response.status === 404, `${path}: expected HTTP 404, received ${response.status}`); }
+for (const path of ['/en/personality/not-a-type', '/en/personality/not-a-type/careers', '/en/compare/intj-vs-intj']) { const response = await fetch(`${baseUrl}${path}`); assert(response.status === 404, `${path}: expected HTTP 404, received ${response.status}`); }
 const reversed = await fetch(`${baseUrl}/en/compare/enfp-vs-intj`, { redirect: 'manual' });
 assert([307, 308].includes(reversed.status) && /intj-vs-enfp/.test(reversed.headers.get('location') || ''), 'reversed pair: expected canonical redirect');
 const legacyPair = await fetch(`${baseUrl}/compare/enfp-vs-intj`, { redirect: 'manual' });
