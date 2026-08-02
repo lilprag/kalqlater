@@ -4,6 +4,7 @@ import { useLang } from '../context/LangContext';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { CONNECTIONS_CHANGED, getPendingConnectionCount } from '../services/connectionService';
+import { getComparisonUrl, getContactUrl, getHomeUrl } from '../utils/routes';
 
 export default function Header() {
     const { lang, toggle, t } = useLang();
@@ -12,14 +13,14 @@ export default function Header() {
     const [pendingCount, setPendingCount] = useState(0);
 
     const baseLinks = [
-        { to: '/', label: t.nav.home, id: 'nav-home' },
+        { to: getHomeUrl(lang), label: t.nav.home, id: 'nav-home', crossApp: true },
         { to: '/test', label: t.nav.test, id: 'nav-test' },
         { to: '/types', label: t.nav.types, id: 'nav-types' },
         { to: '/about', label: t.nav.about, id: 'nav-about' },
-        { to: '/compare', label: lang === 'hi' ? 'तुलना' : 'Compare', id: 'nav-compare' },
+        { to: getComparisonUrl(), label: lang === 'hi' ? 'तुलना' : 'Compare', id: 'nav-compare', crossApp: true },
         { to: '/community', label: lang === 'hi' ? 'कम्युनिटी' : 'Community', id: 'nav-community' },
         { to: '/community/jobs', label: lang === 'hi' ? 'नौकरियाँ' : 'Jobs', id: 'nav-jobs' },
-        { to: '/contact', label: lang === 'hi' ? 'संपर्क' : 'Contact', id: 'nav-contact' },
+        { to: getContactUrl(lang), label: lang === 'hi' ? 'संपर्क' : 'Contact', id: 'nav-contact', crossApp: true },
     ];
     const links = user ? [...baseLinks, { to: '/community/connections', label: lang === 'hi' ? 'कनेक्शन' : 'Connections', id: 'nav-connections', badge: pendingCount }] : baseLinks;
 
@@ -38,18 +39,20 @@ export default function Header() {
         <header className="sticky top-0 z-40 bg-white/70 backdrop-blur-xl border-b border-brand-line">
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-brand-teal focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-                <Link to="/" data-testid="logo-link" className="flex items-center gap-2 group">
+                <a href={getHomeUrl(lang)} data-testid="logo-link" className="flex items-center gap-2 group">
                     <span className="w-9 h-9 rounded-2xl bg-gradient-to-br from-brand-saffron to-brand-plum flex items-center justify-center text-white shadow-sm">
                         <Sparkles size={18} />
                     </span>
                     <span className={`font-display text-xl text-brand-ink group-hover:text-brand-teal transition-colors ${lang === 'hi' ? 'font-display-hi' : ''}`}>
                         {t.siteName}
                     </span>
-                </Link>
+                </a>
 
                 <nav className="hidden md:flex items-center gap-1">
                     {links.map((l) => (
-                        <NavLink
+                        l.crossApp ? <a key={l.to} href={l.to} data-testid={l.id} className={`px-4 py-2 rounded-full text-sm transition-colors text-brand-subtle hover:text-brand-ink hover:bg-brand-cream/60 ${lang === 'hi' ? 'font-body-hi' : ''}`}>
+                            {l.label}{l.badge > 0 && <span className="ml-1 inline-grid min-w-5 place-items-center rounded-full bg-brand-saffron px-1.5 py-0.5 text-xs font-bold text-brand-ink" aria-label={`${l.badge} pending connection requests`}>{l.badge}</span>}
+                        </a> : <NavLink
                             key={l.to}
                             to={l.to}
                             end={l.to === '/'}
@@ -97,7 +100,7 @@ export default function Header() {
                 <div id="mobile-navigation" className="md:hidden border-t border-brand-line bg-white">
                     <div className="px-4 py-4 space-y-2">
                         {links.map((l) => (
-                            <NavLink
+                            l.crossApp ? <a key={l.to} href={l.to} onClick={() => setOpen(false)} data-testid={`mobile-${l.id}`} className={`block px-4 py-3 rounded-2xl transition-colors text-brand-subtle hover:bg-brand-cream ${lang === 'hi' ? 'font-body-hi' : ''}`}>{l.label}{l.badge > 0 ? ` (${l.badge})` : ''}</a> : <NavLink
                                 key={l.to}
                                 to={l.to}
                                 end={l.to === '/'}

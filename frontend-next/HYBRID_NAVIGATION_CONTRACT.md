@@ -15,3 +15,11 @@ The Next.js public shell and the proxied CRA application use this shared visual 
 | Authenticated links | Guest links plus Connections, My Profile, Logout |
 
 The CRA `AuthContext` remains the source of truth for session semantics. The Next.js shell only validates the same `kalqlater_auth_token` through the existing `/api/community/me` endpoint after hydration; it never renders account data server-side.
+
+## Route ownership
+
+| Owner | Routes | Navigation rule |
+| --- | --- | --- |
+| Next.js | `/`, `/en`, `/hi`, localized personality, comparison, legal, and contact pages; `robots.txt`, `sitemap.xml`, and Search Console verification | Next-to-Next uses `Link`; CRA-to-Next uses a normal anchor. |
+| CRA | `/test`, `/result/*`, `/report/*`, `/premium-report/*`, auth, `/community/*`, and exact `/types` | CRA-to-CRA uses React Router; Next-to-CRA uses a normal anchor. |
+| Redirects | `/types/[type]`, `/compare/[pair]`, and legacy comparison queries | Server-side 308 redirects only. |

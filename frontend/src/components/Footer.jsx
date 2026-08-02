@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LangContext';
 import { Heart } from 'lucide-react';
+import { getContactUrl } from '../utils/routes';
 
 export default function Footer() {
     const { lang, t } = useLang();
@@ -18,9 +19,9 @@ export default function Footer() {
                     <div className="flex flex-col gap-1">
                         <Link to="/about" data-testid="footer-about" className="hover:text-brand-teal">{t.nav.about}</Link>
                         <Link to="/types" data-testid="footer-types" className="hover:text-brand-teal">{t.nav.types}</Link>
-                        <Link to="/privacy" data-testid="footer-privacy" className="hover:text-brand-teal">{t.footer.privacy}</Link>
-                        <Link to="/terms" className="hover:text-brand-teal">{t.footer.terms}</Link>
-                        <Link to="/contact" className="hover:text-brand-teal">{lang === 'hi' ? 'संपर्क' : 'Contact'}</Link>
+                        <a href={`/${lang === 'hi' ? 'hi' : 'en'}/privacy`} data-testid="footer-privacy" className="hover:text-brand-teal">{t.footer.privacy}</a>
+                        <a href={`/${lang === 'hi' ? 'hi' : 'en'}/terms`} className="hover:text-brand-teal">{t.footer.terms}</a>
+                        <a href={getContactUrl(lang)} className="hover:text-brand-teal">{lang === 'hi' ? 'संपर्क' : 'Contact'}</a>
                     </div>
                 </div>
                 <div className={`text-sm text-brand-subtle ${cls}`}>
