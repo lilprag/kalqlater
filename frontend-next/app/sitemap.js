@@ -10,6 +10,7 @@ export default function sitemap() {
     lastModified: new Date(), changeFrequency: path ? 'monthly' : 'weekly', priority: path ? 0.6 : 1,
   })));
   const personalities = locales.flatMap((locale) => TYPE_ORDER.map((type) => ({ url: `${siteUrl()}${localePath(locale, `personality/${type.toLowerCase()}`)}`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 })));
+  const intjCareers = locales.map((locale) => ({ url: `${siteUrl()}${localePath(locale, 'personality/intj/careers')}`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 }));
   const comparisons = locales.flatMap((locale) => allPairs().map((pair) => ({ url: `${siteUrl()}${localePath(locale, `compare/${pair.slug}`)}`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 })));
-  return [...base, ...personalities, ...comparisons];
+  return [...base, ...personalities, ...intjCareers, ...comparisons];
 }

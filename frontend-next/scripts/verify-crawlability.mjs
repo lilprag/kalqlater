@@ -3,6 +3,7 @@ const pages = [
   ['/en', 'en', 'Meet the person you already are'], ['/hi', 'hi', 'अपने भीतर के व्यक्तित्व से मिलें'],
   ['/en/privacy', 'en', 'Privacy'], ['/en/terms', 'en', 'Terms of Use'], ['/en/contact', 'en', 'Contact us'],
   ['/en/personality/intj', 'en', 'INTJ'], ['/hi/personality/intj', 'hi', 'INTJ'], ['/en/personality/enfp', 'en', 'ENFP'], ['/hi/personality/enfp', 'hi', 'ENFP'],
+  ['/en/personality/intj/careers', 'en', 'INTJ Career Guide'], ['/hi/personality/intj/careers', 'hi', 'INTJ करियर गाइड'],
   ['/en/compare/intj-vs-enfp', 'en', 'INTJ'], ['/hi/compare/intj-vs-enfp', 'hi', 'INTJ'],
 ];
 
@@ -29,13 +30,27 @@ for (const path of ['/google41232c0c0c01eadd.html', '/robots.txt', '/sitemap.xml
   const response = await fetch(`${baseUrl}${path}`);
   assert(response.ok, `${path}: expected HTTP 200, received ${response.status}`);
 }
+for (const [locale, text] of [['en', 'Software engineer'], ['hi', 'सॉफ्टवेयर इंजीनियर']]) {
+  const response = await fetch(`${baseUrl}/${locale}/personality/intj/careers`);
+  const html = await response.text();
+  assert(html.includes(text), `${locale} INTJ career guide: missing featured career content`);
+  assert(html.includes('<table'), `${locale} INTJ career guide: missing comparison table`);
+  assert(html.includes('FAQPage'), `${locale} INTJ career guide: missing FAQ JSON-LD`);
+  assert(!/\b\d{1,3}%\b/.test(html), `${locale} INTJ career guide: unexpected numerical score claim`);
+  assert(html.includes(`https://kalqlater.com/${locale}/personality/intj/careers`), `${locale} INTJ career guide: missing self canonical`);
+}
+const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
+const sitemapXml = await sitemap.text();
+assert(sitemapXml.includes('/en/personality/intj/careers') && sitemapXml.includes('/hi/personality/intj/careers'), 'sitemap: missing INTJ career prototypes');
+const intj = await fetch(`${baseUrl}/en/personality/intj`);
+assert((await intj.text()).includes('/en/personality/intj/careers'), 'INTJ profile: missing career guide link');
 const selector = await fetch(`${baseUrl}/compare`);
 const selectorHtml = await selector.text();
 assert(selector.ok && selectorHtml.includes('Explore a personality dynamic'), '/compare: expected the interactive selector');
 
 const missing = await fetch(`${baseUrl}/en/this-route-does-not-exist`);
 assert(missing.status === 404, `404 route: expected HTTP 404, received ${missing.status}`);
-for (const path of ['/en/personality/not-a-type', '/en/compare/intj-vs-intj']) { const response = await fetch(`${baseUrl}${path}`); assert(response.status === 404, `${path}: expected HTTP 404, received ${response.status}`); }
+for (const path of ['/en/personality/not-a-type', '/en/personality/intp/careers', '/en/compare/intj-vs-intj']) { const response = await fetch(`${baseUrl}${path}`); assert(response.status === 404, `${path}: expected HTTP 404, received ${response.status}`); }
 const reversed = await fetch(`${baseUrl}/en/compare/enfp-vs-intj`, { redirect: 'manual' });
 assert([307, 308].includes(reversed.status) && /intj-vs-enfp/.test(reversed.headers.get('location') || ''), 'reversed pair: expected canonical redirect');
 const legacyPair = await fetch(`${baseUrl}/compare/enfp-vs-intj`, { redirect: 'manual' });
