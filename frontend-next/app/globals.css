@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { background: #FDFBF7; scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: #FDFBF7; color: #2D2825; font-family: Outfit, Hind, system-ui, sans-serif; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid #E87A5D; outline-offset: 3px; }
+.skip-link { left: 1rem; position: fixed; top: -4rem; z-index: 100; border-radius: 9999px; background: #1F6C7D; color: white; padding: .75rem 1rem; }
+.skip-link:focus { top: 1rem; }
+.display-font { font-family: Philosopher, 'Tiro Devanagari Hindi', Georgia, serif; }
+.surface-shadow { box-shadow: 0 20px 50px rgba(45, 40, 37, .06); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
