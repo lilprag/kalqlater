@@ -143,7 +143,7 @@ The start, session, and result routes are noindex and omitted from sitemap. Thei
 
 | Mandatory approval | Status | Basis |
 | --- | --- | --- |
-| Product owner | NOT REVIEWED | Formal owner sign-off not supplied. |
+| Product owner | APPROVED | Nikhil Shrivastava approved the reviewed RC1 scope on 2026-08-04. |
 | English editorial | NOT APPROVED | Scenario plausibility and desirability revisions required. |
 | Hindi editorial | NOT APPROVED | Terminology parity and two context-sensitive revisions required. |
 | Scoring review | NOT APPROVED | Output coverage and evidence gaps required. |

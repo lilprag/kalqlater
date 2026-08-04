@@ -91,7 +91,7 @@ The five revised scenarios (friendship plan cancellation, partner quietness, mee
 
 | Mandatory gate | Status | Evidence / remaining action |
 | --- | --- | --- |
-| Product owner | NOT REVIEWED | Formal owner approval was not supplied in this QA run. |
+| Product owner | APPROVED | Nikhil Shrivastava approved the reviewed RC1 scope on 2026-08-04. |
 | English editorial | APPROVED WITH NON-BLOCKING NOTES | Scenario and result prose reviewed locally; named editorial approval still needs recording. |
 | Hindi editorial | APPROVED WITH NON-BLOCKING NOTES | English leaks fixed and glossary verified; native-language editorial approval still needs recording. |
 | Scoring/content review | APPROVED WITH NON-BLOCKING NOTES | Six-profile deterministic review and safety assertions pass; named reviewer must sign off. |
@@ -137,7 +137,7 @@ The available in-app browser’s key injector could reach focusable controls but
 
 | Gate | Reviewer / responsible owner | Date | Status | Evidence / note |
 | --- | --- | --- | --- | --- |
-| Product owner | Unassigned — explicit owner approval pending | — | NOT REVIEWED | No user/product-owner sign-off supplied. |
+| Product owner | Nikhil Shrivastava | 2026-08-04 | APPROVED | Reviewed English/Hindi landings, complete 12-scenario flows, Back/revision, result usefulness, Weekly Experiment, mobile presentation, and Save CTA. Approved reflective guidance framing; no diagnosis, hiring eligibility, or scientific-certainty claim. |
 | English editorial | Unassigned — editorial approval pending | — | NOT REVIEWED | Local scenario/prose review is documented but is not named editorial approval. |
 | Hindi editorial | Unassigned — native-language approval pending | — | NOT REVIEWED | Glossary and visible copy checked; named reviewer has not approved. |
 | Scoring/content | Unassigned — content reviewer pending | — | NOT REVIEWED | Six-profile deterministic evidence passes; no named sign-off. |
@@ -149,4 +149,4 @@ The available in-app browser’s key injector could reach focusable controls but
 
 ### RC decision
 
-**RC1 remains uncreated.** The missing named approvals, especially Product owner and Accessibility, mean the mandatory gate rule is not met. The only valid configuration remains `communication-analyzer@1.0.0-draft` with status `review` and no publication date. No normal production session can access it.
+**RC1 remains uncreated.** Product-owner approval is now recorded, but the remaining named reviewer approvals and Accessibility gate still mean the mandatory rule is not met. The only valid configuration remains `communication-analyzer@1.0.0-draft` with status `review` and no publication date. No normal production session can access it.
