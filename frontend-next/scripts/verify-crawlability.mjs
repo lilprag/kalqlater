@@ -6,6 +6,7 @@ const pages = [
   ['/en/personality/intj', 'en', 'INTJ'], ['/hi/personality/intj', 'hi', 'INTJ'], ['/en/personality/enfp', 'en', 'ENFP'], ['/hi/personality/enfp', 'hi', 'ENFP'],
   ['/en/personality/intj/careers', 'en', 'Best Careers for INTJ'], ['/hi/personality/intj/careers', 'hi', 'INTJ के लिए करियर दिशाएँ'],
   ['/en/compare/intj-vs-enfp', 'en', 'INTJ'], ['/hi/compare/intj-vs-enfp', 'hi', 'INTJ'],
+  ['/en/insights/communication', 'en', 'Understand How You Communicate'], ['/hi/insights/communication', 'hi', 'जानें कि आप कैसे संवाद करते हैं'],
 ];
 
 function assert(condition, message) { if (!condition) throw new Error(message); }
@@ -54,6 +55,15 @@ assert(careerDescriptions.size === 32, 'career guides: descriptions must be uniq
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
 for (const locale of ['en', 'hi']) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
+for (const locale of ['en', 'hi']) assert(sitemapXml.includes(`/${locale}/insights/communication`), `sitemap: missing ${locale} Communication Insights landing`);
+for (const locale of ['en', 'hi']) {
+  const landing = await fetch(`${baseUrl}/${locale}/insights/communication`);
+  const html = await landing.text();
+  assert(html.includes('FAQPage') && html.includes('BreadcrumbList'), `${locale} Communication Insights: missing visible JSON-LD`);
+  assert((html.match(/dimension-card/g) || []).length === 0 || html.includes('Ten dimensions') || html.includes('दस आयाम'), `${locale} Communication Insights: missing dimensions section`);
+  const start = await fetch(`${baseUrl}/${locale}/insights/communication/start`);
+  assert(start.headers.get('x-robots-tag')?.includes('noindex') || (await start.text()).includes('noindex'), `${locale} Communication Insights start: expected noindex`);
+}
 for (const locale of ['en', 'hi']) for (const type of careerTypes) { const profile = await fetch(`${baseUrl}/${locale}/personality/${type}`); assert((await profile.text()).includes(`/${locale}/personality/${type}/careers`), `${locale}/${type} profile: missing career guide link`); }
 const selector = await fetch(`${baseUrl}/compare`);
 const selectorHtml = await selector.text();
