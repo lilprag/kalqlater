@@ -134,7 +134,9 @@ class AssessmentService:
             raise AssessmentError("Response unavailable")
         existing = session.responses.get(response.scenario_id)
         if existing:
-            if existing.idempotency_key == response.idempotency_key and existing.option_id == response.option_id:
+            # A recovered client may retry after saving its answer but before receiving
+            # the following completion result. Same-choice retries are safely idempotent.
+            if existing.option_id == response.option_id:
                 return session
             raise SessionConflictError("A response already exists for this situation")
         session.responses[response.scenario_id] = StoredResponse(

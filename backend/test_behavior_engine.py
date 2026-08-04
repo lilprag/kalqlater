@@ -73,6 +73,8 @@ def test_response_validation_idempotency_and_completion_freeze():
     payload = AssessmentResponseInput(scenario_id=first, option_id="a", idempotency_key="same-response")
     engine.submit_response(session.id, session.access_token, payload)
     assert len(engine.submit_response(session.id, session.access_token, payload).responses) == 1
+    recovered_retry = AssessmentResponseInput(scenario_id=first, option_id="a", idempotency_key="new-request-after-recovery")
+    assert len(engine.submit_response(session.id, session.access_token, recovered_retry).responses) == 1
     with pytest.raises(SessionConflictError):
         engine.submit_response(session.id, session.access_token, AssessmentResponseInput(scenario_id=first, option_id="b", idempotency_key="change-key"))
     with pytest.raises(AssessmentError):

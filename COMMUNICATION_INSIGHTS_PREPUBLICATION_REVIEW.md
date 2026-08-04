@@ -193,3 +193,10 @@ The final local draft-mode browser QA identified and corrected Hindi result loca
 The subsequent English and Hindi browser flows completed all twelve scenarios, exercised first-step leave confirmation, restored and revised a previous answer, completed to a protected result, and showed no browser console or hydration errors. The six deliberate profile fixtures continue to satisfy the result coverage and unique-recommendation requirements.
 
 This engineering QA does not substitute for the named human approval roles. The analyzer remains review-only until product-owner, English editorial, Hindi editorial, scoring/content, accessibility, privacy/security, and safety/ethics approvals are explicitly recorded for the candidate.
+
+### Final blocker follow-up — 2026-08-04
+
+- The in-flow Back control now has a practical 44 px mobile target while retaining its text-style appearance. It measured 49 × 44 px at 320 px and 44 px high at 375 px, with no overlap or horizontal overflow.
+- A local fault-injection proxy verified recovery after session creation, scenario fetch, answer submission, completion, and result-fetch failures. Completion recovery exposed a same-answer retry edge case; it was fixed so an already saved, same-choice response is safely idempotent. Result retrieval now provides an in-place Retry rather than requiring a new reflection.
+- The available in-app browser did not provide a reliable native-radio Space/Arrow emulation and no manual VoiceOver/NVDA session was available. Accessibility therefore remains formally unapproved pending a real browser and assistive-technology pass.
+- The formal approval register in `COMMUNICATION_INSIGHTS_RC_QA_REPORT.md` records unassigned human approvals rather than fabricating them. RC1 must not be created until every required reviewer is explicitly named and has approved or approved with non-blocking notes.

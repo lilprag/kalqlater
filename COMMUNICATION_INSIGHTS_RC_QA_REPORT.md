@@ -106,3 +106,47 @@ The five revised scenarios (friendship plan cancellation, partner quietness, mee
 **RC1 was not created.** The configuration remains `communication-analyzer@1.0.0-draft`, `review` status, unpublished. Creating `communication-analyzer@1.0.0-rc1` would be premature because the mandatory product-owner and accessibility gates are not approved.
 
 Before a candidate can be created, record the named approvals, complete a manual screen-reader/browser keyboard pass, increase the Back control’s touch target, intentionally induce and verify the network-failure retry state, then rerun validation. The candidate must preserve the draft history, use an immutable content hash, retain `release_candidate` status with no publication date, and remain rejected by normal production session creation unless explicitly enabled for an RC test environment.
+
+## Final blocker follow-up — 2026-08-04
+
+### Back control
+
+The assessment Back control now retains its text-link visual treatment while using a 44 px minimum height and horizontal padding. In a local browser check, it measured **49 × 44 px** at 320 px and **44 px** high at 375 px. It did not overlap Continue or the progress indicator, both mobile widths had no horizontal overflow, and the global visible-focus treatment continues to apply. Its visible text is its accessible name: “Back” / “वापस”.
+
+### Controlled network-failure and recovery matrix
+
+Method: a local CORS-aware proxy in front of an isolated draft-only FastAPI assessment router returned one controlled HTTP 503 for each endpoint family, then forwarded later attempts normally. No production service, data, or deployment was involved.
+
+| Failure point | Local UI outcome | Recovery outcome |
+| --- | --- | --- |
+| Session creation | Calm generic error; Begin reflection returned to enabled state. | Re-selecting Begin created a session. |
+| Initial scenario fetch | “Try again” state with Retry button. | Retry loaded scenario 1. |
+| Answer submission | Generic error and selected radio remained checked. | Continue retried safely and advanced. |
+| Completion | Generic error and selected final radio remained checked. | Continue retried safely; same-choice server retry was idempotent and result navigation succeeded. |
+| Protected result fetch | Private-result-unavailable state with a new in-place Retry button. | Retry retrieved the completed result without abandoning the session. |
+
+The English UI was exercised end to end with this matrix. The error copy is locale-aware from the shared component paths; a separate Hindi full flow had already passed, but the fault-injection matrix itself was not repeated in Hindi. No raw backend detail was rendered, duplicate-answer state was avoided, and the browser reported no error-level console entries.
+
+### Keyboard and screen-reader-oriented verification
+
+Static/browser-oriented evidence confirms native labelled radios inside a fieldset/legend, labelled progressbar, alert/error association, keyboard-operable native FAQ details/summary controls, global focus-visible styling, skip link, reduced-motion rules, and decorative SVG content marked `aria-hidden` where applicable. The result has text equivalents for every dimension direction/confidence and for the Weekly Experiment.
+
+The available in-app browser’s key injector could reach focusable controls but did not reliably emulate Space/Arrow activation of a native radio, and no VoiceOver/NVDA session was available in this execution environment. Therefore a full manual keyboard-only and screen-reader pass was **not completed**. Accessibility remains not approved; this is an approval blocker rather than an unreported pass.
+
+### Formal approval register
+
+| Gate | Reviewer / responsible owner | Date | Status | Evidence / note |
+| --- | --- | --- | --- | --- |
+| Product owner | Unassigned — explicit owner approval pending | — | NOT REVIEWED | No user/product-owner sign-off supplied. |
+| English editorial | Unassigned — editorial approval pending | — | NOT REVIEWED | Local scenario/prose review is documented but is not named editorial approval. |
+| Hindi editorial | Unassigned — native-language approval pending | — | NOT REVIEWED | Glossary and visible copy checked; named reviewer has not approved. |
+| Scoring/content | Unassigned — content reviewer pending | — | NOT REVIEWED | Six-profile deterministic evidence passes; no named sign-off. |
+| Accessibility | Unassigned — assistive-technology reviewer pending | — | NOT APPROVED | 44 px Back fix is verified; full keyboard and screen-reader pass remains. |
+| Privacy | Unassigned — privacy reviewer pending | — | NOT REVIEWED | Safe storage, access, and noindex evidence is documented; no named approval. |
+| Safety/ethics | Unassigned — safety reviewer pending | — | NOT REVIEWED | Safety wording was reviewed; no named approval. |
+| Technical QA | Codex — local automated QA | 2026-08-04 | APPROVED WITH NON-BLOCKING NOTES | Backend tests, lint/build/test, local browser flows, and fault recovery pass. Existing framework deprecation warnings remain outside this feature. |
+| SEO/SSR | Codex — local automated QA | 2026-08-04 | APPROVED WITH NON-BLOCKING NOTES | Local SSR, metadata, sitemap inclusion/exclusion, and noindex checks pass. |
+
+### RC decision
+
+**RC1 remains uncreated.** The missing named approvals, especially Product owner and Accessibility, mean the mandatory gate rule is not met. The only valid configuration remains `communication-analyzer@1.0.0-draft` with status `review` and no publication date. No normal production session can access it.
