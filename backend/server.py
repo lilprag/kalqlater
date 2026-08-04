@@ -19,6 +19,7 @@ import asyncio
 import html
 import requests
 from datetime import datetime, timezone
+from behavior_engine.api import create_engine_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -820,6 +821,8 @@ async def submit_contact(payload: ContactSubmission, request: Request):
     return {"message": "Thank you for contacting us. We'll get back to you soon.", "delivered": True}
 
 
+# The behavior engine is self-contained and uses no MongoDB state in this sprint.
+api_router.include_router(create_engine_router())
 app.include_router(api_router)
 
 CORS_ORIGINS = tuple(
