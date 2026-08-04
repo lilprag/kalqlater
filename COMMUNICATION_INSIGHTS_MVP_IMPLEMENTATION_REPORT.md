@@ -27,11 +27,13 @@ The landing page is a server component and includes in raw HTML: a single H1, pr
 
 The experience uses semantic headings, details/summary FAQ controls, radio-group semantics, visible focus styling, labelled progress semantics, status/error alerts, disabled saving state, and no auto-advance. It is built from responsive single-column-first layouts and avoids chart dependencies. The global reduced-motion setting applies to all new CSS transitions.
 
-## Draft-content gate
+## Published MVP release
 
-The current analyzer remains `review` in `communication-analyzer.v1.draft.json`. Normal backend service construction intentionally rejects session creation for non-published content, including from this frontend. The UI surfaces a calm “not published yet” state rather than changing content status or bypassing the server gate.
+`communication-analyzer@1.0.0` is the limited MVP release approved by product owner Nikhil Shrivastava on 2026-08-04. The immutable release manifest, `communication-analyzer.v1.release.json`, pins the unchanged `communication-analyzer.v1.draft.json` source with SHA-256 `e45c637e343c1793a81cd8c99005230108b2f2218ebde4c56547d89411fe613e`, plus scoring/interpretation version `1.0.0` and English/Hindi locale version `1.0.0`.
 
-To enable real production sessions, a reviewed analyzer version must meet the existing configured publication requirements (schema validity, bilingual parity approval, pilot completion, safety review, and deterministic fixtures) and then be explicitly published through the content governance process. A local test harness can use `AssessmentService(allow_test_drafts=True)`; that is not enabled by this UI or production service.
+Normal backend service construction resolves only the published version. Direct draft access remains unavailable outside the explicit local test override, and the manifest integrity check rejects a changed source file. The product owner accepted the documented MVP limitations: no independent named Hindi editorial, scoring/content, privacy, or safety review; no completed manual VoiceOver/NVDA sign-off; and no named end-to-end Hindi fault-injection review.
+
+The release is explicitly reflective guidance only: non-clinical, not for hiring eligibility, not scientifically validated, and not a substitute for professional advice.
 
 ## Performance
 

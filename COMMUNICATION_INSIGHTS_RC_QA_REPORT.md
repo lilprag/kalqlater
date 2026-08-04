@@ -150,3 +150,9 @@ The available in-app browser’s key injector could reach focusable controls but
 ### RC decision
 
 **RC1 remains uncreated.** Product-owner approval is now recorded, but the remaining named reviewer approvals and Accessibility gate still mean the mandatory rule is not met. The only valid configuration remains `communication-analyzer@1.0.0-draft` with status `review` and no publication date. No normal production session can access it.
+
+## Limited MVP release authorization — 2026-08-04
+
+Product owner Nikhil Shrivastava approved a limited MVP release with explicit risk acceptance. This is not a claim of independent editorial, scoring/content, accessibility, privacy, or safety approval. The published release manifest is `communication-analyzer@1.0.0`, with immutable source hash `e45c637e343c1793a81cd8c99005230108b2f2218ebde4c56547d89411fe613e`; it retains the draft source unchanged and makes only the published version eligible for normal sessions.
+
+Known post-launch review tasks: named Hindi editorial, scoring/content, privacy, and safety reviews; manual VoiceOver/NVDA validation; and named Hindi fault-injection verification. Deployment URLs and live verification results are recorded after production deployment.

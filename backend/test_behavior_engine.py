@@ -27,10 +27,13 @@ def complete_with_option(service_instance, option_id="a", locale="en", personali
     return session, service_instance.complete_session(session.id, session.access_token)
 
 
-def test_draft_content_loads_only_with_explicit_test_override():
+def test_published_content_is_default_and_draft_requires_explicit_test_override():
+    published = AssessmentService().get_analyzer_definition("communication-style")
+    assert published.analyzer.version == "1.0.0"
+    assert published.analyzer.status.value == "published"
     with pytest.raises(ContentNotAvailableError):
-        AssessmentService().get_analyzer_definition("communication-style")
-    definition = service().get_analyzer_definition("communication-style")
+        AssessmentService().get_analyzer_definition("communication-style", "1.0.0-draft")
+    definition = service().get_analyzer_definition("communication-style", "1.0.0-draft")
     assert definition.analyzer.version == "1.0.0-draft"
     assert len(definition.scenarios) == 12
 
@@ -42,17 +45,17 @@ def test_malformed_duplicate_and_missing_locale_content_are_rejected(tmp_path):
     duplicate = tmp_path / "duplicate.json"
     duplicate.write_text(json.dumps(raw))
     repository = FileAnalyzerContentRepository(tmp_path)
-    repository.APPROVED_FILES = {"communication-style": "duplicate.json"}
+    repository.DRAFT_FILES = {"communication-style": "duplicate.json"}
     with pytest.raises(InvalidAnalyzerContentError):
-        repository.get("communication-style", allow_test_drafts=True)
+        repository.get("communication-style", "1.0.0-draft", allow_test_drafts=True)
 
     raw = json.loads(source.read_text())
     del raw["scenarios"][0]["prompt"]["hi"]
     missing_locale = tmp_path / "missing-locale.json"
     missing_locale.write_text(json.dumps(raw))
-    repository.APPROVED_FILES = {"communication-style": "missing-locale.json"}
+    repository.DRAFT_FILES = {"communication-style": "missing-locale.json"}
     with pytest.raises(InvalidAnalyzerContentError):
-        repository.get("communication-style", allow_test_drafts=True)
+        repository.get("communication-style", "1.0.0-draft", allow_test_drafts=True)
 
 
 def test_session_selector_is_fixed_localized_and_hides_scoring_rules():

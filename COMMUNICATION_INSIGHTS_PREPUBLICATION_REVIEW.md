@@ -200,3 +200,7 @@ This engineering QA does not substitute for the named human approval roles. The 
 - A local fault-injection proxy verified recovery after session creation, scenario fetch, answer submission, completion, and result-fetch failures. Completion recovery exposed a same-answer retry edge case; it was fixed so an already saved, same-choice response is safely idempotent. Result retrieval now provides an in-place Retry rather than requiring a new reflection.
 - The available in-app browser did not provide a reliable native-radio Space/Arrow emulation and no manual VoiceOver/NVDA session was available. Accessibility therefore remains formally unapproved pending a real browser and assistive-technology pass.
 - The formal approval register in `COMMUNICATION_INSIGHTS_RC_QA_REPORT.md` records unassigned human approvals rather than fabricating them. RC1 must not be created until every required reviewer is explicitly named and has approved or approved with non-blocking notes.
+
+## Product-owner limited MVP release decision — 2026-08-04
+
+Nikhil Shrivastava approved `communication-analyzer@1.0.0` for a limited MVP release and explicitly accepted the remaining independent-review limitations recorded in the QA report. This is a publication decision, not a retroactive specialist sign-off. The release remains reflective guidance only: non-clinical, not for hiring eligibility, not scientifically validated, and not a substitute for professional advice.
