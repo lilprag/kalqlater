@@ -169,3 +169,19 @@ The start, session, and result routes are noindex and omitted from sitemap. Thei
 ## Final recommendation
 
 **REVISIONS REQUIRED.** The analyzer must remain `review`/unpublished. No RC configuration was created, no scoring weights were changed, and no production access was enabled.
+
+## Revision follow-up — 2026-08-04
+
+The approved prepublication fixes were implemented while keeping `communication-analyzer@1.0.0-draft` unpublished:
+
+- Active sessions now expose safe scenario order and a selected-answer view only to the holder of the opaque access token. A `PUT` response endpoint revises an active answer; completed sessions remain immutable.
+- Scenario Back fetches the preceding server-held answer instead of relying on browser history. First-scenario Back shows an explicit leave confirmation.
+- `friend-plan-cancel-01`, `partner-quiet-01`, `meeting-dissent-01`, `family-boundary-01`, and `feedback-tone-impact-01` were revised for safer trade-offs and lower desirability risk. Existing dimension intent was retained; no score values were changed in these revisions.
+- Result composition now has generic, deterministic fallbacks: three constructive assets, three growth edges, two possible misunderstandings, three distinct recommendation IDs, and one separate weekly experiment for every completed result. Fallback wording remains provisional for mixed and limited evidence.
+- `COMMUNICATION_ANALYZER_HINDI_GLOSSARY.md` is the approved terminology source. The contextual tone-feedback phrase and Constructive assertion label were aligned.
+
+The remaining formal gates are product-owner, English editorial, Hindi editorial, scoring, accessibility, privacy, safety, and technical QA confirmation after the revised browser and six-profile regression run. The analyzer remains review-only until those approvals are recorded.
+
+### Revised six-profile regression summary
+
+The direct/assertive, listening-oriented, conflict-avoidant/emotionally expressive, curious/adaptable, mixed/context-dependent, and contradictory profiles each now produced at least three constructive assets, three growth edges, two possible misunderstandings, three unique recommendation IDs, and a separate weekly experiment. Mixed evidence uses provisional/context-aware fallback wording rather than a directional claim. The “slower processing” profile remains a scope limitation: this analyzer does not claim to measure processing speed.

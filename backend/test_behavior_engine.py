@@ -85,6 +85,21 @@ def test_response_validation_idempotency_and_completion_freeze():
     assert engine.complete_session(session.id, session.access_token).id == snapshot.id
     with pytest.raises(SessionConflictError):
         engine.submit_response(session.id, session.access_token, AssessmentResponseInput(scenario_id=first, option_id="a", idempotency_key="after-complete"))
+    with pytest.raises(SessionConflictError):
+        engine.update_response(session.id, session.access_token, AssessmentResponseInput(scenario_id=first, option_id="b", idempotency_key="after-complete-update"))
+
+
+def test_previous_scenario_view_and_active_response_revision_are_safe():
+    engine = service()
+    session = engine.create_session("communication-style", "en")
+    first, second = session.scenario_ids[:2]
+    engine.submit_response(session.id, session.access_token, AssessmentResponseInput(scenario_id=first, option_id="a", idempotency_key="first-answer"))
+    engine.submit_response(session.id, session.access_token, AssessmentResponseInput(scenario_id=second, option_id="b", idempotency_key="second-answer"))
+    view = engine.get_scenario(session.id, session.access_token, first)
+    assert view["selected_option_id"] == "a" and view["progress"]["index"] == 0
+    engine.update_response(session.id, session.access_token, AssessmentResponseInput(scenario_id=first, option_id="c", idempotency_key="revised-answer"))
+    assert engine.get_scenario(session.id, session.access_token, first)["selected_option_id"] == "c"
+    assert engine.get_scenario(session.id, session.access_token, second)["selected_option_id"] == "b"
 
 
 def test_scoring_is_deterministic_has_no_overall_score_and_supports_personality_context():
@@ -110,6 +125,11 @@ def test_negative_contributions_mixed_and_limited_confidence():
     assert any(item.confidence in {ConfidenceBand.MIXED, ConfidenceBand.LIMITED} for item in result.dimension_results)
     limited = next(item for item in result.dimension_results if item.confidence == ConfidenceBand.LIMITED)
     assert "not enough evidence" in limited.explanation
+    assert len(result.strengths) >= 3
+    assert len(result.misunderstandings) >= 2
+    assert len(result.practical_suggestions) == 3
+    assert len({item.id for item in result.practical_suggestions}) == 3
+    assert result.weekly_challenge.id not in {item.id.replace("practice-", "") for item in result.practical_suggestions}
 
 
 def test_expiry_and_result_access_are_not_enumerable():

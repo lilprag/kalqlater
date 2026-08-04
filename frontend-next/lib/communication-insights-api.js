@@ -32,8 +32,10 @@ async function request(path, { method = 'GET', body, token, signal } = {}) {
 export const communicationInsightsApi = {
   createSession: (locale, personalityContext, signal) => request('/analyzers/communication-style/sessions', { method: 'POST', body: { locale, ...(personalityContext ? { personality_context: personalityContext } : {}) }, signal }),
   session: (sessionId, token, signal) => request(`/analyzer-sessions/${encodeURIComponent(sessionId)}`, { token, signal }),
+  scenario: (sessionId, token, scenarioId, signal) => request(`/analyzer-sessions/${encodeURIComponent(sessionId)}/scenarios/${encodeURIComponent(scenarioId)}`, { token, signal }),
   next: (sessionId, token, signal) => request(`/analyzer-sessions/${encodeURIComponent(sessionId)}/next`, { token, signal }),
   submit: (sessionId, token, payload, signal) => request(`/analyzer-sessions/${encodeURIComponent(sessionId)}/responses`, { method: 'POST', token, body: payload, signal }),
+  update: (sessionId, token, payload, signal) => request(`/analyzer-sessions/${encodeURIComponent(sessionId)}/responses`, { method: 'PUT', token, body: payload, signal }),
   complete: (sessionId, token, signal) => request(`/analyzer-sessions/${encodeURIComponent(sessionId)}/complete`, { method: 'POST', token, signal }),
   result: (resultId, token, signal) => request(`/analyzer-results/${encodeURIComponent(resultId)}`, { token, signal }),
 };

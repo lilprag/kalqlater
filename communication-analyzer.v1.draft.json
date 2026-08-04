@@ -12,10 +12,10 @@
   "dimensions": [
     {"id":"message-clarity","name":{"en":"Message clarity","hi":"संदेश की स्पष्टता"}},
     {"id":"directness-with-tact","name":{"en":"Directness with tact","hi":"संवेदनशील स्पष्टता"}},
-    {"id":"receptive-listening","name":{"en":"Receptive listening","hi":"सक्रिय सुनना"}},
+    {"id":"receptive-listening","name":{"en":"Receptive listening","hi":"ध्यान से सुनना"}},
     {"id":"emotional-transparency","name":{"en":"Emotional transparency","hi":"भावनात्मक स्पष्टता"}},
-    {"id":"collaborative-inquiry","name":{"en":"Collaborative inquiry","hi":"सहयोगी जिज्ञासा"}},
-    {"id":"constructive-assertion","name":{"en":"Constructive assertion","hi":"रचनात्मक आग्रह"}},
+    {"id":"collaborative-inquiry","name":{"en":"Collaborative inquiry","hi":"मिलकर जिज्ञासा"}},
+    {"id":"constructive-assertion","name":{"en":"Constructive assertion","hi":"स्पष्ट लेकिन सम्मानजनक आग्रह"}},
     {"id":"feedback-exchange","name":{"en":"Feedback exchange","hi":"प्रतिक्रिया का आदान-प्रदान"}},
     {"id":"conflict-navigation","name":{"en":"Conflict navigation","hi":"मतभेद सँभालना"}},
     {"id":"audience-adaptability","name":{"en":"Audience adaptability","hi":"श्रोता के अनुसार ढलना"}},
@@ -41,11 +41,11 @@
       {"id":"c","text":{"en":"Start with positives, then explain the gap.","hi":"पहले सकारात्मक बात, फिर कमी समझाता/समझाती हूँ।"},"scores":{"feedback-exchange":2,"directness-with-tact":1}},
       {"id":"d","text":{"en":"Send the brief again without comment.","hi":"ब्रीफ फिर से भेजता/भेजती हूँ, टिप्पणी नहीं करता/करती।"},"scores":{"feedback-exchange":-2,"message-clarity":-1}}
     ]},
-    {"id":"friend-plan-cancel-01","category":"friendship","difficulty":"moderate","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"medium","ambiguityNote":"Repeated cancellation can have many causes; none is inferred.","rationale":"Explores needs and repair without blame.","prompt":{"en":"A friend has cancelled plans several times.","hi":"एक दोस्त ने कई बार योजनाएँ रद्द की हैं।"},"options":[
-      {"id":"a","text":{"en":"Ask whether something has changed.","hi":"पूछता/पूछती हूँ कि क्या कुछ बदल गया है।"},"scores":{"collaborative-inquiry":2,"conflict-navigation":1}},
-      {"id":"b","text":{"en":"Stop initiating plans.","hi":"योजनाएँ बनाना बंद कर देता/देती हूँ।"},"scores":{"constructive-assertion":-2,"conflict-navigation":-2}},
-      {"id":"c","text":{"en":"Say it is fine, though disappointed.","hi":"निराश होकर भी कहता/कहती हूँ कि कोई बात नहीं।"},"scores":{"emotional-transparency":-1,"constructive-assertion":-2}},
-      {"id":"d","text":{"en":"Share the pattern and how it affects you.","hi":"पैटर्न और उसका असर बताता/बताती हूँ।"},"scores":{"emotional-transparency":3,"constructive-assertion":2,"conflict-navigation":1}}
+    {"id":"friend-plan-cancel-01","category":"friendship","difficulty":"moderate","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"low","ambiguityNote":"Repeated cancellation can have many causes; distance, a boundary, or a direct conversation can each be workable.","rationale":"Explores timing, repair, and self-protection without assuming one response is healthier.","prompt":{"en":"A friend has cancelled plans several times.","hi":"एक दोस्त ने कई बार योजनाएँ रद्द की हैं।"},"options":[
+      {"id":"a","text":{"en":"Ask whether something has changed before making new plans.","hi":"नई योजना बनाने से पहले पूछता/पूछती हूँ कि क्या कुछ बदल गया है।"},"scores":{"collaborative-inquiry":2,"conflict-navigation":1}},
+      {"id":"b","text":{"en":"Give the friendship some space and wait for them to reach out.","hi":"दोस्ती को कुछ जगह देकर उनके संपर्क करने की प्रतीक्षा करता/करती हूँ।"},"scores":{"constructive-assertion":-1,"conflict-navigation":-1}},
+      {"id":"c","text":{"en":"Say you are disappointed, then suggest a lower-pressure plan.","hi":"निराशा बताकर कम दबाव वाली योजना सुझाता/सुझाती हूँ।"},"scores":{"emotional-transparency":2,"constructive-assertion":1}},
+      {"id":"d","text":{"en":"Name the pattern and ask what kind of contact feels realistic.","hi":"इस पैटर्न का उल्लेख कर पूछता/पूछती हूँ कि किस तरह का संपर्क वास्तविक रूप से संभव है।"},"scores":{"emotional-transparency":2,"collaborative-inquiry":2,"conflict-navigation":1}}
     ]},
     {"id":"leadership-disagreement-01","category":"leadership","difficulty":"moderate","sensitivity":"standard","evidenceStrength":1,"socialDesirabilityRisk":"medium-high","ambiguityNote":"The user may have informal rather than formal authority.","rationale":"Tests facilitation behaviours without a right-leader answer.","prompt":{"en":"Two people on your team disagree strongly about a plan.","hi":"आपकी टीम के दो लोग किसी योजना पर तीव्र असहमति रखते हैं।"},"options":[
       {"id":"a","text":{"en":"Ask each person for evidence and decision criteria.","hi":"दोनों से प्रमाण और निर्णय के मानदंड पूछता/पूछती हूँ।"},"scores":{"collaborative-inquiry":3,"decision-alignment":2}},
@@ -59,11 +59,11 @@
       {"id":"c","text":{"en":"Escalate internally before replying.","hi":"जवाब से पहले आंतरिक रूप से आगे भेजता/भेजती हूँ।"},"scores":{"directness-with-tact":-1,"message-clarity":-1}},
       {"id":"d","text":{"en":"State only what is possible.","hi":"सिर्फ क्या संभव है, यह बताता/बताती हूँ।"},"scores":{"directness-with-tact":2,"audience-adaptability":-1}}
     ]},
-    {"id":"partner-quiet-01","category":"close-relationship","difficulty":"basic","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"medium","ambiguityNote":"A close person may want privacy; no option proves care.","rationale":"Respects need for space and avoids relationship labels.","prompt":{"en":"Someone close to you is quiet after a difficult day.","hi":"आपका कोई करीबी व्यक्ति कठिन दिन के बाद चुप है।"},"options":[
-      {"id":"a","text":{"en":"Ask whether they want listening, ideas, or space.","hi":"पूछता/पूछती हूँ कि वे सुनना, सुझाव या जगह चाहते हैं।"},"scores":{"receptive-listening":3,"collaborative-inquiry":2}},
-      {"id":"b","text":{"en":"Offer solutions immediately.","hi":"तुरंत समाधान सुझाता/सुझाती हूँ।"},"scores":{"receptive-listening":-2,"message-clarity":1}},
-      {"id":"c","text":{"en":"Give them space without asking.","hi":"बिना पूछे उन्हें जगह देता/देती हूँ।"},"scores":{"collaborative-inquiry":-2,"emotional-transparency":-1}},
-      {"id":"d","text":{"en":"Share your concern and ask what happened.","hi":"अपनी चिंता बताकर पूछता/पूछती हूँ कि क्या हुआ।"},"scores":{"emotional-transparency":2,"collaborative-inquiry":2}}
+    {"id":"partner-quiet-01","category":"close-relationship","difficulty":"basic","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"low","ambiguityNote":"Privacy, safety, and prior agreements can make different responses appropriate.","rationale":"Distinguishes listening, practical support, space, and emotional acknowledgement without ranking care.","prompt":{"en":"Someone close to you is quiet after a difficult day.","hi":"आपका कोई करीबी व्यक्ति कठिन दिन के बाद चुप है।"},"options":[
+      {"id":"a","text":{"en":"Ask whether listening, ideas, or space would feel helpful.","hi":"पूछता/पूछती हूँ कि सुनना, सुझाव या जगह में से क्या मददगार लगेगा।"},"scores":{"receptive-listening":3,"collaborative-inquiry":2}},
+      {"id":"b","text":{"en":"Offer one practical help, then let them choose whether to talk.","hi":"एक व्यावहारिक मदद की पेशकश कर उन्हें तय करने देता/देती हूँ कि बात करनी है या नहीं।"},"scores":{"message-clarity":2,"audience-adaptability":1}},
+      {"id":"c","text":{"en":"Give quiet space and send a brief check-in later.","hi":"शांत जगह देकर बाद में छोटा-सा हालचाल पूछता/पूछती हूँ।"},"scores":{"conflict-navigation":1,"audience-adaptability":1}},
+      {"id":"d","text":{"en":"Share your concern and ask what kind of support feels safe.","hi":"अपनी चिंता बताकर पूछता/पूछती हूँ कि किस तरह का सहयोग सुरक्षित लगेगा।"},"scores":{"emotional-transparency":2,"collaborative-inquiry":2}}
     ]},
     {"id":"stress-sharp-message-01","category":"stress","difficulty":"moderate","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"medium-high","ambiguityNote":"The message could be urgent; this measures default response, not safety.","rationale":"Captures pause, clarification, withdrawal, and escalation choices.","prompt":{"en":"A written message feels sharper than you expected while you are already stressed.","hi":"जब आप पहले से तनाव में हों, तो कोई लिखित संदेश अपेक्षा से अधिक तीखा लगे।"},"options":[
       {"id":"a","text":{"en":"Pause, then ask for clarification.","hi":"रुककर स्पष्टता पूछता/पूछती हूँ।"},"scores":{"conflict-navigation":3,"collaborative-inquiry":2}},
@@ -71,17 +71,17 @@
       {"id":"c","text":{"en":"Ignore it until later.","hi":"बाद तक अनदेखा करता/करती हूँ।"},"scores":{"conflict-navigation":-2,"constructive-assertion":-1}},
       {"id":"d","text":{"en":"Ask a third person what it meant.","hi":"किसी तीसरे से अर्थ पूछता/पूछती हूँ।"},"scores":{"collaborative-inquiry":1,"conflict-navigation":-1}}
     ]},
-    {"id":"meeting-dissent-01","category":"disagreement","difficulty":"moderate","sensitivity":"standard","evidenceStrength":1,"socialDesirabilityRisk":"medium-high","ambiguityNote":"Psychological safety and role risk vary.","rationale":"Distinguishes dissent, questions, silence, and later escalation.","prompt":{"en":"You disagree with a proposal that the group seems ready to accept.","hi":"आप उस प्रस्ताव से असहमत हैं जिसे समूह स्वीकार करने को तैयार दिखता है।"},"options":[
-      {"id":"a","text":{"en":"State the concern and an alternative.","hi":"चिंता और विकल्प बताता/बताती हूँ।"},"scores":{"directness-with-tact":3,"constructive-assertion":2}},
-      {"id":"b","text":{"en":"Ask questions until the issue emerges.","hi":"सवालों से मुद्दा सामने लाता/लाती हूँ।"},"scores":{"collaborative-inquiry":2,"directness-with-tact":1}},
-      {"id":"c","text":{"en":"Stay quiet after the group leans one way.","hi":"समूह झुकने पर चुप रहता/रहती हूँ।"},"scores":{"constructive-assertion":-3,"decision-alignment":-1}},
-      {"id":"d","text":{"en":"Raise it after the meeting.","hi":"मीटिंग के बाद उठाता/उठाती हूँ।"},"scores":{"directness-with-tact":-1,"constructive-assertion":-1}}
+    {"id":"meeting-dissent-01","category":"disagreement","difficulty":"moderate","sensitivity":"standard","evidenceStrength":1,"socialDesirabilityRisk":"low","ambiguityNote":"Psychological safety, role risk, and time pressure can make public or private dissent appropriate.","rationale":"Distinguishes direct dissent, inquiry, private follow-up, and conditional support without treating silence as failure.","prompt":{"en":"You disagree with a proposal that the group seems ready to accept.","hi":"आप उस प्रस्ताव से असहमत हैं जिसे समूह स्वीकार करने को तैयार दिखता है।"},"options":[
+      {"id":"a","text":{"en":"State one concern and a workable alternative.","hi":"एक चिंता और काम करने योग्य विकल्प बताता/बताती हूँ।"},"scores":{"directness-with-tact":3,"constructive-assertion":2}},
+      {"id":"b","text":{"en":"Ask a question that tests the assumption behind the proposal.","hi":"प्रस्ताव के पीछे की मान्यता को जाँचने वाला सवाल पूछता/पूछती हूँ।"},"scores":{"collaborative-inquiry":2,"directness-with-tact":1}},
+      {"id":"c","text":{"en":"Support the decision for now and note what you would monitor.","hi":"फिलहाल निर्णय का समर्थन कर बताता/बताती हूँ कि मैं किन बातों पर नज़र रखूँगा/रखूँगी।"},"scores":{"decision-alignment":2,"audience-adaptability":1}},
+      {"id":"d","text":{"en":"Ask for a private follow-up when the setting feels safer.","hi":"परिस्थिति सुरक्षित लगे तो निजी रूप से आगे बात करने का अनुरोध करता/करती हूँ।"},"scores":{"conflict-navigation":1,"constructive-assertion":1}}
     ]},
-    {"id":"family-boundary-01","category":"family","difficulty":"basic","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"medium","ambiguityNote":"Cultural norms and safety can alter what is workable.","rationale":"Tests a boundary without asking for private disclosure.","prompt":{"en":"A family member asks a personal question you do not want to answer.","hi":"परिवार का कोई सदस्य आपसे निजी सवाल पूछता है जिसका आप उत्तर नहीं देना चाहते।"},"options":[
-      {"id":"a","text":{"en":"Say you would rather not discuss it.","hi":"कहता/कहती हूँ कि इस पर बात नहीं करना चाहता/चाहती।"},"scores":{"constructive-assertion":3,"directness-with-tact":2}},
-      {"id":"b","text":{"en":"Answer briefly despite discomfort.","hi":"असहज होकर भी छोटा जवाब देता/देती हूँ।"},"scores":{"constructive-assertion":-2,"emotional-transparency":-1}},
-      {"id":"c","text":{"en":"Joke and move on.","hi":"मज़ाक कर आगे बढ़ जाता/जाती हूँ।"},"scores":{"directness-with-tact":-2,"emotional-transparency":-1}},
-      {"id":"d","text":{"en":"Ask why they want to know.","hi":"पूछता/पूछती हूँ कि वे क्यों जानना चाहते हैं।"},"scores":{"collaborative-inquiry":2,"constructive-assertion":1}}
+    {"id":"family-boundary-01","category":"family","difficulty":"basic","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"low","ambiguityNote":"Safety, dependence, and cultural norms can make directness, a brief answer, redirecting, or leaving appropriate.","rationale":"Explores boundary timing without treating disclosure or confrontation as a requirement.","prompt":{"en":"A family member asks a personal question you do not want to answer.","hi":"परिवार का कोई सदस्य आपसे निजी सवाल पूछता है जिसका आप उत्तर नहीं देना चाहते।"},"options":[
+      {"id":"a","text":{"en":"Say you would rather not discuss it, then change the topic.","hi":"कहता/कहती हूँ कि इस पर बात नहीं करना चाहता/चाहती, फिर विषय बदल देता/देती हूँ।"},"scores":{"constructive-assertion":3,"directness-with-tact":2}},
+      {"id":"b","text":{"en":"Give a brief answer that keeps the rest private.","hi":"छोटा जवाब देता/देती हूँ और बाकी बात निजी रखता/रखती हूँ।"},"scores":{"message-clarity":1,"audience-adaptability":1}},
+      {"id":"c","text":{"en":"Redirect with a light response and revisit the boundary later.","hi":"हल्के जवाब से बात मोड़कर सीमा पर बाद में लौटता/लौटती हूँ।"},"scores":{"conflict-navigation":1,"directness-with-tact":1}},
+      {"id":"d","text":{"en":"End the conversation or leave if that feels safer.","hi":"यदि अधिक सुरक्षित लगे तो बातचीत समाप्त कर देता/देती हूँ या वहाँ से हट जाता/जाती हूँ।"},"scores":{"constructive-assertion":2,"conflict-navigation":1}}
     ]},
     {"id":"remote-channel-preference-01","category":"remote-work","difficulty":"moderate","sensitivity":"standard","evidenceStrength":1,"socialDesirabilityRisk":"medium","ambiguityNote":"Accessibility, bandwidth, and documentation needs may make a preferred channel legitimate.","rationale":"Tests channel flexibility and mutual coordination.","prompt":{"en":"A colleague prefers calls, while you prefer written updates.","hi":"एक सहकर्मी कॉल पसंद करता है, जबकि आप लिखित अपडेट पसंद करते हैं।"},"options":[
       {"id":"a","text":{"en":"Agree on a short call plus written recap.","hi":"छोटी कॉल और लिखित सार पर सहमत होता/होती हूँ।"},"scores":{"audience-adaptability":3,"message-clarity":2}},
@@ -89,7 +89,7 @@
       {"id":"c","text":{"en":"Avoid the conversation.","hi":"बात से बचता/बचती हूँ।"},"scores":{"constructive-assertion":-2,"message-clarity":-1}},
       {"id":"d","text":{"en":"Use their channel every time.","hi":"हर बार उनका माध्यम अपनाता/अपनाती हूँ।"},"scores":{"audience-adaptability":1,"constructive-assertion":-2}}
     ]},
-    {"id":"feedback-tone-impact-01","category":"feedback","difficulty":"advanced","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"high","ambiguityNote":"Tone feedback may be unsafe or bad-faith; agreement is never required.","rationale":"Tests response to impact without assuming intent or fault.","prompt":{"en":"Someone says your tone felt dismissive.","hi":"कोई व्यक्ति कहता है कि आपका लहजा उसे उपेक्षापूर्ण लगा।"},"options":[
+    {"id":"feedback-tone-impact-01","category":"feedback","difficulty":"advanced","sensitivity":"personal","evidenceStrength":1,"socialDesirabilityRisk":"medium","ambiguityNote":"Tone feedback may be unsafe or bad-faith; agreement is never required.","rationale":"Tests response to impact without assuming intent or fault.","prompt":{"en":"Someone says your tone felt dismissive.","hi":"कोई कहता है कि उसे आपके बोलने के ढंग में उसकी बात को कम महत्व मिलने का एहसास हुआ।"},"options":[
       {"id":"a","text":{"en":"Ask for an example and reflect it back.","hi":"उदाहरण माँगकर अपनी समझ दोहराता/दोहराती हूँ।"},"scores":{"receptive-listening":3,"feedback-exchange":3}},
       {"id":"b","text":{"en":"Explain your intent immediately.","hi":"तुरंत अपना इरादा समझाता/समझाती हूँ।"},"scores":{"feedback-exchange":-1,"emotional-transparency":1}},
       {"id":"c","text":{"en":"Apologise without discussing details.","hi":"बिना विवरण के माफी माँगता/माँगती हूँ।"},"scores":{"feedback-exchange":-2,"conflict-navigation":-1}},

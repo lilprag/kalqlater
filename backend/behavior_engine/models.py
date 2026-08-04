@@ -128,6 +128,12 @@ class ChallengeDefinition(BaseModel):
     instruction: LocalizedText
 
 
+class Recommendation(BaseModel):
+    """A stable, localized coaching item chosen server-side."""
+    id: str = Field(pattern=r"^[a-z0-9-]{2,120}$")
+    text: str = Field(min_length=1, max_length=500)
+
+
 class OptionScoringPolicy(BaseModel):
     model_config = ConfigDict(extra="forbid")
     confidence_contribution: str = Field(alias="confidenceContribution", min_length=1)
@@ -261,7 +267,7 @@ class AnalyzerResult(BaseModel):
     strengths: List[str]
     blind_spots: List[str]
     misunderstandings: List[str]
-    practical_suggestions: List[str]
+    practical_suggestions: List[Recommendation] = Field(min_length=3)
     weekly_challenge: Optional[ChallengeDefinition] = None
     interpretations: List[SelectedInterpretation]
     personality_note: Optional[str] = None

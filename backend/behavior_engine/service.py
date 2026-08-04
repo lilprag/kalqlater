@@ -8,7 +8,7 @@ from typing import Optional
 from .content import AnalyzerContentRepository, ContentNotAvailableError, FileAnalyzerContentRepository
 from .models import (
     AnalyzerDefinition, AnalyzerResult, AssessmentResponseInput, AssessmentSessionState,
-    ConfidenceBand, DirectionBand, PersonalityContext, ResultSnapshot, SelectedInterpretation,
+    ConfidenceBand, DirectionBand, PersonalityContext, Recommendation, ResultSnapshot, SelectedInterpretation,
     SessionStatus, StoredResponse,
 )
 from .repositories import (
@@ -105,6 +105,23 @@ class AssessmentService:
             "progress": {"answered": len(session.responses), "total": len(session.scenario_ids)},
         }
 
+    def get_scenario(self, session_id: str, access_token: str, scenario_id: str) -> dict:
+        """Return a safe scenario view, including only its existing selected option."""
+        session = self._session(session_id, access_token)
+        if session.status != SessionStatus.ACTIVE or scenario_id not in session.scenario_ids:
+            raise SessionNotFoundError("Assessment unavailable")
+        definition = self.get_analyzer_definition(session.analyzer_slug, session.analyzer_version)
+        scenario = next(item for item in definition.scenarios if item.id == scenario_id)
+        existing = session.responses.get(scenario_id)
+        return {
+            "scenario_id": scenario.id,
+            "category": scenario.category,
+            "prompt": getattr(scenario.prompt, session.locale),
+            "options": [{"id": option.id, "text": getattr(option.text, session.locale)} for option in scenario.options],
+            "selected_option_id": existing.option_id if existing else None,
+            "progress": {"answered": len(session.responses), "total": len(session.scenario_ids), "index": session.scenario_ids.index(scenario_id)},
+        }
+
     def submit_response(self, session_id: str, access_token: str, response: AssessmentResponseInput) -> AssessmentSessionState:
         session = self._session(session_id, access_token)
         if session.status != SessionStatus.ACTIVE:
@@ -129,6 +146,27 @@ class AssessmentService:
         self.session_repository.save(session)
         return session
 
+    def update_response(self, session_id: str, access_token: str, response: AssessmentResponseInput) -> AssessmentSessionState:
+        """Replace one active-session answer; completed sessions always remain frozen."""
+        session = self._session(session_id, access_token)
+        if session.status != SessionStatus.ACTIVE:
+            raise SessionConflictError("Assessment is already complete")
+        if response.scenario_id not in session.scenario_ids:
+            raise AssessmentError("Scenario unavailable")
+        definition = self.get_analyzer_definition(session.analyzer_slug, session.analyzer_version)
+        scenario = next(item for item in definition.scenarios if item.id == response.scenario_id)
+        if response.option_id not in {option.id for option in scenario.options}:
+            raise AssessmentError("Response unavailable")
+        existing = session.responses.get(response.scenario_id)
+        if existing and existing.option_id == response.option_id:
+            return session
+        session.responses[response.scenario_id] = StoredResponse(
+            scenario_id=response.scenario_id, option_id=response.option_id,
+            idempotency_key=response.idempotency_key, submitted_at=datetime.now(timezone.utc),
+        )
+        self.session_repository.save(session)
+        return session
+
     def _result_from_session(self, session: AssessmentSessionState, definition: AnalyzerDefinition) -> AnalyzerResult:
         response_map = {scenario_id: response.option_id for scenario_id, response in session.responses.items()}
         dimensions = calculate_dimension_results(definition, response_map, session.locale, len(session.scenario_ids) - len(response_map))
@@ -139,17 +177,54 @@ class AssessmentService:
                 selected_rules.append(SelectedInterpretation(rule_id=rule.id, text=getattr(rule.summary, session.locale)))
         meaningful = [result for result in dimensions if result.confidence != ConfidenceBand.LIMITED]
         strengths = [result.explanation for result in meaningful if result.direction == DirectionBand.HIGHER][:3]
+        balanced = [result for result in meaningful if result.direction == DirectionBand.BALANCED]
+        for result in balanced:
+            strengths.append(self._localized(session.locale, f"Your {result.dimension_id.replace('-', ' ')} responses show useful flexibility across contexts.", f"आपके {result.dimension_id.replace('-', ' ')} से जुड़े उत्तर संदर्भों के अनुसार उपयोगी लचीलापन दिखाते हैं।"))
+        for result in dimensions:
+            if len(strengths) >= 3:
+                break
+            strengths.append(self._localized(session.locale, f"You have enough evidence to begin a careful reflection on {result.dimension_id.replace('-', ' ')}.", f"आपके पास {result.dimension_id.replace('-', ' ')} पर सावधानी से विचार शुरू करने के लिए पर्याप्त संकेत हैं।"))
         blind_spots = [result.explanation for result in meaningful if result.direction == DirectionBand.LOWER][:3]
+        for result in balanced:
+            if len(blind_spots) >= 3:
+                break
+            blind_spots.append(self._localized(session.locale, f"Because {result.dimension_id.replace('-', ' ')} shifts by context, naming what you need may help others respond well.", f"क्योंकि {result.dimension_id.replace('-', ' ')} संदर्भ के साथ बदलता है, अपनी जरूरत स्पष्ट करने से दूसरों को बेहतर प्रतिक्रिया देने में मदद मिल सकती है।"))
+        for result in dimensions:
+            if len(blind_spots) >= 3:
+                break
+            blind_spots.append(self._localized(session.locale, f"A strong or still-emerging {result.dimension_id.replace('-', ' ')} pattern can be worth checking with a trusted person.", f"{result.dimension_id.replace('-', ' ')} का मजबूत या उभरता पैटर्न किसी भरोसेमंद व्यक्ति के साथ जाँचना उपयोगी हो सकता है।"))
         misunderstandings = [item.text for item in selected_rules][:2]
+        for result in meaningful:
+            if len(misunderstandings) >= 2:
+                break
+            if result.direction == DirectionBand.HIGHER:
+                misunderstandings.append(self._localized(session.locale, f"Others may read your stronger {result.dimension_id.replace('-', ' ')} as certainty when you are simply trying to be useful.", f"दूसरे आपके {result.dimension_id.replace('-', ' ')} को निश्चितता समझ सकते हैं, जबकि आप केवल उपयोगी बनने की कोशिश कर रहे हों।"))
+            elif result.direction == DirectionBand.BALANCED:
+                misunderstandings.append(self._localized(session.locale, f"Others may miss how much context shapes your {result.dimension_id.replace('-', ' ')} response.", f"दूसरे यह नहीं समझ पाते कि संदर्भ आपके {result.dimension_id.replace('-', ' ')} को कितना प्रभावित करता है।"))
+        for result in dimensions:
+            if len(misunderstandings) >= 2:
+                break
+            misunderstandings.append(self._localized(session.locale, f"A limited signal about {result.dimension_id.replace('-', ' ')} can be mistaken for a fixed style; it is better treated as provisional.", f"{result.dimension_id.replace('-', ' ')} का सीमित संकेत एक स्थायी शैली समझा जा सकता है; इसे अस्थायी रूप से देखना बेहतर है।"))
         target = next((result for result in dimensions if result.direction in {DirectionBand.LOWER, DirectionBand.BALANCED} and result.confidence != ConfidenceBand.LIMITED), None)
         if target is None:
             target = next((result for result in dimensions if result.confidence != ConfidenceBand.LIMITED), None)
-        challenge = next((item for item in definition.weekly_challenges if target and item.dimension == target.dimension_id), None)
-        suggestions = [getattr(challenge.instruction, session.locale)] if challenge else []
-        summary = (
-            "Your responses suggest patterns across the situations you answered."
-            if session.locale == "en" else "आपके उत्तरों से उन स्थितियों में कुछ पैटर्न दिखते हैं जिनका आपने उत्तर दिया।"
-        )
+        challenge = next((item for item in definition.weekly_challenges if target and item.dimension == target.dimension_id), definition.weekly_challenges[0])
+        ordered_dimensions = [result.dimension_id for result in ([target] if target else []) + meaningful + dimensions if result]
+        candidates = []
+        for dimension_id in ordered_dimensions:
+            candidates.extend(item for item in definition.weekly_challenges if item.dimension == dimension_id and item.id != challenge.id)
+        candidates.extend(item for item in definition.weekly_challenges if item.id != challenge.id)
+        suggestions = []
+        seen_ids = set()
+        for item in candidates:
+            if item.id in seen_ids:
+                continue
+            seen_ids.add(item.id)
+            suggestions.append(Recommendation(id=f"practice-{item.id}", text=getattr(item.instruction, session.locale)))
+            if len(suggestions) == 3:
+                break
+        lead = next((result for result in meaningful if result.direction in {DirectionBand.HIGHER, DirectionBand.LOWER, DirectionBand.BALANCED}), dimensions[0])
+        summary = self._summary(session.locale, lead)
         personality_note = None
         if session.personality_context:
             code = session.personality_context.type_code
@@ -172,6 +247,19 @@ class AssessmentService:
             personality_note=personality_note,
             disclaimer=getattr(definition.analyzer.disclosures, session.locale),
         )
+
+    @staticmethod
+    def _localized(locale: str, en: str, hi: str) -> str:
+        return hi if locale == "hi" else en
+
+    def _summary(self, locale: str, lead) -> str:
+        name = lead.dimension_id.replace('-', ' ')
+        if lead.confidence == ConfidenceBand.MIXED:
+            return self._localized(locale, f"Your responses suggest that {name} changes with context rather than following one fixed style.", f"आपके उत्तर संकेत देते हैं कि {name} एक स्थायी शैली के बजाय संदर्भ के साथ बदलता है।")
+        if lead.confidence == ConfidenceBand.LIMITED:
+            return self._localized(locale, "Your responses offer a starting point for reflection; some patterns need more situations before they become clear.", "आपके उत्तर आत्मचिंतन की शुरुआत देते हैं; कुछ पैटर्न स्पष्ट होने के लिए और स्थितियों की जरूरत है।")
+        tendency = "more present" if lead.direction == DirectionBand.HIGHER else "lighter"
+        return self._localized(locale, f"Across these situations, {name} appears {tendency} in your communication.", f"इन स्थितियों में आपके संवाद में {name} अधिक स्पष्ट दिखता है।")
 
     def complete_session(self, session_id: str, access_token: str) -> ResultSnapshot:
         session = self._session(session_id, access_token)
