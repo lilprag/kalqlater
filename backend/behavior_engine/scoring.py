@@ -47,8 +47,12 @@ def _explanation(locale: str, name: str, direction: DirectionBand, confidence: C
             _localized(locale, f"Your {name} pattern appears mixed across these situations.", f"इन स्थितियों में आपका {name} पैटर्न मिश्रित दिखता है।"),
             _localized(locale, "Context may matter more than a single default style.", "एक ही स्थायी शैली से अधिक संदर्भ महत्वपूर्ण हो सकता है।"),
         )
-    tendency = _localized(locale, "a stronger", "अधिक स्पष्ट") if direction == DirectionBand.HIGHER else _localized(locale, "a lighter", "कम स्पष्ट")
-    opening = _localized(locale, "Across these scenarios, you often show", "इन स्थितियों में, आप अक्सर दिखाते हैं") if confidence == ConfidenceBand.CLEAR else _localized(locale, "Your responses suggest", "आपके उत्तर संकेत देते हैं")
+    if locale == "hi":
+        if confidence == ConfidenceBand.CLEAR:
+            return (f"इन स्थितियों में {name} आपकी बातचीत में अधिक स्पष्ट दिखता है।" if direction == DirectionBand.HIGHER else f"इन स्थितियों में {name} आपकी बातचीत में अपेक्षाकृत कम दिखता है।", None)
+        return (f"आपके उत्तरों में {name} अधिक स्पष्ट होने के संकेत मिलते हैं।" if direction == DirectionBand.HIGHER else f"आपके उत्तरों में {name} अपेक्षाकृत कम होने के संकेत मिलते हैं।", None)
+    tendency = "a stronger" if direction == DirectionBand.HIGHER else "a lighter"
+    opening = "Across these scenarios, you often show" if confidence == ConfidenceBand.CLEAR else "Your responses suggest"
     return (f"{opening} {tendency} {name} tendency.", None)
 
 

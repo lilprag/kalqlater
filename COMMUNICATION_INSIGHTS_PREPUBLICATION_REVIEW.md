@@ -185,3 +185,11 @@ The remaining formal gates are product-owner, English editorial, Hindi editorial
 ### Revised six-profile regression summary
 
 The direct/assertive, listening-oriented, conflict-avoidant/emotionally expressive, curious/adaptable, mixed/context-dependent, and contradictory profiles each now produced at least three constructive assets, three growth edges, two possible misunderstandings, three unique recommendation IDs, and a separate weekly experiment. Mixed evidence uses provisional/context-aware fallback wording rather than a directional claim. The “slower processing” profile remains a scope limitation: this analyzer does not claim to measure processing speed.
+
+## Final RC QA follow-up — 2026-08-04
+
+The final local draft-mode browser QA identified and corrected Hindi result localization that had exposed English dimension IDs and internal score labels. Result direction and confidence labels now use the approved Hindi glossary, and generated fallback prose resolves dimension names from the localized analyzer definition rather than from internal IDs. No scoring weights, scenarios, or publication status changed.
+
+The subsequent English and Hindi browser flows completed all twelve scenarios, exercised first-step leave confirmation, restored and revised a previous answer, completed to a protected result, and showed no browser console or hydration errors. The six deliberate profile fixtures continue to satisfy the result coverage and unique-recommendation requirements.
+
+This engineering QA does not substitute for the named human approval roles. The analyzer remains review-only until product-owner, English editorial, Hindi editorial, scoring/content, accessibility, privacy/security, and safety/ethics approvals are explicitly recorded for the candidate.

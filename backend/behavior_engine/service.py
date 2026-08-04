@@ -176,35 +176,36 @@ class AssessmentService:
             if all(by_id[dimension].direction == expected and by_id[dimension].confidence != ConfidenceBand.LIMITED for dimension, expected in rule.when.items()):
                 selected_rules.append(SelectedInterpretation(rule_id=rule.id, text=getattr(rule.summary, session.locale)))
         meaningful = [result for result in dimensions if result.confidence != ConfidenceBand.LIMITED]
+        name = lambda result: self._dimension_name(definition, result.dimension_id, session.locale)
         strengths = [result.explanation for result in meaningful if result.direction == DirectionBand.HIGHER][:3]
         balanced = [result for result in meaningful if result.direction == DirectionBand.BALANCED]
         for result in balanced:
-            strengths.append(self._localized(session.locale, f"Your {result.dimension_id.replace('-', ' ')} responses show useful flexibility across contexts.", f"आपके {result.dimension_id.replace('-', ' ')} से जुड़े उत्तर संदर्भों के अनुसार उपयोगी लचीलापन दिखाते हैं।"))
+            strengths.append(self._localized(session.locale, f"Your {name(result)} responses show useful flexibility across contexts.", f"{name(result)} से जुड़े आपके उत्तर अलग संदर्भों में उपयोगी लचीलापन दिखाते हैं।"))
         for result in dimensions:
             if len(strengths) >= 3:
                 break
-            strengths.append(self._localized(session.locale, f"You have enough evidence to begin a careful reflection on {result.dimension_id.replace('-', ' ')}.", f"आपके पास {result.dimension_id.replace('-', ' ')} पर सावधानी से विचार शुरू करने के लिए पर्याप्त संकेत हैं।"))
+            strengths.append(self._localized(session.locale, f"You have enough evidence to begin a careful reflection on {name(result)}.", f"{name(result)} पर सावधानी से विचार शुरू करने के लिए आपके पास पर्याप्त संकेत हैं।"))
         blind_spots = [result.explanation for result in meaningful if result.direction == DirectionBand.LOWER][:3]
         for result in balanced:
             if len(blind_spots) >= 3:
                 break
-            blind_spots.append(self._localized(session.locale, f"Because {result.dimension_id.replace('-', ' ')} shifts by context, naming what you need may help others respond well.", f"क्योंकि {result.dimension_id.replace('-', ' ')} संदर्भ के साथ बदलता है, अपनी जरूरत स्पष्ट करने से दूसरों को बेहतर प्रतिक्रिया देने में मदद मिल सकती है।"))
+            blind_spots.append(self._localized(session.locale, f"Because {name(result)} shifts by context, naming what you need may help others respond well.", f"क्योंकि {name(result)} संदर्भ के साथ बदलता है, अपनी जरूरत स्पष्ट करने से दूसरों को बेहतर प्रतिक्रिया देने में मदद मिल सकती है।"))
         for result in dimensions:
             if len(blind_spots) >= 3:
                 break
-            blind_spots.append(self._localized(session.locale, f"A strong or still-emerging {result.dimension_id.replace('-', ' ')} pattern can be worth checking with a trusted person.", f"{result.dimension_id.replace('-', ' ')} का मजबूत या उभरता पैटर्न किसी भरोसेमंद व्यक्ति के साथ जाँचना उपयोगी हो सकता है।"))
+            blind_spots.append(self._localized(session.locale, f"A strong or still-emerging {name(result)} pattern can be worth checking with a trusted person.", f"{name(result)} के इस उभरते पैटर्न को किसी भरोसेमंद व्यक्ति के साथ जाँचना उपयोगी हो सकता है।"))
         misunderstandings = [item.text for item in selected_rules][:2]
         for result in meaningful:
             if len(misunderstandings) >= 2:
                 break
             if result.direction == DirectionBand.HIGHER:
-                misunderstandings.append(self._localized(session.locale, f"Others may read your stronger {result.dimension_id.replace('-', ' ')} as certainty when you are simply trying to be useful.", f"दूसरे आपके {result.dimension_id.replace('-', ' ')} को निश्चितता समझ सकते हैं, जबकि आप केवल उपयोगी बनने की कोशिश कर रहे हों।"))
+                misunderstandings.append(self._localized(session.locale, f"Others may read your stronger {name(result)} as certainty when you are simply trying to be useful.", f"दूसरे आपके {name(result)} को निश्चितता समझ सकते हैं, जबकि आप केवल उपयोगी बनने की कोशिश कर रहे हों।"))
             elif result.direction == DirectionBand.BALANCED:
-                misunderstandings.append(self._localized(session.locale, f"Others may miss how much context shapes your {result.dimension_id.replace('-', ' ')} response.", f"दूसरे यह नहीं समझ पाते कि संदर्भ आपके {result.dimension_id.replace('-', ' ')} को कितना प्रभावित करता है।"))
+                misunderstandings.append(self._localized(session.locale, f"Others may miss how much context shapes your {name(result)} response.", f"दूसरे यह नहीं समझ पाते कि संदर्भ आपके {name(result)} को कितना प्रभावित करता है।"))
         for result in dimensions:
             if len(misunderstandings) >= 2:
                 break
-            misunderstandings.append(self._localized(session.locale, f"A limited signal about {result.dimension_id.replace('-', ' ')} can be mistaken for a fixed style; it is better treated as provisional.", f"{result.dimension_id.replace('-', ' ')} का सीमित संकेत एक स्थायी शैली समझा जा सकता है; इसे अस्थायी रूप से देखना बेहतर है।"))
+            misunderstandings.append(self._localized(session.locale, f"A limited signal about {name(result)} can be mistaken for a fixed style; it is better treated as provisional.", f"{name(result)} का सीमित संकेत एक स्थायी शैली समझा जा सकता है; इसे अभी अंतिम निष्कर्ष न मानना बेहतर है।"))
         target = next((result for result in dimensions if result.direction in {DirectionBand.LOWER, DirectionBand.BALANCED} and result.confidence != ConfidenceBand.LIMITED), None)
         if target is None:
             target = next((result for result in dimensions if result.confidence != ConfidenceBand.LIMITED), None)
@@ -224,7 +225,7 @@ class AssessmentService:
             if len(suggestions) == 3:
                 break
         lead = next((result for result in meaningful if result.direction in {DirectionBand.HIGHER, DirectionBand.LOWER, DirectionBand.BALANCED}), dimensions[0])
-        summary = self._summary(session.locale, lead)
+        summary = self._summary(session.locale, lead, definition)
         personality_note = None
         if session.personality_context:
             code = session.personality_context.type_code
@@ -252,8 +253,13 @@ class AssessmentService:
     def _localized(locale: str, en: str, hi: str) -> str:
         return hi if locale == "hi" else en
 
-    def _summary(self, locale: str, lead) -> str:
-        name = lead.dimension_id.replace('-', ' ')
+    @staticmethod
+    def _dimension_name(definition: AnalyzerDefinition, dimension_id: str, locale: str) -> str:
+        dimension = next(item for item in definition.dimensions if item.id == dimension_id)
+        return getattr(dimension.name, locale)
+
+    def _summary(self, locale: str, lead, definition: AnalyzerDefinition) -> str:
+        name = self._dimension_name(definition, lead.dimension_id, locale)
         if lead.confidence == ConfidenceBand.MIXED:
             return self._localized(locale, f"Your responses suggest that {name} changes with context rather than following one fixed style.", f"आपके उत्तर संकेत देते हैं कि {name} एक स्थायी शैली के बजाय संदर्भ के साथ बदलता है।")
         if lead.confidence == ConfidenceBand.LIMITED:
