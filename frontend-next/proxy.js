@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 const locales = new Set(['en', 'hi']);
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
+const legacyNoindexPaths = ['/community', '/login', '/signup', '/forgot-password', '/reset-password'];
 
 function parsedPair(firstValue, secondValue) {
   const first = String(firstValue || '').toUpperCase();
@@ -56,9 +57,20 @@ function legacyComparisonResponse(request) {
   return pair ? NextResponse.redirect(comparisonDestination(request, pair), 308) : new NextResponse('Not Found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' } });
 }
 
-export function proxy(request) {
+async function noindexLegacyApplicationResponse(request) {
+  const origin = process.env.LEGACY_CRA_ORIGIN?.replace(/\/$/, '');
+  if (!origin) return NextResponse.next();
+  const destination = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, origin);
+  const upstream = await fetch(destination, { method: request.method, headers: request.headers, cache: 'no-store' });
+  const response = new NextResponse(upstream.body, { status: upstream.status, headers: upstream.headers });
+  response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return response;
+}
+
+export async function proxy(request) {
   if (request.nextUrl.pathname.startsWith('/types/')) return legacyPersonalityResponse(request);
   if (request.nextUrl.pathname === '/compare' || request.nextUrl.pathname.startsWith('/compare/')) return legacyComparisonResponse(request);
+  if (legacyNoindexPaths.some((path) => request.nextUrl.pathname === path || request.nextUrl.pathname.startsWith(`${path}/`))) return noindexLegacyApplicationResponse(request);
 
   const locale = request.nextUrl.pathname.split('/')[1];
   if (!locales.has(locale)) return NextResponse.next();
@@ -76,4 +88,4 @@ export function proxy(request) {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-export const config = { matcher: ['/en/:path*', '/hi/:path*', '/types/:path*', '/compare', '/compare/:path*'] };
+export const config = { matcher: ['/en/:path*', '/hi/:path*', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };

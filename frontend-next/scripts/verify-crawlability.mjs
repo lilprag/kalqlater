@@ -8,6 +8,8 @@ const pages = [
   ['/en/compare/intj-vs-enfp', 'en', 'INTJ'], ['/hi/compare/intj-vs-enfp', 'hi', 'INTJ'],
   ['/en/insights', 'en', 'Go beyond personality'], ['/hi/insights', 'hi', 'पर्सनैलिटी से आगे'],
   ['/en/insights/communication', 'en', 'Understand How You Communicate'], ['/hi/insights/communication', 'hi', 'जानें कि आप कैसे संवाद करते हैं'],
+  ['/en/community', 'en', 'KalQLater Community'], ['/hi/community', 'hi', 'KalQLater कम्युनिटी'],
+  ['/en/jobs', 'en', 'KalQLater Jobs'], ['/hi/jobs', 'hi', 'KalQLater जॉब्स'],
 ];
 
 function assert(condition, message) { if (!condition) throw new Error(message); }
@@ -62,15 +64,19 @@ const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
 assert(!sitemapXml.includes('<loc>https://kalqlater.com</loc>'), 'sitemap: root homepage must not be indexed separately');
 for (const locale of ['en', 'hi']) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
-for (const path of ['/community', '/community/jobs']) assert(sitemapXml.includes(`<loc>https://kalqlater.com${path}</loc>`), `sitemap: missing canonical hybrid route ${path}`);
 for (const locale of ['en', 'hi']) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
 for (const locale of ['en', 'hi']) {
   assert(sitemapXml.includes(`/${locale}/insights`), `sitemap: missing ${locale} Insights hub`);
   assert(sitemapXml.includes(`/${locale}/insights/communication`), `sitemap: missing ${locale} Communication Insights landing`);
+  assert(sitemapXml.includes(`/${locale}/community`), `sitemap: missing ${locale} Community landing`);
+  assert(sitemapXml.includes(`/${locale}/jobs`), `sitemap: missing ${locale} Jobs landing`);
   const hub = await fetch(`${baseUrl}/${locale}/insights`);
   const hubHtml = await hub.text();
   assert(hub.ok && hubHtml.includes(`/${locale}/insights/communication`), `${locale} Insights hub: missing Communication Insights link`);
   assert(hubHtml.includes('CollectionPage'), `${locale} Insights hub: missing CollectionPage JSON-LD`);
+}
+for (const legacyPath of ['/community', '/community/jobs']) {
+  assert(!sitemapXml.includes(`<loc>https://kalqlater.com${legacyPath}</loc>`), `sitemap: legacy application route must not be indexed: ${legacyPath}`);
 }
 for (const locale of ['en', 'hi']) {
   const landing = await fetch(`${baseUrl}/${locale}/insights/communication`);
