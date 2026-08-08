@@ -6,6 +6,7 @@ const pages = [
   ['/en/personality/intj', 'en', 'INTJ'], ['/hi/personality/intj', 'hi', 'INTJ'], ['/en/personality/enfp', 'en', 'ENFP'], ['/hi/personality/enfp', 'hi', 'ENFP'],
   ['/en/personality/intj/careers', 'en', 'Best Careers for INTJ'], ['/hi/personality/intj/careers', 'hi', 'INTJ के लिए करियर दिशाएँ'],
   ['/en/compare/intj-vs-enfp', 'en', 'INTJ'], ['/hi/compare/intj-vs-enfp', 'hi', 'INTJ'],
+  ['/en/compare', 'en', 'Explore a personality dynamic'], ['/hi/compare', 'hi', 'दो व्यक्तित्वों के डायनामिक को देखें'],
   ['/en/insights', 'en', 'Go beyond personality'], ['/hi/insights', 'hi', 'पर्सनैलिटी से आगे'],
   ['/en/insights/communication', 'en', 'Understand How You Communicate'], ['/hi/insights/communication', 'hi', 'जानें कि आप कैसे संवाद करते हैं'],
   ['/en/community', 'en', 'KalQLater Community'], ['/hi/community', 'hi', 'KalQLater कम्युनिटी'],
@@ -67,6 +68,7 @@ for (const locale of ['en', 'hi']) assert(sitemapXml.includes(`https://kalqlater
 for (const locale of ['en', 'hi']) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
 for (const locale of ['en', 'hi']) {
   assert(sitemapXml.includes(`/${locale}/insights`), `sitemap: missing ${locale} Insights hub`);
+  assert(sitemapXml.includes(`/${locale}/compare</loc>`), `sitemap: missing ${locale} Compare selector`);
   assert(sitemapXml.includes(`/${locale}/insights/communication`), `sitemap: missing ${locale} Communication Insights landing`);
   assert(sitemapXml.includes(`/${locale}/community`), `sitemap: missing ${locale} Community landing`);
   assert(sitemapXml.includes(`/${locale}/jobs`), `sitemap: missing ${locale} Jobs landing`);

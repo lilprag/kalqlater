@@ -15,7 +15,7 @@ export function Header({ locale }) {
     { label: copy.types, href: productionAppUrl('/types') },
     { label: copy.insights, href: localePath(locale, 'insights') },
     { label: copy.about, href: productionAppUrl('/about') },
-    { label: copy.compare, href: productionAppUrl('/compare') },
+    { label: copy.compare, href: localePath(locale, 'compare') },
     { label: copy.community, href: localePath(locale, 'community') },
     { label: copy.jobs, href: localePath(locale, 'jobs') },
     { label: copy.contact, href: localePath(locale, 'contact') },
