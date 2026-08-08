@@ -1,7 +1,14 @@
 const icon = ['♡', '☻', '↔', '◇', '↺', '↗'];
+const commonSearchNames = {
+  INTJ: 'Architect', INTP: 'Logician', ENTJ: 'Commander', ENTP: 'Debater',
+  INFJ: 'Advocate', INFP: 'Mediator', ENFJ: 'Protagonist', ENFP: 'Campaigner',
+  ISTJ: 'Logistician', ISFJ: 'Defender', ESTJ: 'Executive', ESFJ: 'Consul',
+  ISTP: 'Virtuoso', ISFP: 'Adventurer', ESTP: 'Entrepreneur', ESFP: 'Entertainer',
+};
 
 function first(values, fallback) { return values?.[0] || fallback; }
 function second(values, fallback) { return values?.[1] || fallback; }
+function searchName(profile, hi) { return hi ? profile.displayName : commonSearchNames[profile.code] || profile.displayName; }
 
 export function comparisonContent({ firstProfile, secondProfile, insight, locale }) {
   const hi = locale === 'hi';
@@ -65,7 +72,7 @@ export function comparisonContent({ firstProfile, secondProfile, insight, locale
 
   return {
     eyebrow: 'Compatibility • Relationship • Comparison',
-    helper: `People also search for ${a.displayName} (${a.code}) and ${b.displayName} (${b.code}). These are secondary reference names; KalQLater keeps the focus on behaviour, context, and choice.`,
+      helper: `People also search for ${searchName(a, hi)} (${a.code}) and ${searchName(b, hi)} (${b.code}). These are secondary reference names; KalQLater keeps the focus on behaviour, context, and choice.`,
     intro: `People compare ${pair} because the pair can bring different strengths into the same relationship, friendship, or team: ${a.code} may lead with ${aStrength.toLowerCase()}, while ${b.code} may bring ${bStrength.toLowerCase()}. This guide turns those differences into practical conversations about connection, work, communication, conflict, and growth.`,
     snapshot: [
       ['Relationship', insight.label, 'Different rhythms can create closeness when intentions are explicit.'],
