@@ -3,7 +3,7 @@ import { TYPE_ORDER } from '../lib/personality';
 import { allPairs } from '../lib/comparisons';
 
 export default function sitemap() {
-  const routes = ['', 'privacy', 'terms', 'contact', 'insights/communication'];
+  const routes = ['', 'privacy', 'terms', 'contact', 'insights', 'insights/communication'];
   const locales = ['en', 'hi'];
   const base = locales.flatMap((locale) => routes.map((path) => ({
     url: `${siteUrl()}${localePath(locale, path)}`,

@@ -13,6 +13,7 @@ export function Header({ locale }) {
     { label: copy.home, href: localePath(locale) },
     { label: copy.test, href: productionAppUrl('/test') },
     { label: copy.types, href: productionAppUrl('/types') },
+    { label: copy.insights, href: localePath(locale, 'insights') },
     { label: copy.about, href: productionAppUrl('/about') },
     { label: copy.compare, href: productionAppUrl('/compare') },
     { label: copy.community, href: productionAppUrl('/community') },

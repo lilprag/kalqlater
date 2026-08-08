@@ -1,0 +1,42 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { JsonLd } from '../../../components/JsonLd';
+import { insightsHubCopy } from '../../../data/insights-hub';
+import { breadcrumbJsonLd, pageMetadata } from '../../../lib/metadata';
+import { isLocale, localePath } from '../../../lib/site';
+
+export const dynamicParams = false;
+export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  return pageMetadata({
+    locale,
+    path: 'insights',
+    title: locale === 'hi' ? 'KalQLater इनसाइट्स: पर्सनैलिटी से आगे' : 'KalQLater Insights: Go Beyond Personality',
+    description: locale === 'hi' ? 'संवाद, निर्णय, काम और जुड़ाव की रोज़मर्रा की आदतों पर विचार करने के लिए KalQLater के इनसाइट्स साधन देखें।' : 'Explore KalQLater reflection tools for everyday communication, decision-making, work, and connection patterns.',
+  });
+}
+
+export default async function InsightsHubPage({ params }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const c = insightsHubCopy[locale];
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: c.eyebrow, path: 'insights' }]),
+      {
+        '@type': 'CollectionPage', name: c.eyebrow,
+        description: c.body,
+        url: `https://kalqlater.com${localePath(locale, 'insights')}`,
+        inLanguage: locale === 'hi' ? 'hi-IN' : 'en-IN',
+      },
+    ],
+  };
+  return <><JsonLd data={jsonLd} /><main className="overflow-hidden">
+    <section className="hero-shell relative"><div aria-hidden="true" className="hero-blob hero-blob-saffron" /><div aria-hidden="true" className="hero-blob hero-blob-teal" /><div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24"><nav aria-label="Breadcrumb" className="text-sm text-brand-subtle"><Link href={localePath(locale)}>KalQLater</Link><span aria-hidden="true"> / </span>{c.eyebrow}</nav><p className="eyebrow-pill mt-7"><span aria-hidden="true">✦</span>{c.eyebrow}</p><h1 className="display-font mt-6 max-w-3xl text-5xl leading-[.98] tracking-tight text-brand-ink sm:text-6xl">{c.title}</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-subtle">{c.body}</p></div></section>
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8"><div className="grid gap-7 lg:grid-cols-[1.1fr_.9fr]"><article className="rounded-[2rem] bg-brand-ink p-7 text-white shadow-[0_24px_70px_rgba(45,40,37,.16)] sm:p-10"><p className="section-kicker text-brand-sand">{c.live}</p><h2 className="display-font mt-3 text-4xl">{c.liveTitle}</h2><p className="mt-5 max-w-2xl leading-relaxed text-white/80">{c.liveBody}</p><Link href={localePath(locale, 'insights/communication')} className="button-light mt-7">{c.explore}<span aria-hidden="true">→</span></Link></article><aside className="rounded-[2rem] border border-brand-line bg-white p-7 sm:p-10"><p className="section-kicker">KalQLater</p><h2 className="display-font mt-3 text-3xl text-brand-ink">{c.bridgeTitle}</h2><p className="mt-4 leading-relaxed text-brand-subtle">{c.bridgeBody}</p><Link href={localePath(locale, 'personality/intj')} className="button-secondary mt-7">{c.guide}</Link></aside></div></section>
+    <section className="dimension-section"><div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8"><p className="section-kicker">{c.comingSoon}</p><h2 className="display-font mt-3 max-w-3xl text-4xl text-brand-ink">{c.plannedTitle}</h2><p className="mt-4 max-w-2xl leading-relaxed text-brand-subtle">{c.plannedBody}</p><div className="mt-8 grid gap-4 md:grid-cols-3">{c.planned.map(([title, body], index) => <article key={title} className={`dimension-card p-6 ${index === 1 ? 'dimension-saffron' : index === 2 ? 'dimension-plum' : 'dimension-teal'}`}><span aria-hidden="true" className="dimension-orb" /><p className="relative text-xs font-bold uppercase tracking-[.18em] text-brand-teal">{c.comingSoon}</p><h3 className="display-font relative mt-4 text-3xl text-brand-ink">{title}</h3><p className="relative mt-3 leading-relaxed text-brand-subtle">{body}</p></article>)}</div></div></section>
+  </main></>;
+}
