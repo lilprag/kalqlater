@@ -47,7 +47,11 @@ function legacyComparisonResponse(request) {
   const path = request.nextUrl.pathname;
   if (path === '/compare') {
     const hasTypeQuery = request.nextUrl.searchParams.has('type1') || request.nextUrl.searchParams.has('type2');
-    if (!hasTypeQuery) return NextResponse.next();
+    if (!hasTypeQuery) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/en/compare';
+      return NextResponse.redirect(url, 308);
+    }
     const pair = parsedPair(request.nextUrl.searchParams.get('type1'), request.nextUrl.searchParams.get('type2'));
     return pair ? NextResponse.redirect(comparisonDestination(request, pair), 308) : new NextResponse('Not Found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' } });
   }

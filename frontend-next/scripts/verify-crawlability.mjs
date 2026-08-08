@@ -96,9 +96,8 @@ for (const locale of ['en', 'hi']) for (const type of careerTypes) {
   const career = await fetch(`${baseUrl}/${locale}/personality/${type}/careers`);
   assert((await career.text()).includes(`/${locale}/insights/communication`), `${locale}/${type} career guide: missing Communication Insights CTA`);
 }
-const selector = await fetch(`${baseUrl}/compare`);
-const selectorHtml = await selector.text();
-assert(selector.ok && selectorHtml.includes('Explore a personality dynamic'), '/compare: expected the interactive selector');
+const selector = await fetch(`${baseUrl}/compare`, { redirect: 'manual' });
+assert(selector.status === 308 && selector.headers.get('location') === '/en/compare', '/compare: expected permanent redirect to the English localized selector');
 
 const root = await fetch(`${baseUrl}/?utm_source=google&utm_campaign=seo-sprint`, { redirect: 'manual' });
 assert(root.status === 308, `root: expected permanent 308, received ${root.status}`);
