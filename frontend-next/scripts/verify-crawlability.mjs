@@ -20,7 +20,12 @@ for (const [path, locale, visibleText] of pages) {
   assert(/<title>[^<]+<\/title>/.test(html), `${path}: missing title`);
   assert(/<meta[^>]+name="description"[^>]+content="[^"]+"/.test(html), `${path}: missing description`);
   assert(/<link[^>]+rel="canonical"[^>]+href="[^"]+"/.test(html), `${path}: missing canonical`);
-  assert(/hreflang="(en|hi|x-default)"/i.test(html), `${path}: missing hreflang`);
+  const expectedCanonical = `https://kalqlater.com${path}`;
+  assert(html.includes(`rel="canonical" href="${expectedCanonical}"`), `${path}: expected self-referencing localized canonical`);
+  for (const hreflang of ['en', 'hi', 'x-default']) {
+    const matches = html.match(new RegExp(`hreflang="${hreflang}"`, 'gi')) || [];
+    assert(matches.length === 1, `${path}: expected one ${hreflang} hreflang, found ${matches.length}`);
+  }
   assert(/<h1[^>]*>/.test(html), `${path}: missing h1`);
   assert(html.includes(visibleText), `${path}: missing visible server-rendered content`);
   assert(/<a [^>]+href=/.test(html), `${path}: missing links`);
@@ -55,6 +60,9 @@ assert(careerTitles.size === 32, 'career guides: titles must be unique across al
 assert(careerDescriptions.size === 32, 'career guides: descriptions must be unique across all locales');
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
+assert(!sitemapXml.includes('<loc>https://kalqlater.com</loc>'), 'sitemap: root homepage must not be indexed separately');
+for (const locale of ['en', 'hi']) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
+for (const path of ['/community', '/community/jobs']) assert(sitemapXml.includes(`<loc>https://kalqlater.com${path}</loc>`), `sitemap: missing canonical hybrid route ${path}`);
 for (const locale of ['en', 'hi']) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
 for (const locale of ['en', 'hi']) {
   assert(sitemapXml.includes(`/${locale}/insights`), `sitemap: missing ${locale} Insights hub`);
@@ -83,6 +91,10 @@ for (const locale of ['en', 'hi']) for (const type of careerTypes) {
 const selector = await fetch(`${baseUrl}/compare`);
 const selectorHtml = await selector.text();
 assert(selector.ok && selectorHtml.includes('Explore a personality dynamic'), '/compare: expected the interactive selector');
+
+const root = await fetch(`${baseUrl}/?utm_source=google&utm_campaign=seo-sprint`, { redirect: 'manual' });
+assert(root.status === 308, `root: expected permanent 308, received ${root.status}`);
+assert(root.headers.get('location') === '/en?utm_source=google&utm_campaign=seo-sprint', `root: expected query-preserving /en redirect, received ${root.headers.get('location')}`);
 
 const missing = await fetch(`${baseUrl}/en/this-route-does-not-exist`);
 assert(missing.status === 404, `404 route: expected HTTP 404, received ${missing.status}`);

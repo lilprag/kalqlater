@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      // English is the canonical default homepage. Next preserves the query
+      // string for this static redirect, including campaign parameters.
+      { source: '/', destination: '/en', permanent: true },
+    ];
+  },
   async rewrites() {
     const legacyOrigin = process.env.LEGACY_CRA_ORIGIN?.replace(/\/$/, '');
     if (!legacyOrigin) return { beforeFiles: [] };
