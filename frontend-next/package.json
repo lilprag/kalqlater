@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "check:content-integrity": "node scripts/check-content-integrity.mjs",
     "test": "node scripts/check-content.mjs && node scripts/check-content-integrity.mjs && node scripts/verify-crawlability.mjs"
   },
   "dependencies": {

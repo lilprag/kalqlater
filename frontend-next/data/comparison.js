@@ -22,14 +22,8 @@ const hindiPairs = {
 };
 const order = ['connector','catalyst','strategist','steward'];
 const pairKey = (a,b) => a === b ? 'same' : [a,b].sort((x,y) => order.indexOf(x)-order.indexOf(y)).join('-');
-const decisionLenses = {
-  strategist: ['tests leverage, logic, and long-term consequences', 'लाभ, तर्क और दूरगामी परिणामों को परखता है'],
-  connector: ['weighs values, people, and the future potential of everyone involved', 'मूल्यों, लोगों और सभी की भविष्य क्षमता को तौलता है'],
-  steward: ['uses evidence, responsibility, and what has proved dependable', 'तथ्य, ज़िम्मेदारी और सिद्ध भरोसेमंदी पर भरोसा करता है'],
-  catalyst: ['tests what works in the moment and adapts through action', 'क्षण में क्या काम करता है उसे परखता है और कार्रवाई से ढलता है'],
-};
-// Group patterns describe a broad interaction dynamic; these type patterns prevent
-// one group-level sentence from being assigned to both people in a comparison.
+// A/B decision descriptions are authored at the type level. Group data may shape
+// shared pair guidance, but it must never replace either person’s decision profile.
 const typePatterns = {
   INTJ: ['maps long-term consequences, then commits once the strategic path is coherent', 'दूरगामी परिणामों का नक्शा बनाता है, फिर रणनीतिक दिशा स्पष्ट होने पर प्रतिबद्ध होता है'],
   INTP: ['keeps examining the model until the logic holds, sometimes delaying commitment for one more question', 'मॉडल को तब तक परखता है जब तक तर्क ठोस न हो; कभी-कभी एक और प्रश्न के लिए निर्णय टाल देता है'],
@@ -60,8 +54,9 @@ export function getRelationshipIntelligence(typeA, typeB, lang = 'en') {
   const a=GROUPS[typeA], b=GROUPS[typeB], key=pairKey(a,b); const text=(lang==='hi'?hindiPairs:pairs)[key] || (lang==='hi'?hindiPairs.same:pairs.same);
   const [label, attraction, conflict, advice] = text;
   const hindi=lang==='hi';
-  const aLens = typePatterns[typeA] || decisionLenses[a] || decisionLenses.strategist;
-  const bLens = typePatterns[typeB] || decisionLenses[b] || decisionLenses.connector;
+  const aLens = typePatterns[typeA];
+  const bLens = typePatterns[typeB];
+  if (!aLens || !bLens) throw new Error(`Missing type-specific decision profile for ${typeA}/${typeB}`);
   const business = {
     innovation: labelFor(a === 'catalyst' || b === 'catalyst' || a === 'strategist' || b === 'strategist' ? 'Complementary Match' : label, hindi),
     execution: labelFor(a === 'steward' || b === 'steward' ? 'Strong Match' : 'Growth Match', hindi),

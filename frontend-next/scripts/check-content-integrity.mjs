@@ -4,6 +4,16 @@ const normalize = (value) => String(value || '').toLowerCase().replace(/<[^>]*>/
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const unique = (items) => new Set(items.map(normalize)).size === items.length;
 const rawText = (html) => html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+const legacyRelationshipPhrases = [
+  'Architects want deep, intellectual relationships. They warm up slowly, but once bonded remain loyal for life.',
+  'वास्तुकार गहरे, बौद्धिक रिश्ते चाहते हैं। वे खुलकर प्यार दिखाना धीरे सीखते हैं, पर एक बार जुड़ जाएँ तो वफ़ादार रहते हैं।',
+];
+const legacyDecisionPhrases = [
+  'tests leverage, logic, and long-term consequences',
+  'लाभ, तर्क और दूरगामी परिणामों को परखता है',
+];
+let personalityContextsChecked = 0;
+let comparePairsChecked = 0;
 
 for (const locale of ['en', 'hi']) {
   for (const type of types) {
@@ -17,6 +27,8 @@ for (const locale of ['en', 'hi']) {
     assert(cards.length === 4, `${locale}/${type}: expected four relationship context cards, found ${cards.length}`);
     assert(cards.every((text) => normalize(text).length >= 55), `${locale}/${type}: relationship card copy is too short`);
     assert(unique(cards), `${locale}/${type}: relationship context copy repeats`);
+    assert(!legacyRelationshipPhrases.some((phrase) => html.includes(phrase)), `${locale}/${type}: legacy relationship fallback is present in SSR HTML`);
+    personalityContextsChecked += cards.length;
 
     const careerResponse = await fetch(`${baseUrl}/${locale}/personality/${type}/careers`);
     const careerHtml = await careerResponse.text();
@@ -40,7 +52,9 @@ for (const locale of ['en', 'hi']) {
     const text = rawText(decision);
     assert(text.includes(types[a].toUpperCase()) && text.includes(types[b].toUpperCase()), `${locale}/${types[a]}-vs-${types[b]}: both decision sides must appear`);
     assert(!new RegExp(`${types[a].toUpperCase()} ([^.]+)\\. ${types[b].toUpperCase()} \\1\\.`, 'i').test(text), `${locale}/${types[a]}-vs-${types[b]}: A and B decision text repeats`);
+    assert(!legacyDecisionPhrases.some((phrase) => html.includes(phrase)), `${locale}/${types[a]}-vs-${types[b]}: legacy decision fallback is present in SSR HTML`);
+    comparePairsChecked += 1;
   }
 }
 
-console.log(`Content integrity checks passed: 32 personality guides, 32 career guides, and ${types.length * 15} comparison pages.`);
+console.log(`Content integrity checks passed: ${personalityContextsChecked} personality contexts, 32 career guides, and ${comparePairsChecked} comparison pages; 0 legacy fallback occurrences.`);

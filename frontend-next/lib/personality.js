@@ -19,14 +19,22 @@ export function personalityProfile(code, locale) {
   const type = TYPES[code];
   if (!type) return null;
   const base = type[locale];
+  const relationshipContexts = RELATIONSHIP_CONTEXTS[code]?.[locale];
+  if (!relationshipContexts || !['friendship', 'romance', 'family', 'teamwork'].every((context) => relationshipContexts[context])) {
+    throw new Error(`Missing authored relationship contexts for ${code}/${locale}`);
+  }
   const leadership = LEADERSHIP_INSIGHTS[code]?.[locale];
   const communication = COMMUNICATION_INSIGHTS[code]?.[locale];
   return {
     code, slug: typeSlug(code), group: type.group, color: type.color,
     displayName: base.nickname, shortSummary: base.headline, overview: base.description,
     coreTraits: base.strengths.slice(0, 3), strengths: base.strengths, growthAreas: base.weaknesses,
-    workStyle: base.careers, careerThemes: base.careers, relationshipStyle: base.relationships,
-    relationshipContexts: RELATIONSHIP_CONTEXTS[code]?.[locale] || null,
+    workStyle: base.careers, careerThemes: base.careers,
+    // Never use the old one-paragraph type summary as a context fallback. The
+    // authored friendship context is the only concise relationship summary used
+    // outside the four explicit relationship cards.
+    relationshipStyle: relationshipContexts.friendship,
+    relationshipContexts,
     leadership, communication,
     learningStyle: leadership?.weeklyAction,
     stressPatterns: base.weaknesses,
