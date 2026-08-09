@@ -1,6 +1,7 @@
 import { TYPES, TYPE_CODES } from '../data/types';
 import { LEADERSHIP_INSIGHTS } from '../data/leadership';
 import { COMMUNICATION_INSIGHTS } from '../data/communication';
+import { RELATIONSHIP_CONTEXTS } from '../data/personality-contexts';
 import { isLocale, localePath } from './site';
 
 export const TYPE_ORDER = TYPE_CODES;
@@ -25,6 +26,7 @@ export function personalityProfile(code, locale) {
     displayName: base.nickname, shortSummary: base.headline, overview: base.description,
     coreTraits: base.strengths.slice(0, 3), strengths: base.strengths, growthAreas: base.weaknesses,
     workStyle: base.careers, careerThemes: base.careers, relationshipStyle: base.relationships,
+    relationshipContexts: RELATIONSHIP_CONTEXTS[code]?.[locale] || null,
     leadership, communication,
     learningStyle: leadership?.weeklyAction,
     stressPatterns: base.weaknesses,

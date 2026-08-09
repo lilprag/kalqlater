@@ -28,6 +28,26 @@ const decisionLenses = {
   steward: ['uses evidence, responsibility, and what has proved dependable', 'तथ्य, ज़िम्मेदारी और सिद्ध भरोसेमंदी पर भरोसा करता है'],
   catalyst: ['tests what works in the moment and adapts through action', 'क्षण में क्या काम करता है उसे परखता है और कार्रवाई से ढलता है'],
 };
+// Group patterns describe a broad interaction dynamic; these type patterns prevent
+// one group-level sentence from being assigned to both people in a comparison.
+const typePatterns = {
+  INTJ: ['maps long-term consequences, then commits once the strategic path is coherent', 'दूरगामी परिणामों का नक्शा बनाता है, फिर रणनीतिक दिशा स्पष्ट होने पर प्रतिबद्ध होता है'],
+  INTP: ['keeps examining the model until the logic holds, sometimes delaying commitment for one more question', 'मॉडल को तब तक परखता है जब तक तर्क ठोस न हो; कभी-कभी एक और प्रश्न के लिए निर्णय टाल देता है'],
+  ENTJ: ['sets the outcome, compares leverage, and makes a call when the evidence is sufficient to move', 'परिणाम तय करता है, प्रभाव की तुलना करता है और आगे बढ़ने के लिए पर्याप्त प्रमाण पर निर्णय लेता है'],
+  ENTP: ['tests competing possibilities through debate and experiments, then benefits from choosing a stopping point', 'बहस और प्रयोगों से प्रतिस्पर्धी संभावनाएँ परखता है, फिर रुकने का बिंदु चुनने से लाभ पाता है'],
+  INFJ: ['looks for the underlying pattern and human consequence before committing to a direction', 'दिशा चुनने से पहले छिपे पैटर्न और मानवीय परिणाम को देखता है'],
+  INFP: ['checks whether a choice fits personal values and likely impact before deciding how to act', 'काम करने का तरीका चुनने से पहले देखता है कि चुनाव निजी मूल्यों और संभावित प्रभाव से मेल खाता है या नहीं'],
+  ENFJ: ['weighs shared purpose and people’s readiness, then builds agreement around a direction', 'साझा उद्देश्य और लोगों की तैयारी तौलता है, फिर दिशा पर सहमति बनाता है'],
+  ENFP: ['follows emerging possibilities and human energy, then needs a clear priority to turn interest into action', 'उभरती संभावनाओं और लोगों की ऊर्जा को देखता है, फिर रुचि को कार्रवाई में बदलने के लिए स्पष्ट प्राथमिकता चाहता है'],
+  ISTJ: ['compares the facts with proven procedures and commits when responsibilities and risks are clear', 'तथ्यों को सिद्ध प्रक्रियाओं से मिलाता है और जिम्मेदारी व जोखिम साफ होने पर प्रतिबद्ध होता है'],
+  ISFJ: ['considers practical evidence alongside the effect on people who depend on the outcome', 'व्यावहारिक प्रमाण के साथ उन लोगों पर प्रभाव देखता है जो परिणाम पर निर्भर हैं'],
+  ESTJ: ['clarifies the standard, assigns ownership, and chooses the most workable route to delivery', 'मानक स्पष्ट करता है, जिम्मेदारी बाँटता है और डिलीवरी का सबसे कार्यकारी रास्ता चुनता है'],
+  ESFJ: ['checks what will support the group in practice and seeks enough agreement to move together', 'देखता है कि व्यवहार में समूह को क्या सहारा देगा और साथ चलने लायक सहमति खोजता है'],
+  ISTP: ['observes the immediate mechanics, tests a fix, and adjusts from what actually happens', 'तत्काल कामकाज को देखता है, समाधान आजमाता है और वास्तव में जो होता है उससे ढलता है'],
+  ISFP: ['notices the lived impact of a choice and acts when it feels both workable and personally honest', 'चुनाव के वास्तविक अनुभव को देखता है और जब वह व्यावहारिक व निजी रूप से सच्चा लगे तब कार्य करता है'],
+  ESTP: ['reads the opportunity in real time, acts quickly, and recalibrates from immediate feedback', 'मौके को उसी समय पढ़ता है, तेजी से काम करता है और तत्काल फीडबैक से दिशा बदलता है'],
+  ESFP: ['uses the energy of the moment and people’s response, then benefits from checking the next consequence', 'क्षण की ऊर्जा और लोगों की प्रतिक्रिया का उपयोग करता है, फिर अगले परिणाम को जाँचने से लाभ पाता है'],
+};
 const businessLabels = {
   en: { innovation: 'Innovation', execution: 'Execution', leadership: 'Leadership', planning: 'Planning', risk: 'Risk', communication: 'Communication' },
   hi: { innovation: 'नवाचार', execution: 'क्रियान्वयन', leadership: 'नेतृत्व', planning: 'योजना', risk: 'जोखिम', communication: 'संवाद' },
@@ -40,8 +60,8 @@ export function getRelationshipIntelligence(typeA, typeB, lang = 'en') {
   const a=GROUPS[typeA], b=GROUPS[typeB], key=pairKey(a,b); const text=(lang==='hi'?hindiPairs:pairs)[key] || (lang==='hi'?hindiPairs.same:pairs.same);
   const [label, attraction, conflict, advice] = text;
   const hindi=lang==='hi';
-  const aLens = decisionLenses[a] || decisionLenses.strategist;
-  const bLens = decisionLenses[b] || decisionLenses.connector;
+  const aLens = typePatterns[typeA] || decisionLenses[a] || decisionLenses.strategist;
+  const bLens = typePatterns[typeB] || decisionLenses[b] || decisionLenses.connector;
   const business = {
     innovation: labelFor(a === 'catalyst' || b === 'catalyst' || a === 'strategist' || b === 'strategist' ? 'Complementary Match' : label, hindi),
     execution: labelFor(a === 'steward' || b === 'steward' ? 'Strong Match' : 'Growth Match', hindi),

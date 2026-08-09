@@ -49,6 +49,85 @@ function faq(locale, type, lens, skill) {
 }
 
 export const CAREER_TYPES = TYPE_ORDER.map((type) => type.toLowerCase());
+
+const roleFocus = {
+  engineer: ['turning requirements into dependable systems, testing edge cases, and improving what ships', 'आवश्यकताओं को भरोसेमंद सिस्टम में बदलना, किनारे के मामलों को जाँचना और जारी हुए काम को बेहतर बनाना'],
+  scientist: ['forming testable questions, handling uncertainty in evidence, and explaining what the data can and cannot support', 'जाँचे जा सकने वाले प्रश्न बनाना, प्रमाण की अनिश्चितता संभालना और डेटा क्या कहता या नहीं कहता यह समझाना'],
+  analyst: ['framing a decision question, checking evidence quality, and translating patterns for stakeholders', 'निर्णय के प्रश्न को स्पष्ट करना, प्रमाण की गुणवत्ता जाँचना और पैटर्न को हितधारकों के लिए समझाना'],
+  researcher: ['defining an inquiry, gathering credible evidence, and making limitations visible before recommendations are made', 'जाँच की दिशा तय करना, विश्वसनीय प्रमाण जुटाना और सिफारिश से पहले सीमाएँ स्पष्ट करना'],
+  designer: ['observing the lived experience of users, iterating tangible options, and balancing craft with delivery constraints', 'उपयोगकर्ताओं के वास्तविक अनुभव को देखना, ठोस विकल्पों पर पुनरावृत्ति करना और शिल्प को डिलीवरी की सीमाओं के साथ संतुलित करना'],
+  writer: ['finding the audience question, organising complex material, and making a precise message easy to act on', 'पाठक का प्रश्न समझना, जटिल सामग्री को व्यवस्थित करना और सटीक संदेश को उपयोगी बनाना'],
+  manager: ['aligning people, priorities, and constraints while making ownership and trade-offs visible', 'लोगों, प्राथमिकताओं और सीमाओं को साथ लाना और जिम्मेदारी व समझौते स्पष्ट करना'],
+  lead: ['setting direction, making trade-offs legible, and creating conditions for other people to deliver well', 'दिशा तय करना, समझौते स्पष्ट करना और दूसरों के अच्छे काम के लिए परिस्थितियाँ बनाना'],
+  coordinator: ['keeping handoffs, schedules, and follow-ups reliable across several moving parts', 'कई चलती चीजों के बीच हैंडऑफ, समय-सारणी और फॉलो-अप भरोसेमंद रखना'],
+  specialist: ['building domain judgement, applying standards carefully, and explaining specialist work to non-specialists', 'क्षेत्र की समझ बनाना, मानकों को सावधानी से लागू करना और विशेषज्ञ काम को गैर-विशेषज्ञों को समझाना'],
+  consultant: ['diagnosing a client problem, comparing practical options, and building agreement around a recommendation', 'क्लाइंट की समस्या समझना, व्यावहारिक विकल्पों की तुलना करना और सिफारिश पर सहमति बनाना'],
+  entrepreneur: ['choosing a problem worth solving, testing demand with real people, and managing risk before scaling', 'हल करने योग्य समस्या चुनना, वास्तविक लोगों के साथ मांग जाँचना और बढ़ाने से पहले जोखिम संभालना'],
+  operations: ['designing reliable workflows, noticing bottlenecks, and improving service without losing control of detail', 'भरोसेमंद कार्यप्रवाह बनाना, अड़चन पहचानना और विवरण पर नियंत्रण खोए बिना सेवा बेहतर करना'],
+  policy: ['connecting evidence, public consequences, and implementation realities before recommending change', 'परिवर्तन सुझाने से पहले प्रमाण, सार्वजनिक परिणाम और लागू करने की वास्तविकताओं को जोड़ना'],
+  sales: ['understanding a customer problem, building trust in conversation, and following a deal through to a clear next step', 'ग्राहक की समस्या समझना, बातचीत में भरोसा बनाना और सौदे को स्पष्ट अगले कदम तक ले जाना'],
+  support: ['listening for the real need, resolving issues carefully, and improving the service from recurring feedback', 'वास्तविक जरूरत सुनना, मुद्दे सावधानी से सुलझाना और बार-बार के फीडबैक से सेवा बेहतर करना'],
+  education: ['turning knowledge into a learnable sequence, checking understanding, and adapting for different learners', 'ज्ञान को सीखने योग्य क्रम में बदलना, समझ जाँचना और अलग सीखने वालों के लिए ढलना'],
+  creative: ['developing a point of view, shaping it for an audience, and revising without losing the original idea', 'अपना दृष्टिकोण बनाना, उसे दर्शक के लिए ढालना और मूल विचार खोए बिना संशोधित करना'],
+  default: ['learning the daily craft, navigating stakeholders, and delivering useful work within real constraints', 'रोज़ के शिल्प को सीखना, हितधारकों के साथ काम करना और वास्तविक सीमाओं में उपयोगी काम देना'],
+};
+
+function roleKey(career) {
+  const value = career.toLowerCase();
+  if (/(engineer|technician|technical|automation|network|cybersecurity|mechanical)/.test(value)) return 'engineer';
+  if (/(scientist)/.test(value)) return 'scientist';
+  if (/(analyst)/.test(value)) return 'analyst';
+  if (/(researcher|research|forensic)/.test(value)) return 'researcher';
+  if (/(designer|illustrator|photography|visual|craft|creator|producer|presenter|brand)/.test(value)) return 'designer';
+  if (/(writer|documentation|communicator|communications|media)/.test(value)) return 'writer';
+  if (/(manager|director|executive|officer)/.test(value)) return 'manager';
+  if (/(lead|leader|coach)/.test(value)) return 'lead';
+  if (/(coordinator|administrator|planner|scheduler)/.test(value)) return 'coordinator';
+  if (/(specialist|adviser|advisor|associate)/.test(value)) return 'specialist';
+  if (/(consultant)/.test(value)) return 'consultant';
+  if (/(entrepreneur)/.test(value)) return 'entrepreneur';
+  if (/(operations|logistics|supply chain|quality|compliance|audit|records)/.test(value)) return 'operations';
+  if (/(policy|public administration|advocacy)/.test(value)) return 'policy';
+  if (/(sales|business development|partnerships|account)/.test(value)) return 'sales';
+  if (/(support|success|service|customer|healthcare|patient|hospitality)/.test(value)) return 'support';
+  if (/(learning|education|educator|academic|training)/.test(value)) return 'education';
+  if (/(strategist|innovation|growth|marketing|event|community|engagement)/.test(value)) return 'creative';
+  return 'default';
+}
+
+function roleDetail(career, locale, lens, skill, index) {
+  const focus = roleFocus[roleKey(career)][locale === 'hi' ? 1 : 0];
+  const challenges = locale === 'hi'
+    ? ['काम की गुणवत्ता को गति के साथ संतुलित करना', 'सही लोगों को समय पर शामिल करना', 'अनुमान की जगह प्रमाण साझा करना', 'सीख को स्पष्ट अगले कदम में बदलना']
+    : ['balancing quality with speed', 'bringing the right people in early', 'sharing evidence instead of assumptions', 'turning learning into a clear next step'];
+  const skills = locale === 'hi'
+    ? ['भूमिका की बुनियादी तकनीक', 'हितधारक संवाद', 'काम को प्राथमिकता देना', 'फीडबैक से सुधार']
+    : ['the core craft of the role', 'stakeholder communication', 'prioritising work', 'improving through feedback'];
+  return {
+    reason: locale === 'hi' ? `${career} में ${focus} शामिल है। ${lens} इस काम को खोजने का एक उपयोगी संकेत हो सकता है, अंतिम फैसला नहीं।` : `${career} involves ${focus}. ${lens} can be a useful reason to explore this work, not a final verdict.`,
+    demand: locale === 'hi' ? `${career} की मुख्य चुनौती: ${challenges[index % challenges.length]}।` : `${career} challenge: ${challenges[index % challenges.length]}.`,
+    skill: locale === 'hi' ? `अभ्यास करें: ${skills[(index + 1) % skills.length]} और ${skill}।` : `Practise: ${skills[(index + 1) % skills.length]} and ${skill}.`,
+  };
+}
+
+function guideContext(code, locale, careers, lens, skill) {
+  const hi = locale === 'hi';
+  const roleDetails = Object.fromEntries(careers.map((career, index) => [career, roleDetail(career, locale, lens, skill, index)]));
+  const settings = hi
+    ? [['स्वतंत्र काम', 'चेक-इन और स्पष्ट निर्णय-सीमाओं के साथ'], ['गहरी विशेषज्ञता', 'वास्तविक उपयोगकर्ता या ग्राहक संपर्क के साथ'], ['लचीली खोज', 'स्पष्ट डिलीवरी माइलस्टोन के साथ'], ['लंबी अवधि की सोच', 'छोटे फीडबैक चक्रों के साथ']]
+    : [['Independent work', 'with check-ins and clear decision boundaries'], ['Deep expertise', 'with real user or customer contact'], ['Flexible exploration', 'with visible delivery milestones'], ['Long-horizon thinking', 'with short feedback cycles']];
+  const stages = hi
+    ? [['छात्र', `एक छोटा ${careers[0]} अभ्यास बनाकर देखें कि रोज़ का काम कैसा लगता है।`], ['करियर की शुरुआत', `${careers[1]} में मूल कौशल और भरोसेमंद फीडबैक वाले काम खोजें।`], ['करियर बदलना', `${careers[2]} से जुड़ी कौशल-भाषा को मौजूदा अनुभव से जोड़ें।`], ['मैनेजर', `${careers[3]} जैसी भूमिकाओं में परिणाम के साथ लोगों की क्षमता भी बढ़ाएँ।`], ['फाउंडर या फ्रीलांसर', `${careers[4]} की मांग को छोटे, भुगतान-योग्य प्रयोग से जाँचें।`]]
+    : [['Student', `Build a small ${careers[0]} practice to learn what the daily work feels like.`], ['Early career', `Look for ${careers[1]} work with foundational craft and reliable feedback.`], ['Career changer', `Translate existing experience into the skill language of ${careers[2]}.`], ['Manager', `In roles like ${careers[3]}, grow people’s capacity as well as outcomes.`], ['Founder or freelancer', `Test demand for ${careers[4]} through a small, paid experiment.`]];
+  const industries = hi
+    ? [['टेक्नोलॉजी और प्लेटफॉर्म', `${careers[0]} और ${careers[1]} में उत्पाद, डेटा और सेवा की जटिलता देखें।`], ['रिसर्च और शिक्षा', `${careers[2]} और ${careers[3]} में प्रमाण, सीखना और दीर्घकालिक प्रभाव महत्वपूर्ण हो सकते हैं।`], ['फाइनेंस और एनालिटिक्स', `${careers[4]} और ${careers[5]} में निर्णय की गुणवत्ता और जवाबदेही को समझें।`], ['हेल्थकेयर और सार्वजनिक सेवा', `${careers[6]} और ${careers[7]} में भरोसा, नियम और लोगों पर असर जाँचें।`], ['संचार और अनुभव', `${careers[8]} और ${careers[9]} में दर्शक, संदेश और वास्तविक अनुभव का संतुलन देखें।`], ['संचालन और बदलाव', `${careers[10]} और ${careers[11]} में प्रक्रिया, साझेदार और कार्यान्वयन की जिम्मेदारी समझें।`]]
+    : [['Technology and platforms', `Explore how ${careers[0]} and ${careers[1]} handle product, data, and service complexity.`], ['Research and education', `In ${careers[2]} and ${careers[3]}, look at evidence, learning, and long-term impact.`], ['Finance and analytics', `For ${careers[4]} and ${careers[5]}, examine decision quality and accountability.`], ['Healthcare and public service', `In ${careers[6]} and ${careers[7]}, consider trust, regulation, and impact on people.`], ['Communication and experience', `With ${careers[8]} and ${careers[9]}, balance audience, message, and lived experience.`], ['Operations and change', `In ${careers[10]} and ${careers[11]}, understand process, partners, and implementation ownership.`]];
+  const skills = hi
+    ? [`${careers[0]} की मूल तकनीक को छोटे काम में लागू करें।`, `${careers[1]} से जुड़ी समस्या को गैर-विशेषज्ञ को स्पष्ट समझाएं।`, `${careers[2]} में उपयोगी प्रमाण और सीमाएँ अलग करना सीखें।`, `${careers[3]} के लिए फीडबैक लेकर अपने अगले संस्करण में दिखाएँ।`, `${skill} को एक सहयोगी के साथ अभ्यास करें।`]
+    : [`Apply the core craft of ${careers[0]} in a small piece of work.`, `Explain a ${careers[1]} problem clearly to a non-specialist.`, `Practise separating useful evidence from limitations in ${careers[2]}.`, `Get feedback on a ${careers[3]} deliverable and show it in the next version.`, `Practise ${skill} with a collaborator.`];
+  return { roleDetails, settings, stages, industries, skills, formats: hi ? [['रिमोट', `लिखित निर्णय और ${careers[0]} के लिए स्पष्ट हैंडऑफ उपयोगी हो सकते हैं।`], ['हाइब्रिड', `${careers[1]} में गहरे काम और संबंध-निर्माण के बीच जानबूझकर ताल बनाएं।`], ['ऑफिस', `${careers[2]} में त्वरित संदर्भ और सहयोग का उपयोग करें, बिना फोकस समय खोए।`]] : [['Remote', `Written decisions and clear handoffs can support ${careers[0]}.`], ['Hybrid', `Create an intentional rhythm between deep work and relationship building in ${careers[1]}.`], ['Office', `Use rapid context and collaboration in ${careers[2]} without losing focus time.`]] };
+}
+
 export function careerGuide(type, locale) {
   const code = type.toUpperCase();
   const profile = profiles[code];
@@ -57,5 +136,5 @@ export function careerGuide(type, locale) {
   const lens = locale === 'hi' ? lensHi : lensEn;
   const careers = locale === 'hi' ? careersHi : careersEn;
   const skill = locale === 'hi' ? skillHi : skillEn;
-  return { code, lens, careers, skill, title: labels[locale].title(code), description: labels[locale].description(code, lens), hero: locale === 'hi' ? `${code} के लिए ऐसे काम खोजें जहाँ ${lens} उपयोगी लग सकता है।` : `Explore work where ${lens} may feel useful and rewarding for an ${code}.`, disclaimer: labels[locale].disclaimer, faq: faq(locale, code, lens, skill) };
+  return { code, lens, careers, skill, ...guideContext(code, locale, careers, lens, skill), title: labels[locale].title(code), description: labels[locale].description(code, lens), hero: locale === 'hi' ? `${code} के लिए ऐसे काम खोजें जहाँ ${lens} उपयोगी लग सकता है।` : `Explore work where ${lens} may feel useful and rewarding for an ${code}.`, disclaimer: labels[locale].disclaimer, faq: faq(locale, code, lens, skill) };
 }
