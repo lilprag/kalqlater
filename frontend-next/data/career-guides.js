@@ -1,7 +1,7 @@
 import { TYPE_ORDER } from '../lib/personality';
 
 const profiles = {
-  INTJ: ['systems thinking, focused investigation and purposeful improvement', 'सिस्टम सोच, केंद्रित जाँच और उद्देश्यपूर्ण सुधार', ['Software Engineer', 'Data Scientist', 'Systems Architect', 'Cybersecurity Specialist', 'Research Scientist', 'Product Manager', 'Strategy Consultant', 'Financial Analyst', 'UX Researcher', 'Operations Strategist', 'Policy Researcher', 'Health Systems Analyst'], ['सॉफ्टवेयर इंजीनियर', 'डेटा साइंटिस्ट', 'सिस्टम्स आर्किटेक्ट', 'साइबरसिक्योरिटी विशेषज्ञ', 'रिसर्च साइंटिस्ट', 'प्रोडक्ट मैनेजर', 'स्ट्रैटेजी कंसल्टेंट', 'फाइनेंशियल एनालिस्ट', 'UX रिसर्चर', 'ऑपरेशंस स्ट्रैटेजिस्ट', 'पॉलिसी रिसर्चर', 'हेल्थ सिस्टम्स एनालिस्ट'], 'technical depth', 'तकनीकी गहराई'],
+  INTJ: ['strategic systems work, evidence-led inquiry and long-range improvement', 'रणनीतिक सिस्टम काम, प्रमाण-आधारित जाँच और दीर्घकालिक सुधार', ['Software Engineer', 'Data Scientist', 'Systems Architect', 'Cybersecurity Specialist', 'Research Scientist', 'Product Manager', 'Strategy Consultant', 'Financial Analyst', 'UX Researcher', 'Operations Strategist', 'Policy Researcher', 'Health Systems Analyst'], ['सॉफ्टवेयर इंजीनियर', 'डेटा साइंटिस्ट', 'सिस्टम्स आर्किटेक्ट', 'साइबरसिक्योरिटी विशेषज्ञ', 'रिसर्च साइंटिस्ट', 'प्रोडक्ट मैनेजर', 'स्ट्रैटेजी कंसल्टेंट', 'फाइनेंशियल एनालिस्ट', 'UX रिसर्चर', 'ऑपरेशंस स्ट्रैटेजिस्ट', 'पॉलिसी रिसर्चर', 'हेल्थ सिस्टम्स एनालिस्ट'], 'making complex technical choices clear to collaborators', 'जटिल तकनीकी विकल्पों को सहयोगियों के लिए स्पष्ट बनाना'],
   INTP: ['open-ended inquiry, careful analysis and independently testing ideas', 'खुले प्रश्नों की जाँच, सावधान विश्लेषण और विचारों को स्वतंत्र रूप से परखना', ['Research Scientist', 'Software Engineer', 'Data Analyst', 'Systems Analyst', 'Technical Writer', 'UX Researcher', 'Cybersecurity Researcher', 'Academic Researcher', 'Product Analyst', 'Science Communicator', 'Data Engineer', 'Policy Analyst'], ['रिसर्च साइंटिस्ट', 'सॉफ्टवेयर इंजीनियर', 'डेटा एनालिस्ट', 'सिस्टम्स एनालिस्ट', 'टेक्निकल राइटर', 'UX रिसर्चर', 'साइबरसिक्योरिटी रिसर्चर', 'अकादमिक रिसर्चर', 'प्रोडक्ट एनालिस्ट', 'साइंस कम्युनिकेटर', 'डेटा इंजीनियर', 'पॉलिसी एनालिस्ट'], 'turning complex ideas into clear explanations', 'जटिल विचारों को स्पष्ट समझ में बदलना'],
   ENTJ: ['organising ambitious work, making decisions and leading through outcomes', 'महत्त्वाकांक्षी काम को संगठित करना, निर्णय लेना और परिणामों के माध्यम से नेतृत्व करना', ['Operations Leader', 'Product Strategy Lead', 'Management Consultant', 'Entrepreneur', 'Finance Manager', 'Business Development Lead', 'Programme Director', 'Public Administration Manager', 'Sales Leader', 'Strategy Analyst', 'Project Executive', 'Healthcare Operations Manager'], ['ऑपरेशंस लीडर', 'प्रोडक्ट स्ट्रैटेजी लीड', 'मैनेजमेंट कंसल्टेंट', 'उद्यमी', 'फाइनेंस मैनेजर', 'बिज़नेस डेवलपमेंट लीड', 'प्रोग्राम डायरेक्टर', 'पब्लिक एडमिनिस्ट्रेशन मैनेजर', 'सेल्स लीडर', 'स्ट्रैटेजी एनालिस्ट', 'प्रोजेक्ट एग्जीक्यूटिव', 'हेल्थकेयर ऑपरेशंस मैनेजर'], 'delegation with context', 'संदर्भ के साथ जिम्मेदारी सौंपना'],
   ENTP: ['inventing possibilities, questioning assumptions and moving ideas into experiments', 'संभावनाएँ गढ़ना, मान्यताओं को चुनौती देना और विचारों को प्रयोगों में बदलना', ['Innovation Strategist', 'Product Discovery Lead', 'Entrepreneur', 'Sales Strategist', 'Creative Strategist', 'Management Consultant', 'Media Producer', 'Venture Analyst', 'Growth Strategist', 'Policy Innovator', 'UX Researcher', 'Partnerships Lead'], ['इनोवेशन स्ट्रैटेजिस्ट', 'प्रोडक्ट डिस्कवरी लीड', 'उद्यमी', 'सेल्स स्ट्रैटेजिस्ट', 'क्रिएटिव स्ट्रैटेजिस्ट', 'मैनेजमेंट कंसल्टेंट', 'मीडिया प्रोड्यूसर', 'वेंचर एनालिस्ट', 'ग्रोथ स्ट्रैटेजिस्ट', 'पॉलिसी इनोवेटर', 'UX रिसर्चर', 'पार्टनरशिप्स लीड'], 'finishing and follow-through', 'काम को पूरा करना और फॉलो-थ्रू'],
@@ -72,6 +72,29 @@ const roleFocus = {
   default: ['learning the daily craft, navigating stakeholders, and delivering useful work within real constraints', 'रोज़ के शिल्प को सीखना, हितधारकों के साथ काम करना और वास्तविक सीमाओं में उपयोगी काम देना'],
 };
 
+const roleProfiles = {
+  'Software Engineer': ['Builds, tests, and maintains software that has to remain understandable after the first release.', 'Balances delivery speed with code quality, testing coverage, and maintenance debt.', 'Practise writing clear interfaces, automated tests, and concise technical explanations.'],
+  'Data Scientist': ['Frames business or research questions as measurable hypotheses, then turns imperfect data into a defensible finding.', 'Avoids presenting a correlation, incomplete dataset, or model output as more certain than it is.', 'Practise experimental design, data cleaning, statistical reasoning, and communicating uncertainty.'],
+  'Systems Architect': ['Defines system boundaries, integration choices, reliability expectations, and the trade-offs that affect teams over time.', 'Makes long-horizon technical choices without losing sight of delivery constraints and changing product needs.', 'Practise architecture diagrams, non-functional requirements, and facilitation across engineering teams.'],
+  'Cybersecurity Specialist': ['Finds where systems can be misused, prioritises risk, and helps teams build practical safeguards into daily operations.', 'Translates threat severity into controls that people can realistically adopt and maintain.', 'Practise threat modelling, secure-design review, incident communication, and risk prioritisation.'],
+  'Product Manager': ['Connects customer problems, business constraints, and delivery choices into a focused product direction.', 'Makes trade-offs visible when every stakeholder sees a different urgent problem.', 'Practise customer discovery, roadmap framing, decision writing, and outcome measurement.'],
+  'Research Scientist': ['Designs a rigorous inquiry, evaluates evidence, and contributes findings that other researchers can scrutinise and build on.', 'Protects methodological quality while working within grant, publication, equipment, or time constraints.', 'Practise literature synthesis, study design, reproducible analysis, and research communication.'],
+  'Strategy Consultant': ['Diagnoses a client situation, compares credible options, and helps decision-makers act on a recommendation.', 'Earns trust quickly without oversimplifying local knowledge, politics, or implementation risk.', 'Practise problem structuring, stakeholder interviews, executive synthesis, and recommendation design.'],
+  'Financial Analyst': ['Builds financial views from operating data, assumptions, and scenarios to support a business decision.', 'Distinguishes a useful forecast from false precision when inputs or market conditions are unstable.', 'Practise financial modelling, scenario analysis, variance explanation, and decision-focused reporting.'],
+  'Policy Researcher': ['Connects evidence, lived impact, and policy design so a public decision can be examined before it is implemented.', 'Represents competing interests and uncertainty fairly in a context where evidence can be politicised.', 'Practise policy analysis, source evaluation, impact framing, and plain-language briefing.'],
+};
+const roleProfilesHi = {
+  'Software Engineer': ['ऐसा सॉफ्टवेयर बनाता, जाँचता और संभालता है जिसे पहली रिलीज़ के बाद भी समझा जा सके।', 'डिलीवरी की गति को कोड गुणवत्ता, टेस्ट कवरेज और रखरखाव ऋण के साथ संतुलित करना होता है।', 'स्पष्ट इंटरफेस, ऑटोमेटेड टेस्ट और संक्षिप्त तकनीकी व्याख्या का अभ्यास करें।'],
+  'Data Scientist': ['व्यावसायिक या शोध प्रश्न को मापने योग्य परिकल्पना में बदलता है और अधूरे डेटा से भरोसेमंद निष्कर्ष निकालता है।', 'सहसंबंध, अधूरे डेटा या मॉडल आउटपुट को जितना निश्चित है उससे अधिक निश्चित बताने से बचना होता है।', 'प्रयोग-डिज़ाइन, डेटा सफाई, सांख्यिकीय तर्क और अनिश्चितता समझाने का अभ्यास करें।'],
+  'Systems Architect': ['सिस्टम की सीमाएँ, इंटीग्रेशन विकल्प, विश्वसनीयता अपेक्षाएँ और दीर्घकालिक समझौते तय करता है।', 'बदलती प्रोडक्ट जरूरत और डिलीवरी सीमाओं को खोए बिना लंबी अवधि के तकनीकी निर्णय लेने होते हैं।', 'आर्किटेक्चर डायग्राम, गैर-कार्यात्मक आवश्यकताएँ और इंजीनियरिंग टीमों के बीच फैसिलिटेशन का अभ्यास करें।'],
+  'Cybersecurity Specialist': ['सिस्टम के दुरुपयोग के रास्ते खोजता, जोखिम को प्राथमिकता देता और रोजमर्रा के काम में व्यावहारिक सुरक्षा उपाय जोड़ता है।', 'खतरे की गंभीरता को ऐसे नियंत्रणों में बदलना होता है जिन्हें लोग अपनाकर बनाए रख सकें।', 'थ्रेट मॉडलिंग, सुरक्षित डिज़ाइन समीक्षा, घटना-संवाद और जोखिम प्राथमिकता का अभ्यास करें।'],
+  'Product Manager': ['ग्राहक समस्या, व्यवसायिक सीमा और डिलीवरी चुनाव को एक केंद्रित प्रोडक्ट दिशा में जोड़ता है।', 'जब हर हितधारक अलग जरूरी समस्या देखता है, तब समझौते स्पष्ट करने होते हैं।', 'ग्राहक खोज, रोडमैप फ्रेमिंग, निर्णय लिखने और परिणाम मापने का अभ्यास करें।'],
+  'Research Scientist': ['कठोर जाँच बनाता, प्रमाण का मूल्यांकन करता और ऐसे निष्कर्ष देता है जिन्हें दूसरे शोधकर्ता परख सकें।', 'अनुदान, प्रकाशन, उपकरण या समय की सीमाओं में पद्धति की गुणवत्ता बचानी होती है।', 'साहित्य-संश्लेषण, अध्ययन डिजाइन, दोहराने योग्य विश्लेषण और शोध-संवाद का अभ्यास करें।'],
+  'Strategy Consultant': ['क्लाइंट की स्थिति समझता, विश्वसनीय विकल्पों की तुलना करता और निर्णयकर्ताओं को सिफारिश पर काम करने में मदद देता है।', 'स्थानीय ज्ञान, राजनीति या कार्यान्वयन जोखिम को सरल बनाए बिना जल्दी भरोसा बनाना होता है।', 'समस्या संरचना, हितधारक साक्षात्कार, कार्यकारी सार और सिफारिश डिजाइन का अभ्यास करें।'],
+  'Financial Analyst': ['ऑपरेटिंग डेटा, मान्यताओं और परिदृश्यों से वित्तीय दृष्टि बनाकर व्यवसायिक निर्णय को समर्थन देता है।', 'अस्थिर इनपुट या बाज़ार में उपयोगी पूर्वानुमान और झूठी सटीकता में अंतर करना होता है।', 'वित्तीय मॉडलिंग, परिदृश्य विश्लेषण, अंतर समझाने और निर्णय-केंद्रित रिपोर्टिंग का अभ्यास करें।'],
+  'Policy Researcher': ['प्रमाण, लोगों पर असर और नीति-डिज़ाइन को जोड़ता है ताकि सार्वजनिक निर्णय लागू होने से पहले जाँचा जा सके।', 'ऐसे संदर्भ में प्रतिस्पर्धी हितों और अनिश्चितता को निष्पक्ष रखना होता है जहाँ प्रमाण भी राजनीतिक हो सकता है।', 'नीति विश्लेषण, स्रोत मूल्यांकन, प्रभाव फ्रेमिंग और सरल ब्रीफिंग का अभ्यास करें।'],
+};
+
 function roleKey(career) {
   const value = career.toLowerCase();
   if (/(engineer|technician|technical|automation|network|cybersecurity|mechanical)/.test(value)) return 'engineer';
@@ -95,7 +118,9 @@ function roleKey(career) {
   return 'default';
 }
 
-function roleDetail(career, locale, lens, skill, index) {
+function roleDetail(career, locale, index, canonicalCareer = career) {
+  const exact = (locale === 'hi' ? roleProfilesHi : roleProfiles)[canonicalCareer];
+  if (exact) return { reason: exact[0], demand: exact[1], skill: exact[2] };
   const focus = roleFocus[roleKey(career)][locale === 'hi' ? 1 : 0];
   const challenges = locale === 'hi'
     ? ['काम की गुणवत्ता को गति के साथ संतुलित करना', 'सही लोगों को समय पर शामिल करना', 'अनुमान की जगह प्रमाण साझा करना', 'सीख को स्पष्ट अगले कदम में बदलना']
@@ -104,15 +129,15 @@ function roleDetail(career, locale, lens, skill, index) {
     ? ['भूमिका की बुनियादी तकनीक', 'हितधारक संवाद', 'काम को प्राथमिकता देना', 'फीडबैक से सुधार']
     : ['the core craft of the role', 'stakeholder communication', 'prioritising work', 'improving through feedback'];
   return {
-    reason: locale === 'hi' ? `${career} में ${focus} शामिल है। ${lens} इस काम को खोजने का एक उपयोगी संकेत हो सकता है, अंतिम फैसला नहीं।` : `${career} involves ${focus}. ${lens} can be a useful reason to explore this work, not a final verdict.`,
+    reason: locale === 'hi' ? `${career} में ${focus} शामिल है। इस दिशा को वास्तविक भूमिका, अनुभव और अवसर के साथ जाँचें।` : `${career} involves ${focus}. Evaluate this direction against the actual role, experience, and opportunity.`,
     demand: locale === 'hi' ? `${career} की मुख्य चुनौती: ${challenges[index % challenges.length]}।` : `${career} challenge: ${challenges[index % challenges.length]}.`,
-    skill: locale === 'hi' ? `अभ्यास करें: ${skills[(index + 1) % skills.length]} और ${skill}।` : `Practise: ${skills[(index + 1) % skills.length]} and ${skill}.`,
+    skill: locale === 'hi' ? `${career} के लिए अभ्यास करें: ${skills[(index + 1) % skills.length]}।` : `For ${career}, practise: ${skills[(index + 1) % skills.length]}.`,
   };
 }
 
-function guideContext(code, locale, careers, lens, skill) {
+function guideContext(code, locale, careers, lens, skill, canonicalCareers = careers) {
   const hi = locale === 'hi';
-  const roleDetails = Object.fromEntries(careers.map((career, index) => [career, roleDetail(career, locale, lens, skill, index)]));
+  const roleDetails = Object.fromEntries(careers.map((career, index) => [career, roleDetail(career, locale, index, canonicalCareers[index]) ]));
   const settings = hi
     ? [['स्वतंत्र काम', 'चेक-इन और स्पष्ट निर्णय-सीमाओं के साथ'], ['गहरी विशेषज्ञता', 'वास्तविक उपयोगकर्ता या ग्राहक संपर्क के साथ'], ['लचीली खोज', 'स्पष्ट डिलीवरी माइलस्टोन के साथ'], ['लंबी अवधि की सोच', 'छोटे फीडबैक चक्रों के साथ']]
     : [['Independent work', 'with check-ins and clear decision boundaries'], ['Deep expertise', 'with real user or customer contact'], ['Flexible exploration', 'with visible delivery milestones'], ['Long-horizon thinking', 'with short feedback cycles']];
@@ -136,5 +161,5 @@ export function careerGuide(type, locale) {
   const lens = locale === 'hi' ? lensHi : lensEn;
   const careers = locale === 'hi' ? careersHi : careersEn;
   const skill = locale === 'hi' ? skillHi : skillEn;
-  return { code, lens, careers, skill, ...guideContext(code, locale, careers, lens, skill), title: labels[locale].title(code), description: labels[locale].description(code, lens), hero: locale === 'hi' ? `${code} के लिए ऐसे काम खोजें जहाँ ${lens} उपयोगी लग सकता है।` : `Explore work where ${lens} may feel useful and rewarding for an ${code}.`, disclaimer: labels[locale].disclaimer, faq: faq(locale, code, lens, skill) };
+  return { code, lens, careers, skill, ...guideContext(code, locale, careers, lens, skill, careersEn), title: labels[locale].title(code), description: labels[locale].description(code, lens), hero: locale === 'hi' ? `${code} के लिए ऐसे काम खोजें जहाँ ${lens} उपयोगी लग सकता है।` : `Explore work where ${lens} may feel useful and rewarding for an ${code}.`, disclaimer: labels[locale].disclaimer, faq: faq(locale, code, lens, skill) };
 }

@@ -26,6 +26,7 @@ for (const locale of ['en', 'hi']) {
     assert(roles.length >= 12, `${locale}/${type}: expected role-specific career entries`);
     assert(unique(roles.map(([, reason]) => reason)), `${locale}/${type}: career reasons repeat within one guide`);
     assert(unique(roles.map(([, , demand]) => demand)), `${locale}/${type}: career challenges repeat within one guide`);
+    assert(unique(roles.map(([, , , skill]) => skill)), `${locale}/${type}: career skills repeat within one guide`);
     assert(!roleSection.includes(locale === 'hi' ? 'जुड़े काम में योगदान देने की दिशा' : 'A direction for contributing through'), `${locale}/${type}: old type-level role fallback remains`);
   }
 }
