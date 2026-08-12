@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { legacyResponseHeaders } from './lib/legacy-response-headers';
 
 const locales = new Set(['en', 'hi']);
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
@@ -65,15 +66,8 @@ async function noindexLegacyApplicationResponse(request) {
   const origin = process.env.LEGACY_CRA_ORIGIN?.replace(/\/$/, '');
   if (!origin) return NextResponse.next();
   const destination = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, origin);
-  const upstream = await fetch(destination, { method: request.method, headers: request.headers, cache: 'no-store' });
-  // fetch() exposes a decoded response body. Do not forward a compression or
-  // length header for the original encoded payload, or browsers will attempt
-  // to decode plain HTML again and render a blank legacy-auth page.
-  const headers = new Headers(upstream.headers);
-  headers.delete('content-encoding');
-  headers.delete('content-length');
-  headers.delete('transfer-encoding');
-  const response = new NextResponse(upstream.body, { status: upstream.status, headers });
+  const upstream = await fetch(destination, { method: request.method, headers: request.headers, cache: 'no-store', redirect: 'manual' });
+  const response = new NextResponse(upstream.body, { status: upstream.status, headers: legacyResponseHeaders(upstream.headers) });
   response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   return response;
 }
