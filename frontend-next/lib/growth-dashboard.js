@@ -10,6 +10,15 @@ const analyzerPath = {
 
 export const FUTURE_INSIGHTS = ['conflict', 'leadership', 'learning'];
 
+// Release capabilities are explicit rather than inferred from a route at
+// runtime. A future Decision release can enable its card without changing the
+// dashboard's stored-result format.
+export const INSIGHT_AVAILABILITY = {
+  personality: { available: true },
+  communication: { available: true },
+  decision: { available: false },
+};
+
 export function readJson(storage, key) {
   try { return JSON.parse(storage.getItem(key) || 'null'); } catch { return null; }
 }
@@ -71,7 +80,7 @@ function personalityFromBrowser(locale, storage) {
 export async function loadGrowthDashboard(locale, storage = window.sessionStorage) {
   const [communicationResult, decisionResult] = await Promise.allSettled([
     resultFromSession('communication', locale, storage),
-    resultFromSession('decision', locale, storage),
+    INSIGHT_AVAILABILITY.decision.available ? resultFromSession('decision', locale, storage) : Promise.resolve(null),
   ]);
   // A stale or unavailable assessment result must not hide the user's other
   // locally available insights (for example, their existing personality type).
@@ -87,6 +96,5 @@ export async function loadGrowthDashboard(locale, storage = window.sessionStorag
 export function nextDashboardRecommendation(completedTypes) {
   if (!completedTypes.includes('personality')) return 'personality';
   if (!completedTypes.includes('communication')) return 'communication';
-  if (!completedTypes.includes('decision')) return 'decision';
   return 'community';
 }
