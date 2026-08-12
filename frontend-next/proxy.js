@@ -66,7 +66,14 @@ async function noindexLegacyApplicationResponse(request) {
   if (!origin) return NextResponse.next();
   const destination = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, origin);
   const upstream = await fetch(destination, { method: request.method, headers: request.headers, cache: 'no-store' });
-  const response = new NextResponse(upstream.body, { status: upstream.status, headers: upstream.headers });
+  // fetch() exposes a decoded response body. Do not forward a compression or
+  // length header for the original encoded payload, or browsers will attempt
+  // to decode plain HTML again and render a blank legacy-auth page.
+  const headers = new Headers(upstream.headers);
+  headers.delete('content-encoding');
+  headers.delete('content-length');
+  headers.delete('transfer-encoding');
+  const response = new NextResponse(upstream.body, { status: upstream.status, headers });
   response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   return response;
 }
