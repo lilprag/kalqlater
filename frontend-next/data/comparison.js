@@ -20,6 +20,7 @@ const hindiPairs = {
   'strategist-steward': ['मज़बूत मेल', 'साझा मानक और अलग समय-दृष्टि इस गठजोड़ को स्थिर बनाते हैं।', 'दोनों सही तरीके पर अधिक अड़ सकते हैं।', 'योजना तय करने से पहले एक प्रयोगात्मक विकल्प आमंत्रित करें।'],
   same: ['मज़बूत मेल', 'साझा प्रवृत्तियाँ भरोसा और गति को आसान बनाती हैं।', 'समान अंधे स्थान अनदेखे रह सकते हैं।', 'दृष्टि व्यापक रखने के लिए अनुभवों के अंतर का उपयोग करें।'],
 };
+// This canonical order matches the complete authored pair-content matrix.
 const order = ['connector','catalyst','strategist','steward'];
 const pairKey = (a,b) => a === b ? 'same' : [a,b].sort((x,y) => order.indexOf(x)-order.indexOf(y)).join('-');
 // A/B decision descriptions are authored at the type level. Group data may shape
@@ -48,10 +49,15 @@ const businessLabels = {
 };
 const labelFor = (value, hindi) => {
   const translations = { 'Exceptional Match':'असाधारण मेल', 'Strong Match':'मज़बूत मेल', 'Complementary Match':'पूरक मेल', 'Growth Match':'विकास मेल', 'Challenging Match':'चुनौतीपूर्ण मेल', 'Intense Match':'गहन मेल' };
-  return hindi ? translations[value] || value : value;
+  if (!hindi) return value;
+  if (Object.values(translations).includes(value)) return value;
+  const translated = translations[value];
+  if (!translated) throw new Error(`Missing authored Hindi comparison label: ${value}`);
+  return translated;
 };
 export function getRelationshipIntelligence(typeA, typeB, lang = 'en') {
-  const a=GROUPS[typeA], b=GROUPS[typeB], key=pairKey(a,b); const text=(lang==='hi'?hindiPairs:pairs)[key] || (lang==='hi'?hindiPairs.same:pairs.same);
+  const a=GROUPS[typeA], b=GROUPS[typeB], key=pairKey(a,b); const text=(lang==='hi'?hindiPairs:pairs)[key];
+  if (!text) throw new Error(`Missing authored comparison content for ${typeA}/${typeB}/${lang}`);
   const [label, attraction, conflict, advice] = text;
   const hindi=lang==='hi';
   const aLens = typePatterns[typeA];

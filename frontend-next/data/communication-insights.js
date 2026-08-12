@@ -59,4 +59,8 @@ export const COMMUNICATION_INSIGHTS = {
   },
 };
 
-export function insightsCopy(locale) { return COMMUNICATION_INSIGHTS[locale] || COMMUNICATION_INSIGHTS.en; }
+export function insightsCopy(locale) {
+  const copy = COMMUNICATION_INSIGHTS[locale];
+  if (!copy) throw new Error(`Missing authored Communication Insights locale: ${locale}`);
+  return copy;
+}

@@ -69,7 +69,6 @@ const roleFocus = {
   support: ['listening for the real need, resolving issues carefully, and improving the service from recurring feedback', 'वास्तविक जरूरत सुनना, मुद्दे सावधानी से सुलझाना और बार-बार के फीडबैक से सेवा बेहतर करना'],
   education: ['turning knowledge into a learnable sequence, checking understanding, and adapting for different learners', 'ज्ञान को सीखने योग्य क्रम में बदलना, समझ जाँचना और अलग सीखने वालों के लिए ढलना'],
   creative: ['developing a point of view, shaping it for an audience, and revising without losing the original idea', 'अपना दृष्टिकोण बनाना, उसे दर्शक के लिए ढालना और मूल विचार खोए बिना संशोधित करना'],
-  default: ['learning the daily craft, navigating stakeholders, and delivering useful work within real constraints', 'रोज़ के शिल्प को सीखना, हितधारकों के साथ काम करना और वास्तविक सीमाओं में उपयोगी काम देना'],
 };
 
 const roleProfiles = {
@@ -97,31 +96,31 @@ const roleProfilesHi = {
 
 function roleKey(career) {
   const value = career.toLowerCase();
-  if (/(engineer|technician|technical|automation|network|cybersecurity|mechanical)/.test(value)) return 'engineer';
+  if (/(engineer|technician|technical|automation|network|cybersecurity|mechanical|tester)/.test(value)) return 'engineer';
   if (/(scientist)/.test(value)) return 'scientist';
   if (/(analyst)/.test(value)) return 'analyst';
   if (/(researcher|research|forensic)/.test(value)) return 'researcher';
   if (/(designer|illustrator|photography|visual|craft|creator|producer|presenter|brand)/.test(value)) return 'designer';
   if (/(writer|documentation|communicator|communications|media)/.test(value)) return 'writer';
-  if (/(manager|director|executive|officer)/.test(value)) return 'manager';
+  if (/(manager|director|executive|officer|recruitment)/.test(value)) return 'manager';
   if (/(lead|leader|coach)/.test(value)) return 'lead';
   if (/(coordinator|administrator|planner|scheduler)/.test(value)) return 'coordinator';
-  if (/(specialist|adviser|advisor|associate)/.test(value)) return 'specialist';
+  if (/(specialist|adviser|advisor|associate|assistant)/.test(value)) return 'specialist';
   if (/(consultant)/.test(value)) return 'consultant';
   if (/(entrepreneur)/.test(value)) return 'entrepreneur';
   if (/(operations|logistics|supply chain|quality|compliance|audit|records)/.test(value)) return 'operations';
   if (/(policy|public administration|advocacy)/.test(value)) return 'policy';
-  if (/(sales|business development|partnerships|account)/.test(value)) return 'sales';
+  if (/(sales|business development|partnerships|account|demonstrator)/.test(value)) return 'sales';
   if (/(support|success|service|customer|healthcare|patient|hospitality)/.test(value)) return 'support';
   if (/(learning|education|educator|academic|training)/.test(value)) return 'education';
-  if (/(strategist|innovation|growth|marketing|event|community|engagement)/.test(value)) return 'creative';
-  return 'default';
+  if (/(strategist|innovation|growth|marketing|marketer|event|community|engagement|builder)/.test(value)) return 'creative';
+  throw new Error(`Missing authored career role family: ${career}`);
 }
 
 function roleDetail(career, locale, index, canonicalCareer = career) {
   const exact = (locale === 'hi' ? roleProfilesHi : roleProfiles)[canonicalCareer];
   if (exact) return { reason: exact[0], demand: exact[1], skill: exact[2] };
-  const focus = roleFocus[roleKey(career)][locale === 'hi' ? 1 : 0];
+  const focus = roleFocus[roleKey(canonicalCareer)][locale === 'hi' ? 1 : 0];
   const challenges = locale === 'hi'
     ? ['काम की गुणवत्ता को गति के साथ संतुलित करना', 'सही लोगों को समय पर शामिल करना', 'अनुमान की जगह प्रमाण साझा करना', 'सीख को स्पष्ट अगले कदम में बदलना']
     : ['balancing quality with speed', 'bringing the right people in early', 'sharing evidence instead of assumptions', 'turning learning into a clear next step'];
