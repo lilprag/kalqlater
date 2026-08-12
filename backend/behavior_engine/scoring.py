@@ -49,11 +49,11 @@ def _explanation(locale: str, name: str, direction: DirectionBand, confidence: C
         )
     if locale == "hi":
         if confidence == ConfidenceBand.CLEAR:
-            return (f"इन स्थितियों में {name} आपकी बातचीत में अधिक स्पष्ट दिखता है।" if direction == DirectionBand.HIGHER else f"इन स्थितियों में {name} आपकी बातचीत में अपेक्षाकृत कम दिखता है।", None)
+            return (f"इन स्थितियों में {name} अधिक स्पष्ट दिखता है।" if direction == DirectionBand.HIGHER else f"इन स्थितियों में {name} अपेक्षाकृत कम दिखता है।", None)
         return (f"आपके उत्तरों में {name} अधिक स्पष्ट होने के संकेत मिलते हैं।" if direction == DirectionBand.HIGHER else f"आपके उत्तरों में {name} अपेक्षाकृत कम होने के संकेत मिलते हैं।", None)
-    tendency = "a stronger" if direction == DirectionBand.HIGHER else "a lighter"
-    opening = "Across these scenarios, you often show" if confidence == ConfidenceBand.CLEAR else "Your responses suggest"
-    return (f"{opening} {tendency} {name} tendency.", None)
+    tendency = "more present" if direction == DirectionBand.HIGHER else "less present"
+    opening = "Across these situations," if confidence == ConfidenceBand.CLEAR else "Your responses suggest that"
+    return (f"{opening} {name} is {tendency}.", None)
 
 
 def calculate_dimension_results(

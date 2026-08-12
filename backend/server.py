@@ -2,7 +2,7 @@ from fastapi import FastAPI, APIRouter, HTTPException, Request, Depends, Header
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
-from pymongo import ReturnDocument
+from pymongo import MongoClient, ReturnDocument
 from pymongo.errors import DuplicateKeyError
 import os
 import logging
@@ -20,6 +20,8 @@ import html
 import requests
 from datetime import datetime, timezone
 from behavior_engine.api import create_engine_router
+from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
+from behavior_engine.service import AssessmentService
 
 
 ROOT_DIR = Path(__file__).parent
@@ -29,6 +31,12 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+behavior_client = MongoClient(mongo_url, connect=False)
+behavior_db = behavior_client[os.environ['DB_NAME']]
+behavior_engine = AssessmentService(
+    session_repository=MongoAssessmentSessionRepository(behavior_db.behavior_assessment_sessions),
+    result_repository=MongoAnalyzerResultRepository(behavior_db.behavior_analyzer_results),
+)
 
 app = FastAPI(title="KalQLater API")
 api_router = APIRouter(prefix="/api")
@@ -821,8 +829,8 @@ async def submit_contact(payload: ContactSubmission, request: Request):
     return {"message": "Thank you for contacting us. We'll get back to you soon.", "delivered": True}
 
 
-# The behavior engine is self-contained and uses no MongoDB state in this sprint.
-api_router.include_router(create_engine_router())
+# Assessment sessions must survive process changes between the start and session routes.
+api_router.include_router(create_engine_router(behavior_engine))
 app.include_router(api_router)
 
 CORS_ORIGINS = tuple(
@@ -854,10 +862,13 @@ logger = logging.getLogger(__name__)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+    behavior_client.close()
 
 
 @app.on_event("startup")
 async def initialize_community_indexes():
+    behavior_db.behavior_assessment_sessions.create_index("expires_at", expireAfterSeconds=0)
+    behavior_db.behavior_analyzer_results.create_index("session_id", unique=True)
     await db.community_users.create_index("email", unique=True)
     await db.community_profiles.create_index("owner_id", unique=True)
     await db.community_profiles.create_index("username", unique=True)

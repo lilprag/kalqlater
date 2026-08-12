@@ -8,11 +8,58 @@ from fastapi.testclient import TestClient
 from behavior_engine.api import create_engine_router
 from behavior_engine.content import ContentNotAvailableError, FileAnalyzerContentRepository, InvalidAnalyzerContentError
 from behavior_engine.models import AssessmentResponseInput, ConfidenceBand, PersonalityContext, SessionStatus
+from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
 from behavior_engine.service import AssessmentError, AssessmentService, SessionConflictError, SessionExpiredError, SessionNotFoundError
 
 
 def service(ttl=timedelta(hours=1)):
     return AssessmentService(allow_test_drafts=True, session_ttl=ttl)
+
+
+class FakeMongoCollection:
+    """Small Mongo-shaped store for the durable session regression test."""
+
+    def __init__(self):
+        self.documents = {}
+
+    def replace_one(self, query, document, upsert=False):
+        assert upsert and query["_id"] == document["_id"]
+        self.documents[document["_id"]] = dict(document)
+
+    def find_one(self, query):
+        document = self.documents.get(query["_id"])
+        return dict(document) if document else None
+
+
+def test_durable_repositories_keep_every_published_insight_session_available_across_service_instances():
+    sessions = FakeMongoCollection()
+    results = FakeMongoCollection()
+    first = AssessmentService(
+        session_repository=MongoAssessmentSessionRepository(sessions),
+        result_repository=MongoAnalyzerResultRepository(results),
+    )
+    for slug in ("communication-style", "conflict-insights", "leadership-insights", "learning-insights"):
+        created = first.create_session(slug, "en")
+        # Mirrors the next browser request landing on a fresh Render process.
+        second = AssessmentService(
+            session_repository=MongoAssessmentSessionRepository(sessions),
+            result_repository=MongoAnalyzerResultRepository(results),
+        )
+        restored = second.get_next_scenario(created.id, created.access_token)
+        assert restored and restored["scenario_id"] == created.scenario_ids[0]
+        definition = second.get_analyzer_definition(slug)
+        for index, scenario in enumerate(definition.scenarios):
+            second.submit_response(
+                created.id,
+                created.access_token,
+                AssessmentResponseInput(scenario_id=scenario.id, option_id="a", idempotency_key=f"{slug}-{index}"),
+            )
+        snapshot = second.complete_session(created.id, created.access_token)
+        third = AssessmentService(
+            session_repository=MongoAssessmentSessionRepository(sessions),
+            result_repository=MongoAnalyzerResultRepository(results),
+        )
+        assert third.get_result(snapshot.id, created.access_token).result.analyzer_slug == slug
 
 
 def complete_with_option(service_instance, option_id="a", locale="en", personality=None):
