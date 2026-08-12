@@ -258,6 +258,12 @@ class SelectedInterpretation(BaseModel):
     text: str
 
 
+class EvidenceMoment(BaseModel):
+    id: str
+    title: str
+    observation: str
+
+
 class AnalyzerResult(BaseModel):
     analyzer_slug: str
     analyzer_version: str
@@ -270,6 +276,7 @@ class AnalyzerResult(BaseModel):
     practical_suggestions: List[Recommendation] = Field(min_length=3)
     weekly_challenge: Optional[ChallengeDefinition] = None
     interpretations: List[SelectedInterpretation]
+    evidence_moments: List[EvidenceMoment] = Field(default_factory=list)
     personality_note: Optional[str] = None
     disclaimer: str
 

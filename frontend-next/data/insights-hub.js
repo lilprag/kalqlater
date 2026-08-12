@@ -8,6 +8,11 @@ export const insightsHubCopy = {
     explore: 'Explore Communication Insights',
     liveTitle: 'Communication Insights',
     liveBody: 'A behavioural reflection tool for noticing how you express ideas, listen, handle disagreement, and adapt in everyday situations.',
+    conflictTitle: 'Conflict Insights',
+    conflictBody: 'A reflective space for noticing how you approach tension, boundaries, repair, and shared problem-solving.',
+    conflictExplore: 'Explore Conflict Insights',
+    leadershipTitle: 'Leadership Insights', leadershipBody: 'Reflect on how you create direction, share ownership, and repair impact.', leadershipExplore: 'Explore Leadership Insights',
+    learningTitle: 'Learning Insights', learningBody: 'Reflect on how you approach understanding, practice, feedback, and revision.', learningExplore: 'Explore Learning Insights',
     plannedTitle: 'More ways to reflect are taking shape',
     plannedBody: 'These future tools are being designed as reflective guidance—not diagnoses, scores, or predictions.',
     planned: [
@@ -28,6 +33,11 @@ export const insightsHubCopy = {
     explore: 'कम्युनिकेशन इनसाइट्स देखें',
     liveTitle: 'कम्युनिकेशन इनसाइट्स',
     liveBody: 'रोज़मर्रा की स्थितियों में आप विचार कैसे व्यक्त करते हैं, सुनते हैं, असहमति संभालते हैं और ढलते हैं—इस पर विचार करने का व्यवहारिक साधन।',
+    conflictTitle: 'कन्फ्लिक्ट इनसाइट्स',
+    conflictBody: 'तनाव, सीमाओं, संबंध सुधार और मिलकर समाधान तक अपने तरीके पर विचार करने की जगह।',
+    conflictExplore: 'कन्फ्लिक्ट इनसाइट्स देखें',
+    leadershipTitle: 'लीडरशिप इनसाइट्स', leadershipBody: 'दिशा तय करने, जिम्मेदारी साझा करने और असर सुधारने के अपने तरीके पर विचार करें।', leadershipExplore: 'लीडरशिप इनसाइट्स देखें',
+    learningTitle: 'लर्निंग इनसाइट्स', learningBody: 'समझ, अभ्यास, फीडबैक और संशोधन के अपने तरीके पर विचार करें।', learningExplore: 'लर्निंग इनसाइट्स देखें',
     plannedTitle: 'आत्मचिंतन के और तरीके तैयार हो रहे हैं',
     plannedBody: 'ये आने वाले साधन आत्मचिंतन मार्गदर्शन के लिए हैं—न निदान, स्कोर या भविष्यवाणी के लिए।',
     planned: [

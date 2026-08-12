@@ -1,22 +1,27 @@
 const SESSION_KEYS = {
   communication: 'kalqlater.communication-insights.session',
-  decision: 'kalqlater.decision-style.session',
+  conflict: 'kalqlater.conflict-insights.session',
+  leadership: 'kalqlater.leadership-insights.session',
+  learning: 'kalqlater.learning-insights.session',
 };
 
 const analyzerPath = {
   communication: 'insights/communication',
-  decision: 'insights/decision',
+  conflict: 'insights/conflict',
+  leadership: 'insights/leadership',
+  learning: 'insights/learning',
 };
 
-export const FUTURE_INSIGHTS = ['conflict', 'leadership', 'learning'];
+export const FUTURE_INSIGHTS = [];
 
-// Release capabilities are explicit rather than inferred from a route at
-// runtime. A future Decision release can enable its card without changing the
-// dashboard's stored-result format.
+// Release availability is explicit. A stored private session must never make
+// an unpublished insight look public simply because its route exists locally.
 export const INSIGHT_AVAILABILITY = {
   personality: { available: true },
   communication: { available: true },
-  decision: { available: false },
+  conflict: { available: true },
+  leadership: { available: true },
+  learning: { available: true },
 };
 
 export function readJson(storage, key) {
@@ -36,7 +41,9 @@ async function resultFromSession(type, locale, storage) {
   if (!response.ok) return null;
   const payload = await response.json();
   const result = payload?.result;
-  if (!result?.analyzer_slug || !payload?.result_id || !payload?.created_at) return null;
+  // A completed insight is only shown when its authored result is intact. This
+  // prevents the dashboard from inventing an empty substitute for missing copy.
+  if (!result?.analyzer_slug || !result?.summary || !payload?.result_id || !payload?.created_at) return null;
   return {
     id: `${type}:${payload.result_id}`,
     type,
@@ -45,8 +52,8 @@ async function resultFromSession(type, locale, storage) {
     language: result.locale,
     confidence: result.dimension_results?.some((item) => item.confidence === 'clear-pattern') ? 'clear' : 'reflective',
     resultId: payload.result_id,
-    title: type === 'communication' ? (locale === 'hi' ? 'कम्युनिकेशन इनसाइट्स' : 'Communication Insights') : (locale === 'hi' ? 'डिसीजन स्टाइल' : 'Decision Style'),
-    summary: result.summary || '',
+    title: type === 'communication' ? (locale === 'hi' ? 'कम्युनिकेशन इनसाइट्स' : 'Communication Insights') : type === 'conflict' ? (locale === 'hi' ? 'कन्फ्लिक्ट इनसाइट्स' : 'Conflict Insights') : type === 'leadership' ? (locale === 'hi' ? 'लीडरशिप इनसाइट्स' : 'Leadership Insights') : (locale === 'hi' ? 'लर्निंग इनसाइट्स' : 'Learning Insights'),
+    summary: result.summary,
     resultUrl: `/${locale}/${analyzerPath[type]}/result/${payload.result_id}`,
     retakeUrl: `/${locale}/${analyzerPath[type]}/start`,
     weeklyExperiment: result.weekly_challenge || null,
@@ -78,16 +85,20 @@ function personalityFromBrowser(locale, storage) {
  * It does not invent timestamps, completion states, experiments, or cross-insight scores.
  */
 export async function loadGrowthDashboard(locale, storage = window.sessionStorage) {
-  const [communicationResult, decisionResult] = await Promise.allSettled([
+  const [communicationResult, conflictResult, leadershipResult, learningResult] = await Promise.allSettled([
     resultFromSession('communication', locale, storage),
-    INSIGHT_AVAILABILITY.decision.available ? resultFromSession('decision', locale, storage) : Promise.resolve(null),
+    resultFromSession('conflict', locale, storage),
+    resultFromSession('leadership', locale, storage),
+    resultFromSession('learning', locale, storage),
   ]);
   // A stale or unavailable assessment result must not hide the user's other
   // locally available insights (for example, their existing personality type).
   const communication = communicationResult.status === 'fulfilled' ? communicationResult.value : null;
-  const decision = decisionResult.status === 'fulfilled' ? decisionResult.value : null;
+  const conflict = conflictResult.status === 'fulfilled' ? conflictResult.value : null;
+  const leadership = leadershipResult.status === 'fulfilled' ? leadershipResult.value : null;
+  const learning = learningResult.status === 'fulfilled' ? learningResult.value : null;
   const personality = personalityFromBrowser(locale, window.localStorage);
-  const completed = [personality, communication, decision].filter(Boolean);
+  const completed = [personality, communication, conflict, leadership, learning].filter(Boolean);
   const dated = completed.filter((item) => item.completedAt).sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
   const currentExperiment = dated.find((item) => item.weeklyExperiment)?.weeklyExperiment || null;
   return { completed, dated, currentExperiment };
@@ -96,5 +107,8 @@ export async function loadGrowthDashboard(locale, storage = window.sessionStorag
 export function nextDashboardRecommendation(completedTypes) {
   if (!completedTypes.includes('personality')) return 'personality';
   if (!completedTypes.includes('communication')) return 'communication';
+  if (!completedTypes.includes('conflict')) return 'conflict';
+  if (!completedTypes.includes('leadership')) return 'leadership';
+  if (!completedTypes.includes('learning')) return 'learning';
   return 'community';
 }

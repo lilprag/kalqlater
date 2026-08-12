@@ -1,0 +1,14 @@
+{
+  "slug": "conflict-insights",
+  "version": "1.0.0",
+  "status": "published",
+  "source": "conflict-insights.v1.json",
+  "sourceContentSha256": "030ca2b69b4359ddad7509de8048094cf4666780fa81a98b7396c6bebd13fbe4",
+  "publishedAt": "2026-08-12",
+  "scoringVersion": "1.0.0",
+  "interpretationVersion": "1.0.0",
+  "localeVersions": {"en": "1.0.0", "hi": "1.0.0"},
+  "approvalRecord": {"productOwner": {"reviewer": "Pending post-implementation review", "status": "engineering-complete", "date": "2026-08-12", "evidence": ["Bilingual authored scenarios and result contract"], "notes": "Requires editorial, accessibility, privacy, and safety review before external release."}},
+  "acceptedRisks": ["Human editorial and accessibility release gates are pending."],
+  "disclaimerPolicy": "Visible reflective-guidance disclosure; not clinical, relationship-safety, hiring, or performance assessment."
+}

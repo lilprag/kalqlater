@@ -9,6 +9,9 @@ const pages = [
   ['/en/compare', 'en', 'Explore a personality dynamic'], ['/hi/compare', 'hi', 'दो व्यक्तित्वों के डायनामिक को देखें'],
   ['/en/insights', 'en', 'Go beyond personality'], ['/hi/insights', 'hi', 'पर्सनैलिटी से आगे'],
   ['/en/insights/communication', 'en', 'Understand How You Communicate'], ['/hi/insights/communication', 'hi', 'जानें कि आप कैसे संवाद करते हैं'],
+  ['/en/insights/conflict', 'en', 'Notice how you meet tension'], ['/hi/insights/conflict', 'hi', 'मतभेद में अपने तरीके पर विचार करें'],
+  ['/en/insights/learning', 'en', 'Reflect on how you learn'], ['/hi/insights/learning', 'hi', 'सीखने के अपने तरीके पर विचार करें।'],
+  ['/en/insights/leadership', 'en', 'See leadership in practice'], ['/hi/insights/leadership', 'hi', 'नेतृत्व को व्यवहार में देखें।'],
   ['/en/community', 'en', 'KalQLater Community'], ['/hi/community', 'hi', 'KalQLater कम्युनिटी'],
   ['/en/jobs', 'en', 'KalQLater Jobs'], ['/hi/jobs', 'hi', 'KalQLater जॉब्स'],
 ];
@@ -70,11 +73,17 @@ for (const locale of ['en', 'hi']) {
   assert(sitemapXml.includes(`/${locale}/insights`), `sitemap: missing ${locale} Insights hub`);
   assert(sitemapXml.includes(`/${locale}/compare</loc>`), `sitemap: missing ${locale} Compare selector`);
   assert(sitemapXml.includes(`/${locale}/insights/communication`), `sitemap: missing ${locale} Communication Insights landing`);
+  assert(sitemapXml.includes(`/${locale}/insights/conflict`), `sitemap: missing ${locale} Conflict Insights landing`);
+  assert(sitemapXml.includes(`/${locale}/insights/leadership`), `sitemap: missing ${locale} Leadership Insights landing`);
+  assert(sitemapXml.includes(`/${locale}/insights/learning`), `sitemap: missing ${locale} Learning Insights landing`);
   assert(sitemapXml.includes(`/${locale}/community`), `sitemap: missing ${locale} Community landing`);
   assert(sitemapXml.includes(`/${locale}/jobs`), `sitemap: missing ${locale} Jobs landing`);
   const hub = await fetch(`${baseUrl}/${locale}/insights`);
   const hubHtml = await hub.text();
   assert(hub.ok && hubHtml.includes(`/${locale}/insights/communication`), `${locale} Insights hub: missing Communication Insights link`);
+  assert(hubHtml.includes(`/${locale}/insights/conflict`), `${locale} Insights hub: missing Conflict Insights link`);
+  assert(hubHtml.includes(`/${locale}/insights/leadership`), `${locale} Insights hub: missing Leadership Insights link`);
+  assert(hubHtml.includes(`/${locale}/insights/learning`), `${locale} Insights hub: missing Learning Insights link`);
   assert(hubHtml.includes('CollectionPage'), `${locale} Insights hub: missing CollectionPage JSON-LD`);
 }
 for (const legacyPath of ['/community', '/community/jobs']) {
@@ -87,6 +96,20 @@ for (const locale of ['en', 'hi']) {
   assert((html.match(/dimension-card/g) || []).length === 0 || html.includes('Ten dimensions') || html.includes('दस आयाम'), `${locale} Communication Insights: missing dimensions section`);
   const start = await fetch(`${baseUrl}/${locale}/insights/communication/start`);
   assert(start.headers.get('x-robots-tag')?.includes('noindex') || (await start.text()).includes('noindex'), `${locale} Communication Insights start: expected noindex`);
+  const conflict = await fetch(`${baseUrl}/${locale}/insights/conflict`);
+  const conflictHtml = await conflict.text();
+  assert(conflict.ok && conflictHtml.includes('FAQPage') && conflictHtml.includes('BreadcrumbList'), `${locale} Conflict Insights: missing SSR JSON-LD`);
+  const conflictStart = await fetch(`${baseUrl}/${locale}/insights/conflict/start`);
+  assert(conflictStart.headers.get('x-robots-tag')?.includes('noindex') || (await conflictStart.text()).includes('noindex'), `${locale} Conflict Insights start: expected noindex`);
+  const leadership = await fetch(`${baseUrl}/${locale}/insights/leadership`);
+  const leadershipHtml = await leadership.text();
+  assert(leadership.ok && leadershipHtml.includes('FAQPage') && leadershipHtml.includes('BreadcrumbList'), `${locale} Leadership Insights: missing SSR JSON-LD`);
+  const leadershipStart = await fetch(`${baseUrl}/${locale}/insights/leadership/start`);
+  assert(leadershipStart.headers.get('x-robots-tag')?.includes('noindex') || (await leadershipStart.text()).includes('noindex'), `${locale} Leadership Insights start: expected noindex`);
+  const learning = await fetch(`${baseUrl}/${locale}/insights/learning`); const learningHtml = await learning.text();
+  assert(learning.ok && learningHtml.includes('FAQPage') && learningHtml.includes('BreadcrumbList'), `${locale} Learning Insights: missing SSR JSON-LD`);
+  const learningStart = await fetch(`${baseUrl}/${locale}/insights/learning/start`);
+  assert(learningStart.headers.get('x-robots-tag')?.includes('noindex') || (await learningStart.text()).includes('noindex'), `${locale} Learning Insights start: expected noindex`);
 }
 for (const locale of ['en', 'hi']) for (const type of careerTypes) {
   const profile = await fetch(`${baseUrl}/${locale}/personality/${type}`);

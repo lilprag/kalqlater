@@ -8,7 +8,7 @@ from typing import Optional
 from .content import AnalyzerContentRepository, ContentNotAvailableError, FileAnalyzerContentRepository
 from .models import (
     AnalyzerDefinition, AnalyzerResult, AssessmentResponseInput, AssessmentSessionState,
-    ConfidenceBand, DirectionBand, PersonalityContext, Recommendation, ResultSnapshot, SelectedInterpretation,
+    ConfidenceBand, DirectionBand, EvidenceMoment, PersonalityContext, Recommendation, ResultSnapshot, SelectedInterpretation,
     SessionStatus, StoredResponse,
 )
 from .repositories import (
@@ -226,14 +226,52 @@ class AssessmentService:
             suggestions.append(Recommendation(id=f"practice-{item.id}", text=getattr(item.instruction, session.locale)))
             if len(suggestions) == 3:
                 break
-        lead = next((result for result in meaningful if result.direction in {DirectionBand.HIGHER, DirectionBand.LOWER, DirectionBand.BALANCED}), dimensions[0])
+        lead = max(meaningful, key=lambda item: abs(item.evidence.raw_score), default=dimensions[0])
+        evidence_moments = []
+        if definition.analyzer.slug == "conflict-insights":
+            scenarios = {item.id: item for item in definition.scenarios}
+            for scenario_id, response in session.responses.items():
+                scenario = scenarios[scenario_id]
+                option = next(item for item in scenario.options if item.id == response.option_id)
+                if lead.dimension_id in option.scores:
+                    evidence_moments.append(EvidenceMoment(
+                        id=scenario_id,
+                        title=getattr(scenario.prompt, session.locale),
+                        observation=getattr(option.text, session.locale),
+                    ))
+                if len(evidence_moments) == 3:
+                    break
+            if not evidence_moments:
+                raise AssessmentError("Conflict result is missing required authored evidence")
+        elif definition.analyzer.slug == "leadership-insights":
+            scenarios = {item.id: item for item in definition.scenarios}
+            for scenario_id, response in session.responses.items():
+                scenario = scenarios[scenario_id]
+                option = next(item for item in scenario.options if item.id == response.option_id)
+                if lead.dimension_id in option.scores:
+                    evidence_moments.append(EvidenceMoment(id=scenario_id, title=getattr(scenario.prompt, session.locale), observation=getattr(option.text, session.locale)))
+                if len(evidence_moments) == 3:
+                    break
+            if not evidence_moments:
+                raise AssessmentError("Leadership result is missing required authored evidence")
+        elif definition.analyzer.slug == "learning-insights":
+            scenarios = {item.id: item for item in definition.scenarios}
+            for scenario_id, response in session.responses.items():
+                scenario = scenarios[scenario_id]
+                option = next(item for item in scenario.options if item.id == response.option_id)
+                if lead.dimension_id in option.scores:
+                    evidence_moments.append(EvidenceMoment(id=scenario_id, title=getattr(scenario.prompt, session.locale), observation=getattr(option.text, session.locale)))
+                if len(evidence_moments) == 3:
+                    break
+            if not evidence_moments:
+                raise AssessmentError("Learning result is missing required authored evidence")
         summary = self._summary(session.locale, lead, definition)
         personality_note = None
         if session.personality_context:
             code = session.personality_context.type_code
             personality_note = (
-                f"Your communication result adds another practical layer to your {code} profile."
-                if session.locale == "en" else f"आपका संवाद परिणाम आपके {code} प्रोफ़ाइल में एक और व्यावहारिक परत जोड़ता है।"
+                f"Your responses add another practical layer to your {code} profile."
+                if session.locale == "en" else f"आपके उत्तर आपके {code} प्रोफ़ाइल में एक और व्यावहारिक परत जोड़ते हैं।"
             )
         return AnalyzerResult(
             analyzer_slug=definition.analyzer.slug,
@@ -247,6 +285,7 @@ class AssessmentService:
             practical_suggestions=suggestions,
             weekly_challenge=challenge,
             interpretations=selected_rules,
+            evidence_moments=evidence_moments,
             personality_note=personality_note,
             disclaimer=getattr(definition.analyzer.disclosures, session.locale),
         )
@@ -267,6 +306,12 @@ class AssessmentService:
         if lead.confidence == ConfidenceBand.LIMITED:
             return self._localized(locale, "Your responses offer a starting point for reflection; some patterns need more situations before they become clear.", "आपके उत्तर आत्मचिंतन की शुरुआत देते हैं; कुछ पैटर्न स्पष्ट होने के लिए और स्थितियों की जरूरत है।")
         tendency = "more present" if lead.direction == DirectionBand.HIGHER else "lighter"
+        if definition.analyzer.slug == "conflict-insights":
+            return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you meet tension and repair.", f"इन स्थितियों में तनाव और सुधार से जुड़ी आपकी प्रतिक्रियाओं में {name} अधिक स्पष्ट दिखता है।")
+        if definition.analyzer.slug == "leadership-insights":
+            return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you guide shared work.", f"इन स्थितियों में साझा काम को दिशा देने में {name} अधिक स्पष्ट दिखता है।")
+        if definition.analyzer.slug == "learning-insights":
+            return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you build understanding and practice.", f"इन स्थितियों में समझ और अभ्यास बनाने में {name} अधिक स्पष्ट दिखता है।")
         return self._localized(locale, f"Across these situations, {name} appears {tendency} in your communication.", f"इन स्थितियों में आपके संवाद में {name} अधिक स्पष्ट दिखता है।")
 
     def complete_session(self, session_id: str, access_token: str) -> ResultSnapshot:

@@ -24,7 +24,12 @@ class FileAnalyzerContentRepository:
     """Loads only explicitly approved repository-owned analyzer configuration."""
 
     DRAFT_FILES = {"communication-style": "communication-analyzer.v1.draft.json"}
-    RELEASE_FILES = {"communication-style": "communication-analyzer.v1.release.json"}
+    RELEASE_FILES = {
+        "communication-style": "communication-analyzer.v1.release.json",
+        "conflict-insights": "conflict-insights.v1.release.json",
+        "leadership-insights": "leadership-insights.v1.release.json",
+        "learning-insights": "learning-insights.v1.release.json",
+    }
 
     def __init__(self, content_directory: Path | None = None):
         # The repository root is an approved internal directory; filenames are allowlisted above.
@@ -64,7 +69,7 @@ class FileAnalyzerContentRepository:
         except (OSError, json.JSONDecodeError) as error:
             raise InvalidAnalyzerContentError("Analyzer release manifest is invalid") from error
         required = {"slug", "version", "status", "source", "sourceContentSha256", "publishedAt", "scoringVersion", "interpretationVersion", "localeVersions", "approvalRecord", "acceptedRisks", "disclaimerPolicy"}
-        if set(manifest) != required or manifest["status"] != "published" or manifest["version"] != "1.0.0" or manifest["slug"] != "communication-style":
+        if set(manifest) != required or manifest["status"] != "published" or manifest["version"] != "1.0.0" or manifest["slug"] not in self.RELEASE_FILES:
             raise InvalidAnalyzerContentError("Analyzer release manifest is invalid")
         return manifest
 

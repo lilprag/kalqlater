@@ -32,6 +32,11 @@ def _error(error: Exception) -> HTTPException:
     return HTTPException(status_code=422, detail=str(error))
 
 
+def _safe_result(result) -> dict:
+    """Return reflective result content without internal scoring evidence."""
+    return result.model_dump(exclude={"dimension_results": {"__all__": {"evidence"}}})
+
+
 def create_engine_router(service: Optional[AssessmentService] = None) -> APIRouter:
     service = service or AssessmentService()
     router = APIRouter(tags=["behavior-engine"])
@@ -94,7 +99,7 @@ def create_engine_router(service: Optional[AssessmentService] = None) -> APIRout
     def complete(session_id: str, x_assessment_access: Optional[str] = Header(default=None)) -> dict:
         try:
             snapshot = service.complete_session(session_id, _access_token(x_assessment_access))
-            return {"result_id": snapshot.id, "result": snapshot.result}
+            return {"result_id": snapshot.id, "result": _safe_result(snapshot.result)}
         except Exception as error:
             raise _error(error) from error
 
@@ -102,7 +107,7 @@ def create_engine_router(service: Optional[AssessmentService] = None) -> APIRout
     def get_result(result_id: str, x_assessment_access: Optional[str] = Header(default=None)) -> dict:
         try:
             snapshot = service.get_result(result_id, _access_token(x_assessment_access))
-            return {"result_id": snapshot.id, "created_at": snapshot.created_at, "result": snapshot.result}
+            return {"result_id": snapshot.id, "created_at": snapshot.created_at, "result": _safe_result(snapshot.result)}
         except Exception as error:
             raise _error(error) from error
 
