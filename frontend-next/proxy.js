@@ -74,10 +74,13 @@ async function noindexLegacyApplicationResponse(request) {
 }
 
 export async function proxy(request) {
-  if (request.nextUrl.pathname === '/es') {
+  if (request.nextUrl.pathname === '/es' || request.nextUrl.pathname === '/es/personality/intj') {
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set('x-kalqlater-locale', 'es');
     return NextResponse.next({ request: { headers: requestHeaders } });
+  }
+  if (request.nextUrl.pathname === '/es' || request.nextUrl.pathname.startsWith('/es/')) {
+    return new NextResponse('Not Found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' } });
   }
   if (request.nextUrl.pathname.startsWith('/types/')) return legacyPersonalityResponse(request);
   if (request.nextUrl.pathname === '/compare' || request.nextUrl.pathname.startsWith('/compare/')) return legacyComparisonResponse(request);
@@ -99,4 +102,4 @@ export async function proxy(request) {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-export const config = { matcher: ['/en/:path*', '/hi/:path*', '/es', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };
+export const config = { matcher: ['/en/:path*', '/hi/:path*', '/es/:path*', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };
