@@ -105,10 +105,47 @@ const entjFaq = Object.freeze([
   ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe usarse para filtrar, clasificar ni tomar decisiones de contratación.'],
 ]);
 
+const entpSpanish = Object.freeze({
+  code: 'ENTP', slug: 'entp', group: 'Analistas', color: '#B55C48', displayName: 'La mente exploradora',
+  shortSummary: 'Una presencia inquieta que encuentra posibilidades donde otras personas ven una respuesta cerrada.',
+  overview: 'Las personas ENTP suelen acercarse al mundo con curiosidad, rapidez mental y ganas de poner una idea a prueba. Disfrutan al conectar perspectivas que parecían separadas y al descubrir qué cambia cuando una pregunta se formula de otra manera. Su energía puede abrir caminos inesperados; elegir cuáles merecen continuidad les permite convertir esa amplitud en impacto.',
+  coreTraits: ['Curiosidad expansiva', 'Agilidad para conectar ideas', 'Apertura al cambio'],
+  strengths: ['Creatividad estratégica', 'Capacidad de improvisación', 'Pensamiento crítico', 'Entusiasmo para iniciar', 'Facilidad para ver alternativas'],
+  growthAreas: ['Sostener una prioridad después de que desaparece la novedad', 'Escuchar una objeción sin convertirla en debate', 'Cerrar compromisos con el mismo cuidado con que se abren ideas', 'Notar cuándo el humor evita una conversación importante'],
+  workStyle: ['Exploración de oportunidades y nuevas direcciones', 'Resolución de problemas ambiguos', 'Conversaciones que requieren creatividad y persuasión', 'Proyectos con margen para experimentar', 'Entornos donde las ideas se pueden probar y ajustar con rapidez'],
+  careerThemes: ['Innovación y experimentación', 'Estrategia en contextos cambiantes', 'Comunicación de ideas y oportunidades'],
+  relationshipStyle: 'Las amistades ENTP suelen activarse con una conversación viva, el humor y la sensación de que juntos pueden descubrir algo nuevo. Aprecian a quienes pueden seguir el juego de las ideas y también señalar con honestidad cuándo una conexión necesita más presencia que ingenio.',
+  relationshipContexts: {
+    friendship: 'Las amistades ENTP suelen alimentarse de planes espontáneos, conversaciones que saltan de tema y una curiosidad compartida. Mantener el contacto cuando no hay novedad demuestra que el vínculo importa más allá del estímulo del momento.',
+    romance: 'En pareja, una persona ENTP puede aportar juego, imaginación y el deseo de mantener la relación en movimiento. Hacer espacio para la vulnerabilidad y cumplir los pequeños acuerdos vuelve esa energía más segura para ambas personas.',
+    family: 'En la familia, ENTP puede cuestionar costumbres, aportar una lectura fresca y necesitar libertad para probar su propio camino. Conversar con claridad sobre los límites evita que su necesidad de explorar se interprete como falta de compromiso.',
+    teamwork: 'En equipo, ENTP genera opciones, detecta oportunidades y anima una discusión productiva. Su mejor aporte aparece cuando ayuda a elegir una dirección y acompaña al grupo durante la etapa menos visible de ejecución.',
+  },
+  leadership: { style: 'Energiza al grupo al convertir una posibilidad incierta en una conversación que invita a experimentar.', summary: 'Suele influir desde la visión de alternativas, la persuasión y la capacidad de adaptarse cuando cambian las condiciones.', strengths: ['Lectura de oportunidades', 'Comunicación convincente', 'Adaptación creativa'], weeklyAction: 'Elige una idea que hayas propuesto y define con el equipo un responsable, una fecha de revisión y una señal concreta de avance.' },
+  communication: { summary: 'Suele comunicarse con rapidez, curiosidad y gusto por explorar distintas interpretaciones.', preferred: 'Abrir la conversación con una pregunta provocadora y aclarar después qué decisión o aprendizaje busca.', listening: 'Escuchar con más profundidad cuando deja terminar una idea antes de contrastarla con otra posibilidad.', conflict: 'Puede debatir para pensar y no advertir el impacto; preguntar qué necesita la otra persona antes de responder ayuda a reparar.', tips: ['Separa el momento de generar opciones del momento de decidir cuál se llevará adelante.', 'Si una conversación importa, confirma lo que entendiste antes de ofrecer el siguiente argumento.'] },
+  learningStyle: 'Aprende bien al dialogar, relacionar conceptos distantes y ensayar una hipótesis en situaciones reales donde pueda recibir una respuesta rápida.',
+  stressPatterns: ['Dispersarse entre demasiadas posibilidades', 'Buscar estímulo cuando una tarea exige constancia', 'Convertir la tensión en ironía o discusión', 'Evitar el cierre por miedo a perder opciones'],
+  developmentTips: ['Elige una idea por semana que merezca pasar de la conversación a la práctica.', 'Pide a alguien que te ayude a distinguir entre una intuición prometedora y una distracción atractiva.'],
+  relatedTypes: ['INTJ', 'INTP', 'ENTJ'],
+  seo: { title: 'Personalidad ENTP: ideas, cambio y desarrollo | KalQLater', description: 'Explora la personalidad ENTP con una guía de autorreflexión sobre creatividad, comunicación, relaciones, decisiones y desarrollo.' },
+});
+
+const entpFaq = Object.freeze([
+  ['¿Qué describe esta guía ENTP?', 'Resume preferencias, fortalezas y posibilidades de desarrollo asociadas a ENTP. Es una invitación a observar patrones, no una explicación completa ni permanente de una persona.'],
+  ['¿ENTP es un diagnóstico?', 'No. KalQLater es una herramienta de autorreflexión; no ofrece diagnósticos clínicos ni debe utilizarse para medir la capacidad o el potencial de alguien.'],
+  ['¿Puede una persona ENTP liderar bien?', 'Sí. Puede liderar al abrir posibilidades, comunicar una visión y adaptarse a la evidencia. La escucha, la constancia y la claridad de los acuerdos hacen que ese liderazgo sea más sostenible.'],
+  ['¿Qué puede buscar ENTP en el trabajo?', 'Suele valorar los retos cambiantes, la posibilidad de crear, aprender y debatir ideas, y entornos donde una propuesta pueda convertirse en un experimento útil.'],
+  ['¿Cómo puede mostrarse ENTP en las relaciones?', 'Puede demostrar interés con curiosidad, humor y atención a lo que hace única a la otra persona. Cumplir acuerdos y hablar con honestidad sobre lo que siente fortalece esa conexión.'],
+  ['¿Qué puede ayudar bajo presión?', 'Reducir compromisos, elegir una prioridad y conversar con alguien de confianza pueden devolver perspectiva. Si el malestar es persistente o intenso, busca apoyo profesional cualificado.'],
+  ['¿El tipo de personalidad puede cambiar?', 'Las personas cambian con la experiencia, los roles y las etapas de vida. Esta guía ayuda a reflexionar sobre tendencias, no a fijar una identidad.'],
+  ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
+]);
+
 const spanishGuides = Object.freeze({
   INTJ: Object.freeze({ profile: intjSpanish, faq: intjFaq }),
   INTP: Object.freeze({ profile: intpSpanish, faq: intpFaq }),
   ENTJ: Object.freeze({ profile: entjSpanish, faq: entjFaq }),
+  ENTP: Object.freeze({ profile: entpSpanish, faq: entpFaq }),
 });
 
 export function getPersonalityGuideContent(locale, type) {
