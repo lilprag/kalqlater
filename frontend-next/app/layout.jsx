@@ -12,5 +12,5 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const requestHeaders = await headers();
   const locale = requestHeaders.get('x-kalqlater-locale') || 'en';
-  return <html lang={locale} dir={localeDirection(locale)}><body><a className="skip-link" href="#main-content">Skip to content</a>{children}<Analytics /></body></html>;
+  return <html lang={locale} dir={localeDirection(locale)}><body><a className="skip-link" href="#main-content">{locale === 'es' ? 'Ir al contenido' : 'Skip to content'}</a>{children}<Analytics /></body></html>;
 }

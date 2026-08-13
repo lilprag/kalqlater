@@ -31,4 +31,9 @@ export const COPY = {
     contact: { eyebrow: 'संपर्क करें', title: 'हमसे संपर्क करें', body: 'सवाल, फीडबैक या साझेदारी के विचार — हमें आपसे सुनकर खुशी होगी।', name: 'नाम', email: 'ईमेल', subject: 'विषय', message: 'संदेश', send: 'संदेश भेजें', sending: 'भेजा जा रहा है…', success: 'संपर्क करने के लिए धन्यवाद। हम जल्द ही आपसे संपर्क करेंगे।', error: 'अभी आपका संदेश नहीं भेजा जा सका। कृपया बाद में प्रयास करें।', required: 'कृपया सभी आवश्यक फ़ील्ड भरें।', invalid: 'कृपया सही ईमेल दर्ज करें।' },
     notFound: { title: 'पृष्ठ नहीं मिला', body: 'आपका अनुरोधित पृष्ठ इस प्रीव्यू में उपलब्ध नहीं है।', cta: 'होम पर जाएँ' },
   },
+  es: {
+    nav: { home: 'Inicio', test: 'Hacer el test', types: 'Los 16 tipos', insights: 'Perspectivas', about: 'Quiénes somos', compare: 'Comparar', community: 'Comunidad', jobs: 'Empleo', contact: 'Contacto', connections: 'Conexiones', profile: 'Mi perfil', logout: 'Cerrar sesión', login: 'Iniciar sesión', signup: 'Crear cuenta', checking: 'Comprobando tu cuenta…', menu: 'Abrir navegación', close: 'Cerrar navegación' },
+    positioning: 'KalQLater presenta las preferencias de personalidad como un punto de partida para conocerte mejor. No es una evaluación clínica, médica, laboral ni de compatibilidad.',
+    links: { types: 'Explorar los 16 tipos de personalidad', privacy: 'Privacidad', terms: 'Términos de uso', contact: 'Contacto', allRights: 'Todos los derechos reservados.', communicationInsights: 'Perspectivas de Comunicación' },
+  },
 };

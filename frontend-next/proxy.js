@@ -74,6 +74,11 @@ async function noindexLegacyApplicationResponse(request) {
 }
 
 export async function proxy(request) {
+  if (request.nextUrl.pathname === '/es') {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-kalqlater-locale', 'es');
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
   if (request.nextUrl.pathname.startsWith('/types/')) return legacyPersonalityResponse(request);
   if (request.nextUrl.pathname === '/compare' || request.nextUrl.pathname.startsWith('/compare/')) return legacyComparisonResponse(request);
   if (legacyNoindexPaths.some((path) => request.nextUrl.pathname === path || request.nextUrl.pathname.startsWith(`${path}/`))) return noindexLegacyApplicationResponse(request);
@@ -94,4 +99,4 @@ export async function proxy(request) {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-export const config = { matcher: ['/en/:path*', '/hi/:path*', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };
+export const config = { matcher: ['/en/:path*', '/hi/:path*', '/es', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };

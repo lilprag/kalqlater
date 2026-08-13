@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { BrandMark } from './BrandMark';
 import { localePath, productionAppUrl } from '../lib/site';
+import { homepageContent } from '../localization/homepage';
 
 const ICONS = {
   sparkles: <><path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z" /><path d="m19 16 .9 2.7L22.5 20l-2.6.9L19 23.5l-.9-2.6-2.6-.9 2.6-1.3L19 16Z" /></>,
@@ -68,7 +69,7 @@ const content = {
 };
 
 export function HomeVisual({ locale }) {
-  const copy = content[locale];
+  const copy = locale === 'es' ? homepageContent(locale) : content[locale];
   const testUrl = productionAppUrl('/test');
   return <>
     <section className="hero-shell relative overflow-hidden">
@@ -94,7 +95,7 @@ export function HomeVisual({ locale }) {
           <div className="personality-preview reveal-up">
             <div><p className="text-xs font-semibold uppercase tracking-[.25em] text-brand-subtle">INTJ</p><h2 className="display-font mt-2 text-3xl text-brand-ink">{copy.architect}</h2><p className="mt-2 text-sm leading-relaxed text-brand-subtle">{copy.architectBody}</p></div>
             <div className="space-y-3">{[['I', 78], ['N', 65], ['T', 71], ['J', 60]].map(([label, value]) => <div key={label}><div className="mb-1 flex justify-between text-[11px] font-medium text-brand-subtle"><span>{label}</span><span>{value}%</span></div><div className="trait-track"><span style={{ width: `${value}%` }} /></div></div>)}</div>
-            <div className="flex items-center gap-3 border-t border-brand-line pt-5 text-sm text-brand-subtle"><BrandMark className="h-9 w-9" /><span>{locale === 'hi' ? 'आपकी पसंद का व्यावहारिक नक्शा' : 'A practical map of your preferences'}</span></div>
+            <div className="flex items-center gap-3 border-t border-brand-line pt-5 text-sm text-brand-subtle"><BrandMark className="h-9 w-9" /><span>{copy.map || (locale === 'hi' ? 'आपकी पसंद का व्यावहारिक नक्शा' : 'A practical map of your preferences')}</span></div>
           </div>
         </div>
       </div>
@@ -104,7 +105,7 @@ export function HomeVisual({ locale }) {
 
     <section className="dimension-section"><div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"><div className="max-w-2xl"><p className="section-kicker">KalQLater framework</p><h2 className="display-font section-title mt-3">{copy.dimensionTitle}</h2><p className="mt-4 leading-relaxed text-brand-subtle">{copy.dimensionBody}</p></div><div className="mt-10 grid gap-5 md:grid-cols-2">{copy.dimensions.map(([icon, key, title, body, tone]) => <article key={key} className={`dimension-card dimension-${tone}`}><span className="dimension-orb" aria-hidden="true" /><div className="relative"><Icon name={icon} className="text-brand-teal" /><p className="mt-6 text-xs font-semibold uppercase tracking-[.22em] text-brand-subtle">{key}</p><h3 className="display-font mt-2 text-2xl text-brand-ink">{title}</h3><p className="mt-2 text-brand-subtle">{body}</p></div></article>)}</div></div></section>
 
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"><div className="rounded-[2rem] border border-brand-line bg-white p-7 shadow-[0_20px_50px_rgba(45,40,37,.06)] sm:p-10"><div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr]"><div><p className="section-kicker">{copy.insightsEyebrow}</p><h2 className="display-font mt-3 text-4xl text-brand-ink">{copy.insightsTitle}</h2><p className="mt-4 max-w-xl leading-relaxed text-brand-subtle">{copy.insightsBody}</p><Link href={localePath(locale, 'insights')} className="button-secondary mt-7">{locale === 'hi' ? 'सभी इनसाइट्स देखें' : 'Explore all Insights'}</Link></div><div className="grid gap-3 sm:grid-cols-2"><article className="rounded-2xl bg-brand-ink p-6 text-white sm:col-span-2"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-sand">{copy.insightsLive}</p><h3 className="display-font mt-3 text-3xl">{copy.insightsTool}</h3><p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">{copy.insightsToolBody}</p><Link href={localePath(locale, 'insights/communication')} className="button-light mt-6">{copy.insightsCta}<span aria-hidden="true">→</span></Link></article>{copy.insightsPlanned.map((item) => <article key={item} className="rounded-2xl bg-brand-cream p-5"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-teal">{copy.insightsSoon}</p><h3 className="display-font mt-3 text-2xl text-brand-ink">{item}</h3></article>)}</div></div></div></section>
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"><div className="rounded-[2rem] border border-brand-line bg-white p-7 shadow-[0_20px_50px_rgba(45,40,37,.06)] sm:p-10"><div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr]"><div><p className="section-kicker">{copy.insightsEyebrow}</p><h2 className="display-font mt-3 text-4xl text-brand-ink">{copy.insightsTitle}</h2><p className="mt-4 max-w-xl leading-relaxed text-brand-subtle">{copy.insightsBody}</p><Link href={localePath(locale, 'insights')} className="button-secondary mt-7">{copy.allInsights || (locale === 'hi' ? 'सभी इनसाइट्स देखें' : 'Explore all Insights')}</Link></div><div className="grid gap-3 sm:grid-cols-2"><article className="rounded-2xl bg-brand-ink p-6 text-white sm:col-span-2"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-sand">{copy.insightsLive}</p><h3 className="display-font mt-3 text-3xl">{copy.insightsTool}</h3><p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">{copy.insightsToolBody}</p><Link href={localePath(locale, 'insights/communication')} className="button-light mt-6">{copy.insightsCta}<span aria-hidden="true">→</span></Link></article>{copy.insightsPlanned.map((item) => <article key={item} className="rounded-2xl bg-brand-cream p-5"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-teal">{copy.insightsSoon}</p><h3 className="display-font mt-3 text-2xl text-brand-ink">{item}</h3></article>)}</div></div></div></section>
 
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"><div className="community-band"><div><p className="section-kicker text-brand-sand">{copy.communityEyebrow}</p><h2 className="display-font mt-3 max-w-2xl text-3xl sm:text-4xl">{copy.communityTitle}</h2><p className="mt-4 max-w-2xl leading-relaxed text-white/75">{copy.communityBody}</p></div><div className="mt-8 flex flex-wrap gap-3"><Link href={localePath(locale, 'community')} className="button-light">{copy.community}</Link><a href={productionAppUrl('/compare')} className="button-dark-outline">{copy.compare}</a><Link href={localePath(locale, 'jobs')} className="button-dark-outline">{copy.jobs}</Link></div></div></section>
 
