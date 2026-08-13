@@ -5,6 +5,7 @@ import { publishedLocales } from './lib/locales';
 const locales = new Set(publishedLocales);
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
 const legacyNoindexPaths = ['/community', '/login', '/signup', '/forgot-password', '/reset-password'];
+const spanishPreviewPaths = new Set(['/es', '/es/personality/intj', '/es/personality/intp']);
 
 function parsedPair(firstValue, secondValue) {
   const first = String(firstValue || '').toUpperCase();
@@ -74,7 +75,7 @@ async function noindexLegacyApplicationResponse(request) {
 }
 
 export async function proxy(request) {
-  if (request.nextUrl.pathname === '/es' || request.nextUrl.pathname === '/es/personality/intj') {
+  if (spanishPreviewPaths.has(request.nextUrl.pathname)) {
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set('x-kalqlater-locale', 'es');
     return NextResponse.next({ request: { headers: requestHeaders } });

@@ -5,7 +5,7 @@ export { defaultLocale, localeConfig, localeDirection };
 
 export function isLocale(value) { return isPublishedLocale(value); }
 export function isHomepagePreviewLocale(value) { return value === 'es'; }
-export function isPersonalityPreviewLocale(value, type) { return value === 'es' && String(type).toLowerCase() === 'intj'; }
+export function isPersonalityPreviewLocale(value, type) { return value === 'es' && ['intj', 'intp'].includes(String(type).toLowerCase()); }
 
 export function siteUrl() {
   return (process.env.NEXT_PUBLIC_SITE_URL || 'https://kalqlater.com').replace(/\/$/, '');
