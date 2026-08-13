@@ -141,11 +141,48 @@ const entpFaq = Object.freeze([
   ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
 ]);
 
+const infjSpanish = Object.freeze({
+  code: 'INFJ', slug: 'infj', group: 'Diplomáticos', color: '#2D6F68', displayName: 'La mirada orientadora',
+  shortSummary: 'Una presencia reflexiva que busca dar sentido a las personas, los patrones y lo que podría mejorar.',
+  overview: 'Las personas INFJ suelen observar lo que no siempre se dice: el hilo que une una situación, las necesidades que quedan al margen y la dirección que podría dar más coherencia a un grupo. Su sensibilidad no implica fragilidad; puede ser una forma de atención sostenida que les ayuda a acompañar con profundidad y a actuar de acuerdo con lo que consideran valioso.',
+  coreTraits: ['Intuición de conjunto', 'Atención a las personas', 'Sentido de propósito'],
+  strengths: ['Escucha profunda', 'Visión de significado', 'Compromiso con los valores', 'Capacidad de síntesis', 'Apoyo considerado'],
+  growthAreas: ['Expresar una necesidad antes de llegar al agotamiento', 'Comprobar las intuiciones con información concreta', 'Aceptar que no puede sostenerlo todo a solas', 'Poner límites sin sentir que abandona a alguien'],
+  workStyle: ['Trabajo con un propósito claro', 'Acompañamiento, investigación o diseño centrado en personas', 'Espacio para profundizar antes de decidir', 'Colaboración con confianza y respeto', 'Proyectos donde los valores se traduzcan en acciones concretas'],
+  careerThemes: ['Acompañamiento y desarrollo de personas', 'Investigación con sentido social', 'Diseño de cambios coherentes con los valores'],
+  relationshipStyle: 'Las amistades INFJ suelen crecer despacio, con confianza, conversaciones significativas y cuidado mutuo. Pueden percibir con facilidad los cambios de ánimo de las personas cercanas; compartir también su propia experiencia evita que la relación se sostenga en una sola dirección.',
+  relationshipContexts: {
+    friendship: 'Las amistades INFJ suelen valorar la intimidad, la lealtad y la posibilidad de hablar de lo que importa. Respetar sus momentos de recogimiento y preguntar por cómo están de verdad nutre ese vínculo.',
+    romance: 'En pareja, una persona INFJ puede buscar conexión emocional, coherencia y un proyecto compartido. Expresar expectativas con claridad ayuda a que el deseo de comprender al otro no se convierta en adivinar lo que necesita.',
+    family: 'En la familia, INFJ puede asumir el papel de quien escucha, media o cuida el clima emocional. Reconocer que sus propios límites también importan hace que ese cuidado sea más sostenible.',
+    teamwork: 'En equipo, INFJ aporta atención a las dinámicas humanas, perspectiva de largo plazo y preguntas sobre el sentido de lo que se hace. Su contribución se fortalece cuando puede decir una preocupación temprano y encontrar una vía concreta para abordarla.',
+  },
+  leadership: { style: 'Orienta al grupo al unir propósito, escucha y una lectura cuidadosa de las personas implicadas.', summary: 'Suele influir creando confianza, dando significado a una meta y ayudando a que las decisiones sean coherentes con los valores compartidos.', strengths: ['Empatía estratégica', 'Coherencia ética', 'Capacidad de inspirar con calma'], weeklyAction: 'Antes de resolver una tensión del equipo, pregunta qué necesita cada persona y concreta un límite que mantenga el cuidado viable.' },
+  communication: { summary: 'Suele comunicarse con atención, matiz y deseo de que la conversación tenga un propósito humano.', preferred: 'Compartir el contexto y la intención antes de entrar en una cuestión delicada.', listening: 'Escuchar mejor cuando distingue entre lo que intuye y lo que la otra persona ha dicho explícitamente.', conflict: 'Puede retirarse para proteger la relación; nombrar con calma lo que le afecta y pedir un momento para conversar ayuda a reparar.', tips: ['Formula una intuición como pregunta para dejar espacio a que la otra persona la confirme o la matice.', 'Comparte un límite concreto antes de que el cansancio se convierta en distancia.'] },
+  learningStyle: 'Aprende bien al conectar una idea con un propósito, profundizar a su ritmo y encontrar cómo ese conocimiento puede servir a una situación real.',
+  stressPatterns: ['Absorber demasiado el estado emocional de otras personas', 'Posponer un límite por evitar decepcionar', 'Dar vueltas a una conversación sin contrastarla', 'Aislarse cuando necesita apoyo'],
+  developmentTips: ['Diferencia entre responsabilizarte por alguien y estar presente a su lado.', 'Busca una observación verificable cuando una intuición te preocupe.'],
+  relatedTypes: ['INTJ', 'INFP', 'ENFJ'],
+  seo: { title: 'Personalidad INFJ: propósito, empatía y desarrollo | KalQLater', description: 'Explora la personalidad INFJ con una guía de autorreflexión sobre propósito, vínculos, comunicación, liderazgo y desarrollo.' },
+});
+
+const infjFaq = Object.freeze([
+  ['¿Qué describe esta guía INFJ?', 'Resume preferencias, fortalezas y posibilidades de desarrollo asociadas a INFJ. Es una herramienta para reflexionar sobre patrones, no una definición cerrada de una persona.'],
+  ['¿INFJ es un diagnóstico?', 'No. KalQLater ofrece autorreflexión; no proporciona diagnósticos clínicos ni debe emplearse para juzgar la capacidad o el valor de alguien.'],
+  ['¿Puede una persona INFJ liderar bien?', 'Sí. Puede liderar al crear confianza, conectar decisiones con valores y atender la experiencia del equipo. La claridad, los límites y la delegación hacen ese liderazgo más sostenible.'],
+  ['¿Qué puede buscar INFJ en el trabajo?', 'Suele valorar un propósito claro, relaciones de respeto y la oportunidad de comprender a fondo un problema antes de contribuir a una mejora significativa.'],
+  ['¿Cómo puede mostrarse INFJ en las relaciones?', 'Puede mostrar cuidado con escucha, atención a los detalles y lealtad. Hablar de sus necesidades evita que esa sensibilidad quede escondida detrás de la disposición a ayudar.'],
+  ['¿Qué puede ayudar bajo presión?', 'Descansar, limitar responsabilidades, volver a una conversación de confianza y atender las necesidades básicas puede ayudar. Ante un malestar persistente o intenso, busca apoyo profesional cualificado.'],
+  ['¿El tipo de personalidad puede cambiar?', 'Las personas evolucionan con la experiencia, los roles y las etapas de vida. Esta guía ofrece una perspectiva para explorar, no una identidad fija.'],
+  ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
+]);
+
 const spanishGuides = Object.freeze({
   INTJ: Object.freeze({ profile: intjSpanish, faq: intjFaq }),
   INTP: Object.freeze({ profile: intpSpanish, faq: intpFaq }),
   ENTJ: Object.freeze({ profile: entjSpanish, faq: entjFaq }),
   ENTP: Object.freeze({ profile: entpSpanish, faq: entpFaq }),
+  INFJ: Object.freeze({ profile: infjSpanish, faq: infjFaq }),
 });
 
 export function getPersonalityGuideContent(locale, type) {
