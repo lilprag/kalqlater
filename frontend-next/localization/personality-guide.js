@@ -69,9 +69,46 @@ const intpFaq = Object.freeze([
   ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
 ]);
 
+const entjSpanish = Object.freeze({
+  code: 'ENTJ', slug: 'entj', group: 'Analistas', color: '#7A3A4A', displayName: 'La persona dirigente',
+  shortSummary: 'Una presencia orientada a convertir una visión ambiciosa en movimiento con propósito.',
+  overview: 'Las personas ENTJ suelen detectar con rapidez lo que hace falta para avanzar: una dirección clara, una decisión y una forma de coordinar esfuerzos. Su impulso no se reduce a mandar; a menudo nace del deseo de dar estructura a una posibilidad y de ver que una idea se convierte en algo útil para las personas implicadas.',
+  coreTraits: ['Dirección estratégica', 'Iniciativa decidida', 'Visión de conjunto'],
+  strengths: ['Capacidad de organización', 'Decisión en contextos complejos', 'Comunicación directa', 'Orientación a resultados', 'Confianza para asumir responsabilidad'],
+  growthAreas: ['Escuchar antes de definir la solución', 'Regular el ritmo para que otras personas puedan participar', 'Distinguir la urgencia real de la presión autoimpuesta', 'Reconocer el valor de una contribución menos visible'],
+  workStyle: ['Definición de prioridades y estrategias', 'Coordinación de equipos hacia objetivos claros', 'Resolución de problemas con impacto', 'Diseño de procesos que hacen avanzar un proyecto', 'Entornos donde se combina autonomía con responsabilidad'],
+  careerThemes: ['Estrategia y ejecución', 'Liderazgo de proyectos y personas', 'Construcción de sistemas con impacto'],
+  relationshipStyle: 'Las amistades ENTJ suelen construirse a partir de respeto mutuo, conversaciones honestas y proyectos que dan energía. Su lealtad puede mostrarse al animar, organizar o abrir oportunidades; reservar tiempo para la cercanía sin objetivo fortalece también esos vínculos.',
+  relationshipContexts: {
+    friendship: 'Las amistades ENTJ suelen crecer con respeto, franqueza y ganas de impulsar la vida de quienes quieren. Dejar espacio para conversar sin resolver nada de inmediato ayuda a que la relación no se convierta solo en un plan de acción.',
+    romance: 'En pareja, una persona ENTJ puede expresar compromiso al planificar, proteger lo importante y tomar iniciativa. Preguntar qué necesita la otra persona —en lugar de anticiparlo todo— deja sitio para una intimidad más compartida.',
+    family: 'En la familia, ENTJ puede asumir responsabilidades con facilidad y querer que las cosas funcionen. Acordar límites, ritmos y expectativas de forma explícita evita que su ayuda se viva como control.',
+    teamwork: 'En equipo, ENTJ aporta dirección, energía para decidir y claridad sobre las prioridades. Su contribución gana alcance cuando invita al desacuerdo fundamentado y da tiempo para que otras voces completen la perspectiva.',
+  },
+  leadership: { style: 'Moviliza al equipo al conectar una meta ambiciosa con decisiones claras y responsabilidades concretas.', summary: 'Suele liderar desde la estrategia, la energía de ejecución y la voluntad de asumir decisiones difíciles.', strengths: ['Visión estratégica', 'Capacidad de movilización', 'Responsabilidad ante los resultados'], weeklyAction: 'En la próxima decisión relevante, pide primero dos riesgos o alternativas al equipo y resume lo que cambió en tu planteamiento.' },
+  communication: { summary: 'Suele comunicarse con claridad, rapidez y atención a lo que permite avanzar.', preferred: 'Explicar la prioridad, el motivo y el resultado esperado antes de repartir tareas.', listening: 'Escuchar mejor cuando convierte una objeción en una fuente de información, no en un freno al ritmo.', conflict: 'Puede volverse tajante bajo presión; pausar, nombrar el objetivo común y hacer una pregunta concreta ayuda a bajar la tensión.', tips: ['Distingue entre una instrucción urgente y una conversación que necesita participación real.', 'Antes de cerrar un tema, pregunta qué efecto tendría la decisión sobre quienes la llevarán a cabo.'] },
+  learningStyle: 'Aprende bien al relacionar una idea con una meta, ponerla a prueba en la práctica y recibir retroalimentación que permita afinar la ejecución.',
+  stressPatterns: ['Acelerar el ritmo sin comprobar la capacidad del equipo', 'Tomar demasiado control', 'Responder con impaciencia ante la duda', 'Medir el propio valor solo por el avance conseguido'],
+  developmentTips: ['Antes de actuar, identifica qué información solo puede aportar otra persona.', 'Reserva un momento para reconocer el progreso, no únicamente lo que todavía falta.'],
+  relatedTypes: ['INTJ', 'INTP', 'ENTP'],
+  seo: { title: 'Personalidad ENTJ: liderazgo, estrategia y desarrollo | KalQLater', description: 'Explora la personalidad ENTJ con una guía de autorreflexión sobre liderazgo, decisiones, relaciones, comunicación y desarrollo.' },
+});
+
+const entjFaq = Object.freeze([
+  ['¿Qué describe esta guía ENTJ?', 'Resume preferencias, fortalezas y posibilidades de desarrollo asociadas a ENTJ. Es una guía para observar patrones propios, no una definición total de una persona.'],
+  ['¿ENTJ es un diagnóstico?', 'No. KalQLater es una herramienta de autorreflexión; no ofrece diagnósticos clínicos ni debe utilizarse para medir la capacidad de una persona.'],
+  ['¿Puede una persona ENTJ liderar bien?', 'Sí. El liderazgo se amplía al combinar dirección con escucha, delegación, criterio y cuidado por el contexto de las personas. Son prácticas que se pueden aprender.'],
+  ['¿Qué puede buscar ENTJ en el trabajo?', 'Suele valorar objetivos claros, retos con impacto y margen para coordinar recursos, tomar decisiones y mejorar la manera de trabajar.'],
+  ['¿Cómo puede mostrarse ENTJ en las relaciones?', 'Puede mostrar cuidado tomando iniciativa, siendo leal y buscando soluciones. Preguntar, escuchar y expresar afecto sin convertirlo en una tarea acerca esa intención a la otra persona.'],
+  ['¿Qué puede ayudar bajo presión?', 'Bajar el ritmo, revisar las prioridades, compartir responsabilidades y recurrir a una conversación de confianza pueden ayudar. Ante un malestar persistente o intenso, busca apoyo profesional cualificado.'],
+  ['¿El tipo de personalidad puede cambiar?', 'Las personas cambian con la experiencia, los roles y las etapas de vida. Esta guía ofrece un punto de reflexión, no una identidad definitiva.'],
+  ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe usarse para filtrar, clasificar ni tomar decisiones de contratación.'],
+]);
+
 const spanishGuides = Object.freeze({
   INTJ: Object.freeze({ profile: intjSpanish, faq: intjFaq }),
   INTP: Object.freeze({ profile: intpSpanish, faq: intpFaq }),
+  ENTJ: Object.freeze({ profile: entjSpanish, faq: entjFaq }),
 });
 
 export function getPersonalityGuideContent(locale, type) {
