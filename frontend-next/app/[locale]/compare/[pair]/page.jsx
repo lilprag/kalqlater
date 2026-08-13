@@ -3,12 +3,13 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { JsonLd } from '../../../../components/JsonLd';
 import { comparisonContent } from '../../../../lib/comparison-content';
 import { allPairs, comparisonProfile, parsePair } from '../../../../lib/comparisons';
+import { getComparisonContent, spanishComparisonSlugs } from '../../../../localization/compare-guide';
 import { breadcrumbJsonLd, pageMetadata } from '../../../../lib/metadata';
 import { getPersonalityUrl, personalityProfile } from '../../../../lib/personality';
-import { isLocale, localePath, productionAppUrl } from '../../../../lib/site';
+import { isComparisonPreviewLocale, isLocale, localePath, productionAppUrl } from '../../../../lib/site';
 
 export function generateStaticParams() {
-  return ['en', 'hi'].flatMap((locale) => allPairs().map((pair) => ({ locale, pair: pair.slug })));
+  return ['en', 'hi'].flatMap((locale) => allPairs().map((pair) => ({ locale, pair: pair.slug }))).concat(spanishComparisonSlugs.map((pair) => ({ locale: 'es', pair })));
 }
 
 export const dynamicParams = false;
@@ -16,7 +17,15 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }) {
   const { locale, pair } = await params;
   const parsed = parsePair(pair);
-  if (!isLocale(locale) || !parsed) return {};
+  const preview = isComparisonPreviewLocale(locale, pair);
+  if ((!isLocale(locale) && !preview) || !parsed) return {};
+  if (preview) {
+    try {
+      const localized = getComparisonContent('es', parsed.canonical[0], parsed.canonical[1]);
+      const url = `https://kalqlater.com/es/compare/${parsed.slug}`;
+      return { title: { absolute: localized.seo.title }, description: localized.seo.description, alternates: { canonical: url }, openGraph: { type: 'website', siteName: 'KalQLater', title: localized.seo.title, description: localized.seo.description, url, locale: 'es_ES' }, twitter: { card: 'summary', title: localized.seo.title, description: localized.seo.description }, robots: { index: false, follow: false } };
+    } catch { return {}; }
+  }
   const first = personalityProfile(parsed.canonical[0], locale);
   const second = personalityProfile(parsed.canonical[1], locale);
   const hi = locale === 'hi';
@@ -34,48 +43,55 @@ export async function generateMetadata({ params }) {
 
 export default async function ComparisonPage({ params }) {
   const { locale, pair } = await params;
-  if (!isLocale(locale)) notFound();
+  const preview = isComparisonPreviewLocale(locale, pair);
+  if (!isLocale(locale) && !preview) notFound();
   const parsed = parsePair(pair);
   if (!parsed) notFound();
   if (!parsed.isCanonical) permanentRedirect(localePath(locale, `compare/${parsed.slug}`));
 
   const [firstCode, secondCode] = parsed.canonical;
-  const first = personalityProfile(firstCode, locale);
-  const second = personalityProfile(secondCode, locale);
-  const insight = comparisonProfile(firstCode, secondCode, locale);
-  const content = comparisonContent({ firstProfile: first, secondProfile: second, insight, locale });
+  let first; let second; let content;
+  if (preview) {
+    try { const localized = getComparisonContent('es', firstCode, secondCode); first = localized.first; second = localized.second; content = localized.content; } catch { notFound(); }
+  } else {
+    first = personalityProfile(firstCode, locale); second = personalityProfile(secondCode, locale);
+    const insight = comparisonProfile(firstCode, secondCode, locale);
+    content = comparisonContent({ firstProfile: first, secondProfile: second, insight, locale });
+  }
   const hi = locale === 'hi';
+  const es = locale === 'es';
+  const copy = es ? content.ui : null;
   const related = allPairs().filter((item) => item.slug !== parsed.slug && (item.first === firstCode || item.second === firstCode || item.first === secondCode || item.second === secondCode)).slice(0, 4);
-  const faqSchema = { '@type': 'FAQPage', mainEntity: content.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
+  const faqSchema = { '@type': 'FAQPage', ...(es ? { inLanguage: 'es' } : {}), mainEntity: content.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
   const jsonLd = { '@context': 'https://schema.org', '@graph': [
-    breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: hi ? 'तुलना' : 'Compare', path: 'compare' }, { name: `${firstCode} vs ${secondCode}`, path: `compare/${parsed.slug}` }]),
+    breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: hi ? 'तुलना' : es ? 'Comparar personalidades' : 'Compare', path: 'compare' }, { name: `${firstCode} vs ${secondCode}`, path: `compare/${parsed.slug}` }]),
     faqSchema,
   ] };
 
   return <><JsonLd data={jsonLd} /><main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-    <nav aria-label="Breadcrumb" className="text-sm text-brand-subtle"><Link href={localePath(locale)}>KalQLater</Link><span aria-hidden="true"> / </span><Link href={localePath(locale, 'compare')}>{hi ? 'तुलना' : 'Compare'}</Link><span aria-hidden="true"> / </span>{firstCode} {hi ? 'और' : 'and'} {secondCode}</nav>
+    <nav aria-label="Breadcrumb" className="text-sm text-brand-subtle"><Link href={localePath(locale)}>KalQLater</Link><span aria-hidden="true"> / </span><Link href={localePath(locale, 'compare')}>{hi ? 'तुलना' : es ? 'Comparar' : 'Compare'}</Link><span aria-hidden="true"> / </span>{firstCode} {hi ? 'और' : es ? 'y' : 'and'} {secondCode}</nav>
     <header className="relative mt-5 overflow-hidden rounded-[2rem] bg-brand-ink p-7 text-white shadow-[0_24px_70px_rgba(45,40,37,.2)] sm:p-10 lg:p-14">
       <span aria-hidden="true" className="absolute -right-12 -top-16 h-64 w-64 rounded-full bg-brand-teal/35 blur-3xl" /><span aria-hidden="true" className="absolute -bottom-24 left-1/4 h-64 w-64 rounded-full bg-brand-plum/35 blur-3xl" />
-      <div className="relative"><p className="section-kicker text-brand-sand">{content.eyebrow}</p><h1 className="display-font mt-4 text-4xl leading-tight sm:text-6xl">{first.code} <span className="text-brand-sand">{hi ? 'और' : 'and'}</span> {second.code}</h1>
+      <div className="relative"><p className="section-kicker text-brand-sand">{content.eyebrow}</p><h1 className="display-font mt-4 text-4xl leading-tight sm:text-6xl">{first.code} <span className="text-brand-sand">{hi ? 'और' : es ? 'y' : 'and'}</span> {second.code}</h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/85">{content.helper}</p><p className="mt-5 max-w-3xl text-base leading-relaxed text-white/70">{content.intro}</p>
         <div className="mt-7 grid gap-3 sm:grid-cols-2"><TypePanel profile={first} align="left" /><TypePanel profile={second} align="right" /></div>
       </div>
     </header>
 
-    <section className="mt-12"><Header eyebrow={hi ? 'एक नज़र में' : 'Quick snapshot'} title={hi ? 'इस जोड़ी के लिए उपयोगी संकेत' : 'Useful signals for this pair'} /><div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{content.snapshot.map((item) => <article key={item.title} className="rounded-3xl border border-brand-line bg-white p-5 shadow-[0_12px_36px_rgba(45,40,37,.05)]"><span aria-hidden="true" className="grid h-10 w-10 place-items-center rounded-2xl bg-brand-cream text-lg text-brand-teal">{item.icon}</span><p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-brand-teal">{item.title}</p><h2 className="display-font mt-2 text-2xl text-brand-ink">{item.label}</h2><p className="mt-3 text-sm leading-relaxed text-brand-subtle">{item.text}</p></article>)}</div></section>
+    <section className="mt-12"><Header eyebrow={hi ? 'एक नज़र में' : es ? copy.snapshot : 'Quick snapshot'} title={hi ? 'इस जोड़ी के लिए उपयोगी संकेत' : es ? copy.signals : 'Useful signals for this pair'} /><div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{content.snapshot.map((item) => <article key={item.title} className="rounded-3xl border border-brand-line bg-white p-5 shadow-[0_12px_36px_rgba(45,40,37,.05)]"><span aria-hidden="true" className="grid h-10 w-10 place-items-center rounded-2xl bg-brand-cream text-lg text-brand-teal">{item.icon}</span><p className="mt-4 text-xs font-bold uppercase tracking-[.14em] text-brand-teal">{item.title}</p><h2 className="display-font mt-2 text-2xl text-brand-ink">{item.label}</h2><p className="mt-3 text-sm leading-relaxed text-brand-subtle">{item.text}</p></article>)}</div></section>
 
     <section className="mt-14 grid gap-5 lg:grid-cols-2">{content.sections.map(([title, body, practice], index) => <article key={title} className={`rounded-[1.75rem] border p-6 sm:p-8 ${index === 0 ? 'border-brand-teal/30 bg-brand-teal/5' : index === 5 ? 'border-brand-saffron/30 bg-brand-sand/20' : 'border-brand-line bg-white'}`}><p className="section-kicker">{String(index + 1).padStart(2, '0')}</p><h2 className="display-font mt-3 text-3xl text-brand-ink">{title}</h2><p className="mt-4 leading-relaxed text-brand-subtle">{body}</p><p className="mt-5 rounded-2xl bg-white/80 p-4 text-sm leading-relaxed text-brand-ink">{practice}</p></article>)}</section>
 
-    <section className="mt-14 rounded-[2rem] bg-brand-ink p-7 text-white sm:p-9"><Header eyebrow={hi ? 'नंबर के बजाय' : 'Instead of a number'} title={content.percentage} body={content.percentageText} light /></section>
+    <section className="mt-14 rounded-[2rem] bg-brand-ink p-7 text-white sm:p-9"><Header eyebrow={hi ? 'नंबर के बजाय' : es ? copy.instead : 'Instead of a number'} title={content.percentage} body={content.percentageText} light /></section>
 
-    <section className="mt-14"><Header eyebrow={hi ? 'मिथक और वास्तविकता' : 'Myth and reality'} title={hi ? 'टाइप लेबल के आगे देखें' : 'Look beyond the type label'} /><div className="mt-6 grid gap-4 lg:grid-cols-3">{content.misconceptions.map(([myth, reality]) => <article key={myth} className="rounded-3xl bg-brand-cream p-6"><p className="text-xs font-bold uppercase tracking-[.14em] text-brand-plum">{hi ? 'मिथक' : 'Myth'}</p><p className="mt-2 font-semibold text-brand-ink">{myth}</p><p className="mt-5 text-xs font-bold uppercase tracking-[.14em] text-brand-teal">{hi ? 'वास्तविकता' : 'Reality'}</p><p className="mt-2 text-sm leading-relaxed text-brand-subtle">{reality}</p></article>)}</div></section>
+    <section className="mt-14"><Header eyebrow={hi ? 'मिथक और वास्तविकता' : es ? copy.myths : 'Myth and reality'} title={hi ? 'टाइप लेबल के आगे देखें' : es ? copy.beyond : 'Look beyond the type label'} /><div className="mt-6 grid gap-4 lg:grid-cols-3">{content.misconceptions.map(([myth, reality]) => <article key={myth} className="rounded-3xl bg-brand-cream p-6"><p className="text-xs font-bold uppercase tracking-[.14em] text-brand-plum">{hi ? 'मिथक' : es ? copy.myth : 'Myth'}</p><p className="mt-2 font-semibold text-brand-ink">{myth}</p><p className="mt-5 text-xs font-bold uppercase tracking-[.14em] text-brand-teal">{hi ? 'वास्तविकता' : es ? copy.reality : 'Reality'}</p><p className="mt-2 text-sm leading-relaxed text-brand-subtle">{reality}</p></article>)}</div></section>
 
-    <section className="mt-14"><Header eyebrow={hi ? 'खोज-आधारित प्रश्न' : 'Search-driven questions'} title={hi ? 'अक्सर पूछे जाने वाले सवाल' : 'Frequently asked questions'} /><div className="mt-6 space-y-3">{content.faq.map(([question, answer]) => <details key={question} className="rounded-2xl border border-brand-line bg-white p-5"><summary className="cursor-pointer font-semibold text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal">{question}</summary><p className="mt-4 max-w-4xl leading-relaxed text-brand-subtle">{answer}</p></details>)}</div></section>
+    <section className="mt-14"><Header eyebrow={hi ? 'खोज-आधारित प्रश्न' : es ? copy.questions : 'Search-driven questions'} title={hi ? 'अक्सर पूछे जाने वाले सवाल' : es ? copy.questions : 'Frequently asked questions'} /><div className="mt-6 space-y-3">{content.faq.map(([question, answer]) => <details key={question} className="rounded-2xl border border-brand-line bg-white p-5"><summary className="cursor-pointer font-semibold text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal">{question}</summary><p className="mt-4 max-w-4xl leading-relaxed text-brand-subtle">{answer}</p></details>)}</div></section>
 
-    <section className="mt-14 rounded-[2rem] bg-brand-sand/25 p-7 sm:p-9"><Header eyebrow={hi ? 'और खोजें' : 'Explore more'} title={hi ? 'इस तुलना को आगे बढ़ाएं' : 'Take this comparison further'} /><div className="mt-6 flex flex-wrap gap-3"><Link href={getPersonalityUrl(first.code, locale)} className="button-secondary">{first.code} {first.displayName}</Link><Link href={getPersonalityUrl(second.code, locale)} className="button-secondary">{second.code} {second.displayName}</Link><Link href={localePath(locale, `personality/${first.slug}/careers`)} className="button-secondary">{hi ? `${first.code} करियर गाइड` : `${first.code} Career Guide`}</Link><Link href={localePath(locale, `personality/${second.slug}/careers`)} className="button-secondary">{hi ? `${second.code} करियर गाइड` : `${second.code} Career Guide`}</Link><Link href={localePath(locale, 'insights/communication')} className="button-secondary">{hi ? 'कम्युनिकेशन इनसाइट्स' : 'Communication Insights'}</Link><Link href={localePath(locale, 'insights')} className="button-secondary">{hi ? 'इनसाइट्स हब' : 'Insights Hub'}</Link></div>
-      <div className="mt-8"><p className="section-kicker">{hi ? 'संबंधित तुलनाएँ' : 'Related comparisons'}</p><div className="mt-4 flex flex-wrap gap-3">{related.map((item) => <Link key={item.slug} href={localePath(locale, `compare/${item.slug}`)} className="button-secondary">{item.first} {hi ? 'और' : 'and'} {item.second}</Link>)}</div></div>
+    <section className="mt-14 rounded-[2rem] bg-brand-sand/25 p-7 sm:p-9"><Header eyebrow={hi ? 'और खोजें' : es ? copy.explore : 'Explore more'} title={hi ? 'इस तुलना को आगे बढ़ाएं' : es ? copy.further : 'Take this comparison further'} /><div className="mt-6 flex flex-wrap gap-3"><Link href={getPersonalityUrl(first.code, locale)} className="button-secondary">{first.code} {first.displayName}</Link><Link href={getPersonalityUrl(second.code, locale)} className="button-secondary">{second.code} {second.displayName}</Link><Link href={localePath(locale, `personality/${first.slug}/careers`)} className="button-secondary">{hi ? `${first.code} करियर गाइड` : es ? `${first.code} ${copy.career}` : `${first.code} Career Guide`}</Link><Link href={localePath(locale, `personality/${second.slug}/careers`)} className="button-secondary">{hi ? `${second.code} करियर गाइड` : es ? `${second.code} ${copy.career}` : `${second.code} Career Guide`}</Link>{!es && <><Link href={localePath(locale, 'insights/communication')} className="button-secondary">{hi ? 'कम्युनिकेशन इनसाइट्स' : 'Communication Insights'}</Link><Link href={localePath(locale, 'insights')} className="button-secondary">{hi ? 'इनसाइट्स हब' : 'Insights Hub'}</Link></>}</div>
+      <div className="mt-8"><p className="section-kicker">{hi ? 'संबंधित तुलनाएँ' : es ? copy.related : 'Related comparisons'}</p><div className="mt-4 flex flex-wrap gap-3">{related.filter((item) => !es || isComparisonPreviewLocale('es', item.slug)).map((item) => <Link key={item.slug} href={localePath(locale, `compare/${item.slug}`)} className="button-secondary">{item.first} {hi ? 'और' : es ? 'y' : 'and'} {item.second}</Link>)}</div></div>
     </section>
-    <section className="mt-14 rounded-[2rem] bg-brand-teal p-8 text-white"><h2 className="display-font text-3xl sm:text-4xl">{hi ? 'पैटर्न समझें। अगली बातचीत चुनें।' : 'Understand the pattern. Choose the next conversation.'}</h2><p className="mt-4 max-w-2xl text-white/80">{hi ? 'यह आत्मचिंतन है, किसी रिश्ते, क्षमता या भविष्य का निश्चित फैसला नहीं।' : 'This is a reflection tool, not a verdict on a relationship, ability, or future.'}</p><div className="mt-7 flex flex-wrap gap-3"><a href={productionAppUrl('/test')} className="button-light">{hi ? 'पर्सनैलिटी टेस्ट दें' : 'Take the personality test'}</a><Link href={localePath(locale, 'compare')} className="button-dark-outline">{hi ? 'दूसरी तुलना देखें' : 'Explore another comparison'}</Link></div></section>
+    <section className="mt-14 rounded-[2rem] bg-brand-teal p-8 text-white"><h2 className="display-font text-3xl sm:text-4xl">{hi ? 'पैटर्न समझें। अगली बातचीत चुनें।' : es ? copy.pattern : 'Understand the pattern. Choose the next conversation.'}</h2><p className="mt-4 max-w-2xl text-white/80">{hi ? 'यह आत्मचिंतन है, किसी रिश्ते, क्षमता या भविष्य का निश्चित फैसला नहीं।' : es ? copy.reflection : 'This is a reflection tool, not a verdict on a relationship, ability, or future.'}</p><div className="mt-7 flex flex-wrap gap-3"><a href={productionAppUrl('/test')} className="button-light">{hi ? 'पर्सनैलिटी टेस्ट दें' : es ? copy.test : 'Take the personality test'}</a>{!es && <Link href={localePath(locale, 'compare')} className="button-dark-outline">{hi ? 'दूसरी तुलना देखें' : 'Explore another comparison'}</Link>}</div></section>
   </main></>;
 }
 
