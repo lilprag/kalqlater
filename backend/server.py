@@ -23,6 +23,7 @@ from behavior_engine.api import create_engine_router
 from behavior_engine.content import FileAnalyzerContentRepository
 from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
 from behavior_engine.service import AssessmentService
+from localization_workbench import LocalizationBlockEdit, LocalizationBlockSave, LocalizationReviewInput, apply_human_edit, apply_review_action, initialize_block
 
 
 ROOT_DIR = Path(__file__).parent
@@ -343,6 +344,14 @@ async def current_user(authorization: Optional[str] = Header(None)):
     if not user: raise HTTPException(401, "Authentication required")
     return user
 
+
+async def current_localization_reviewer(user=Depends(current_user)):
+    """Reviewer access is explicit and server-authorized; no browser role is trusted."""
+    allowed = {email.strip().lower() for email in os.environ.get("LOCALIZATION_REVIEWER_EMAILS", "").split(",") if email.strip()}
+    if not allowed or str(user.get("email", "")).lower() not in allowed:
+        raise HTTPException(403, "Reviewer access required")
+    return user
+
 def require_qa_cleanup_secret(request: Request, x_qa_cleanup_secret: Optional[str] = Header(None)):
     """Gate QA-only lifecycle tools behind a configured server secret and rate limit."""
     configured_secret = os.environ.get("QA_CLEANUP_SECRET")
@@ -474,6 +483,47 @@ async def signup(payload: SignupPayload):
     user = {"id":str(uuid.uuid4()), "email":email, "password_hash":bcrypt.hashpw(payload.password.encode(), bcrypt.gensalt()).decode(), "created_at":datetime.now(timezone.utc).isoformat()}
     await db.community_users.insert_one(user)
     return {"token":token_for(user["id"]), "user":{"email":email}}
+
+
+@api_router.get("/localization/reviewer/blocks")
+async def localization_blocks(locale: Optional[str] = None, status: Optional[str] = None, reviewer=Depends(current_localization_reviewer)):
+    query = {}
+    if locale: query["locale"] = locale
+    if status: query["approval_status"] = status
+    cursor = db.localization_content_blocks.find(query, {"_id": 0}).sort("updated_at", -1).limit(200)
+    return {"items": [item async for item in cursor]}
+
+
+@api_router.post("/localization/reviewer/blocks")
+async def create_localization_block(payload: LocalizationBlockSave, reviewer=Depends(current_localization_reviewer)):
+    existing = await db.localization_content_blocks.find_one({"locale": payload.locale, "content_id": payload.content_id})
+    if existing: raise HTTPException(409, "Localization block already exists")
+    block = initialize_block(payload, reviewer["email"])
+    await db.localization_content_blocks.insert_one(block)
+    block.pop("_id", None)
+    return block
+
+
+@api_router.put("/localization/reviewer/blocks/{locale}/{content_id}")
+async def review_localization_block(locale: str, content_id: str, payload: LocalizationReviewInput, reviewer=Depends(current_localization_reviewer)):
+    block = await db.localization_content_blocks.find_one({"locale": locale, "content_id": content_id})
+    if not block: raise HTTPException(404, "Localization block not found")
+    try: updated = apply_review_action(block, payload, reviewer["email"])
+    except ValueError as error: raise HTTPException(422, str(error)) from error
+    await db.localization_content_blocks.replace_one({"_id": block["_id"]}, updated)
+    updated.pop("_id", None)
+    return updated
+
+
+@api_router.patch("/localization/reviewer/blocks/{locale}/{content_id}")
+async def edit_localization_block(locale: str, content_id: str, payload: LocalizationBlockEdit, reviewer=Depends(current_localization_reviewer)):
+    block = await db.localization_content_blocks.find_one({"locale": locale, "content_id": content_id})
+    if not block: raise HTTPException(404, "Localization block not found")
+    try: updated = apply_human_edit(block, payload, reviewer["email"])
+    except ValueError as error: raise HTTPException(422, str(error)) from error
+    await db.localization_content_blocks.replace_one({"_id": block["_id"]}, updated)
+    updated.pop("_id", None)
+    return updated
 
 @api_router.post("/admin/qa-accounts")
 async def create_qa_account(payload: QAAccountCreatePayload, request: Request, x_qa_cleanup_secret: Optional[str] = Header(None)):
@@ -872,6 +922,7 @@ async def initialize_community_indexes():
     logger.info("Published behavior analyzers loaded: %s", ", ".join(loaded_analyzers))
     behavior_db.behavior_assessment_sessions.create_index("expires_at", expireAfterSeconds=0)
     behavior_db.behavior_analyzer_results.create_index("session_id", unique=True)
+    await db.localization_content_blocks.create_index([("locale", 1), ("content_id", 1)], unique=True)
     await db.community_users.create_index("email", unique=True)
     await db.community_profiles.create_index("owner_id", unique=True)
     await db.community_profiles.create_index("username", unique=True)
