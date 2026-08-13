@@ -12,8 +12,9 @@
     "lint": "eslint .",
     "check:content-integrity": "node scripts/check-content-integrity.mjs",
     "check:localization": "node --experimental-default-type=module scripts/check-localization-production.mjs",
+    "check:localization-studio": "node --experimental-default-type=module scripts/check-localization-studio.mjs",
     "localization:report": "node --experimental-default-type=module scripts/localization-report.mjs",
-    "test": "node --experimental-default-type=module scripts/check-legacy-proxy-headers.mjs && node --experimental-default-type=module scripts/check-international-seo.mjs && node --experimental-default-type=module scripts/check-localization-production.mjs && node --experimental-default-type=module scripts/check-content.mjs && node --experimental-default-type=module scripts/check-content-integrity.mjs && node --experimental-default-type=module scripts/verify-crawlability.mjs"
+    "test": "node --experimental-default-type=module scripts/check-legacy-proxy-headers.mjs && node --experimental-default-type=module scripts/check-international-seo.mjs && node --experimental-default-type=module scripts/check-localization-production.mjs && node --experimental-default-type=module scripts/check-localization-studio.mjs && node --experimental-default-type=module scripts/check-content.mjs && node --experimental-default-type=module scripts/check-content-integrity.mjs && node --experimental-default-type=module scripts/verify-crawlability.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
