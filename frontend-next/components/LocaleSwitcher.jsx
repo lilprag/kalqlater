@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { publishedLocales } from '../lib/locales';
+import { publishedLanguageLocales } from '../lib/locale-availability';
 
-export function LocaleSwitcher({ locale, availableLocales = publishedLocales }) {
+export function LocaleSwitcher({ locale, availableLocales = publishedLanguageLocales() }) {
   const pathname = usePathname();
+  if (!publishedLanguageLocales().includes(locale)) return null;
   if (availableLocales.length < 2) return null;
   const targetLocale = availableLocales.find((candidate) => candidate !== locale) || locale;
   const target = pathname.replace(/^\/[a-z-]+(?=\/|$)/, `/${targetLocale}`);

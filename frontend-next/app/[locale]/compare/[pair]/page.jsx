@@ -38,6 +38,7 @@ export async function generateMetadata({ params }) {
     description: hi
       ? `${first.displayName} और ${second.displayName} रिश्ते, दोस्ती, काम, संवाद, मतभेद और विकास में कैसे साथ आ सकते हैं—प्रतिशत के बिना व्यावहारिक मार्गदर्शन।`
       : `Explore ${first.displayName} and ${second.displayName} in relationships, friendship, work, communication, conflict, and growth—practical guidance without compatibility percentages.`,
+    entityId: `compare:${parsed.slug}`,
   });
 }
 

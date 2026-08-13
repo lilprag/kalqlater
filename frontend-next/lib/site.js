@@ -1,18 +1,37 @@
-import { defaultLocale, isPublishedLocale, localeConfig, localeDirection, publishedLocales } from './locales.js';
+import { defaultLocale, localeConfig, localeDirection } from './locales.js';
+import { isPreviewEntityLocale, isPublishedEntityLocale, publishedLanguageLocales } from './locale-availability.js';
 
-export const locales = publishedLocales;
+export const locales = publishedLanguageLocales();
 export { defaultLocale, localeConfig, localeDirection };
 
-export function isLocale(value) { return isPublishedLocale(value); }
-export function isHomepagePreviewLocale(value) { return value === 'es'; }
-export function isPersonalityPreviewLocale(value, type) { return value === 'es' && ['intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp'].includes(String(type).toLowerCase()); }
+export function isLocale(value) {
+  const locale = String(value || '').toLowerCase();
+  return isPublishedEntityLocale(`language:${locale}`, locale);
+}
+
+export function isHomepagePreviewLocale(value) {
+  const locale = String(value || '').toLowerCase();
+  return isPreviewEntityLocale(`language:${locale}`, locale);
+}
+
+export function isPersonalityPreviewLocale(value, type) {
+  const locale = String(value || '').toLowerCase();
+  return isPreviewEntityLocale(`personality-guide:${String(type || '').toLowerCase()}`, locale);
+}
+
+export function isCareerPreviewLocale(value, type) {
+  const locale = String(value || '').toLowerCase();
+  return isPreviewEntityLocale(`career-guide:${String(type || '').toLowerCase()}`, locale);
+}
+
 const comparisonOrder = ['intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp'];
-// All 120 canonical Spanish comparison records are authored. Restrict preview
-// routing to the canonical form so reverse and malformed URLs still fail closed.
 export function isComparisonPreviewLocale(value, pair) {
-  if (value !== 'es') return false;
+  const locale = String(value || '').toLowerCase();
   const match = /^([a-z]{4})-vs-([a-z]{4})$/i.exec(String(pair));
-  return Boolean(match) && comparisonOrder.indexOf(match[1].toLowerCase()) >= 0 && comparisonOrder.indexOf(match[1].toLowerCase()) < comparisonOrder.indexOf(match[2].toLowerCase());
+  return Boolean(match)
+    && comparisonOrder.indexOf(match[1].toLowerCase()) >= 0
+    && comparisonOrder.indexOf(match[1].toLowerCase()) < comparisonOrder.indexOf(match[2].toLowerCase())
+    && isPreviewEntityLocale(`compare:${String(pair).toLowerCase()}`, locale);
 }
 
 export function siteUrl() {

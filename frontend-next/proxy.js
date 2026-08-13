@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server';
 import { legacyResponseHeaders } from './lib/legacy-response-headers';
-import { publishedLocales } from './lib/locales';
-import { isComparisonPreviewLocale } from './lib/site';
+import { publishedLanguageLocales, resolveLocaleRoute } from './lib/locale-availability';
 
-const locales = new Set(publishedLocales);
+const locales = new Set(publishedLanguageLocales());
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
 const legacyNoindexPaths = ['/community', '/login', '/signup', '/forgot-password', '/reset-password'];
-const spanishPreviewPaths = new Set(['/es', '/es/personality/intj', '/es/personality/intp', '/es/personality/entj', '/es/personality/entp', '/es/personality/infj', '/es/personality/infp', '/es/personality/enfj', '/es/personality/enfp', '/es/personality/istj', '/es/personality/isfj', '/es/personality/estj', '/es/personality/esfj', '/es/personality/istp', '/es/personality/isfp', '/es/personality/estp', '/es/personality/esfp', '/es/personality/intj/careers', '/es/personality/intp/careers', '/es/personality/entj/careers', '/es/personality/entp/careers', '/es/personality/infj/careers', '/es/personality/infp/careers', '/es/personality/enfj/careers', '/es/personality/enfp/careers', '/es/personality/istj/careers', '/es/personality/isfj/careers', '/es/personality/estj/careers', '/es/personality/esfj/careers', '/es/personality/istp/careers', '/es/personality/isfp/careers', '/es/personality/estp/careers', '/es/personality/esfp/careers', '/es/compare/intj-vs-intp', '/es/compare/intj-vs-entj', '/es/compare/intj-vs-entp', '/es/compare/intj-vs-infj', '/es/compare/intj-vs-infp', '/es/compare/intj-vs-enfj', '/es/compare/intj-vs-enfp', '/es/compare/intj-vs-istj', '/es/compare/intj-vs-isfj', '/es/compare/intj-vs-estj', '/es/compare/intj-vs-esfj', '/es/compare/intj-vs-istp', '/es/compare/intj-vs-isfp', '/es/compare/intj-vs-estp', '/es/compare/intj-vs-esfp', '/es/compare/infj-vs-enfp']);
 
 function parsedPair(firstValue, secondValue) {
   const first = String(firstValue || '').toUpperCase();
@@ -23,22 +21,19 @@ function comparisonDestination(request, pair) {
   return url;
 }
 
+function notFoundResponse() {
+  return new NextResponse('Not Found', {
+    status: 404,
+    headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' },
+  });
+}
+
 function legacyPersonalityResponse(request) {
   if (request.nextUrl.pathname === '/types/') return NextResponse.next();
   const match = /^\/types\/([^/]+)$/i.exec(request.nextUrl.pathname);
-  if (!match) {
-    return new NextResponse('Not Found', {
-      status: 404,
-      headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' },
-    });
-  }
+  if (!match) return notFoundResponse();
   const type = match[1].toUpperCase();
-  if (!typeOrder.includes(type)) {
-    return new NextResponse('Not Found', {
-      status: 404,
-      headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' },
-    });
-  }
+  if (!typeOrder.includes(type)) return notFoundResponse();
 
   const locale = request.nextUrl.searchParams.get('lang') === 'hi' || request.nextUrl.searchParams.get('locale') === 'hi' ? 'hi' : 'en';
   const url = request.nextUrl.clone();
@@ -57,12 +52,12 @@ function legacyComparisonResponse(request) {
       return NextResponse.redirect(url, 308);
     }
     const pair = parsedPair(request.nextUrl.searchParams.get('type1'), request.nextUrl.searchParams.get('type2'));
-    return pair ? NextResponse.redirect(comparisonDestination(request, pair), 308) : new NextResponse('Not Found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' } });
+    return pair ? NextResponse.redirect(comparisonDestination(request, pair), 308) : notFoundResponse();
   }
   const match = /^\/compare\/([a-z]{4})-vs-([a-z]{4})$/i.exec(path);
-  if (!match) return new NextResponse('Not Found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' } });
+  if (!match) return notFoundResponse();
   const pair = parsedPair(match[1], match[2]);
-  return pair ? NextResponse.redirect(comparisonDestination(request, pair), 308) : new NextResponse('Not Found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' } });
+  return pair ? NextResponse.redirect(comparisonDestination(request, pair), 308) : notFoundResponse();
 }
 
 async function noindexLegacyApplicationResponse(request) {
@@ -75,23 +70,25 @@ async function noindexLegacyApplicationResponse(request) {
   return response;
 }
 
-export async function proxy(request) {
-  const spanishCompare = /^\/es\/compare\/([a-z]{4}-vs-[a-z]{4})$/i.exec(request.nextUrl.pathname);
-  if (spanishPreviewPaths.has(request.nextUrl.pathname) || (spanishCompare && isComparisonPreviewLocale('es', spanishCompare[1]))) {
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-kalqlater-locale', 'es');
-    return NextResponse.next({ request: { headers: requestHeaders } });
-  }
-  if (request.nextUrl.pathname === '/es' || request.nextUrl.pathname.startsWith('/es/')) {
-    return new NextResponse('Not Found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8', 'x-robots-tag': 'noindex' } });
-  }
-  if (request.nextUrl.pathname.startsWith('/types/')) return legacyPersonalityResponse(request);
-  if (request.nextUrl.pathname === '/compare' || request.nextUrl.pathname.startsWith('/compare/')) return legacyComparisonResponse(request);
-  if (legacyNoindexPaths.some((path) => request.nextUrl.pathname === path || request.nextUrl.pathname.startsWith(`${path}/`))) return noindexLegacyApplicationResponse(request);
+function previewResponse(request) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-kalqlater-locale', 'es');
+  return NextResponse.next({ request: { headers: requestHeaders } });
+}
 
-  const locale = request.nextUrl.pathname.split('/')[1];
+export async function proxy(request) {
+  const path = request.nextUrl.pathname;
+  if (path === '/es' || path.startsWith('/es/')) {
+    const availability = resolveLocaleRoute('es', path);
+    return availability.isPreview ? previewResponse(request) : notFoundResponse();
+  }
+  if (path.startsWith('/types/')) return legacyPersonalityResponse(request);
+  if (path === '/compare' || path.startsWith('/compare/')) return legacyComparisonResponse(request);
+  if (legacyNoindexPaths.some((legacyPath) => path === legacyPath || path.startsWith(`${legacyPath}/`))) return noindexLegacyApplicationResponse(request);
+
+  const locale = path.split('/')[1];
   if (!locales.has(locale)) return NextResponse.next();
-  const comparison = new RegExp(`^/(${locale})/compare/([a-z]{4})-vs-([a-z]{4})$`, 'i').exec(request.nextUrl.pathname);
+  const comparison = new RegExp(`^/(${locale})/compare/([a-z]{4})-vs-([a-z]{4})$`, 'i').exec(path);
   if (comparison) {
     const pair = parsedPair(comparison[2], comparison[3]);
     if (pair && `${comparison[2].toLowerCase()}-vs-${comparison[3].toLowerCase()}` !== `${pair[0].toLowerCase()}-vs-${pair[1].toLowerCase()}`) {

@@ -6,5 +6,5 @@ import { isLocale } from '../../../lib/site';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
-export async function generateMetadata({ params }) { const { locale } = await params; const copy = isLocale(locale) ? discoveryLandings[locale].jobs : null; return copy ? pageMetadata({ locale, path: 'jobs', title: locale === 'hi' ? 'KalQLater जॉब्स: संदर्भ के साथ अवसर खोजें' : 'KalQLater Jobs: Explore Opportunities with Context', description: copy.description }) : {}; }
+export async function generateMetadata({ params }) { const { locale } = await params; const copy = isLocale(locale) ? discoveryLandings[locale].jobs : null; return copy ? pageMetadata({ locale, path: 'jobs', title: locale === 'hi' ? 'KalQLater जॉब्स: संदर्भ के साथ अवसर खोजें' : 'KalQLater Jobs: Explore Opportunities with Context', description: copy.description, entityId: 'jobs:directory' }) : {}; }
 export default async function JobsLandingPage({ params }) { const { locale } = await params; if (!isLocale(locale)) notFound(); return <DiscoveryLanding locale={locale} kind="jobs" copy={discoveryLandings[locale].jobs} />; }

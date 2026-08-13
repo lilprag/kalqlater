@@ -7,7 +7,7 @@ import { isLocale, localePath, productionAppUrl } from '../../../../lib/site';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
-export async function generateMetadata({ params }) { const { locale } = await params; if (!isLocale(locale)) return {}; return pageMetadata({ locale, path: 'insights/communication', title: locale === 'hi' ? 'कम्युनिकेशन इनसाइट्स: आप कैसे संवाद करते हैं' : 'Communication Insights: Understand How You Communicate', description: locale === 'hi' ? 'रोज़मर्रा की स्थितियों में अपने संवाद के पैटर्न पर विचार करें—स्पष्टता, सुनना, असहमति और अनुकूलन।' : 'Reflect on communication patterns across everyday situations: clarity, listening, disagreement, and adaptation.' }); }
+export async function generateMetadata({ params }) { const { locale } = await params; if (!isLocale(locale)) return {}; return pageMetadata({ locale, path: 'insights/communication', title: locale === 'hi' ? 'कम्युनिकेशन इनसाइट्स: आप कैसे संवाद करते हैं' : 'Communication Insights: Understand How You Communicate', description: locale === 'hi' ? 'रोज़मर्रा की स्थितियों में अपने संवाद के पैटर्न पर विचार करें—स्पष्टता, सुनना, असहमति और अनुकूलन।' : 'Reflect on communication patterns across everyday situations: clarity, listening, disagreement, and adaptation.', entityId: 'insight:communication' }); }
 
 export default async function CommunicationInsightsLanding({ params }) {
   const { locale } = await params; if (!isLocale(locale)) notFound(); const c = insightsCopy(locale); const hi = locale === 'hi';

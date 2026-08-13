@@ -69,3 +69,31 @@ resolveEntityAvailability(contentEntityRegistry, 'compare:intj-vs-enfp', 'en');
 ```
 
 Use this contract as the common source of truth for future route guards, recommendation eligibility, locale publication, analytics validation, and internal-link audits.
+
+## Locale availability guard (PR-002)
+
+`lib/locale-availability.js` is the shared publication-policy consumer for the
+registry. It resolves a locale and route to its governing entity and exposes
+these outcomes:
+
+- **published** — routable and public; safe for navigation, sitemap, and
+  hreflang.
+- **preview** — routable only at an explicit configured preview path; never
+  emitted by public navigation, sitemap, or hreflang.
+- **planned**, **unavailable**, and **deprecated** — not routable and fail
+  closed.
+
+The proxy uses `resolveLocaleRoute(locale, pathname)` before admitting an
+unpublished preview route. The sitemap uses `publicLocalesForEntity(id)`, and
+metadata uses the same list when constructing hreflang alternates. Header,
+footer, and language-selector visibility use public-only helpers.
+
+### Adding a future locale
+
+1. Add the locale to `lib/locales.js` with its language metadata.
+2. Add its explicit state to every affected entity configuration. A missing
+   state is invalid configuration, never an implicit fallback.
+3. Add preview routing only when the entity is `preview`; promote to
+   `published` only when it is ready for public navigation and SEO.
+4. Extend `scripts/check-locale-availability.mjs` with routing, sitemap,
+   hreflang, and language-selector expectations.

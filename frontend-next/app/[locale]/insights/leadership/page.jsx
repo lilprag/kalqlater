@@ -17,6 +17,7 @@ export async function generateMetadata({ params }) {
     path: 'insights/leadership',
     title: hi ? 'लीडरशिप इनसाइट्स: नेतृत्व के तरीके पर विचार करें' : 'Leadership Insights: Reflect on Leadership in Practice',
     description: hi ? 'दिशा, साझा जिम्मेदारी, फीडबैक और जवाबदेही के अपने व्यवहारिक पैटर्न पर विचार करें।' : 'Reflect on how you create direction, share ownership, give feedback, and repair impact.',
+    entityId: 'insight:leadership',
   });
 }
 

@@ -7,7 +7,7 @@ import { isLocale, localePath } from '../../../../lib/site';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
-export async function generateMetadata({ params }) { const { locale } = await params; if (!isLocale(locale)) return {}; const hi = locale === 'hi'; return pageMetadata({ locale, path: 'insights/conflict', title: hi ? 'कन्फ्लिक्ट इनसाइट्स: मतभेद में अपने तरीके पर विचार करें' : 'Conflict Insights: Reflect on How You Handle Tension', description: hi ? 'तनाव, सीमाओं, संबंध सुधार और मिलकर समाधान के अपने पैटर्न पर विचार करें।' : 'Reflect on your patterns around tension, boundaries, repair, and collaborative problem-solving.' }); }
+export async function generateMetadata({ params }) { const { locale } = await params; if (!isLocale(locale)) return {}; const hi = locale === 'hi'; return pageMetadata({ locale, path: 'insights/conflict', title: hi ? 'कन्फ्लिक्ट इनसाइट्स: मतभेद में अपने तरीके पर विचार करें' : 'Conflict Insights: Reflect on How You Handle Tension', description: hi ? 'तनाव, सीमाओं, संबंध सुधार और मिलकर समाधान के अपने पैटर्न पर विचार करें।' : 'Reflect on your patterns around tension, boundaries, repair, and collaborative problem-solving.', entityId: 'insight:conflict' }); }
 
 export default async function ConflictLanding({ params }) {
   const { locale } = await params; if (!isLocale(locale)) notFound(); const c = conflictCopy(locale); const hi = locale === 'hi';
