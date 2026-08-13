@@ -1,35 +1,48 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import {
+  analyticsEnabled,
+  createAnalyticsDispatcher,
+  createProductionAnalyticsAdapter,
+  normalizeAnalyticsRoute,
+} from '../lib/analytics';
+import { localeConfig } from '../lib/locales';
 
 const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-const enabled = process.env.NODE_ENV === 'production' && Boolean(measurementId);
 
-function ensureGtag() {
-  if (!enabled || typeof window === 'undefined') return false;
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
-  if (!document.getElementById('ga4-gtag-script')) {
-    const script = document.createElement('script');
-    script.id = 'ga4-gtag-script'; script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
-    document.head.appendChild(script);
-    window.gtag('js', new Date());
-    window.gtag('config', measurementId, { send_page_view: false });
-  }
-  return true;
+function routeLocale(pathname) {
+  const locale = String(pathname || '').split('/')[1];
+  return localeConfig(locale) ? locale : 'en';
 }
 
 export function Analytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const lastPath = useRef('');
+  const dispatcher = useRef(null);
+
   useEffect(() => {
-    const path = `${pathname}${searchParams.size ? `?${searchParams.toString()}` : ''}`;
-    if (path === lastPath.current || !ensureGtag()) return;
-    window.gtag('event', 'page_view', { page_path: path, page_location: window.location.href, page_title: document.title });
-    lastPath.current = path;
-  }, [pathname, searchParams]);
+    const enabled = analyticsEnabled({
+      environment: process.env.NODE_ENV,
+      enabled: true,
+      measurementId,
+    });
+    const adapter = enabled ? createProductionAnalyticsAdapter({ provider: 'ga4', measurementId }) : null;
+    dispatcher.current = createAnalyticsDispatcher({
+      adapter,
+      enabled,
+      environment: process.env.NODE_ENV,
+      logger: console,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!dispatcher.current) return;
+    dispatcher.current.dispatch('page_view', {
+      route: normalizeAnalyticsRoute(pathname),
+      locale: routeLocale(pathname),
+    });
+  }, [pathname]);
+
   return null;
 }

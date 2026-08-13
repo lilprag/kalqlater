@@ -31,7 +31,7 @@ The existing Google Search Console file is unchanged at `public/google41232c0c0c
 
 ## Analytics
 
-`components/Analytics.jsx` is the only GA4 loader. It inserts the gtag script only once, only in production, and sends explicit `page_view` events for App Router path/search changes with local duplicate prevention. No form values or PII are tracked.
+`components/Analytics.jsx` uses the provider-neutral privacy envelope in `lib/analytics.js`. The GA4 adapter inserts its script only once, only in production, and receives explicit privacy-validated `page_view` events with local duplicate prevention. See `ANALYTICS_PRIVACY_ENVELOPE.md` before adding an event or provider.
 
 ## Crawlability verification
 
