@@ -1,4 +1,5 @@
 const baseUrl = (process.env.CRAWL_BASE_URL || 'http://127.0.0.1:3100').replace(/\/$/, '');
+import { localeConfig, publishedLocales } from '../lib/locales.js';
 const careerTypes = ['intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp'];
 const pages = [
   ['/en', 'en', 'Meet the person you already are'], ['/hi', 'hi', 'अपने भीतर के व्यक्तित्व से मिलें'],
@@ -23,15 +24,19 @@ for (const [path, locale, visibleText] of pages) {
   const html = await response.text();
   assert(response.ok, `${path}: expected HTTP 200, received ${response.status}`);
   assert(new RegExp(`<html[^>]+lang="${locale}"`).test(html), `${path}: missing locale html lang`);
+  assert(new RegExp(`<html[^>]+dir="${localeConfig(locale).dir}"`).test(html), `${path}: missing locale html direction`);
   assert(/<title>[^<]+<\/title>/.test(html), `${path}: missing title`);
   assert(/<meta[^>]+name="description"[^>]+content="[^"]+"/.test(html), `${path}: missing description`);
   assert(/<link[^>]+rel="canonical"[^>]+href="[^"]+"/.test(html), `${path}: missing canonical`);
   const expectedCanonical = `https://kalqlater.com${path}`;
   assert(html.includes(`rel="canonical" href="${expectedCanonical}"`), `${path}: expected self-referencing localized canonical`);
-  for (const hreflang of ['en', 'hi', 'x-default']) {
+  for (const hreflang of [...publishedLocales.map((availableLocale) => localeConfig(availableLocale).hreflang), 'x-default']) {
     const matches = html.match(new RegExp(`hreflang="${hreflang}"`, 'gi')) || [];
     assert(matches.length === 1, `${path}: expected one ${hreflang} hreflang, found ${matches.length}`);
   }
+  assert(html.includes(`property="og:url" content="${expectedCanonical}"`), `${path}: localized og:url must match canonical`);
+  assert(/<meta[^>]+property="og:title"[^>]+content="[^"]+"/.test(html), `${path}: missing localized og:title`);
+  assert(/<meta[^>]+name="twitter:title"[^>]+content="[^"]+"/.test(html), `${path}: missing localized twitter:title`);
   assert(/<h1[^>]*>/.test(html), `${path}: missing h1`);
   assert(html.includes(visibleText), `${path}: missing visible server-rendered content`);
   assert(/<a [^>]+href=/.test(html), `${path}: missing links`);
@@ -67,7 +72,8 @@ assert(careerDescriptions.size === 32, 'career guides: descriptions must be uniq
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
 assert(!sitemapXml.includes('<loc>https://kalqlater.com</loc>'), 'sitemap: root homepage must not be indexed separately');
-for (const locale of ['en', 'hi']) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
+for (const locale of publishedLocales) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
+for (const locale of ['fr', 'ar', 'pt-br', 'zh-hans']) assert(!sitemapXml.includes(`https://kalqlater.com/${locale}`), `sitemap: unpublished locale ${locale} must not be included`);
 for (const locale of ['en', 'hi']) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
 for (const locale of ['en', 'hi']) {
   assert(sitemapXml.includes(`/${locale}/insights`), `sitemap: missing ${locale} Insights hub`);

@@ -1,9 +1,9 @@
-export const locales = ['en', 'hi'];
-export const defaultLocale = 'en';
+import { defaultLocale, isPublishedLocale, localeConfig, localeDirection, publishedLocales } from './locales.js';
 
-export function isLocale(value) {
-  return locales.includes(value);
-}
+export const locales = publishedLocales;
+export { defaultLocale, localeConfig, localeDirection };
+
+export function isLocale(value) { return isPublishedLocale(value); }
 
 export function siteUrl() {
   return (process.env.NEXT_PUBLIC_SITE_URL || 'https://kalqlater.com').replace(/\/$/, '');

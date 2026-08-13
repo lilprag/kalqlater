@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint .",
     "check:content-integrity": "node scripts/check-content-integrity.mjs",
-    "test": "node --experimental-default-type=module scripts/check-legacy-proxy-headers.mjs && node scripts/check-content.mjs && node scripts/check-content-integrity.mjs && node scripts/verify-crawlability.mjs"
+    "test": "node --experimental-default-type=module scripts/check-legacy-proxy-headers.mjs && node --experimental-default-type=module scripts/check-international-seo.mjs && node --experimental-default-type=module scripts/check-content.mjs && node --experimental-default-type=module scripts/check-content-integrity.mjs && node --experimental-default-type=module scripts/verify-crawlability.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",

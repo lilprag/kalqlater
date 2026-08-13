@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { legacyResponseHeaders } from './lib/legacy-response-headers';
+import { publishedLocales } from './lib/locales';
 
-const locales = new Set(['en', 'hi']);
+const locales = new Set(publishedLocales);
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
 const legacyNoindexPaths = ['/community', '/login', '/signup', '/forgot-password', '/reset-password'];
 
