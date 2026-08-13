@@ -23,6 +23,8 @@ from behavior_engine.api import create_engine_router
 from behavior_engine.content import FileAnalyzerContentRepository
 from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
 from behavior_engine.service import AssessmentService
+from localization_access import require_localization_reviewer
+from localization_provider import configured_localization_provider_registry
 from localization_workbench import LocalizationBlockEdit, LocalizationBlockSave, LocalizationReviewInput, apply_human_edit, apply_review_action, initialize_block
 
 
@@ -107,6 +109,7 @@ JOB_RATE_LIMIT = {}
 JOB_MAX_POSTS_PER_HOUR = 10
 QA_CLEANUP_RATE_LIMIT = {}
 QA_CLEANUP_MAX_PER_HOUR = 12
+localization_provider_registry = configured_localization_provider_registry()
 
 class SignupPayload(BaseModel):
     email: EmailStr
@@ -347,9 +350,7 @@ async def current_user(authorization: Optional[str] = Header(None)):
 
 async def current_localization_reviewer(user=Depends(current_user)):
     """Reviewer access is explicit and server-authorized; no browser role is trusted."""
-    allowed = {email.strip().lower() for email in os.environ.get("LOCALIZATION_REVIEWER_EMAILS", "").split(",") if email.strip()}
-    if not allowed or str(user.get("email", "")).lower() not in allowed:
-        raise HTTPException(403, "Reviewer access required")
+    require_localization_reviewer(str(user.get("email", "")), os.environ.get("LOCALIZATION_REVIEWER_EMAILS"))
     return user
 
 def require_qa_cleanup_secret(request: Request, x_qa_cleanup_secret: Optional[str] = Header(None)):

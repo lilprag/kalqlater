@@ -96,6 +96,13 @@ for (const legacyPath of ['/community', '/community/jobs']) {
   assert(!sitemapXml.includes(`<loc>https://kalqlater.com${legacyPath}</loc>`), `sitemap: legacy application route must not be indexed: ${legacyPath}`);
 }
 for (const locale of ['en', 'hi']) {
+  const workbench = await fetch(`${baseUrl}/${locale}/editorial/localization`);
+  const workbenchHtml = await workbench.text();
+  assert(workbench.ok, `${locale} editorial workbench: expected private route to resolve`);
+  assert(workbenchHtml.includes('noindex'), `${locale} editorial workbench: expected noindex`);
+  assert(!sitemapXml.includes(`/${locale}/editorial/localization`), `${locale} editorial workbench: private route must be excluded from sitemap`);
+}
+for (const locale of ['en', 'hi']) {
   const landing = await fetch(`${baseUrl}/${locale}/insights/communication`);
   const html = await landing.text();
   assert(html.includes('FAQPage') && html.includes('BreadcrumbList'), `${locale} Communication Insights: missing visible JSON-LD`);
