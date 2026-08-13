@@ -16,6 +16,7 @@ from .repositories import (
     InMemoryAssessmentSessionRepository,
 )
 from .scoring import calculate_dimension_results
+from .timestamps import normalize_utc
 
 
 class AssessmentError(Exception):
@@ -82,10 +83,13 @@ class AssessmentService:
         session = self.session_repository.get(session_id)
         if not session or not secrets.compare_digest(session.access_token, access_token):
             raise SessionNotFoundError("Assessment unavailable")
-        if session.status == SessionStatus.EXPIRED or session.expires_at <= datetime.now(timezone.utc):
+        expires_at = normalize_utc(session.expires_at)
+        if session.status == SessionStatus.EXPIRED or expires_at <= datetime.now(timezone.utc):
             session.status = SessionStatus.EXPIRED
+            session.expires_at = expires_at
             self.session_repository.save(session)
             raise SessionExpiredError("Assessment expired")
+        session.expires_at = expires_at
         return session
 
     def get_next_scenario(self, session_id: str, access_token: str) -> dict | None:

@@ -1,6 +1,6 @@
 import json
 import shutil
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -12,6 +12,7 @@ from behavior_engine.content import ContentNotAvailableError, FileAnalyzerConten
 from behavior_engine.models import AssessmentResponseInput, ConfidenceBand, PersonalityContext, SessionStatus
 from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
 from behavior_engine.service import AssessmentError, AssessmentService, SessionConflictError, SessionExpiredError, SessionNotFoundError
+from behavior_engine.timestamps import normalize_utc
 
 
 def service(ttl=timedelta(hours=1)):
@@ -21,8 +22,9 @@ def service(ttl=timedelta(hours=1)):
 class FakeMongoCollection:
     """Small Mongo-shaped store for the durable session regression test."""
 
-    def __init__(self):
+    def __init__(self, mongo_naive_datetimes=False):
         self.documents = {}
+        self.mongo_naive_datetimes = mongo_naive_datetimes
 
     def replace_one(self, query, document, upsert=False):
         assert upsert and query["_id"] == document["_id"]
@@ -30,12 +32,17 @@ class FakeMongoCollection:
 
     def find_one(self, query):
         document = self.documents.get(query["_id"])
-        return dict(document) if document else None
+        if not document:
+            return None
+        restored = dict(document)
+        if self.mongo_naive_datetimes and isinstance(restored.get("expires_at"), datetime):
+            restored["expires_at"] = restored["expires_at"].astimezone(timezone.utc).replace(tzinfo=None)
+        return restored
 
 
 def test_durable_repositories_keep_every_published_insight_session_available_across_service_instances():
-    sessions = FakeMongoCollection()
-    results = FakeMongoCollection()
+    sessions = FakeMongoCollection(mongo_naive_datetimes=True)
+    results = FakeMongoCollection(mongo_naive_datetimes=True)
     first = AssessmentService(
         session_repository=MongoAssessmentSessionRepository(sessions),
         result_repository=MongoAnalyzerResultRepository(results),
@@ -57,11 +64,55 @@ def test_durable_repositories_keep_every_published_insight_session_available_acr
                 AssessmentResponseInput(scenario_id=scenario.id, option_id="a", idempotency_key=f"{slug}-{index}"),
             )
         snapshot = second.complete_session(created.id, created.access_token)
+        # Simulate a legacy BSON result timestamp returned by PyMongo without tzinfo.
+        results.documents[snapshot.id]["created_at"] = snapshot.created_at.replace(tzinfo=None)
         third = AssessmentService(
             session_repository=MongoAssessmentSessionRepository(sessions),
             result_repository=MongoAnalyzerResultRepository(results),
         )
-        assert third.get_result(snapshot.id, created.access_token).result.analyzer_slug == slug
+        restored_snapshot = third.get_result(snapshot.id, created.access_token)
+        assert restored_snapshot.result.analyzer_slug == slug
+        assert restored_snapshot.created_at.tzinfo == timezone.utc
+
+
+def test_mongo_style_naive_session_timestamps_are_normalized_for_create_reload_and_api_access():
+    sessions = FakeMongoCollection(mongo_naive_datetimes=True)
+    engine = AssessmentService(session_repository=MongoAssessmentSessionRepository(sessions))
+    app = FastAPI()
+    app.include_router(create_engine_router(engine), prefix="/api")
+    client = TestClient(app)
+
+    for slug in ("communication", "conflict", "leadership", "learning"):
+        created = client.post(f"/api/analyzers/{slug}/sessions", json={"locale": "en"})
+        assert created.status_code == 201
+        credentials = created.json()
+        persisted = sessions.documents[credentials["session_id"]]
+        assert persisted["expires_at"].tzinfo == timezone.utc
+        retrieved = client.get(
+            f"/api/analyzer-sessions/{credentials['session_id']}",
+            headers={"X-Assessment-Access": credentials["access_token"]},
+        )
+        assert retrieved.status_code == 200
+        assert retrieved.json()["status"] == "active"
+        assert retrieved.json()["expires_at"].endswith(("Z", "+00:00"))
+
+    assert client.post("/api/analyzers/decision/sessions", json={"locale": "en"}).status_code == 404
+
+
+def test_naive_expiry_is_rejected_and_aware_datetimes_remain_utc():
+    naive_utc = datetime(2030, 1, 1, 12, 0, 0)
+    aware_non_utc = datetime(2030, 1, 1, 17, 30, tzinfo=timezone(timedelta(hours=5, minutes=30)))
+    assert normalize_utc(naive_utc) == datetime(2030, 1, 1, 12, 0, tzinfo=timezone.utc)
+    assert normalize_utc(aware_non_utc) == datetime(2030, 1, 1, 12, 0, tzinfo=timezone.utc)
+
+    sessions = FakeMongoCollection(mongo_naive_datetimes=True)
+    engine = AssessmentService(
+        session_repository=MongoAssessmentSessionRepository(sessions),
+        session_ttl=timedelta(seconds=-1),
+    )
+    expired = engine.create_session("leadership", "en")
+    with pytest.raises(SessionExpiredError):
+        engine.get_next_scenario(expired.id, expired.access_token)
 
 
 def complete_with_option(service_instance, option_id="a", locale="en", personality=None):

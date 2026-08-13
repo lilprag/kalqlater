@@ -5,6 +5,7 @@ from typing import Dict, Protocol
 from pymongo.collection import Collection
 
 from .models import AssessmentSessionState, ResultSnapshot
+from .timestamps import normalize_utc
 
 
 class AssessmentSessionRepository(Protocol):
@@ -59,7 +60,18 @@ class MongoAssessmentSessionRepository:
         if not document:
             return None
         document.pop("_id", None)
-        return AssessmentSessionState.model_validate(document)
+        session = AssessmentSessionState.model_validate(document)
+        return session.model_copy(
+            update={
+                "created_at": normalize_utc(session.created_at),
+                "expires_at": normalize_utc(session.expires_at),
+                "completed_at": normalize_utc(session.completed_at) if session.completed_at else None,
+                "responses": {
+                    scenario_id: response.model_copy(update={"submitted_at": normalize_utc(response.submitted_at)})
+                    for scenario_id, response in session.responses.items()
+                },
+            }
+        )
 
 
 class MongoAnalyzerResultRepository:
@@ -78,4 +90,5 @@ class MongoAnalyzerResultRepository:
         if not document:
             return None
         document.pop("_id", None)
-        return ResultSnapshot.model_validate(document)
+        snapshot = ResultSnapshot.model_validate(document)
+        return snapshot.model_copy(update={"created_at": normalize_utc(snapshot.created_at)})
