@@ -1,5 +1,7 @@
 import json
+import shutil
 from datetime import timedelta
+from pathlib import Path
 
 import pytest
 from fastapi import FastAPI
@@ -83,6 +85,47 @@ def test_published_content_is_default_and_draft_requires_explicit_test_override(
     definition = service().get_analyzer_definition("communication-style", "1.0.0-draft")
     assert definition.analyzer.version == "1.0.0-draft"
     assert len(definition.scenarios) == 12
+
+
+def test_backend_packaged_registry_is_cwd_independent_and_exposes_only_public_analyzers(monkeypatch):
+    """Render starts from backend/, so registry discovery must not depend on cwd."""
+    repository = FileAnalyzerContentRepository()
+    assert repository.content_directory == Path(__file__).resolve().parent / "behavior_engine" / "analyzer_content"
+    monkeypatch.chdir(Path(__file__).resolve().parent)
+    assert repository.validate_required_published_analyzers() == (
+        "communication-style",
+        "conflict-insights",
+        "leadership-insights",
+        "learning-insights",
+    )
+
+    engine = AssessmentService(content_repository=repository)
+    app = FastAPI()
+    app.include_router(create_engine_router(engine), prefix="/api")
+    client = TestClient(app)
+    for alias, canonical_slug in FileAnalyzerContentRepository.SLUG_ALIASES.items():
+        created = client.post(f"/api/analyzers/{alias}/sessions", json={"locale": "en"})
+        assert created.status_code == 201
+        session_id = created.json()["session_id"]
+        assert engine._session(session_id, created.json()["access_token"]).analyzer_slug == canonical_slug
+    assert client.post("/api/analyzers/decision/sessions", json={"locale": "en"}).status_code == 404
+    assert client.post("/api/analyzers/decision-style/sessions", json={"locale": "en"}).status_code == 404
+
+
+def test_missing_packaged_definition_or_release_manifest_fails_explicitly(tmp_path):
+    source_repository = FileAnalyzerContentRepository()
+    content_directory = tmp_path / "analyzer_content"
+    shutil.copytree(source_repository.content_directory, content_directory)
+    repository = FileAnalyzerContentRepository(content_directory)
+
+    (content_directory / "leadership-insights.v1.json").unlink()
+    with pytest.raises(InvalidAnalyzerContentError, match="Analyzer content is invalid"):
+        repository.validate_required_published_analyzers()
+
+    shutil.copytree(source_repository.content_directory, content_directory, dirs_exist_ok=True)
+    (content_directory / "learning-insights.v1.release.json").unlink()
+    with pytest.raises(InvalidAnalyzerContentError, match="Analyzer release manifest is invalid"):
+        repository.validate_required_published_analyzers()
 
 
 def test_malformed_duplicate_and_missing_locale_content_are_rejected(tmp_path):

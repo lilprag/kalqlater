@@ -20,6 +20,7 @@ import html
 import requests
 from datetime import datetime, timezone
 from behavior_engine.api import create_engine_router
+from behavior_engine.content import FileAnalyzerContentRepository
 from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
 from behavior_engine.service import AssessmentService
 
@@ -867,6 +868,8 @@ async def shutdown_db_client():
 
 @app.on_event("startup")
 async def initialize_community_indexes():
+    loaded_analyzers = FileAnalyzerContentRepository().validate_required_published_analyzers()
+    logger.info("Published behavior analyzers loaded: %s", ", ".join(loaded_analyzers))
     behavior_db.behavior_assessment_sessions.create_index("expires_at", expireAfterSeconds=0)
     behavior_db.behavior_analyzer_results.create_index("session_id", unique=True)
     await db.community_users.create_index("email", unique=True)

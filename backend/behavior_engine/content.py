@@ -21,7 +21,16 @@ class InvalidAnalyzerContentError(ValueError):
 
 
 class FileAnalyzerContentRepository:
-    """Loads only explicitly approved repository-owned analyzer configuration."""
+    """Loads only explicitly approved, backend-packaged analyzer configuration."""
+
+    # Public aliases keep client-facing routes short without creating a second
+    # analyzer definition or loosening the published-version policy.
+    SLUG_ALIASES = {
+        "communication": "communication-style",
+        "conflict": "conflict-insights",
+        "leadership": "leadership-insights",
+        "learning": "learning-insights",
+    }
 
     DRAFT_FILES = {"communication-style": "communication-analyzer.v1.draft.json"}
     RELEASE_FILES = {
@@ -31,11 +40,30 @@ class FileAnalyzerContentRepository:
         "learning-insights": "learning-insights.v1.release.json",
     }
 
+    REQUIRED_PUBLISHED_SLUGS = tuple(RELEASE_FILES)
+
     def __init__(self, content_directory: Path | None = None):
-        # The repository root is an approved internal directory; filenames are allowlisted above.
-        self.content_directory = content_directory or Path(__file__).resolve().parents[2]
+        # Resolve relative to this installed backend module, never the process cwd.
+        # Render runs from ``backend/``; keeping the approved assets here makes
+        # discovery independent of its checkout and start-command layout.
+        self.content_directory = content_directory or Path(__file__).resolve().parent / "analyzer_content"
+
+    @classmethod
+    def canonical_slug(cls, slug: str) -> str:
+        return cls.SLUG_ALIASES.get(slug, slug)
+
+    def validate_required_published_analyzers(self) -> tuple[str, ...]:
+        """Fail startup explicitly if any required public analyzer is unavailable."""
+        loaded = []
+        for slug in self.REQUIRED_PUBLISHED_SLUGS:
+            definition = self.get(slug)
+            if definition.analyzer.slug != slug:
+                raise InvalidAnalyzerContentError("Analyzer release manifest does not match its definition")
+            loaded.append(slug)
+        return tuple(loaded)
 
     def get(self, slug: str, version: str | None = None, allow_test_drafts: bool = False) -> AnalyzerDefinition:
+        slug = self.canonical_slug(slug)
         if version == "1.0.0-draft":
             if not allow_test_drafts:
                 raise ContentNotAvailableError("Analyzer unavailable")
@@ -69,7 +97,13 @@ class FileAnalyzerContentRepository:
         except (OSError, json.JSONDecodeError) as error:
             raise InvalidAnalyzerContentError("Analyzer release manifest is invalid") from error
         required = {"slug", "version", "status", "source", "sourceContentSha256", "publishedAt", "scoringVersion", "interpretationVersion", "localeVersions", "approvalRecord", "acceptedRisks", "disclaimerPolicy"}
-        if set(manifest) != required or manifest["status"] != "published" or manifest["version"] != "1.0.0" or manifest["slug"] not in self.RELEASE_FILES:
+        if (
+            set(manifest) != required
+            or manifest["status"] != "published"
+            or manifest["version"] != "1.0.0"
+            or manifest["slug"] not in self.RELEASE_FILES
+            or self.RELEASE_FILES[manifest["slug"]] != filename
+        ):
             raise InvalidAnalyzerContentError("Analyzer release manifest is invalid")
         return manifest
 

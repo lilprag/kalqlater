@@ -1,0 +1,28 @@
+{
+  "slug": "communication-style",
+  "version": "1.0.0",
+  "status": "published",
+  "source": "communication-analyzer.v1.draft.json",
+  "sourceContentSha256": "e45c637e343c1793a81cd8c99005230108b2f2218ebde4c56547d89411fe613e",
+  "publishedAt": "2026-08-04",
+  "scoringVersion": "1.0.0",
+  "interpretationVersion": "1.0.0",
+  "localeVersions": { "en": "1.0.0", "hi": "1.0.0" },
+  "approvalRecord": {
+    "productOwner": {
+      "reviewer": "Nikhil Shrivastava",
+      "status": "approved_for_limited_mvp_release",
+      "date": "2026-08-04",
+      "evidence": ["English and Hindi landing pages", "Complete 12-scenario flows", "Back and answer revision", "Result usefulness", "Weekly Experiment", "Mobile presentation", "Save CTA"],
+      "notes": "Approved as reflective guidance only; not diagnosis, hiring eligibility, scientific certainty, or a substitute for professional advice."
+    }
+  },
+  "acceptedRisks": [
+    "No independent named Hindi editorial approval.",
+    "No independent named scoring/content approval.",
+    "No completed manual VoiceOver/NVDA sign-off.",
+    "No independent privacy or safety reviewer.",
+    "Hindi fault-injection was not repeated manually end-to-end by a named reviewer."
+  ],
+  "disclaimerPolicy": "Visible reflective-guidance disclosure; non-clinical, not for hiring eligibility, not scientifically validated, and not a substitute for professional advice."
+}
