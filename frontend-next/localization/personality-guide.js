@@ -177,12 +177,49 @@ const infjFaq = Object.freeze([
   ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
 ]);
 
+const infpSpanish = Object.freeze({
+  code: 'INFP', slug: 'infp', group: 'Diplomáticos', color: '#4A806B', displayName: 'La persona idealista',
+  shortSummary: 'Una sensibilidad creativa que busca vivir con autenticidad y dejar espacio a lo que de verdad importa.',
+  overview: 'Las personas INFP suelen orientarse por una brújula personal: lo que sienten verdadero, justo o digno de cuidado. Su mundo interior puede ser rico en imágenes, preguntas y posibilidades que todavía no tienen una forma visible. Esa profundidad les permite imaginar alternativas humanas; darles un cauce concreto ayuda a que sus valores se conviertan en presencia y acción.',
+  coreTraits: ['Autenticidad personal', 'Imaginación empática', 'Apertura de corazón'],
+  strengths: ['Sensibilidad a los valores', 'Creatividad expresiva', 'Capacidad de comprender matices', 'Lealtad a lo importante', 'Apertura a otras perspectivas'],
+  growthAreas: ['Dar un primer paso aunque la versión final no esté clara', 'Diferenciar una crítica a una idea de una crítica personal', 'Expresar una necesidad antes de retirarse', 'Proteger el tiempo y la energía para lo que valora'],
+  workStyle: ['Proyectos que conectan con un propósito personal', 'Espacio para crear, escribir, investigar o acompañar', 'Autonomía con una estructura amable', 'Entornos que respetan la individualidad', 'Trabajo que permita aportar significado además de resultados'],
+  careerThemes: ['Creatividad con propósito', 'Acompañamiento y escucha', 'Comunicación de ideas con sensibilidad'],
+  relationshipStyle: 'Las amistades INFP suelen crecer a partir de afinidades sinceras, cuidado mutuo y la sensación de poder mostrarse sin una máscara. Pueden guardar mucho para sí hasta que hay confianza; una pregunta amable y sin prisa suele abrir mejor la conversación que la presión por explicarse.',
+  relationshipContexts: {
+    friendship: 'Las amistades INFP suelen buscar profundidad, calidez y libertad para compartir intereses poco convencionales. Recordarles que su presencia importa, también en los períodos tranquilos, ayuda a sostener el vínculo.',
+    romance: 'En pareja, una persona INFP puede aportar ternura, imaginación y atención a lo que hace única a la relación. Hablar de expectativas cotidianas y límites evita que una conexión idealizada tenga que cargar con lo que nunca se ha dicho.',
+    family: 'En la familia, INFP puede necesitar que se respete su manera particular de sentir y decidir. Los acuerdos claros y el reconocimiento de su sensibilidad permiten una cercanía que no exige que renuncie a sí misma.',
+    teamwork: 'En equipo, INFP aporta perspectivas humanas, creatividad y una atención valiosa a la coherencia entre lo que se dice y lo que se hace. Su contribución se vuelve más visible cuando comparte sus ideas antes de que estén perfectamente elaboradas.',
+  },
+  leadership: { style: 'Acompaña al grupo al proteger el sentido del trabajo y crear condiciones donde cada voz pueda aportar algo genuino.', summary: 'Suele influir desde la coherencia, la imaginación y una atención sincera a cómo una decisión afecta a las personas.', strengths: ['Liderazgo con valores', 'Escucha inclusiva', 'Visión creativa'], weeklyAction: 'Elige una idea que te importe y conviértela en una petición concreta al equipo, con un plazo pequeño y alcanzable.' },
+  communication: { summary: 'Suele comunicarse con cuidado, imaginación y atención a la intención que hay detrás de las palabras.', preferred: 'Nombrar primero lo que importa y luego explicar la propuesta o la preocupación.', listening: 'Escuchar con más seguridad cuando comprueba lo que ha entendido en lugar de llenar los silencios con suposiciones.', conflict: 'Puede retirarse si siente que no hay espacio para su perspectiva; pedir una pausa y volver con una frase clara sobre su necesidad ayuda a cuidar la relación.', tips: ['Transforma una inquietud interior en una petición breve y específica.', 'Cuando una crítica te duela, pregunta qué aspecto concreto se quiere mejorar antes de concluir que se cuestiona tu valor.'] },
+  learningStyle: 'Aprende bien cuando puede relacionar una idea con una historia, una experiencia o una pregunta que le resulte significativa, y después explorarla a su propio ritmo.',
+  stressPatterns: ['Evitar una decisión por miedo a traicionar una posibilidad', 'Retirarse sin explicar lo que necesita', 'Idealizar una opción y frustrarse con los detalles reales', 'Decir que sí para no decepcionar'],
+  developmentTips: ['Elige una versión suficientemente buena para compartirla, aunque todavía quieras seguir puliéndola.', 'Practica un límite sencillo que proteja tiempo para una prioridad personal.'],
+  relatedTypes: ['INFJ', 'ENFJ', 'ISFP'],
+  seo: { title: 'Personalidad INFP: valores, creatividad y desarrollo | KalQLater', description: 'Explora la personalidad INFP con una guía de autorreflexión sobre autenticidad, creatividad, relaciones, comunicación y desarrollo.' },
+});
+
+const infpFaq = Object.freeze([
+  ['¿Qué describe esta guía INFP?', 'Resume preferencias, fortalezas y posibilidades de desarrollo asociadas a INFP. Es una invitación a reconocer patrones con curiosidad, no una etiqueta que defina por completo a una persona.'],
+  ['¿INFP es un diagnóstico?', 'No. KalQLater es una herramienta de autorreflexión; no ofrece diagnósticos clínicos ni debe usarse para valorar la capacidad, la salud o el potencial de alguien.'],
+  ['¿Puede una persona INFP liderar bien?', 'Sí. Puede liderar desde los valores, la escucha y la creatividad. La claridad de los acuerdos, los límites y la práctica de tomar decisiones hacen que esa contribución tenga más alcance.'],
+  ['¿Qué puede buscar INFP en el trabajo?', 'Suele valorar un entorno respetuoso, margen para aportar una perspectiva propia y tareas que conecten con un propósito o una contribución que considere significativa.'],
+  ['¿Cómo puede mostrarse INFP en las relaciones?', 'Puede mostrar cuidado con atención, lealtad y gestos pensados. Expresar sus necesidades y hablar de las diferencias antes de retirarse ayuda a que el vínculo tenga más espacio para la realidad.'],
+  ['¿Qué puede ayudar bajo presión?', 'Volver a una prioridad pequeña, descansar, crear un límite y hablar con alguien de confianza puede ayudar. Si el malestar es persistente o intenso, busca apoyo profesional cualificado.'],
+  ['¿El tipo de personalidad puede cambiar?', 'Las personas cambian con la experiencia, los roles y las etapas de vida. Esta guía propone una perspectiva de reflexión, no una identidad inmóvil.'],
+  ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
+]);
+
 const spanishGuides = Object.freeze({
   INTJ: Object.freeze({ profile: intjSpanish, faq: intjFaq }),
   INTP: Object.freeze({ profile: intpSpanish, faq: intpFaq }),
   ENTJ: Object.freeze({ profile: entjSpanish, faq: entjFaq }),
   ENTP: Object.freeze({ profile: entpSpanish, faq: entpFaq }),
   INFJ: Object.freeze({ profile: infjSpanish, faq: infjFaq }),
+  INFP: Object.freeze({ profile: infpSpanish, faq: infpFaq }),
 });
 
 export function getPersonalityGuideContent(locale, type) {
