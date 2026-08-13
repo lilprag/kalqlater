@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { legacyResponseHeaders } from './lib/legacy-response-headers';
 import { publishedLocales } from './lib/locales';
+import { isComparisonPreviewLocale } from './lib/site';
 
 const locales = new Set(publishedLocales);
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
@@ -75,7 +76,8 @@ async function noindexLegacyApplicationResponse(request) {
 }
 
 export async function proxy(request) {
-  if (spanishPreviewPaths.has(request.nextUrl.pathname)) {
+  const spanishCompare = /^\/es\/compare\/([a-z]{4}-vs-[a-z]{4})$/i.exec(request.nextUrl.pathname);
+  if (spanishPreviewPaths.has(request.nextUrl.pathname) || (spanishCompare && isComparisonPreviewLocale('es', spanishCompare[1]))) {
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set('x-kalqlater-locale', 'es');
     return NextResponse.next({ request: { headers: requestHeaders } });
