@@ -7,6 +7,7 @@ import { suspiciousEnglishResidue, validateLocalizedBlock } from '../localizatio
 
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const published = localeRegistry.filter((locale) => locale.published);
+const editorialTerminologyLocales = new Set(['es']);
 
 assert(localeRegistry.length === 49, `expected 49 configured locales, got ${localeRegistry.length}`);
 assert(new Set(localeRegistry.map((locale) => locale.code)).size === localeRegistry.length, 'locale codes must be unique');
@@ -24,7 +25,12 @@ for (const locale of localeRegistry) {
   assert(terminologyByLocale[locale.code], `${locale.code}: missing terminology dictionary`);
   if (!locale.published) {
     assert(!isLocalePublishable(locale.code), `${locale.code}: unpublished locale must not be public`);
-    assert(terminologyByLocale[locale.code].status === 'draft' && Object.keys(terminologyByLocale[locale.code].values).length === 0, `${locale.code}: unreviewed package must not contain inherited English terminology`);
+    const glossary = terminologyByLocale[locale.code];
+    if (editorialTerminologyLocales.has(locale.code)) {
+      assert(glossary.status === 'approved' && terminologyConcepts.every((term) => glossary.values[term]), `${locale.code}: authored terminology must be complete before content drafting`);
+    } else {
+      assert(glossary.status === 'draft' && Object.keys(glossary.values).length === 0, `${locale.code}: unreviewed package must not contain inherited English terminology`);
+    }
   }
 }
 for (const locale of published) {
