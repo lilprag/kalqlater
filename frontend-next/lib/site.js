@@ -5,7 +5,7 @@ export { defaultLocale, localeConfig, localeDirection };
 
 export function isLocale(value) { return isPublishedLocale(value); }
 export function isHomepagePreviewLocale(value) { return value === 'es'; }
-export function isPersonalityPreviewLocale(value, type) { return value === 'es' && ['intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj'].includes(String(type).toLowerCase()); }
+export function isPersonalityPreviewLocale(value, type) { return value === 'es' && ['intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj'].includes(String(type).toLowerCase()); }
 
 export function siteUrl() {
   return (process.env.NEXT_PUBLIC_SITE_URL || 'https://kalqlater.com').replace(/\/$/, '');
