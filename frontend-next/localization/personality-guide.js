@@ -213,6 +213,42 @@ const infpFaq = Object.freeze([
   ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
 ]);
 
+const enfjSpanish = Object.freeze({
+  code: 'ENFJ', slug: 'enfj', group: 'Diplomáticos', color: '#A26D35', displayName: 'La persona que impulsa',
+  shortSummary: 'Una presencia cálida que reúne a las personas alrededor de una posibilidad compartida.',
+  overview: 'Las personas ENFJ suelen notar cómo se relacionan las personas entre sí y qué puede ayudar a que un grupo avance con mayor confianza. Su forma de implicarse puede inspirar, organizar y dar ánimo. Cuando equilibran esa atención a los demás con sus propios límites, convierten su capacidad de conexión en una influencia sostenida y genuina.',
+  coreTraits: ['Conexión con las personas', 'Energía para movilizar', 'Visión compartida'],
+  strengths: ['Capacidad de animar a otros', 'Comunicación cercana', 'Lectura de dinámicas grupales', 'Compromiso con el desarrollo', 'Habilidad para crear cooperación'],
+  growthAreas: ['Preguntar antes de asumir qué necesita otra persona', 'No cargar con la motivación de todo el grupo', 'Aceptar desacuerdos sin tomarlos como una ruptura del vínculo', 'Reservar tiempo para escuchar su propia energía y necesidades'],
+  workStyle: ['Colaboración con metas que beneficien a las personas', 'Facilitación de equipos, conversaciones o aprendizajes', 'Proyectos donde se pueda dar dirección y acompañamiento', 'Entornos que valoren el desarrollo de otros', 'Trabajo que combine relaciones, propósito y organización'],
+  careerThemes: ['Desarrollo de personas y equipos', 'Comunicación con propósito', 'Construcción de colaboración y comunidad'],
+  relationshipStyle: 'Las amistades ENFJ suelen estar llenas de atención, iniciativa y deseo de ver prosperar a las personas cercanas. Pueden acordarse de lo importante para otros y crear ocasiones para reunirse; permitir que también los cuiden hace que el vínculo sea más recíproco.',
+  relationshipContexts: {
+    friendship: 'Las amistades ENFJ suelen crecer con conversación, afecto y una sensación de acompañamiento mutuo. Compartir lo que necesitan, además de preguntar siempre por los demás, mantiene el vínculo equilibrado.',
+    romance: 'En pareja, una persona ENFJ puede expresar cariño con presencia, detalles y planes que dan vida a la relación. Respetar los ritmos distintos y no anticipar todas las respuestas deja espacio para que la cercanía sea elegida por ambos.',
+    family: 'En la familia, ENFJ puede asumir con naturalidad el papel de quien reúne, media o cuida la convivencia. Poner límites claros evita que esa disposición se convierta en una responsabilidad imposible de sostener.',
+    teamwork: 'En equipo, ENFJ crea clima de colaboración, hace visibles las contribuciones y ayuda a conectar una tarea con una meta común. Su impacto se amplía cuando deja que otras personas definan también cómo quieren participar.',
+  },
+  leadership: { style: 'Da impulso al grupo al hacer visible una meta compartida y cuidar las condiciones para que las personas puedan contribuir.', summary: 'Suele liderar desde la comunicación, el desarrollo de otros y la capacidad de convertir una intención colectiva en movimiento.', strengths: ['Motivación inclusiva', 'Construcción de confianza', 'Coordinación orientada a las personas'], weeklyAction: 'En la próxima reunión, pregunta qué apoyo necesita cada persona y comparte también un límite concreto sobre lo que puedes asumir.' },
+  communication: { summary: 'Suele comunicarse con calidez, expresividad y atención a que las personas se sientan incluidas.', preferred: 'Explicar la intención común y abrir espacio para que cada persona diga cómo ve la situación.', listening: 'Escuchar mejor cuando no completa la historia de alguien antes de que la otra persona termine de contarla.', conflict: 'Puede intentar resolver el malestar demasiado pronto; reconocer primero la diferencia y preguntar qué reparación sería útil ayuda a que la conversación sea más honesta.', tips: ['Sustituye una suposición sobre lo que alguien necesita por una pregunta abierta.', 'Antes de ofrecer ayuda, confirma si la otra persona busca acompañamiento, ideas o una decisión.'] },
+  learningStyle: 'Aprende bien al conversar, enseñar, relacionar una idea con experiencias humanas y comprobar cómo puede llevarla a la práctica con otras personas.',
+  stressPatterns: ['Sobreextenderse para responder a las necesidades de todos', 'Evitar una conversación difícil para preservar la armonía', 'Sentirse responsable del ánimo ajeno', 'Perder de vista sus propias prioridades'],
+  developmentTips: ['Elige un apoyo que puedas ofrecer de forma realista y dilo con claridad.', 'Practica escuchar una diferencia sin apresurarte a convertirla en acuerdo.'],
+  relatedTypes: ['INFJ', 'INFP', 'ENFP'],
+  seo: { title: 'Personalidad ENFJ: conexión, liderazgo y desarrollo | KalQLater', description: 'Explora la personalidad ENFJ con una guía de autorreflexión sobre vínculos, liderazgo, comunicación, propósito y desarrollo.' },
+});
+
+const enfjFaq = Object.freeze([
+  ['¿Qué describe esta guía ENFJ?', 'Resume preferencias, fortalezas y posibilidades de desarrollo asociadas a ENFJ. Sirve para observar tendencias con curiosidad, no para definir por completo a una persona.'],
+  ['¿ENFJ es un diagnóstico?', 'No. KalQLater es una herramienta de autorreflexión; no ofrece diagnósticos clínicos ni debe utilizarse para valorar la capacidad, la salud o el potencial de alguien.'],
+  ['¿Puede una persona ENFJ liderar bien?', 'Sí. Puede liderar al crear confianza, comunicar una dirección y ayudar a otras personas a desarrollarse. Los límites, la escucha y la claridad hacen esa influencia más sostenible.'],
+  ['¿Qué puede buscar ENFJ en el trabajo?', 'Suele valorar un propósito compartido, relaciones de colaboración y la oportunidad de facilitar el crecimiento de personas, equipos o comunidades.'],
+  ['¿Cómo puede mostrarse ENFJ en las relaciones?', 'Puede mostrar cuidado con atención, palabras de ánimo y acciones que acercan a las personas. Decir también lo que necesita ayuda a que la relación sea recíproca.'],
+  ['¿Qué puede ayudar bajo presión?', 'Reducir compromisos, pedir apoyo, volver a sus propios límites y hablar con alguien de confianza puede ayudar. Si el malestar es persistente o intenso, busca apoyo profesional cualificado.'],
+  ['¿El tipo de personalidad puede cambiar?', 'Las personas cambian con la experiencia, los roles y las etapas de vida. Esta guía ofrece una perspectiva para reflexionar, no una identidad fija.'],
+  ['¿Cómo deberían usar esta información las empresas?', 'Solo como reflexión voluntaria. Un tipo de personalidad no debe utilizarse para filtrar, clasificar ni tomar decisiones de contratación.'],
+]);
+
 const spanishGuides = Object.freeze({
   INTJ: Object.freeze({ profile: intjSpanish, faq: intjFaq }),
   INTP: Object.freeze({ profile: intpSpanish, faq: intpFaq }),
@@ -220,6 +256,7 @@ const spanishGuides = Object.freeze({
   ENTP: Object.freeze({ profile: entpSpanish, faq: entpFaq }),
   INFJ: Object.freeze({ profile: infjSpanish, faq: infjFaq }),
   INFP: Object.freeze({ profile: infpSpanish, faq: infpFaq }),
+  ENFJ: Object.freeze({ profile: enfjSpanish, faq: enfjFaq }),
 });
 
 export function getPersonalityGuideContent(locale, type) {
