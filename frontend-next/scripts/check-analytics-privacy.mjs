@@ -12,10 +12,13 @@ import {
 
 assert(ANALYTICS_EVENT_NAMES.includes('page_view'), 'page_view must be registered');
 assert(ANALYTICS_EVENT_NAMES.includes('bookmark_created'), 'future event registry must be extensible');
+assert(ANALYTICS_EVENT_NAMES.includes('recommendation_impressed'), 'related content impressions must use the privacy registry');
+assert(ANALYTICS_EVENT_NAMES.includes('recommendation_clicked'), 'related content clicks must use the privacy registry');
 assert.deepEqual(validateAnalyticsEvent('guide_view', { type: 'intj', locale: 'en' }), { locale: 'en', type: 'intj' });
 assert.throws(() => validateAnalyticsEvent('unknown_event', {}), /Unknown analytics event/);
 assert.throws(() => validateAnalyticsEvent('guide_view', { type: 'intj', locale: 'en', email: 'person@example.com' }), /privacy policy/);
 assert.throws(() => validateAnalyticsEvent('guide_view', { type: 'intj', locale: 'en', note: 'free text' }), /not allowed/);
+assert.throws(() => validateAnalyticsEvent('recommendation_clicked', { source_type: 'personality-guide', target_type: 'career-guide', edge_kind: 'career_for', locale: 'en', username: 'private-user' }), /privacy policy/);
 assert.throws(() => validateAnalyticsEvent('guide_view', { type: 'not-a-type', locale: 'en' }), /invalid/);
 assert.throws(() => validateAnalyticsEvent('page_view', { route: '/en?email=person@example.com', locale: 'en' }), /invalid/);
 assert.equal(normalizeAnalyticsRoute('/en/insights/leadership/session/abc123def4567890?email=person@example.com'), '/en/insights/leadership/session/:id');
@@ -63,5 +66,7 @@ assert.throws(() => createProductionAnalyticsAdapter({ provider: 'unknown', meas
 
 const analyticsComponent = await readFile(new URL('../components/Analytics.jsx', import.meta.url), 'utf8');
 assert.equal(/window\.gtag|dataLayer/.test(analyticsComponent), false, 'components must not call analytics providers directly');
+const relatedAnalyticsComponent = await readFile(new URL('../components/RelatedContentAnalytics.jsx', import.meta.url), 'utf8');
+assert.equal(/window\.gtag|dataLayer/.test(relatedAnalyticsComponent), false, 'related content uses the central dispatcher only');
 
 console.log('Analytics privacy checks passed for event registry, validation, adapters, modes, and duplicate prevention.');

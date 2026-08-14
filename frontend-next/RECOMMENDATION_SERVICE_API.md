@@ -41,3 +41,11 @@ and supply an explicit safe path configuration when creating the service. An
 entity without path configuration is excluded rather than exposed. A future
 HTTP or UI consumer must use this service rather than duplicate resolver
 eligibility logic.
+
+## Related Content consumer
+
+PR-007's server-rendered `RelatedContent` component accepts `sourceEntityId`,
+`sourceType`, `locale`, and `mode`. It uses this service and renders nothing
+when no valid targets are available. It cannot create editorial edges. Its
+analytics events contain only source and target entity types, an edge kind, and
+locale—never entity IDs, user state, result data, or free text.

@@ -5,6 +5,8 @@ import { TYPE_CODES } from '../data/types.js';
 
 const TYPE_SET = new Set(TYPE_CODES.map((type) => type.toLowerCase()));
 const INSIGHT_SET = new Set(['communication', 'conflict', 'leadership', 'learning']);
+const RECOMMENDATION_ENTITY_TYPE_SET = new Set(['personality-guide', 'career-guide', 'compare', 'insight', 'community', 'jobs', 'language']);
+const RECOMMENDATION_RELATIONSHIP_SET = new Set(['related_to', 'continue_to', 'learn_before', 'learn_after', 'recommended_after', 'supports', 'expands', 'contrasts_with', 'similar_to', 'career_for', 'compare_with']);
 const ENTITY_ID_PATTERN = /^[a-z][a-z0-9-]*:[a-z0-9][a-z0-9/-]*$/;
 const ROUTE_PATTERN = /^\/[a-z0-9:/-]*$/;
 const PAIR_PATTERN = /^[a-z]{4}-vs-[a-z]{4}$/;
@@ -56,6 +58,8 @@ export const ANALYTICS_EVENT_REGISTRY = Object.freeze({
   journey_continue: Object.freeze({ from_entity: string(isEntityId), to_entity: string(isEntityId), locale: string(isLocale) }),
   language_changed: Object.freeze({ from_locale: string(isLocale), to_locale: string(isLocale) }),
   bookmark_created: Object.freeze({ entity_id: string(isEntityId), locale: string(isLocale) }),
+  recommendation_impressed: Object.freeze({ source_type: string((value) => RECOMMENDATION_ENTITY_TYPE_SET.has(value)), target_type: string((value) => RECOMMENDATION_ENTITY_TYPE_SET.has(value)), edge_kind: string((value) => RECOMMENDATION_RELATIONSHIP_SET.has(value)), locale: string(isLocale) }),
+  recommendation_clicked: Object.freeze({ source_type: string((value) => RECOMMENDATION_ENTITY_TYPE_SET.has(value)), target_type: string((value) => RECOMMENDATION_ENTITY_TYPE_SET.has(value)), edge_kind: string((value) => RECOMMENDATION_RELATIONSHIP_SET.has(value)), locale: string(isLocale) }),
 });
 
 export const ANALYTICS_EVENT_NAMES = Object.freeze(Object.keys(ANALYTICS_EVENT_REGISTRY));

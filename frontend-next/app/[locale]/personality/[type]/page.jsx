@@ -6,6 +6,7 @@ import { isPersonalityPreviewLocale, isLocale, localePath, productionAppUrl } fr
 import { TYPE_ORDER, typeFromSlug } from '../../../../lib/personality';
 import { getPersonalityGuideContent } from '../../../../localization/personality-guide';
 import { pairSlug } from '../../../../lib/comparisons';
+import { RelatedContent } from '../../../../components/RelatedContent';
 
 export function generateStaticParams() { return ['en', 'hi'].flatMap((locale) => TYPE_ORDER.map((code) => ({ locale, type: code.toLowerCase() }))); }
 export const dynamicParams = false;
@@ -32,6 +33,7 @@ export default async function PersonalityPage({ params }) {
     <section className="mt-14 rounded-[2rem] bg-brand-sand/25 p-7 sm:p-9"><Section eyebrow="11" title={c.plan} /><ol className="mt-6 grid gap-3 md:grid-cols-5">{plan.map((item, i) => <li key={item} className="rounded-2xl bg-white p-4 text-sm text-brand-ink"><span className="block text-xs font-bold text-brand-teal">0{i + 1}</span><span className="mt-2 block">{item}</span></li>)}</ol></section>
     <section className="mt-14 grid gap-7 lg:grid-cols-2"><div><Section eyebrow="12" title={c.misconceptions} /><List items={misconceptions(p.code, hi, es)} /></div><div><Section eyebrow="13" title={c.related} /><div className="mt-6 flex flex-wrap gap-3">{compareTypes.map(other => <Link key={other} href={localePath(locale, `compare/${pairSlug(code, other)}`)} className="button-secondary">{code} · {other}</Link>)}</div><div className="mt-6 flex flex-wrap gap-3"><Link href={localePath(locale, 'jobs')} className="button-secondary">{c.jobs}</Link><Link href={localePath(locale, 'community')} className="button-secondary">{c.join}</Link></div></div></section>
     <section className="mt-14"><Section eyebrow="14" title={c.faq} /><div className="mt-6 space-y-3">{faq.map(item => { const question = Array.isArray(item) ? item[0] : item.q; const answer = Array.isArray(item) ? item[1] : item.a; return <details key={question} className="rounded-2xl border border-brand-line bg-white p-5"><summary className="cursor-pointer font-semibold text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal">{question}</summary><p className="mt-4 max-w-3xl leading-relaxed text-brand-subtle">{answer}</p></details>; })}</div></section>
+    <RelatedContent sourceEntityId={`personality-guide:${p.slug}`} sourceType="personality-guide" locale={locale} mode={preview ? 'preview' : 'public'} />
     <section className="mt-14 rounded-[2rem] bg-brand-teal p-8 text-white"><h2 className="display-font text-3xl sm:text-4xl">{c.final}</h2><p className="mt-4 max-w-2xl text-white/80">{p.shortSummary}</p><div className="mt-7 flex flex-wrap gap-3"><a href={productionAppUrl('/test')} className="button-light">{c.test}</a><Link href={localePath(locale, `personality/${p.slug}/careers`)} className="button-dark-outline">{c.careers}</Link><Link href={localePath(locale, `compare/${pairSlug(code, compareTypes[0])}`)} className="button-dark-outline">{c.compare}</Link><Link href={localePath(locale, 'community')} className="button-dark-outline">{c.join}</Link></div></section>
   </main></>;
 }
