@@ -71,20 +71,22 @@ assert(careerTitles.size === 32, 'career guides: titles must be unique across al
 assert(careerDescriptions.size === 32, 'career guides: descriptions must be unique across all locales');
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
-const frenchPreview = await fetch(`${baseUrl}/fr`);
-const frenchPreviewHtml = await frenchPreview.text();
-assert(frenchPreview.ok, `/fr preview: expected HTTP 200, received ${frenchPreview.status}`);
-assert(/<html[^>]+lang="fr"/.test(frenchPreviewHtml), '/fr preview: missing French html lang');
-assert(/<html[^>]+dir="ltr"/.test(frenchPreviewHtml), '/fr preview: missing ltr direction');
-assert(frenchPreviewHtml.includes('Mieux vous comprendre pour avancer avec plus de clarté'), '/fr preview: missing authored French SSR content');
-assert(frenchPreviewHtml.includes('noindex'), '/fr preview: expected noindex');
-assert(!/hreflang="fr"/i.test(frenchPreviewHtml), '/fr preview: must not join the public hreflang cluster');
-assert(frenchPreviewHtml.includes('application/ld+json'), '/fr preview: missing localized JSON-LD');
+for (const [locale, authoredText] of [['fr', 'Mieux vous comprendre pour avancer avec plus de clarté'], ['ja', '自分らしさを知り、これからの選択を少し軽やかに']]) {
+  const response = await fetch(`${baseUrl}/${locale}`);
+  const html = await response.text();
+  assert(response.ok, `/${locale}: expected HTTP 200, received ${response.status}`);
+  assert(new RegExp(`<html[^>]+lang="${locale}"`).test(html), `/${locale}: missing locale html lang`);
+  assert(/<html[^>]+dir="ltr"/.test(html), `/${locale}: missing ltr direction`);
+  assert(html.includes(authoredText), `/${locale}: missing authored SSR content`);
+  assert(!html.includes('noindex'), `/${locale}: public locale must be indexable`);
+  assert(new RegExp(`hreflang="${locale}"`, 'i').test(html), `/${locale}: must join the public hreflang cluster`);
+  assert(html.includes('application/ld+json'), `/${locale}: missing localized JSON-LD`);
+}
 assert(!sitemapXml.includes('<loc>https://kalqlater.com</loc>'), 'sitemap: root homepage must not be indexed separately');
 for (const locale of publishedLocales) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
-for (const locale of ['fr', 'ar', 'pt-br', 'zh-hans']) assert(!sitemapXml.includes(`https://kalqlater.com/${locale}`), `sitemap: unpublished locale ${locale} must not be included`);
-for (const locale of ['en', 'hi']) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
-for (const locale of ['en', 'hi']) {
+for (const locale of ['es', 'ar', 'pt-br', 'zh-hans']) assert(!sitemapXml.includes(`https://kalqlater.com/${locale}`), `sitemap: unpublished locale ${locale} must not be included`);
+for (const locale of publishedLocales) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
+for (const locale of publishedLocales) {
   assert(sitemapXml.includes(`/${locale}/insights`), `sitemap: missing ${locale} Insights hub`);
   assert(sitemapXml.includes(`/${locale}/compare</loc>`), `sitemap: missing ${locale} Compare selector`);
   assert(sitemapXml.includes(`/${locale}/insights/communication`), `sitemap: missing ${locale} Communication Insights landing`);
@@ -93,13 +95,15 @@ for (const locale of ['en', 'hi']) {
   assert(sitemapXml.includes(`/${locale}/insights/learning`), `sitemap: missing ${locale} Learning Insights landing`);
   assert(sitemapXml.includes(`/${locale}/community`), `sitemap: missing ${locale} Community landing`);
   assert(sitemapXml.includes(`/${locale}/jobs`), `sitemap: missing ${locale} Jobs landing`);
+}
+for (const locale of ['en', 'hi']) {
   const hub = await fetch(`${baseUrl}/${locale}/insights`);
   const hubHtml = await hub.text();
   assert(hub.ok && hubHtml.includes(`/${locale}/insights/communication`), `${locale} Insights hub: missing Communication Insights link`);
   assert(hubHtml.includes(`/${locale}/insights/conflict`), `${locale} Insights hub: missing Conflict Insights link`);
   assert(hubHtml.includes(`/${locale}/insights/leadership`), `${locale} Insights hub: missing Leadership Insights link`);
   assert(hubHtml.includes(`/${locale}/insights/learning`), `${locale} Insights hub: missing Learning Insights link`);
-  assert(hubHtml.includes('CollectionPage'), `${locale} Insights hub: missing CollectionPage JSON-LD`);
+  assert(hubHtml.includes('BreadcrumbList'), `${locale} Insights hub: missing breadcrumb JSON-LD`);
 }
 for (const legacyPath of ['/community', '/community/jobs']) {
   assert(!sitemapXml.includes(`<loc>https://kalqlater.com${legacyPath}</loc>`), `sitemap: legacy application route must not be indexed: ${legacyPath}`);

@@ -1,7 +1,7 @@
 {
   "id": "personality:intp",
   "route": "/fr/personality/intp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "INTP — l’explorateur d’idées",
     "summary": "Un profil curieux qui cherche la logique derrière les idées et les mécanismes.",

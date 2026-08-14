@@ -1,7 +1,7 @@
 {
   "id": "insight:learning",
   "route": "/fr/insights/learning",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "eyebrow": "Exploration personnelle KalQLater",
     "h1": "Réfléchir à votre manière d’apprendre",

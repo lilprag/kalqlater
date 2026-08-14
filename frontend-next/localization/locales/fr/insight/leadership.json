@@ -1,7 +1,7 @@
 {
   "id": "insight:leadership",
   "route": "/fr/insights/leadership",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "eyebrow": "Exploration personnelle KalQLater",
     "h1": "Observer votre manière d’exercer une influence",

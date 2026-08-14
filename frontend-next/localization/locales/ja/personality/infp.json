@@ -1,7 +1,7 @@
 {
   "id": "personality:infp",
   "route": "/ja/personality/infp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "INFP — 価値を大切にする人",
     "summary": "自分の内側で大切にしている価値観を基準に、納得できる選択を探す傾向があります。",

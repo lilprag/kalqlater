@@ -1,7 +1,7 @@
 {
   "id": "personality:isfj",
   "route": "/fr/personality/isfj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ISFJ — le soutien attentif",
     "summary": "Un profil discret qui prend soin des autres avec sérieux et sens du détail.",

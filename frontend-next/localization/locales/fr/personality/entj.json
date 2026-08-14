@@ -1,7 +1,7 @@
 {
   "id": "personality:entj",
   "route": "/fr/personality/entj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ENTJ — le pilote déterminé",
     "summary": "Un profil orienté vers la décision, l’ambition et l’organisation collective.",

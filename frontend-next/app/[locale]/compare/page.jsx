@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { CompareSelector } from '../../../components/CompareSelector';
-import { pageMetadata } from '../../../lib/metadata';
+import { JsonLd } from '../../../components/JsonLd';
+import { breadcrumbJsonLd, pageMetadata } from '../../../lib/metadata';
 import { isLocale } from '../../../lib/site';
 import { LocalePackagePreview } from '../../../components/LocalePackagePreview';
 import { loadLocalePage, localePreviewMetadata } from '../../../localization/runtime';
@@ -26,5 +27,9 @@ export default async function LocalizedCompareSelectorPage({ params }) {
   const packagePage = await loadLocalePage(locale, 'compare');
   if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path="compare" />;
   if (!isLocale(locale)) notFound();
-  return <CompareSelector locale={locale} />;
+  const title = locale === 'hi' ? 'पर्सनैलिटी तुलना' : 'Personality comparison';
+  return <><JsonLd data={{ '@context': 'https://schema.org', '@graph': [
+    breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: title, path: 'compare' }]),
+    { '@type': 'CollectionPage', name: title, url: `https://kalqlater.com/${locale}/compare`, inLanguage: locale === 'hi' ? 'hi-IN' : 'en-IN' },
+  ] }} /><CompareSelector locale={locale} /></>;
 }

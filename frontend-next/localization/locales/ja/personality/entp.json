@@ -1,7 +1,7 @@
 {
   "id": "personality:entp",
   "route": "/ja/personality/entp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ENTP — 可能性をひらく人",
     "summary": "新しい視点や選択肢を見つけ、対話の中で考えを試していく傾向があります。",

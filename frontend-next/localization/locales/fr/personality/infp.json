@@ -1,7 +1,7 @@
 {
   "id": "personality:infp",
   "route": "/fr/personality/infp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "INFP — le médiateur sensible",
     "summary": "Un profil attaché à ses valeurs, à l’authenticité et aux possibilités humaines.",

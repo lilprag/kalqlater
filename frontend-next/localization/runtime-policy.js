@@ -75,7 +75,7 @@ const JAPANESE_PREVIEW_PAGES = Object.freeze([
 export const localeRuntimeRegistry = Object.freeze(Object.fromEntries(localeRegistry.map((locale) => [locale.code, Object.freeze({
   locale: locale.code,
   state: locale.published ? 'published' : ['es', 'fr', 'ja'].includes(locale.code) ? 'preview' : 'draft',
-  packageSource: locale.published ? 'application' : locale.code === 'es' ? 'legacy-preview' : 'json-package',
+  packageSource: ['en', 'hi'].includes(locale.code) ? 'application' : locale.code === 'es' ? 'legacy-preview' : 'json-package',
   previewPageIds: locale.code === 'fr' ? FRENCH_PREVIEW_PAGES : locale.code === 'ja' ? JAPANESE_PREVIEW_PAGES : null,
 })])));
 

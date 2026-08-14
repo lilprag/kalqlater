@@ -1,7 +1,7 @@
 {
   "id": "personality:estj",
   "route": "/ja/personality/estj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ESTJ — 物事を前に進める人",
     "summary": "目的と基準を明確にし、実行可能な形に整えながら周囲を前へ進めようとする傾向があります。",

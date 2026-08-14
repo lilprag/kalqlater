@@ -1,7 +1,7 @@
 {
   "id": "static:privacy",
   "route": "/fr/privacy",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "h1": "Politique de confidentialité",
     "body": "Nous expliquons ici quelles informations sont utilisées, dans quel but, et les choix dont vous disposez pour garder la maîtrise de vos données.",

@@ -1,7 +1,7 @@
 {
   "id": "personality:intp",
   "route": "/ja/personality/intp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "INTP — 探究する人",
     "summary": "仕組みや考え方の背後にある理由を確かめながら、自由に仮説を広げていく傾向があります。",

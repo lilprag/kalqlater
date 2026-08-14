@@ -41,7 +41,7 @@ try {
   assert.equal(canTransitionLocaleRuntime('preview', 'published'), true);
   assert.equal(canTransitionLocaleRuntime('draft', 'published'), false);
   assert.equal(isRuntimePreviewLocale('es'), true);
-  assert.equal(isRuntimePreviewLocale('fr'), true);
+  assert.equal(isRuntimePreviewLocale('fr'), false, 'published French must no longer use preview routing');
 } finally {
   await rm(root, { recursive: true, force: true });
 }
@@ -54,6 +54,6 @@ assert.equal((await loadLocalePage('fr', 'career:intj'))?.fields?.hero, 'INTJ : 
 assert.equal((await loadLocalePage('fr', 'compare:intj-vs-intp'))?.fields?.eyebrow, 'INTJ et INTP : deux façons de se comprendre');
 assert.equal((await loadLocalePage('fr', 'insight:communication'))?.fields?.h1, 'Explorer votre manière de communiquer');
 assert.equal((await loadLocaleChrome('fr'))?.navigation?.home, 'Accueil');
-assert.equal(localePreviewMetadata('fr', frenchHomepage).robots.index, false);
+assert.equal(localePreviewMetadata('fr', frenchHomepage).robots.index, true);
 
-console.log('Generic locale runtime checks passed for complete-package SSR loading, scoped French preview, preview metadata, lifecycle transitions, and draft fail-closed behaviour.');
+console.log('Generic locale runtime checks passed for complete-package SSR loading, public French metadata, lifecycle transitions, and draft fail-closed behaviour.');

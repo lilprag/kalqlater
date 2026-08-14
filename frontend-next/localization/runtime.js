@@ -5,6 +5,7 @@ import { localeBootstrapFiles } from './bootstrap.js';
 import { dictionaryForLocale } from './translation/dictionary.js';
 import { validateLocalePackage } from './translation/validator.js';
 import { localeRuntime } from './runtime-policy.js';
+import { buildLocalizedMetadata } from '../lib/metadata.js';
 
 const LOCALES_ROOT = path.join(process.cwd(), 'localization', 'locales');
 
@@ -65,7 +66,7 @@ export async function loadLocale(locale, options = {}) {
       source: 'json-package',
       manifest: files.get('manifest.json'),
       validation: files.get('validation.json'),
-      allowedPageIds: runtime.previewPageIds,
+      allowedPageIds: runtime.state === 'preview' ? runtime.previewPageIds : null,
       pages,
       report,
     });
@@ -95,9 +96,19 @@ export async function loadLocaleChrome(locale, options = {}) {
   return isObject(navigation) && isObject(footer) ? Object.freeze({ navigation, footer }) : null;
 }
 
+function entityIdForPage(pageId) {
+  if (pageId?.startsWith('personality:')) return `personality-guide:${pageId.slice('personality:'.length)}`;
+  if (pageId?.startsWith('career:')) return `career-guide:${pageId.slice('career:'.length)}`;
+  if (pageId?.startsWith('compare:') || pageId?.startsWith('insight:')) return pageId;
+  if (pageId === 'community') return 'community:directory';
+  if (pageId === 'jobs') return 'jobs:directory';
+  return undefined;
+}
+
 export function localePreviewMetadata(locale, page, pagePath = '') {
   const seo = page?.fields?.seo;
   if (!seo?.title || !seo?.description) return null;
+  if (page.state === 'published') return buildLocalizedMetadata({ locale, path: pagePath, title: seo.title, description: seo.description, entityId: entityIdForPage(page.id) });
   const url = `https://kalqlater.com/${locale}${pagePath ? `/${pagePath.replace(/^\//, '')}` : ''}`;
   return {
     title: { absolute: seo.title }, description: seo.description,

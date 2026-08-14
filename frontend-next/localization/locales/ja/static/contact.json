@@ -1,7 +1,7 @@
 {
   "id": "static:contact",
   "route": "/ja/contact",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "h1": "自分らしさを丁寧に見つめる",
     "body": "自分の考え方、人との関わり方、日々の選択を振り返るためのガイドです。",

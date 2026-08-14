@@ -1,7 +1,7 @@
 {
   "id": "personality:estj",
   "route": "/fr/personality/estj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ESTJ — l’organisateur pragmatique",
     "summary": "Un profil concret qui aime structurer l’action et obtenir des résultats visibles.",

@@ -1,7 +1,7 @@
 {
   "id": "personality:isfp",
   "route": "/ja/personality/isfp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ISFP — 自分らしさを形にする人",
     "summary": "自分の感覚や大切にしたいことを頼りに、目の前の人や環境に穏やかに関わろうとする傾向があります。",

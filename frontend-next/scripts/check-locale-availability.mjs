@@ -27,7 +27,7 @@ const fixture = createEntityRegistry([{
   },
 }], { locales, entityTypes: ['future-entity'] });
 
-assert.deepEqual(publishedLanguageLocales(), ['en', 'hi'], 'only published language entities may be public locales');
+assert.deepEqual(publishedLanguageLocales(), ['en', 'fr', 'hi', 'ja'], 'only configured public language entities may be public locales');
 assert.equal(resolveLocaleRoute('en', '/en').isPublic, true, 'published locale root is public');
 assert.equal(resolveLocaleRoute('es', '/es').isPreview, true, 'Spanish homepage is an explicit preview');
 assert.equal(resolveLocaleRoute('es', '/es').isRoutable, true, 'preview root is routable');
@@ -36,12 +36,13 @@ assert.equal(resolveLocaleRoute('es', '/es/personality/intj').isPreview, true, '
 assert.equal(resolveLocaleRoute('es', '/es/personality/intj/careers').isPreview, true, 'preview career route is routable');
 assert.equal(resolveLocaleRoute('es', '/es/compare/intj-vs-intp').isPreview, true, 'preview comparison route is routable');
 assert.equal(resolveLocaleRoute('es', '/es/contact').isRoutable, false, 'unconfigured preview page fails closed');
-assert.equal(resolveLocaleRoute('fr', '/fr').isPreview, true, 'French phase-one homepage is an explicit preview');
-assert.equal(resolveLocaleRoute('fr', '/fr/contact').isPreview, true, 'French static phase-one route is previewable');
-assert.equal(resolveLocaleRoute('fr', '/fr/personality/intj').isPreview, true, 'French personality route is previewable once authored');
-assert.equal(resolveLocaleRoute('fr', '/fr/personality/intj/careers').isPreview, true, 'French career route is previewable once authored');
-assert.equal(resolveLocaleRoute('fr', '/fr/compare/intj-vs-intp').isPreview, true, 'French comparison route is previewable once authored');
-assert.equal(resolveLocaleRoute('fr', '/fr/insights/communication').isPreview, true, 'French Insight route is previewable once authored');
+assert.equal(resolveLocaleRoute('fr', '/fr').isPublic, true, 'French homepage is public once published');
+assert.equal(resolveLocaleRoute('fr', '/fr/contact').isPublic, true, 'French static route is public once published');
+assert.equal(resolveLocaleRoute('fr', '/fr/personality/intj').isPublic, true, 'French personality route is public once published');
+assert.equal(resolveLocaleRoute('fr', '/fr/personality/intj/careers').isPublic, true, 'French career route is public once published');
+assert.equal(resolveLocaleRoute('fr', '/fr/compare/intj-vs-intp').isPublic, true, 'French comparison route is public once published');
+assert.equal(resolveLocaleRoute('fr', '/fr/insights/communication').isPublic, true, 'French Insight route is public once published');
+assert.equal(resolveLocaleRoute('ja', '/ja/personality/intj').isPublic, true, 'Japanese authored personality route is public once published');
 assert.equal(resolveLocaleRoute('de', '/de').isRoutable, false, 'unknown locale is never routable');
 assert.equal(entityIdForLocaleRoute('es', '/es/personality/intj'), 'personality-guide:intj');
 assert.equal(entityIdForLocaleRoute('es', '/es/personality/intj/careers'), 'career-guide:intj');
@@ -63,7 +64,7 @@ assert.deepEqual(filterPublicNavigation('es', [{ label: 'Preview', entityId: 'pe
 assert.equal(isNavigationVisible('es', 'personality-guide:intj'), false, 'preview entity is not public navigation');
 
 const alternates = pageAlternates('personality/intj', undefined, 'personality-guide:intj');
-assert.deepEqual(Object.keys(alternates).sort(), ['en', 'hi', 'x-default'], 'hreflang includes published locales only');
-assert.deepEqual(publicLocalesForEntity('personality-guide:intj'), ['en', 'hi'], 'sitemap source contains published locales only');
+assert.deepEqual(Object.keys(alternates).sort(), ['en', 'fr', 'hi', 'ja', 'x-default'], 'hreflang includes public locales only');
+assert.deepEqual(publicLocalesForEntity('personality-guide:intj'), ['en', 'fr', 'hi', 'ja'], 'sitemap source contains public locales only');
 
 console.log('Locale availability guard checks passed for published, preview, planned, unavailable, and deprecated states.');

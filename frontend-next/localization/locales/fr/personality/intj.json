@@ -1,7 +1,7 @@
 {
   "id": "personality:intj",
   "route": "/fr/personality/intj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "INTJ — l’architecte stratégique",
     "summary": "Un profil tourné vers la vision d’ensemble, l’autonomie et les solutions cohérentes.",

@@ -3,13 +3,13 @@
   "locale": "fr",
   "nativeName": "Français",
   "direction": "ltr",
-  "state": "draft",
+  "state": "published",
   "sourceLocale": "es",
   "generatedBy": "language-bootstrap-factory",
   "publication": {
-    "sitemap": false,
-    "hreflang": false,
-    "languageSelector": false,
-    "robots": "noindex"
+    "sitemap": true,
+    "hreflang": true,
+    "languageSelector": true,
+    "robots": "index,follow"
   }
 }

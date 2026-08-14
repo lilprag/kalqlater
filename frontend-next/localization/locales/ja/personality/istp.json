@@ -1,7 +1,7 @@
 {
   "id": "personality:istp",
   "route": "/ja/personality/istp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ISTP — 仕組みを見抜く人",
     "summary": "目の前の状況を冷静に観察し、仕組みを理解しながら実用的な解決策を見つける傾向があります。",

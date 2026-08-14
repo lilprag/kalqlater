@@ -1,7 +1,7 @@
 {
   "id": "personality:istj",
   "route": "/fr/personality/istj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ISTJ — le repère fiable",
     "summary": "Un profil méthodique qui apprécie la clarté, la continuité et les engagements tenus.",

@@ -1,7 +1,7 @@
 {
   "id": "personality:isfp",
   "route": "/fr/personality/isfp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ISFP — l’esthète authentique",
     "summary": "Un profil sensible qui cherche à vivre selon ses valeurs et son expérience directe.",

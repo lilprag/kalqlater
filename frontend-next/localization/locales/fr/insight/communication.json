@@ -1,7 +1,7 @@
 {
   "id": "insight:communication",
   "route": "/fr/insights/communication",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "eyebrow": "Exploration personnelle KalQLater",
     "h1": "Explorer votre manière de communiquer",

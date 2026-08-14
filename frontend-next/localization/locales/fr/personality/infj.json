@@ -1,7 +1,7 @@
 {
   "id": "personality:infj",
   "route": "/fr/personality/infj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "INFJ — le conseiller idéaliste",
     "summary": "Un profil introspectif guidé par le sens, la vision et l’attention aux autres.",

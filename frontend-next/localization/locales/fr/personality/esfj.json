@@ -1,7 +1,7 @@
 {
   "id": "personality:esfj",
   "route": "/fr/personality/esfj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ESFJ — le fédérateur généreux",
     "summary": "Un profil sociable qui construit la confiance par l’attention et la coopération.",

@@ -4,7 +4,7 @@ import { buildLocalizedMetadata, pageAlternates } from '../lib/metadata.js';
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 
 assert(localeRegistry.length === 49, `expected 49 configured target locales, found ${localeRegistry.length}`);
-assert(JSON.stringify(publishedLocales) === JSON.stringify(['en', 'hi']), 'only English and Hindi may be published in Phase 1');
+assert(JSON.stringify(publishedLocales) === JSON.stringify(['en', 'fr', 'hi', 'ja']), 'only English, French, Hindi, and Japanese may be published');
 for (const locale of localeRegistry) {
   assert(locale.code && locale.hreflang && locale.englishName && locale.nativeName, `${locale.code}: incomplete locale registry entry`);
   assert(['ltr', 'rtl'].includes(locale.dir), `${locale.code}: invalid direction`);
@@ -16,7 +16,7 @@ assert(localeConfig('zh-hans')?.hreflang === 'zh-CN', 'Simplified Chinese hrefla
 assert(localeConfig('zh-hant')?.hreflang === 'zh-TW', 'Traditional Chinese hreflang must be explicit');
 
 const allAlternates = pageAlternates('personality/intj');
-assert(Object.keys(allAlternates).join(',') === 'en,hi,x-default', 'published page hreflang cluster must contain only EN, HI, and x-default');
+assert(Object.keys(allAlternates).join(',') === 'en,fr,hi,ja,x-default', 'published page hreflang cluster must contain only public locales and x-default');
 assert(allAlternates['x-default'].endsWith('/en/personality/intj'), 'x-default must point to English');
 const englishOnly = pageAlternates('future-page', ['en']);
 assert(Object.keys(englishOnly).join(',') === 'en,x-default', 'page-specific availability must not add unavailable locales');

@@ -14,7 +14,7 @@ assert(new Set(localeRegistry.map((locale) => locale.code)).size === localeRegis
 assert(new Set(localeRegistry.map((locale) => locale.hreflang)).size === localeRegistry.length, 'hreflang codes must be unique');
 assert(new Set(contentIds).size === contentIds.length, 'master content IDs must be unique');
 assert(masterContentRegistry.every((block) => PAGE_FAMILIES.includes(block.family) && /^[A-Z][A-Z0-9_.{}-]+$/.test(block.id)), 'invalid master content registry ID');
-assert(JSON.stringify(publishedLocales) === JSON.stringify(['en', 'hi']), 'Phase 1 must not publish additional locales');
+assert(JSON.stringify(publishedLocales) === JSON.stringify(['en', 'fr', 'hi', 'ja']), 'only the approved four locales may be published');
 
 for (const locale of localeRegistry) {
   const packageConfig = localePackages[locale.code];

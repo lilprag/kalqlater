@@ -1,7 +1,7 @@
 {
   "id": "insight:learning",
   "route": "/ja/insights/learning",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "eyebrow": "KalQLaterの自己理解エクスペリエンス",
     "h1": "自分に合う学び方を、経験から見つめる",

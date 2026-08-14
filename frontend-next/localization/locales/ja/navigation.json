@@ -1,7 +1,7 @@
 {
   "id": "navigation",
   "route": "KalQLaterのガイドです。",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "home": "ホーム",
     "takeTest": "診断を受ける",

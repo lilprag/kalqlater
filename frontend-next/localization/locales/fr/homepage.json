@@ -1,7 +1,7 @@
 {
   "id": "homepage",
   "route": "/fr",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "eyebrow": "16 types de personnalité · Gratuit · Sans inscription",
     "h1": "Mieux vous comprendre pour avancer avec plus de clarté",

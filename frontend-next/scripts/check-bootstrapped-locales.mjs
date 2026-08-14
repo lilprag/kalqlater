@@ -21,13 +21,16 @@ for (const locale of generatedLocales) {
   const manifest = JSON.parse(await readFile(path.join(directory, 'manifest.json'), 'utf8'));
   const validation = JSON.parse(await readFile(path.join(directory, 'validation.json'), 'utf8'));
   assert.equal(manifest.locale, locale.code);
-  assert.equal(manifest.state, 'draft');
-  assert.deepEqual(manifest.publication, { sitemap: false, hreflang: false, languageSelector: false, robots: 'noindex' });
+  const publicLocale = locale.published;
+  assert.equal(manifest.state, publicLocale ? 'published' : 'draft');
+  assert.deepEqual(manifest.publication, publicLocale
+    ? { sitemap: true, hreflang: true, languageSelector: true, robots: 'index,follow' }
+    : { sitemap: false, hreflang: false, languageSelector: false, robots: 'noindex' });
   assert.equal(validation.requiredPageCount, 167);
   assert.equal(validation.noFallback, true);
   const records = await Promise.all(files.filter((file) => !['manifest.json', 'validation.json'].includes(file)).map(async (file) => JSON.parse(await readFile(path.join(directory, file), 'utf8'))));
-  assert(records.every((record) => record.status === 'draft'), `${locale.code}: every page must remain a draft`);
+  assert(records.every((record) => record.status === (publicLocale ? 'published' : 'draft')), `${locale.code}: page status must match locale publication state`);
   assert(records.every((record) => record.fields && typeof record.fields === 'object'), `${locale.code}: every page must retain translatable fields`);
 }
 
-console.log(`Bootstrapped locale checks passed for ${generatedLocales.length} draft locale packages and ${generatedLocales.length * 169} schema-preserving files.`);
+console.log(`Bootstrapped locale checks passed for ${generatedLocales.length} locale packages and ${generatedLocales.length * 169} schema-preserving files.`);

@@ -1,7 +1,7 @@
 {
   "id": "personality:istp",
   "route": "/fr/personality/istp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ISTP — l’artisan adaptable",
     "summary": "Un profil indépendant qui comprend en observant, en manipulant et en résolvant.",

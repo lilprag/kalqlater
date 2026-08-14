@@ -1,7 +1,7 @@
 {
   "id": "personality:esfp",
   "route": "/fr/personality/esfp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ESFP — l’animateur spontané",
     "summary": "Un profil vivant qui apporte de l’énergie, de la chaleur et du réalisme.",

@@ -1,7 +1,7 @@
 {
   "id": "navigation",
   "route": null,
-  "status": "draft",
+  "status": "published",
   "fields": {
     "home": "Accueil",
     "takeTest": "Faire le test",

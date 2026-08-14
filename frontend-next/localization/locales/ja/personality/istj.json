@@ -1,7 +1,7 @@
 {
   "id": "personality:istj",
   "route": "/ja/personality/istj",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ISTJ — 着実に支える人",
     "summary": "責任を果たすために必要なことを見極め、信頼できる手順と実践を積み重ねる傾向があります。",

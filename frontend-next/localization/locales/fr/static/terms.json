@@ -1,7 +1,7 @@
 {
   "id": "static:terms",
   "route": "/fr/terms",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "h1": "Conditions d’utilisation",
     "body": "Ces conditions décrivent le cadre d’utilisation de KalQLater, les responsabilités de chacun et les limites du service.",

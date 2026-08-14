@@ -1,7 +1,7 @@
 {
   "id": "static:contact",
   "route": "/fr/contact",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "h1": "Nous contacter",
     "body": "Une question, un retour ou une suggestion ? Écrivez-nous : votre message nous aide à améliorer KalQLater avec soin.",

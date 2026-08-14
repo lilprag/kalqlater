@@ -1,7 +1,7 @@
 {
   "id": "personality:entp",
   "route": "/fr/personality/entp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ENTP — l’inventeur curieux",
     "summary": "Un profil vif qui aime les idées nouvelles, les débats et les possibilités.",

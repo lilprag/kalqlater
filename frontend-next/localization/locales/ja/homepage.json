@@ -1,7 +1,7 @@
 {
   "id": "homepage",
   "route": "/ja",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "eyebrow": "16タイプの性格を、自分の言葉で見つめ直す",
     "h1": "自分らしさを知り、これからの選択を少し軽やかに",

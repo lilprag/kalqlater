@@ -1,7 +1,7 @@
 {
   "id": "career:intp",
   "route": "/fr/personality/intp/careers",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "hero": "INTP : des carrières pour explorer et comprendre",
     "lens": "Ce guide aide les INTP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",

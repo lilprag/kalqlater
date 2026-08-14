@@ -1,7 +1,7 @@
 {
   "id": "shared-ui",
   "route": null,
-  "status": "draft",
+  "status": "published",
   "fields": {
     "loading": "Chargement…",
     "empty": "Aucun résultat à afficher pour le moment.",

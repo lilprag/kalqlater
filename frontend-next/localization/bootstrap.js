@@ -20,15 +20,16 @@ export function createLocaleBootstrapPackage(locale) {
   const config = localeConfig(code);
   assert(config, `Unknown configured locale: ${locale}`);
   assert(!['en', 'hi', 'es'].includes(code), `Bootstrap is for a new locale, not ${code}`);
+  const published = config.published;
   const route = (suffix = '') => `/${code}${suffix}`;
   const pairs = TYPE_CODES.flatMap((first, index) => TYPE_CODES.slice(index + 1).map((second) => `${first.toLowerCase()}-vs-${second.toLowerCase()}`));
   const packageManifest = Object.freeze({
     schemaVersion: 1, locale: code, nativeName: config.nativeName, direction: config.dir,
-    state: 'draft', sourceLocale: 'es', generatedBy: 'language-bootstrap-factory',
-    publication: Object.freeze({ sitemap: false, hreflang: false, languageSelector: false, robots: 'noindex' }),
+    state: published ? 'published' : 'draft', sourceLocale: 'es', generatedBy: 'language-bootstrap-factory',
+    publication: Object.freeze({ sitemap: published, hreflang: published, languageSelector: published, robots: published ? 'index,follow' : 'noindex' }),
   });
   const sharedSeo = textFields(['title', 'description', 'ogTitle', 'ogDescription', 'twitterTitle', 'twitterDescription', 'keywords']);
-  const pages = [
+  const draftPages = [
     record('homepage', route(), { ...textFields(['eyebrow', 'h1', 'body', 'primaryCta', 'secondaryCta', 'trustLine', 'features', 'dimensions', 'insights', 'community', 'finalCta', 'footer']), seo: sharedSeo, jsonLd: textFields(['websiteName', 'organizationName']) }),
     record('navigation', null, textFields(['home', 'takeTest', 'types', 'insights', 'compare', 'community', 'jobs', 'contact', 'login', 'signup', 'menuOpen', 'menuClose', 'languageLabel'])),
     record('footer', null, textFields(['description', 'insights', 'communication', 'compare', 'community', 'jobs', 'privacy', 'terms', 'contact', 'takeTest', 'copyright'])),
@@ -43,7 +44,8 @@ export function createLocaleBootstrapPackage(locale) {
     record('jobs', route('/jobs'), { ...textFields(['h1', 'body', 'ctas']), seo: sharedSeo, jsonLd: textFields(['breadcrumb', 'collectionPage']) }),
     ...STATIC_PAGES.map((page) => record(`static:${page}`, route(`/${page}`), { ...textFields(['h1', 'body', 'ctas']), seo: sharedSeo, jsonLd: textFields(['breadcrumb']) })),
   ];
-  return Object.freeze({ manifest: packageManifest, pages: Object.freeze(pages), validation: Object.freeze({ requiredPageCount: pages.length, personalityGuides: 16, careerGuides: 16, compareGuides: 120, insights: INSIGHTS.length, requiredPublicationState: 'draft', noFallback: true }) });
+  const pages = Object.freeze(draftPages.map((page) => Object.freeze({ ...page, status: published ? 'published' : 'draft' })));
+  return Object.freeze({ manifest: packageManifest, pages: Object.freeze(pages), validation: Object.freeze({ requiredPageCount: pages.length, personalityGuides: 16, careerGuides: 16, compareGuides: 120, insights: INSIGHTS.length, requiredPublicationState: published ? 'published' : 'draft', noFallback: true }) });
 }
 
 export function localeBootstrapFiles(locale) {

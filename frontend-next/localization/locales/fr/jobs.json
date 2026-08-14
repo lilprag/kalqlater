@@ -1,7 +1,7 @@
 {
   "id": "jobs",
   "route": "/fr/jobs",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "h1": "Des opportunités qui tiennent compte du contexte",
     "body": "Explorez des pistes professionnelles en reliant vos préférences, vos conditions de travail et ce qui compte vraiment pour vous.",

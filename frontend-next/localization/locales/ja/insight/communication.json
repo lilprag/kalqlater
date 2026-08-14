@@ -1,7 +1,7 @@
 {
   "id": "insight:communication",
   "route": "/ja/insights/communication",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "eyebrow": "KalQLaterの自己理解エクスペリエンス",
     "h1": "自分の伝え方と受け取り方を見つめる",

@@ -1,7 +1,7 @@
 {
   "id": "personality:estp",
   "route": "/fr/personality/estp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ESTP — l’entrepreneur d’action",
     "summary": "Un profil énergique qui apprend vite dans l’action et saisit les occasions.",

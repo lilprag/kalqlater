@@ -1,7 +1,7 @@
 {
   "id": "personality:enfp",
   "route": "/fr/personality/enfp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ENFP — l’explorateur enthousiaste",
     "summary": "Un profil créatif qui perçoit les possibilités et crée du lien spontanément.",

@@ -4,6 +4,6 @@
   "careerGuides": 16,
   "compareGuides": 120,
   "insights": 4,
-  "requiredPublicationState": "draft",
+  "requiredPublicationState": "published",
   "noFallback": true
 }

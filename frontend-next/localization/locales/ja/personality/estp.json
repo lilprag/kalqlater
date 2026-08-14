@@ -1,7 +1,7 @@
 {
   "id": "personality:estp",
   "route": "/ja/personality/estp",
-  "status": "draft",
+  "status": "published",
   "fields": {
     "displayName": "ESTP — 機会をつかむ人",
     "summary": "今起きていることを素早く捉え、状況の変化に合わせて行動しながら可能性を広げる傾向があります。",
