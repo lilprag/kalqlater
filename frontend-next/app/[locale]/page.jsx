@@ -3,9 +3,13 @@ import { isHomepagePreviewLocale, isLocale, localePath, siteUrl } from '../../li
 import { homepageContent } from '../../localization/homepage';
 import { JsonLd } from '../../components/JsonLd';
 import { HomeVisual } from '../../components/HomeVisual';
+import { LocalePackagePreview } from '../../components/LocalePackagePreview';
+import { loadLocalePage, localePreviewMetadata } from '../../localization/runtime';
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'homepage');
+  if (packagePage) return localePreviewMetadata(locale, packagePage);
   if (isHomepagePreviewLocale(locale)) {
     const seo = homepageContent(locale).seo;
     const url = `${siteUrl()}/es`;
@@ -16,6 +20,8 @@ export async function generateMetadata({ params }) {
 
 export default async function HomePage({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'homepage');
+  if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} />;
   const activeLocale = isLocale(locale) || isHomepagePreviewLocale(locale) ? locale : 'en';
   const canonicalHomeUrl = `${siteUrl()}${localePath(activeLocale)}`;
   const websiteSchema = {

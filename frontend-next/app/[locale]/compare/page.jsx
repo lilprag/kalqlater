@@ -2,12 +2,16 @@ import { notFound } from 'next/navigation';
 import { CompareSelector } from '../../../components/CompareSelector';
 import { pageMetadata } from '../../../lib/metadata';
 import { isLocale } from '../../../lib/site';
+import { LocalePackagePreview } from '../../../components/LocalePackagePreview';
+import { loadLocalePage, localePreviewMetadata } from '../../../localization/runtime';
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'compare');
+  if (packagePage) return localePreviewMetadata(locale, packagePage, 'compare');
   if (!isLocale(locale)) return {};
   return pageMetadata({
     locale,
@@ -19,6 +23,8 @@ export async function generateMetadata({ params }) {
 
 export default async function LocalizedCompareSelectorPage({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'compare');
+  if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path="compare" />;
   if (!isLocale(locale)) notFound();
   return <CompareSelector locale={locale} />;
 }

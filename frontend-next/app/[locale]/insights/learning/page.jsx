@@ -1,1 +1,28 @@
-import Link from'next/link';import{notFound}from'next/navigation';import{JsonLd}from'../../../../components/JsonLd';import{learningCopyFor}from'../../../../data/learning-insights';import{breadcrumbJsonLd,pageMetadata}from'../../../../lib/metadata';import{isLocale,localePath}from'../../../../lib/site';export const dynamicParams=false;export function generateStaticParams(){return['en','hi'].map(locale=>({locale}))}export async function generateMetadata({params}){const{locale}=await params;if(!isLocale(locale))return{};return pageMetadata({locale,path:'insights/learning',title:locale==='hi'?'लर्निंग इनसाइट्स: सीखने के तरीके पर विचार करें':'Learning Insights: Reflect on How You Learn',description:locale==='hi'?'समझ, अभ्यास, फीडबैक और संशोधन के अपने तरीके पर विचार करें।':'Reflect on your approach to understanding, practice, feedback, and revision.'})}export default async function P({params}){const{locale}=await params;if(!isLocale(locale))notFound();const c=learningCopyFor(locale),faq={'@context':'https://schema.org','@type':'FAQPage',mainEntity:c.faq.map(([name,text])=>({'@type':'Question',name,acceptedAnswer:{'@type':'Answer',text}}))};return <><JsonLd data={{'@context':'https://schema.org','@graph':[breadcrumbJsonLd(locale,[{name:'KalQLater'},{name:'Insights',path:'insights'},{name:c.title,path:'insights/learning'}]),faq]}}/><main className="mx-auto max-w-7xl px-4 py-16"><h1 className="display-font text-5xl text-brand-ink">{locale==='hi'?'सीखने के अपने तरीके पर विचार करें।':'Reflect on how you learn.'}</h1><p className="mt-6 max-w-2xl text-lg text-brand-subtle">{c.promise}</p><Link className="button-primary mt-7" href={localePath(locale,'insights/learning/start')}>{c.start} →</Link><section className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{c.dims.map(([id,name])=><article key={id} className="rounded-2xl border border-brand-line bg-white p-5"><h2 className="display-font text-2xl">{name}</h2><p className="mt-3 text-sm text-brand-subtle">{locale==='hi'?'व्यवहारिक संकेत, क्षमता का फैसला नहीं।':'A behavioural signal, not an ability verdict.'}</p></article>)}</section></main></>}
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { JsonLd } from '../../../../components/JsonLd';
+import { LocalePackagePreview } from '../../../../components/LocalePackagePreview';
+import { learningCopyFor } from '../../../../data/learning-insights';
+import { breadcrumbJsonLd, pageMetadata } from '../../../../lib/metadata';
+import { isLocale, localePath } from '../../../../lib/site';
+import { loadLocalePage, localePreviewMetadata } from '../../../../localization/runtime';
+
+export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'insight:learning');
+  if (packagePage) return localePreviewMetadata(locale, packagePage, 'insights/learning');
+  if (!isLocale(locale)) return {};
+  return pageMetadata({ locale, path: 'insights/learning', title: locale === 'hi' ? 'लर्निंग इनसाइट्स: सीखने के तरीके पर विचार करें' : 'Learning Insights: Reflect on How You Learn', description: locale === 'hi' ? 'समझ, अभ्यास, फीडबैक और संशोधन के अपने तरीके पर विचार करें।' : 'Reflect on your approach to understanding, practice, feedback, and revision.' });
+}
+
+export default async function LearningLanding({ params }) {
+  const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'insight:learning');
+  if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path="insights/learning" />;
+  if (!isLocale(locale)) notFound();
+  const c = learningCopyFor(locale);
+  const faq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: c.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
+  return <><JsonLd data={{ '@context': 'https://schema.org', '@graph': [breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: 'Insights', path: 'insights' }, { name: c.title, path: 'insights/learning' }]), faq] }} /><main className="mx-auto max-w-7xl px-4 py-16"><h1 className="display-font text-5xl text-brand-ink">{locale === 'hi' ? 'सीखने के अपने तरीके पर विचार करें।' : 'Reflect on how you learn.'}</h1><p className="mt-6 max-w-2xl text-lg text-brand-subtle">{c.promise}</p><Link className="button-primary mt-7" href={localePath(locale, 'insights/learning/start')}>{c.start} →</Link><section className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{c.dims.map(([id, name]) => <article key={id} className="rounded-2xl border border-brand-line bg-white p-5"><h2 className="display-font text-2xl">{name}</h2><p className="mt-3 text-sm text-brand-subtle">{locale === 'hi' ? 'व्यवहारिक संकेत, क्षमता का फैसला नहीं।' : 'A behavioural signal, not an ability verdict.'}</p></article>)}</section></main></>;
+}

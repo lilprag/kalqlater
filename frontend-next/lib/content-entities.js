@@ -1,5 +1,6 @@
 import { localeRegistry } from './locales.js';
 import { TYPE_CODES } from '../data/types.js';
+import { localeRuntimeRegistry } from '../localization/runtime-policy.js';
 
 /**
  * Canonical entities are configuration records, not routes or APIs. Route
@@ -191,15 +192,22 @@ function entity(type, key, publicationState, localeAvailability) {
 
 const publicLocales = Object.freeze([...PUBLISHED]);
 const spanishPreview = Object.freeze(['es']);
+const packagePreviewLocales = Object.freeze(Object.values(localeRuntimeRegistry)
+  .filter((runtime) => runtime.state === 'preview' && runtime.packageSource === 'json-package')
+  .map((runtime) => runtime.locale));
+const allPreviewLocales = Object.freeze([...new Set([...spanishPreview, ...packagePreviewLocales])]);
 const canonicalPairs = Object.freeze(TYPE_CODES.flatMap((first, index) => TYPE_CODES.slice(index + 1).map((second) => `${first.toLowerCase()}-vs-${second.toLowerCase()}`)));
-const personalityEntities = TYPE_CODES.map((type) => entity('personality-guide', type.toLowerCase(), 'published', availabilityFor({ published: publicLocales, preview: spanishPreview })));
-const careerEntities = TYPE_CODES.map((type) => entity('career-guide', type.toLowerCase(), 'published', availabilityFor({ published: publicLocales, preview: spanishPreview })));
-const compareEntities = canonicalPairs.map((slug) => entity('compare', slug, 'published', availabilityFor({ published: publicLocales, preview: spanishPreview })));
-const insightEntities = ['communication', 'conflict', 'leadership', 'learning'].map((key) => entity('insight', key, 'published', availabilityFor({ published: publicLocales })));
+const personalityEntities = TYPE_CODES.map((type) => entity('personality-guide', type.toLowerCase(), 'published', availabilityFor({ published: publicLocales, preview: allPreviewLocales })));
+const careerEntities = TYPE_CODES.map((type) => entity('career-guide', type.toLowerCase(), 'published', availabilityFor({ published: publicLocales, preview: allPreviewLocales })));
+const compareEntities = canonicalPairs.map((slug) => entity('compare', slug, 'published', availabilityFor({ published: publicLocales, preview: allPreviewLocales })));
+const insightEntities = ['communication', 'conflict', 'leadership', 'learning'].map((key) => entity('insight', key, 'published', availabilityFor({ published: publicLocales, preview: packagePreviewLocales })));
 const platformEntities = [
-  entity('community', 'directory', 'published', availabilityFor({ published: publicLocales })),
-  entity('jobs', 'directory', 'published', availabilityFor({ published: publicLocales })),
-  ...localeRegistry.map((locale) => entity('language', locale.code, locale.published ? 'published' : locale.code === 'es' ? 'approved' : 'draft', availabilityFor({ published: locale.published ? [locale.code] : [], preview: locale.code === 'es' ? [locale.code] : [] }))),
+  entity('community', 'directory', 'published', availabilityFor({ published: publicLocales, preview: packagePreviewLocales })),
+  entity('jobs', 'directory', 'published', availabilityFor({ published: publicLocales, preview: packagePreviewLocales })),
+  ...localeRegistry.map((locale) => {
+    const runtime = localeRuntimeRegistry[locale.code];
+    return entity('language', locale.code, locale.published ? 'published' : runtime?.state === 'preview' ? 'approved' : 'draft', availabilityFor({ published: locale.published ? [locale.code] : [], preview: runtime?.state === 'preview' ? [locale.code] : [] }));
+  }),
 ];
 
 export const contentEntityRegistry = createEntityRegistry([

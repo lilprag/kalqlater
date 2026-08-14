@@ -4,11 +4,15 @@ import { JsonLd } from '../../../components/JsonLd';
 import { insightsHubCopy } from '../../../data/insights-hub';
 import { breadcrumbJsonLd, pageMetadata } from '../../../lib/metadata';
 import { isLocale, localePath } from '../../../lib/site';
+import { LocalePackagePreview } from '../../../components/LocalePackagePreview';
+import { loadLocalePage, localePreviewMetadata } from '../../../localization/runtime';
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'insights');
+  if (packagePage) return localePreviewMetadata(locale, packagePage, 'insights');
   if (!isLocale(locale)) return {};
   return pageMetadata({
     locale,
@@ -20,6 +24,8 @@ export async function generateMetadata({ params }) {
 
 export default async function InsightsHubPage({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'insights');
+  if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path="insights" />;
   if (!isLocale(locale)) notFound();
   const c = insightsHubCopy[locale];
   const jsonLd = {

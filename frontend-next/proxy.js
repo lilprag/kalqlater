@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
 import { legacyResponseHeaders } from './lib/legacy-response-headers';
 import { publishedLanguageLocales, resolveLocaleRoute } from './lib/locale-availability';
+import { localeRuntimeRegistry } from './localization/runtime-policy';
 
 const locales = new Set(publishedLanguageLocales());
+const previewLocales = new Set(Object.values(localeRuntimeRegistry).filter((runtime) => runtime.state === 'preview').map((runtime) => runtime.locale));
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
 const legacyNoindexPaths = ['/community', '/login', '/signup', '/forgot-password', '/reset-password'];
 
@@ -70,23 +72,23 @@ async function noindexLegacyApplicationResponse(request) {
   return response;
 }
 
-function previewResponse(request) {
+function previewResponse(request, locale) {
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-kalqlater-locale', 'es');
+  requestHeaders.set('x-kalqlater-locale', locale);
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export async function proxy(request) {
   const path = request.nextUrl.pathname;
-  if (path === '/es' || path.startsWith('/es/')) {
-    const availability = resolveLocaleRoute('es', path);
-    return availability.isPreview ? previewResponse(request) : notFoundResponse();
+  const locale = path.split('/')[1]?.toLowerCase();
+  if (previewLocales.has(locale)) {
+    const availability = resolveLocaleRoute(locale, path);
+    return availability.isPreview ? previewResponse(request, locale) : notFoundResponse();
   }
   if (path.startsWith('/types/')) return legacyPersonalityResponse(request);
   if (path === '/compare' || path.startsWith('/compare/')) return legacyComparisonResponse(request);
   if (legacyNoindexPaths.some((legacyPath) => path === legacyPath || path.startsWith(`${legacyPath}/`))) return noindexLegacyApplicationResponse(request);
 
-  const locale = path.split('/')[1];
   if (!locales.has(locale)) return NextResponse.next();
   const comparison = new RegExp(`^/(${locale})/compare/([a-z]{4})-vs-([a-z]{4})$`, 'i').exec(path);
   if (comparison) {
@@ -102,4 +104,4 @@ export async function proxy(request) {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-export const config = { matcher: ['/en/:path*', '/hi/:path*', '/es/:path*', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };
+export const config = { matcher: ['/:locale/:path*', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };

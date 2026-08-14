@@ -4,12 +4,16 @@ import { JsonLd } from '../../../../components/JsonLd';
 import { leadershipCopyFor } from '../../../../data/leadership-insights';
 import { breadcrumbJsonLd, pageMetadata } from '../../../../lib/metadata';
 import { isLocale, localePath } from '../../../../lib/site';
+import { LocalePackagePreview } from '../../../../components/LocalePackagePreview';
+import { loadLocalePage, localePreviewMetadata } from '../../../../localization/runtime';
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'insight:leadership');
+  if (packagePage) return localePreviewMetadata(locale, packagePage, 'insights/leadership');
   if (!isLocale(locale)) return {};
   const hi = locale === 'hi';
   return pageMetadata({
@@ -23,6 +27,8 @@ export async function generateMetadata({ params }) {
 
 export default async function LeadershipLandingPage({ params }) {
   const { locale } = await params;
+  const packagePage = await loadLocalePage(locale, 'insight:leadership');
+  if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path="insights/leadership" />;
   if (!isLocale(locale)) notFound();
   const c = leadershipCopyFor(locale);
   const hi = locale === 'hi';

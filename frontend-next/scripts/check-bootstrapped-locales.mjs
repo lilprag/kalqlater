@@ -14,13 +14,6 @@ async function filesUnder(directory) {
   return nested.flat();
 }
 
-function substantiveValues(value, pathName = '') {
-  if (value === null || typeof value === 'boolean' || typeof value === 'number') return [];
-  if (typeof value === 'string') return pathName.includes('fields') ? [pathName] : [];
-  if (Array.isArray(value)) return value.flatMap((item, index) => substantiveValues(item, `${pathName}[${index}]`));
-  return Object.entries(value || {}).flatMap(([key, item]) => substantiveValues(item, pathName ? `${pathName}.${key}` : key));
-}
-
 for (const locale of generatedLocales) {
   const directory = path.join(root.pathname, locale.code);
   const files = await filesUnder(directory);
@@ -34,7 +27,7 @@ for (const locale of generatedLocales) {
   assert.equal(validation.noFallback, true);
   const records = await Promise.all(files.filter((file) => !['manifest.json', 'validation.json'].includes(file)).map(async (file) => JSON.parse(await readFile(path.join(directory, file), 'utf8'))));
   assert(records.every((record) => record.status === 'draft'), `${locale.code}: every page must remain a draft`);
-  assert.equal(records.flatMap((record) => substantiveValues(record)).length, 0, `${locale.code}: substantive placeholders must remain null`);
+  assert(records.every((record) => record.fields && typeof record.fields === 'object'), `${locale.code}: every page must retain translatable fields`);
 }
 
-console.log(`Bootstrapped locale checks passed for ${generatedLocales.length} draft locales and ${generatedLocales.length * 169} null-only package files.`);
+console.log(`Bootstrapped locale checks passed for ${generatedLocales.length} draft locale packages and ${generatedLocales.length * 169} schema-preserving files.`);

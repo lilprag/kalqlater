@@ -8,15 +8,19 @@ import { breadcrumbJsonLd, pageMetadata } from '../../../../lib/metadata';
 import { getPersonalityUrl, personalityProfile } from '../../../../lib/personality';
 import { isComparisonPreviewLocale, isLocale, localePath, productionAppUrl } from '../../../../lib/site';
 import { RelatedContent } from '../../../../components/RelatedContent';
+import { LocalePackagePreview } from '../../../../components/LocalePackagePreview';
+import { loadLocalePage, localePreviewMetadata } from '../../../../localization/runtime';
 
 export function generateStaticParams() {
   return ['en', 'hi'].flatMap((locale) => allPairs().map((pair) => ({ locale, pair: pair.slug }))).concat(spanishComparisonSlugs.map((pair) => ({ locale: 'es', pair })));
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }) {
   const { locale, pair } = await params;
+  const packagePage = await loadLocalePage(locale, `compare:${String(pair).toLowerCase()}`);
+  if (packagePage) return localePreviewMetadata(locale, packagePage, `compare/${pair}`);
   const parsed = parsePair(pair);
   const preview = isComparisonPreviewLocale(locale, pair);
   if ((!isLocale(locale) && !preview) || !parsed) return {};
@@ -45,6 +49,8 @@ export async function generateMetadata({ params }) {
 
 export default async function ComparisonPage({ params }) {
   const { locale, pair } = await params;
+  const packagePage = await loadLocalePage(locale, `compare:${String(pair).toLowerCase()}`);
+  if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path={`compare/${pair}`} />;
   const preview = isComparisonPreviewLocale(locale, pair);
   if (!isLocale(locale) && !preview) notFound();
   const parsed = parsePair(pair);
