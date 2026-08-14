@@ -1,5 +1,6 @@
 import { canonicalEntityId, contentEntityRegistry, resolveEntityAvailability } from './content-entities.js';
 import { localeConfig } from './locales.js';
+import { localeAllowsPreviewPage, localeRuntime } from '../localization/runtime-policy.js';
 
 /**
  * PR-002 is the single route and SEO policy consumer for the PR-001 entity
@@ -23,6 +24,17 @@ function normalizedPath(pathname, locale) {
   if (path === prefix) return [];
   if (!path.startsWith(`${prefix}/`)) return null;
   return path.slice(prefix.length + 1).split('/').filter(Boolean).map((segment) => segment.toLowerCase());
+}
+
+function previewPageId(parts) {
+  if (!parts?.length) return 'homepage';
+  if (parts.length === 1 && ['community', 'jobs'].includes(parts[0])) return parts[0];
+  if (parts.length === 1 && ['contact', 'privacy', 'terms'].includes(parts[0])) return `static:${parts[0]}`;
+  if (parts.length === 3 && parts[0] === 'personality' && parts[2] === 'careers') return `career:${parts[1]}`;
+  if (parts.length === 2 && parts[0] === 'personality') return `personality:${parts[1]}`;
+  if (parts.length === 2 && parts[0] === 'compare') return `compare:${parts[1]}`;
+  if (parts.length === 2 && parts[0] === 'insights') return `insight:${parts[1]}`;
+  return null;
 }
 
 /** Resolve a localized pathname to its governing content entity. */
@@ -58,7 +70,11 @@ export function resolveLocaleRoute(locale, pathname, registry = contentEntityReg
   const routeParts = normalizedPath(pathname, activeLocale);
   const isLanguageRoot = routeParts?.length === 0;
   const isEntityPreviewRoute = entityId && !entityId.startsWith('language:');
-  const isPreview = resolution?.availability === 'preview' && (isLanguageRoot || isEntityPreviewRoute);
+  const runtime = localeRuntime(activeLocale);
+  const previewPage = previewPageId(routeParts);
+  const isAllowedPreviewPage = !runtime?.previewPageIds || localeAllowsPreviewPage(activeLocale, previewPage);
+  const isPackagePreviewRoute = runtime?.packageSource === 'json-package' && Boolean(previewPage);
+  const isPreview = resolution?.availability === 'preview' && (isLanguageRoot || isEntityPreviewRoute || isPackagePreviewRoute) && isAllowedPreviewPage;
   return Object.freeze({
     locale: activeLocale,
     entityId,

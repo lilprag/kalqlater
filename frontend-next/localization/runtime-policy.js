@@ -10,6 +10,13 @@ const TRANSITIONS = Object.freeze({
   deprecated: Object.freeze([]),
 });
 
+// Preview is deliberately page-scoped. A locale can be reviewed without
+// making unfinished page families routable or eligible for public discovery.
+const FRENCH_PHASE_ONE_PAGES = Object.freeze([
+  'homepage', 'navigation', 'footer', 'shared-ui', 'metadata', 'json-ld',
+  'community', 'jobs', 'static:contact', 'static:privacy', 'static:terms',
+]);
+
 /**
  * This is configuration, not a list of locale-specific code paths. Adding a
  * reviewed locale changes its lifecycle here; the loader and routes remain
@@ -17,8 +24,9 @@ const TRANSITIONS = Object.freeze({
  */
 export const localeRuntimeRegistry = Object.freeze(Object.fromEntries(localeRegistry.map((locale) => [locale.code, Object.freeze({
   locale: locale.code,
-  state: locale.published ? 'published' : locale.code === 'es' ? 'preview' : 'draft',
+  state: locale.published ? 'published' : ['es', 'fr'].includes(locale.code) ? 'preview' : 'draft',
   packageSource: locale.published ? 'application' : locale.code === 'es' ? 'legacy-preview' : 'json-package',
+  previewPageIds: locale.code === 'fr' ? FRENCH_PHASE_ONE_PAGES : null,
 })])));
 
 export function localeRuntime(locale) {
@@ -35,4 +43,9 @@ export function isRuntimePreviewLocale(locale) {
 
 export function isRuntimePublishedLocale(locale) {
   return localeRuntime(locale)?.state === 'published';
+}
+
+export function localeAllowsPreviewPage(locale, pageId) {
+  const runtime = localeRuntime(locale);
+  return runtime?.state === 'preview' && (!runtime.previewPageIds || runtime.previewPageIds.includes(pageId));
 }

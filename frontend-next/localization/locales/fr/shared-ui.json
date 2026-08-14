@@ -3,14 +3,14 @@
   "route": null,
   "status": "draft",
   "fields": {
-    "loading": null,
-    "empty": null,
-    "success": null,
-    "retry": null,
-    "back": null,
-    "next": null,
-    "networkError": null,
-    "notFound": null,
-    "validationError": null
+    "loading": "Chargement…",
+    "empty": "Aucun résultat à afficher pour le moment.",
+    "success": "C’est enregistré.",
+    "retry": "Réessayer",
+    "back": "Retour",
+    "next": "Continuer",
+    "networkError": "Un problème de connexion est survenu. Réessayez dans un instant.",
+    "notFound": "Cette page n’est pas disponible.",
+    "validationError": "Vérifiez les informations indiquées et réessayez."
   }
 }

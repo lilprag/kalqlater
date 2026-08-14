@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { localeBootstrapFiles } from '../localization/bootstrap.js';
-import { loadLocale, loadLocalePage, localePreviewMetadata } from '../localization/runtime.js';
+import { loadLocale, loadLocaleChrome, loadLocalePage, localePreviewMetadata } from '../localization/runtime.js';
 import { canTransitionLocaleRuntime, isRuntimePreviewLocale } from '../localization/runtime-policy.js';
 
 function authored(value) {
@@ -41,9 +41,16 @@ try {
   assert.equal(canTransitionLocaleRuntime('preview', 'published'), true);
   assert.equal(canTransitionLocaleRuntime('draft', 'published'), false);
   assert.equal(isRuntimePreviewLocale('es'), true);
-  assert.equal(isRuntimePreviewLocale('fr'), false);
+  assert.equal(isRuntimePreviewLocale('fr'), true);
 } finally {
   await rm(root, { recursive: true, force: true });
 }
 
-console.log('Generic locale runtime checks passed for complete-package SSR loading, preview metadata, lifecycle transitions, and draft fail-closed behaviour.');
+const frenchHomepage = await loadLocalePage('fr', 'homepage');
+assert(frenchHomepage && frenchHomepage.fields.h1.includes('Mieux vous comprendre'));
+assert.equal((await loadLocalePage('fr', 'static:contact'))?.fields?.h1, 'Nous contacter');
+assert.equal(await loadLocalePage('fr', 'personality:intj'), null);
+assert.equal((await loadLocaleChrome('fr'))?.navigation?.home, 'Accueil');
+assert.equal(localePreviewMetadata('fr', frenchHomepage).robots.index, false);
+
+console.log('Generic locale runtime checks passed for complete-package SSR loading, scoped French preview, preview metadata, lifecycle transitions, and draft fail-closed behaviour.');

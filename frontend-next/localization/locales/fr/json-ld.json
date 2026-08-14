@@ -3,11 +3,11 @@
   "route": null,
   "status": "draft",
   "fields": {
-    "breadcrumbHome": null,
-    "websiteName": null,
-    "organizationName": null,
-    "collectionPageName": null,
-    "faqQuestion": null,
-    "faqAnswer": null
+    "breadcrumbHome": "Accueil",
+    "websiteName": "KalQLater",
+    "organizationName": "KalQLater",
+    "collectionPageName": "Ressources KalQLater",
+    "faqQuestion": "Comment utiliser KalQLater ?",
+    "faqAnswer": "Utilisez ces repères comme un point de départ pour réfléchir à votre expérience, sans les considérer comme un diagnostic."
   }
 }

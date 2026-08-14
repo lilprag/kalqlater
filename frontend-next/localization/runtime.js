@@ -46,7 +46,12 @@ export async function loadLocale(locale, options = {}) {
   const localesRoot = options.localesRoot || LOCALES_ROOT;
   let report;
   try {
-    report = await validateLocalePackage({ locale: normalized, localesRoot, dictionary: dictionaryForLocale(normalized) });
+    report = await validateLocalePackage({
+      locale: normalized,
+      localesRoot,
+      dictionary: dictionaryForLocale(normalized),
+      requiredPageIds: runtime.state === 'preview' ? runtime.previewPageIds : null,
+    });
   } catch {
     return null;
   }
@@ -54,7 +59,16 @@ export async function loadLocale(locale, options = {}) {
   try {
     const files = await readPackageFiles(normalized, localesRoot);
     const pages = Object.freeze(Object.fromEntries([...files.entries()].filter(([file]) => !['manifest.json', 'validation.json'].includes(file)).map(([, page]) => [page.id, page])));
-    return Object.freeze({ locale: normalized, state: runtime.state, source: 'json-package', manifest: files.get('manifest.json'), validation: files.get('validation.json'), pages, report });
+    return Object.freeze({
+      locale: normalized,
+      state: runtime.state,
+      source: 'json-package',
+      manifest: files.get('manifest.json'),
+      validation: files.get('validation.json'),
+      allowedPageIds: runtime.previewPageIds,
+      pages,
+      report,
+    });
   } catch {
     return null;
   }
@@ -63,6 +77,7 @@ export async function loadLocale(locale, options = {}) {
 export async function loadLocalePage(locale, pageId, options = {}) {
   const packageData = await loadLocale(locale, options);
   if (!packageData || packageData.source !== 'json-package') return null;
+  if (packageData.allowedPageIds && !packageData.allowedPageIds.includes(pageId)) return null;
   if (pageId === 'insights' || pageId === 'compare') {
     const metadata = packageData.pages.metadata?.fields?.[pageId];
     return metadata ? Object.freeze({ id: 'insights', route: `/${packageData.locale}/insights`, fields: Object.freeze({ h1: metadata.title, body: metadata.description, seo: metadata, jsonLd: packageData.pages['json-ld']?.fields || {} }), locale: packageData.locale, state: packageData.state }) : null;

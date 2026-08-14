@@ -1,5 +1,26 @@
 import Link from 'next/link';
+import { headers } from 'next/headers';
 
-export default function NotFound() {
-  return <main className="mx-auto max-w-2xl px-4 py-28 text-center"><p className="text-xs font-semibold uppercase tracking-[.2em] text-brand-teal">404</p><h1 className="display-font mt-3 text-4xl sm:text-5xl">Page not found</h1><p className="mx-auto mt-4 max-w-md text-brand-subtle">The page you requested is not available in this preview.</p><Link href="/en" className="mt-8 inline-flex rounded-full bg-brand-teal px-6 py-3 font-semibold text-white">Return home</Link></main>;
+import { loadLocaleChrome, loadLocalePage } from '../localization/runtime';
+
+// Preview error copy depends on the request locale and must not be captured
+// as an English build-time fallback in another locale's SSR payload.
+export const dynamic = 'force-dynamic';
+
+export default async function NotFound() {
+  const locale = (await headers()).get('x-kalqlater-locale') || 'en';
+  const shared = await loadLocalePage(locale, 'shared-ui');
+  const chrome = shared ? await loadLocaleChrome(locale) : null;
+  const copy = shared && chrome ? {
+    title: shared.fields.notFound,
+    body: shared.fields.networkError,
+    home: chrome.navigation.home,
+    href: `/${locale}`,
+  } : {
+    title: 'Page not found',
+    body: 'The page you requested is not available in this preview.',
+    home: 'Return home',
+    href: '/en',
+  };
+  return <main className="mx-auto max-w-2xl px-4 py-28 text-center"><p className="text-xs font-semibold uppercase tracking-[.2em] text-brand-teal">404</p><h1 className="display-font mt-3 text-4xl sm:text-5xl">{copy.title}</h1><p className="mx-auto mt-4 max-w-md text-brand-subtle">{copy.body}</p><Link href={copy.href} className="mt-8 inline-flex rounded-full bg-brand-teal px-6 py-3 font-semibold text-white">{copy.home}</Link></main>;
 }

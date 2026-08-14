@@ -71,6 +71,15 @@ assert(careerTitles.size === 32, 'career guides: titles must be unique across al
 assert(careerDescriptions.size === 32, 'career guides: descriptions must be unique across all locales');
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
+const frenchPreview = await fetch(`${baseUrl}/fr`);
+const frenchPreviewHtml = await frenchPreview.text();
+assert(frenchPreview.ok, `/fr preview: expected HTTP 200, received ${frenchPreview.status}`);
+assert(/<html[^>]+lang="fr"/.test(frenchPreviewHtml), '/fr preview: missing French html lang');
+assert(/<html[^>]+dir="ltr"/.test(frenchPreviewHtml), '/fr preview: missing ltr direction');
+assert(frenchPreviewHtml.includes('Mieux vous comprendre pour avancer avec plus de clarté'), '/fr preview: missing authored French SSR content');
+assert(frenchPreviewHtml.includes('noindex'), '/fr preview: expected noindex');
+assert(!/hreflang="fr"/i.test(frenchPreviewHtml), '/fr preview: must not join the public hreflang cluster');
+assert(frenchPreviewHtml.includes('application/ld+json'), '/fr preview: missing localized JSON-LD');
 assert(!sitemapXml.includes('<loc>https://kalqlater.com</loc>'), 'sitemap: root homepage must not be indexed separately');
 for (const locale of publishedLocales) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
 for (const locale of ['fr', 'ar', 'pt-br', 'zh-hans']) assert(!sitemapXml.includes(`https://kalqlater.com/${locale}`), `sitemap: unpublished locale ${locale} must not be included`);

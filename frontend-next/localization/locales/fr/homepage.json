@@ -3,30 +3,30 @@
   "route": "/fr",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "body": null,
-    "primaryCta": null,
-    "secondaryCta": null,
-    "trustLine": null,
-    "features": null,
-    "dimensions": null,
-    "insights": null,
-    "community": null,
-    "finalCta": null,
-    "footer": null,
+    "eyebrow": "16 types de personnalité · Gratuit · Sans inscription",
+    "h1": "Mieux vous comprendre pour avancer avec plus de clarté",
+    "body": "Explorez vos préférences, vos façons de réfléchir et vos relations aux autres grâce à un parcours personnel et nuancé.",
+    "primaryCta": "Faire le test gratuitement",
+    "secondaryCta": "Découvrir les 16 types",
+    "trustLine": "Un espace de réflexion personnel, respectueux et confidentiel.",
+    "features": "Des repères concrets pour mieux vous connaître",
+    "dimensions": "Quatre dimensions pour éclairer vos préférences",
+    "insights": "Aller au-delà du type de personnalité",
+    "community": "Mettre vos réflexions en relation avec les autres",
+    "finalCta": "Commencer par mieux vous comprendre",
+    "footer": "La personnalité est un point de départ pour réfléchir, jamais une étiquette définitive.",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Test de personnalité gratuit et 16 types | KalQLater",
+      "description": "Découvrez vos préférences de personnalité et trouvez des pistes concrètes pour mieux vous comprendre avec KalQLater.",
+      "ogTitle": "Mieux vous comprendre avec KalQLater",
+      "ogDescription": "Un parcours de réflexion pour explorer votre personnalité, vos relations et votre évolution.",
+      "twitterTitle": "Explorez votre personnalité avec KalQLater",
+      "twitterDescription": "Des repères nuancés pour mieux vous comprendre, sans vous réduire à une étiquette.",
+      "keywords": "test de personnalité, 16 types, mieux se connaître, personnalité"
     },
     "jsonLd": {
-      "websiteName": null,
-      "organizationName": null
+      "websiteName": "KalQLater — personnalité et réflexion",
+      "organizationName": "KalQLater"
     }
   }
 }

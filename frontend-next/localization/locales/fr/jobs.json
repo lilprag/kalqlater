@@ -3,21 +3,21 @@
   "route": "/fr/jobs",
   "status": "draft",
   "fields": {
-    "h1": null,
-    "body": null,
-    "ctas": null,
+    "h1": "Des opportunités qui tiennent compte du contexte",
+    "body": "Explorez des pistes professionnelles en reliant vos préférences, vos conditions de travail et ce qui compte vraiment pour vous.",
+    "ctas": "Découvrir les opportunités",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Emplois et personnalité : explorer vos pistes | KalQLater",
+      "description": "Découvrez des pistes professionnelles à explorer en tenant compte de vos préférences et de votre contexte.",
+      "ogTitle": "Explorer des opportunités avec KalQLater",
+      "ogDescription": "Des pistes professionnelles à mettre en regard de vos préférences et de vos priorités.",
+      "twitterTitle": "Explorer vos pistes professionnelles",
+      "twitterDescription": "Des opportunités à examiner avec nuance, au-delà d’un simple type de personnalité.",
+      "keywords": "emplois et personnalité, orientation professionnelle, carrière"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "collectionPage": null
+      "breadcrumb": "Emplois",
+      "collectionPage": "Opportunités KalQLater"
     }
   }
 }

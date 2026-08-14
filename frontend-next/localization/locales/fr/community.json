@@ -3,21 +3,21 @@
   "route": "/fr/community",
   "status": "draft",
   "fields": {
-    "h1": null,
-    "body": null,
-    "ctas": null,
+    "h1": "La communauté KalQLater",
+    "body": "Échangez avec des personnes qui cherchent elles aussi à mieux se comprendre, dans un cadre attentif et respectueux.",
+    "ctas": "Découvrir la communauté",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Communauté autour de la personnalité | KalQLater",
+      "description": "Rejoignez des échanges nuancés autour de la personnalité, des relations et de l’évolution personnelle.",
+      "ogTitle": "La communauté KalQLater",
+      "ogDescription": "Un lieu d’échange pour réfléchir à la personnalité avec ouverture et respect.",
+      "twitterTitle": "Échanger autour de la personnalité",
+      "twitterDescription": "Découvrez la communauté KalQLater et ses conversations attentives.",
+      "keywords": "communauté personnalité, échanges personnalité, développement personnel"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "collectionPage": null
+      "breadcrumb": "Communauté",
+      "collectionPage": "Communauté KalQLater"
     }
   }
 }

@@ -3,18 +3,18 @@
   "route": null,
   "status": "draft",
   "fields": {
-    "home": null,
-    "takeTest": null,
-    "types": null,
-    "insights": null,
-    "compare": null,
-    "community": null,
-    "jobs": null,
-    "contact": null,
-    "login": null,
-    "signup": null,
-    "menuOpen": null,
-    "menuClose": null,
-    "languageLabel": null
+    "home": "Accueil",
+    "takeTest": "Faire le test",
+    "types": "Les 16 types",
+    "insights": "Explorations",
+    "compare": "Comparer",
+    "community": "Communauté",
+    "jobs": "Emplois",
+    "contact": "Contact",
+    "login": "Se connecter",
+    "signup": "Créer un compte",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu",
+    "languageLabel": "Langue"
   }
 }

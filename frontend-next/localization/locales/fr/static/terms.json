@@ -3,20 +3,20 @@
   "route": "/fr/terms",
   "status": "draft",
   "fields": {
-    "h1": null,
-    "body": null,
-    "ctas": null,
+    "h1": "Conditions d’utilisation",
+    "body": "Ces conditions décrivent le cadre d’utilisation de KalQLater, les responsabilités de chacun et les limites du service.",
+    "ctas": "Lire les conditions d’utilisation",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Conditions d’utilisation | KalQLater",
+      "description": "Consultez les conditions qui encadrent l’utilisation de KalQLater.",
+      "ogTitle": "Conditions d’utilisation KalQLater",
+      "ogDescription": "Le cadre d’utilisation du service KalQLater.",
+      "twitterTitle": "Conditions d’utilisation KalQLater",
+      "twitterDescription": "Consultez les conditions applicables à KalQLater.",
+      "keywords": "conditions d’utilisation, KalQLater"
     },
     "jsonLd": {
-      "breadcrumb": null
+      "breadcrumb": "Conditions d’utilisation"
     }
   }
 }

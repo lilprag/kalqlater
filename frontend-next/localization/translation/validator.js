@@ -6,6 +6,7 @@ import { translationLimit } from './dictionary.js';
 import { validatePreservedSyntax } from './placeholder.js';
 
 const ENGLISH_WORDS = /\b(the|and|with|your|you|for|from|this|that|about|personality|career|compare|community|jobs|insight|learn|start|continue|privacy|terms|contact)\b/gi;
+const LOCALE_COGNATES = Object.freeze({ fr: new Set(['contact']) });
 
 function leafValues(value, currentPath = '') {
   if (value === null || value === undefined || typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') return [[currentPath, value]];
@@ -28,13 +29,15 @@ function compareContract(actual, expected, currentPath = '', insideFields = fals
   return errors;
 }
 
-function fieldProblems(fields, file) {
+function fieldProblems(fields, file, locale) {
   const missing = [];
   const englishResidue = [];
   for (const [fieldPath, value] of leafValues(fields)) {
     if (value === null || value === undefined || (typeof value === 'string' && value.trim() === '') || (Array.isArray(value) && value.length === 0)) missing.push(`${file}:fields.${fieldPath}`);
     if (typeof value === 'string') {
-      for (const match of value.matchAll(ENGLISH_WORDS)) englishResidue.push(`${file}:fields.${fieldPath}:${match[0]}`);
+      for (const match of value.matchAll(ENGLISH_WORDS)) {
+        if (!LOCALE_COGNATES[locale]?.has(match[0].toLowerCase())) englishResidue.push(`${file}:fields.${fieldPath}:${match[0]}`);
+      }
     }
   }
   return { missing, englishResidue };
@@ -51,7 +54,7 @@ function isStandardJson(raw, parsed) {
 }
 
 /** Validates a draft package against the frozen bootstrap schema, fail-closed. */
-export async function validateLocalePackage({ locale, localesRoot, dictionary = {} }) {
+export async function validateLocalePackage({ locale, localesRoot, dictionary = {}, requiredPageIds = null }) {
   const expectedFiles = localeBootstrapFiles(locale);
   const root = path.join(localesRoot, locale);
   const jsonErrors = [];
@@ -76,9 +79,9 @@ export async function validateLocalePackage({ locale, localesRoot, dictionary = 
     files.push(file);
     if (!isStandardJson(raw, parsed)) schemaErrors.push(`Non-standard JSON formatting: ${file}`);
     schemaErrors.push(...compareContract(parsed, expected, '', false).map((error) => `${file}: ${error}`));
-    if (parsed.fields) {
+    if (parsed.fields && (!requiredPageIds || requiredPageIds.includes(parsed.id))) {
       fieldCount += leafValues(parsed.fields).length;
-      const problems = fieldProblems(parsed.fields, file);
+      const problems = fieldProblems(parsed.fields, file, locale);
       missing.push(...problems.missing);
       englishResidue.push(...problems.englishResidue);
       words += countWords(parsed.fields);

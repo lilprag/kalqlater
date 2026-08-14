@@ -4,76 +4,76 @@
   "status": "draft",
   "fields": {
     "homepage": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Test de personnalité gratuit et 16 types | KalQLater",
+      "description": "Explorez vos préférences de personnalité et trouvez des repères pour mieux vous comprendre.",
+      "ogTitle": "Mieux vous comprendre avec KalQLater",
+      "ogDescription": "Un parcours nuancé pour explorer votre personnalité.",
+      "twitterTitle": "Explorez votre personnalité avec KalQLater",
+      "twitterDescription": "Des repères pour mieux vous comprendre.",
+      "keywords": "test de personnalité, 16 types, mieux se connaître"
     },
     "personality": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Types de personnalité : repères et relations | KalQLater",
+      "description": "Explorez les types de personnalité, leurs préférences et leurs dynamiques relationnelles.",
+      "ogTitle": "Comprendre les types de personnalité",
+      "ogDescription": "Des guides nuancés sur les préférences et les relations.",
+      "twitterTitle": "Types de personnalité KalQLater",
+      "twitterDescription": "Des repères pour explorer les 16 types.",
+      "keywords": "types de personnalité, 16 types, relations"
     },
     "career": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrière et personnalité : pistes à explorer | KalQLater",
+      "description": "Reliez vos préférences à des pistes professionnelles à explorer avec nuance.",
+      "ogTitle": "Personnalité et pistes professionnelles",
+      "ogDescription": "Des repères de carrière qui tiennent compte du contexte.",
+      "twitterTitle": "Explorer sa carrière avec KalQLater",
+      "twitterDescription": "Des pistes professionnelles à mettre en perspective.",
+      "keywords": "carrière, personnalité, orientation professionnelle"
     },
     "compare": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Comparer les types de personnalité | KalQLater",
+      "description": "Comparez deux types de personnalité pour mieux comprendre leurs différences et leurs complémentarités.",
+      "ogTitle": "Comparer les types de personnalité",
+      "ogDescription": "Des comparaisons nuancées pour éclairer les différences.",
+      "twitterTitle": "Comparer deux types de personnalité",
+      "twitterDescription": "Explorez les différences entre deux types.",
+      "keywords": "comparer les types, personnalité, 16 types"
     },
     "insights": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Explorations personnelles | KalQLater",
+      "description": "Découvrez des parcours de réflexion sur la communication, les décisions et l’apprentissage.",
+      "ogTitle": "Explorations KalQLater",
+      "ogDescription": "Des parcours guidés pour observer vos habitudes.",
+      "twitterTitle": "Explorations personnelles KalQLater",
+      "twitterDescription": "Des pistes pour observer vos façons d’agir.",
+      "keywords": "communication, décision, apprentissage, réflexion"
     },
     "community": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Communauté autour de la personnalité | KalQLater",
+      "description": "Rejoignez des échanges nuancés autour de la personnalité et de l’évolution personnelle.",
+      "ogTitle": "La communauté KalQLater",
+      "ogDescription": "Un lieu d’échange attentif et respectueux.",
+      "twitterTitle": "Communauté KalQLater",
+      "twitterDescription": "Échangez autour de la personnalité.",
+      "keywords": "communauté personnalité, développement personnel"
     },
     "jobs": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Emplois et personnalité : explorer vos pistes | KalQLater",
+      "description": "Explorez des pistes professionnelles en tenant compte de vos préférences et de votre contexte.",
+      "ogTitle": "Explorer des opportunités avec KalQLater",
+      "ogDescription": "Des pistes professionnelles à examiner avec nuance.",
+      "twitterTitle": "Pistes professionnelles KalQLater",
+      "twitterDescription": "Explorez des opportunités qui vous ressemblent.",
+      "keywords": "emplois, personnalité, carrière"
     },
     "static": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Informations KalQLater",
+      "description": "Retrouvez les informations utiles pour utiliser KalQLater en toute confiance.",
+      "ogTitle": "Informations KalQLater",
+      "ogDescription": "Contact, confidentialité et conditions d’utilisation.",
+      "twitterTitle": "Informations KalQLater",
+      "twitterDescription": "Les informations utiles sur KalQLater.",
+      "keywords": "contact, confidentialité, conditions d’utilisation"
     }
   }
 }

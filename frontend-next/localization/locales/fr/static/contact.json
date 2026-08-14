@@ -3,20 +3,20 @@
   "route": "/fr/contact",
   "status": "draft",
   "fields": {
-    "h1": null,
-    "body": null,
-    "ctas": null,
+    "h1": "Nous contacter",
+    "body": "Une question, un retour ou une suggestion ? Écrivez-nous : votre message nous aide à améliorer KalQLater avec soin.",
+    "ctas": "Envoyer votre message",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Contacter KalQLater",
+      "description": "Contactez l’équipe KalQLater pour une question, un retour ou une suggestion.",
+      "ogTitle": "Contacter KalQLater",
+      "ogDescription": "Une question ou un retour ? L’équipe KalQLater est à votre écoute.",
+      "twitterTitle": "Contacter KalQLater",
+      "twitterDescription": "Écrivez à l’équipe KalQLater.",
+      "keywords": "contact KalQLater, aide personnalité"
     },
     "jsonLd": {
-      "breadcrumb": null
+      "breadcrumb": "Contact"
     }
   }
 }

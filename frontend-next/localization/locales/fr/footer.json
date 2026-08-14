@@ -3,16 +3,16 @@
   "route": null,
   "status": "draft",
   "fields": {
-    "description": null,
-    "insights": null,
-    "communication": null,
-    "compare": null,
-    "community": null,
-    "jobs": null,
-    "privacy": null,
-    "terms": null,
-    "contact": null,
-    "takeTest": null,
-    "copyright": null
+    "description": "Des repères pour réfléchir à votre personnalité avec curiosité, nuance et respect de votre parcours.",
+    "insights": "Explorations",
+    "communication": "Explorations sur la communication",
+    "compare": "Comparer les types",
+    "community": "Communauté",
+    "jobs": "Emplois",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d’utilisation",
+    "contact": "Contact",
+    "takeTest": "Faire le test",
+    "copyright": "Tous droits réservés."
   }
 }

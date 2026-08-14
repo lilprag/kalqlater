@@ -3,20 +3,20 @@
   "route": "/fr/privacy",
   "status": "draft",
   "fields": {
-    "h1": null,
-    "body": null,
-    "ctas": null,
+    "h1": "Politique de confidentialité",
+    "body": "Nous expliquons ici quelles informations sont utilisées, dans quel but, et les choix dont vous disposez pour garder la maîtrise de vos données.",
+    "ctas": "Comprendre la protection de vos informations",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Politique de confidentialité | KalQLater",
+      "description": "Découvrez comment KalQLater traite et protège vos informations.",
+      "ogTitle": "Politique de confidentialité KalQLater",
+      "ogDescription": "Les informations essentielles sur la protection de vos données.",
+      "twitterTitle": "Confidentialité sur KalQLater",
+      "twitterDescription": "Comprendre la manière dont KalQLater protège vos informations.",
+      "keywords": "confidentialité, données personnelles, KalQLater"
     },
     "jsonLd": {
-      "breadcrumb": null
+      "breadcrumb": "Confidentialité"
     }
   }
 }
