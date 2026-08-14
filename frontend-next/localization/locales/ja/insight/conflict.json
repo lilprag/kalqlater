@@ -3,26 +3,26 @@
   "route": "/ja/insights/conflict",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "KalQLaterの自己理解エクスペリエンス",
+    "h1": "対立が起きたときの向き合い方を見つめる",
+    "promise": "意見がぶつかったとき、何を守ろうとし、どう距離を取り、どう関係を整えるかを振り返ります。",
+    "dimensions": "このエクスペリエンスでは、緊張の受け止め方、率直さ、協調、境界線、修復に向けた働きかけなどを見つめます。",
+    "examples": "仕事や身近な関係で起こりやすい場面への反応を通じて、自分のパターンと選択肢を考えます。",
+    "howItWorks": "衝突への反応に良し悪しの順位を付けるものではありません。状況に応じた対応を増やすための振り返りです。",
+    "faqs": "結果は性格の決めつけや診断ではありません。関係、役割、負荷によって反応は変わることがあります。",
+    "ctas": "対立への向き合い方を見つめる",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "対立への向き合い方を見つめる | KalQLater",
+      "description": "意見の違い、緊張、関係の修復への向き合い方を日常の選択から振り返ります。",
+      "ogTitle": "対立への向き合い方を見つめる",
+      "ogDescription": "意見が分かれる場面での反応と、関係を整える選択肢を考えます。",
+      "twitterTitle": "対立への向き合い方を見つめる",
+      "twitterDescription": "意見の違いへの向き合い方を振り返るエクスペリエンス。",
+      "keywords": "対立, 衝突, 意見の違い, 関係修復, 自己理解"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "対立への向き合い方を見つめる",
+      "faq": "対立に関するよくある質問"
     }
   }
 }

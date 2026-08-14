@@ -3,26 +3,26 @@
   "route": "/ja/insights/communication",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "KalQLaterの自己理解エクスペリエンス",
+    "h1": "自分の伝え方と受け取り方を見つめる",
+    "promise": "話す、聴く、意見が分かれる場面での向き合い方を、日常の行動から振り返ります。",
+    "dimensions": "このエクスペリエンスでは、表現の仕方、聴き方、相手への合わせ方、意見の違いを扱う姿勢などを丁寧に見つめます。",
+    "examples": "身近な場面での選択を通じて、自分の反応を振り返り、結果を実際の経験と結び付けて考えられます。",
+    "howItWorks": "診断や順位付けではありません。今のコミュニケーションの傾向を理解し、次の対話に生かすための振り返りです。",
+    "faqs": "結果は特定の場面や時期の答えをもとにした視点です。経験や関係性によって変化することがあります。",
+    "ctas": "コミュニケーションを見つめる",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "自分のコミュニケーションを見つめる | KalQLater",
+      "description": "聴き方、伝え方、意見の違いへの向き合い方を、日常の行動から振り返ります。",
+      "ogTitle": "自分のコミュニケーションを見つめる",
+      "ogDescription": "聴き方、伝え方、意見の違いへの向き合い方を振り返ります。",
+      "twitterTitle": "自分のコミュニケーションを見つめる",
+      "twitterDescription": "自分らしい対話の傾向を振り返るためのエクスペリエンス。",
+      "keywords": "コミュニケーション, 聴く力, 伝え方, 対話, 自己理解"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "コミュニケーションを見つめる",
+      "faq": "コミュニケーションに関するよくある質問"
     }
   }
 }

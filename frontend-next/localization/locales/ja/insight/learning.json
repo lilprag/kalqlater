@@ -3,26 +3,26 @@
   "route": "/ja/insights/learning",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "KalQLaterの自己理解エクスペリエンス",
+    "h1": "自分に合う学び方を、経験から見つめる",
+    "promise": "新しいことを学ぶとき、何に集中し、どこでつまずき、どう理解を深めるかを振り返ります。",
+    "dimensions": "このエクスペリエンスでは、好奇心、計画、実践、振り返り、助けを求めるタイミングなど、学びに関わる行動を見つめます。",
+    "examples": "学習や仕事でよくある場面の選択を通じて、今の自分に合う試し方や続け方を考えられます。",
+    "howItWorks": "固定された「学習タイプ」や知能を判定するものではありません。学びの習慣を調整するための振り返りです。",
+    "faqs": "学び方は課題、環境、経験によって変わります。結果は一つの方法に縛るためではなく、試せる選択肢を増やすためのものです。",
+    "ctas": "学び方を見つめる",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "自分の学び方を見つめる | KalQLater",
+      "description": "集中、実践、振り返り、学びの習慣を日常の行動から振り返ります。",
+      "ogTitle": "自分の学び方を見つめる",
+      "ogDescription": "自分に合う学びの進め方を、経験を手がかりに考えます。",
+      "twitterTitle": "自分の学び方を見つめる",
+      "twitterDescription": "学びの習慣と次の一歩を考えるエクスペリエンス。",
+      "keywords": "学び方, 学習習慣, 振り返り, 自己理解, 成長"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "学び方を見つめる",
+      "faq": "学びに関するよくある質問"
     }
   }
 }

@@ -3,26 +3,26 @@
   "route": "/ja/insights/leadership",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "KalQLaterの自己理解エクスペリエンス",
+    "h1": "人を導くときの自分らしい関わり方を見つめる",
+    "promise": "方向を示す、任せる、支える、難しい判断をする場面での自分の傾向を振り返ります。",
+    "dimensions": "このエクスペリエンスでは、目的の示し方、意思決定、育成、責任の分かち合い、変化への働きかけなどを見つめます。",
+    "examples": "チームや日常の協働で起こりやすい場面への選択を通じて、自分のリーダーシップの手がかりを探します。",
+    "howItWorks": "リーダーとしての優劣や適性を判定するものではありません。状況に応じた関わり方を増やすための振り返りです。",
+    "faqs": "役職の有無にかかわらず取り組めます。人を導く行動は、役割や経験によって変化します。",
+    "ctas": "リーダーシップを見つめる",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "自分のリーダーシップを見つめる | KalQLater",
+      "description": "人を導く、支える、決める場面での自分の関わり方を振り返ります。",
+      "ogTitle": "自分のリーダーシップを見つめる",
+      "ogDescription": "目的、判断、育成、協働への向き合い方を振り返ります。",
+      "twitterTitle": "自分のリーダーシップを見つめる",
+      "twitterDescription": "自分らしい人の導き方を考えるエクスペリエンス。",
+      "keywords": "リーダーシップ, チーム, 育成, 意思決定, 自己理解"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "リーダーシップを見つめる",
+      "faq": "リーダーシップに関するよくある質問"
     }
   }
 }
