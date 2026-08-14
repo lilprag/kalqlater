@@ -3,27 +3,27 @@
   "route": "/ja/compare/isfj-vs-estp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISFJとESTPを比べて見えること",
+    "helper": "思いやりで支えるISFJと機会をつかむESTPが、日常、仕事、関係の中でどのように違いを見せるかを考えます。",
+    "intro": "ISFJは身近な人への影響と実際の必要を考えて選ぶことがあり、ESTPは今の状況と機会を捉え、行動しながら選ぶことがあります。二人の違いは、物事に向き合う順序や大切にする感覚に表れます。",
+    "snapshot": "ISFJは日々の気遣いと信頼の積み重ねを、ESTPは率直さと一緒に動く楽しさを求めやすい傾向があります。互いに安心できる関わり方を確かめることが信頼につながります。",
+    "sections": "対話では、ISFJは必要に気づき、丁寧な支援を形にする視点から話しやすく、ESTPは変化に素早く対応し、現実的な打ち手を試す傾向があります。衝突が起きたときは、どちらが正しいかを急がず、何を大切にしている反応かを確かめましょう。仕事では、ISFJとESTPが得意な役割を分け、判断の基準と相談のタイミングを共有すると協働しやすくなります。",
+    "misconceptions": "ISFJが期待に応えようとして、自分の負担を見過ごしやすいことや、ESTPが即時の解決を急ぎ、先の影響を十分に考えにくくなることがあることがあるとしても、それだけで二人の関係の可能性は決まりません。経験、環境、対話の積み重ねが関係を変えていきます。",
+    "percentage": "ISFJとESTPを相性の割合だけで判断するより、期待、距離感、回復の仕方を具体的に話すことが、より実用的な手がかりになります。",
+    "faqs": "ISFJとESTPが理解を深めるには、違う反応を欠点と決めず、相手にとって必要な安心や時間を尋ねてみることが助けになります。",
+    "ui": "ISFJとESTPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISFJとESTPの違い・相性 | KalQLater",
+      "description": "ISFJとESTPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "ISFJとESTPの違いを見つめる",
+      "ogDescription": "ISFJとESTPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "ISFJとESTPの比較",
+      "twitterDescription": "ISFJとESTPの違いと関係のヒント。",
+      "keywords": "ISFJ ESTP, ISFJとESTPの違い, ISFJ ESTP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISFJ vs ESTP",
+      "faq": "ISFJとESTPに関するよくある質問"
     }
   }
 }

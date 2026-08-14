@@ -3,27 +3,27 @@
   "route": "/ja/compare/istj-vs-istp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISTJとISTPを比べて見えること",
+    "helper": "着実に支えるISTJと仕組みを見抜くISTPが、日常、仕事、関係の中でどのように違いを見せるかを考えます。",
+    "intro": "ISTJは経験、事実、責任をもとに確かな方法を選ぶことがあり、ISTPは現場を観察し、試せる実用的な方法を選ぶことがあります。二人の違いは、物事に向き合う順序や大切にする感覚に表れます。",
+    "snapshot": "ISTJは約束を守り、安定して関われることを、ISTPは互いの自由と必要なときの信頼を求めやすい傾向があります。互いに安心できる関わり方を確かめることが信頼につながります。",
+    "sections": "対話では、ISTJは手順と品質を整え、着実に実行する視点から話しやすく、ISTPは課題を分析し、試行を通じて解決する傾向があります。衝突が起きたときは、どちらが正しいかを急がず、何を大切にしている反応かを確かめましょう。仕事では、ISTJとISTPが得意な役割を分け、判断の基準と相談のタイミングを共有すると協働しやすくなります。",
+    "misconceptions": "ISTJが変化への不安から、細部や責任を抱え込みやすいことや、ISTPが一人で解決しようとして、説明や相談を減らしやすいことがあるとしても、それだけで二人の関係の可能性は決まりません。経験、環境、対話の積み重ねが関係を変えていきます。",
+    "percentage": "ISTJとISTPを相性の割合だけで判断するより、期待、距離感、回復の仕方を具体的に話すことが、より実用的な手がかりになります。",
+    "faqs": "ISTJとISTPが理解を深めるには、違う反応を欠点と決めず、相手にとって必要な安心や時間を尋ねてみることが助けになります。",
+    "ui": "ISTJとISTPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISTJとISTPの違い・相性 | KalQLater",
+      "description": "ISTJとISTPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "ISTJとISTPの違いを見つめる",
+      "ogDescription": "ISTJとISTPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "ISTJとISTPの比較",
+      "twitterDescription": "ISTJとISTPの違いと関係のヒント。",
+      "keywords": "ISTJ ISTP, ISTJとISTPの違い, ISTJ ISTP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISTJ vs ISTP",
+      "faq": "ISTJとISTPに関するよくある質問"
     }
   }
 }

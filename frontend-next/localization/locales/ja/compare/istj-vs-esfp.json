@@ -3,27 +3,27 @@
   "route": "/ja/compare/istj-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISTJとESFPを比べて見えること",
+    "helper": "着実に支えるISTJと今を楽しむESFPが、日常、仕事、関係の中でどのように違いを見せるかを考えます。",
+    "intro": "ISTJは経験、事実、責任をもとに確かな方法を選ぶことがあり、ESFPは人との反応や目の前の体験を手がかりに選ぶことがあります。二人の違いは、物事に向き合う順序や大切にする感覚に表れます。",
+    "snapshot": "ISTJは約束を守り、安定して関われることを、ESFPは楽しい時間と素直な気持ちの共有を求めやすい傾向があります。互いに安心できる関わり方を確かめることが信頼につながります。",
+    "sections": "対話では、ISTJは手順と品質を整え、着実に実行する視点から話しやすく、ESFPは人を巻き込み、場に明るい動きをつくる傾向があります。衝突が起きたときは、どちらが正しいかを急がず、何を大切にしている反応かを確かめましょう。仕事では、ISTJとESFPが得意な役割を分け、判断の基準と相談のタイミングを共有すると協働しやすくなります。",
+    "misconceptions": "ISTJが変化への不安から、細部や責任を抱え込みやすいことや、ESFPが気を紛らわせることを優先し、難しい準備を先延ばしにしやすいことがあるとしても、それだけで二人の関係の可能性は決まりません。経験、環境、対話の積み重ねが関係を変えていきます。",
+    "percentage": "ISTJとESFPを相性の割合だけで判断するより、期待、距離感、回復の仕方を具体的に話すことが、より実用的な手がかりになります。",
+    "faqs": "ISTJとESFPが理解を深めるには、違う反応を欠点と決めず、相手にとって必要な安心や時間を尋ねてみることが助けになります。",
+    "ui": "ISTJとESFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISTJとESFPの違い・相性 | KalQLater",
+      "description": "ISTJとESFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "ISTJとESFPの違いを見つめる",
+      "ogDescription": "ISTJとESFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "ISTJとESFPの比較",
+      "twitterDescription": "ISTJとESFPの違いと関係のヒント。",
+      "keywords": "ISTJ ESFP, ISTJとESFPの違い, ISTJ ESFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISTJ vs ESFP",
+      "faq": "ISTJとESFPに関するよくある質問"
     }
   }
 }

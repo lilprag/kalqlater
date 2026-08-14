@@ -3,27 +3,27 @@
   "route": "/ja/compare/isfp-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISFPとESFPを比べて見えること",
+    "helper": "自分らしさを形にするISFPと今を楽しむESFPが、日常、仕事、関係の中でどのように違いを見せるかを考えます。",
+    "intro": "ISFPは自分の感覚や大切なことを確かめて選ぶことがあり、ESFPは人との反応や目の前の体験を手がかりに選ぶことがあります。二人の違いは、物事に向き合う順序や大切にする感覚に表れます。",
+    "snapshot": "ISFPは無理なく個性を尊重できることを、ESFPは楽しい時間と素直な気持ちの共有を求めやすい傾向があります。互いに安心できる関わり方を確かめることが信頼につながります。",
+    "sections": "対話では、ISFPは細かな感覚と工夫を、具体的な貢献に変える視点から話しやすく、ESFPは人を巻き込み、場に明るい動きをつくる傾向があります。衝突が起きたときは、どちらが正しいかを急がず、何を大切にしている反応かを確かめましょう。仕事では、ISFPとESFPが得意な役割を分け、判断の基準と相談のタイミングを共有すると協働しやすくなります。",
+    "misconceptions": "ISFPが気まずさを避け、希望を言葉にするのが遅れやすいことや、ESFPが気を紛らわせることを優先し、難しい準備を先延ばしにしやすいことがあるとしても、それだけで二人の関係の可能性は決まりません。経験、環境、対話の積み重ねが関係を変えていきます。",
+    "percentage": "ISFPとESFPを相性の割合だけで判断するより、期待、距離感、回復の仕方を具体的に話すことが、より実用的な手がかりになります。",
+    "faqs": "ISFPとESFPが理解を深めるには、違う反応を欠点と決めず、相手にとって必要な安心や時間を尋ねてみることが助けになります。",
+    "ui": "ISFPとESFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISFPとESFPの違い・相性 | KalQLater",
+      "description": "ISFPとESFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "ISFPとESFPの違いを見つめる",
+      "ogDescription": "ISFPとESFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "ISFPとESFPの比較",
+      "twitterDescription": "ISFPとESFPの違いと関係のヒント。",
+      "keywords": "ISFP ESFP, ISFPとESFPの違い, ISFP ESFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISFP vs ESFP",
+      "faq": "ISFPとESFPに関するよくある質問"
     }
   }
 }
