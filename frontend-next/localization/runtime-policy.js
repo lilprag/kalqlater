@@ -40,6 +40,7 @@ const JAPANESE_PREVIEW_PAGES = Object.freeze([
   'career:intj', 'career:intp', 'career:entj', 'career:entp',
   'career:infj', 'career:infp', 'career:enfj', 'career:enfp',
   'career:istj', 'career:isfj', 'career:estj', 'career:esfj',
+  'career:istp', 'career:isfp', 'career:estp', 'career:esfp',
 ]);
 
 /**

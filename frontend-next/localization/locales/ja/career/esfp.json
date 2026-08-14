@@ -3,29 +3,29 @@
   "route": "/ja/personality/esfp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ESFPに合う仕事を、人との関わりと行動の楽しさから考える",
+    "lens": "ESFPにとって仕事選びでは、人と関わり、目に見える反応を受け取りながら、自分の明るさや行動力を生かせる環境かを確かめることが役立ちます。",
+    "skill": "人の気持ちや場の雰囲気を捉え、参加しやすい流れをつくる力",
+    "roles": "検討しやすい役割：接客、イベント運営、広報、教育支援、販売、コミュニティ運営、観光・ホスピタリティ、コンテンツ制作。",
+    "settings": "人との交流があり、工夫への反応や感謝を実感でき、変化にも柔軟に対応できる環境でESFPは力を発揮しやすくなります。",
+    "formats": "対話と実践を行き来し、楽しさを保ちながら具体的な成果へつなげられる進め方が合いやすい傾向があります。",
+    "skills": "親しみやすさに、計画を小さく区切る習慣や、難しい会話を先延ばしにしない力を加えると、成長が続きやすくなります。",
+    "stages": "初期は多様な人と関わる経験から得意な場を見つけ、中期以降は関心と安定の両方を満たす役割を選びましょう。",
+    "industries": "検討しやすい分野：接客、観光、イベント、広報、教育、販売、地域サービス、メディア・コンテンツ。",
+    "faqs": "ESFPというタイプは向いている仕事を決めるものではありません。関心、経験、強み、生活上の条件を考えるための視点です。",
+    "ctas": "ESFPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ESFPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ESFPの親しみやすさや行動力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ESFPのキャリアを考えるガイド",
+      "ogDescription": "ESFPの強みから、人と関わる仕事の選択肢を考えます。",
+      "twitterTitle": "ESFPのキャリアガイド",
+      "twitterDescription": "ESFPの働き方と職種の選択肢。",
+      "keywords": "ESFP 仕事, ESFP キャリア, ESFP 適職, ESFP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ESFPのキャリアガイド",
+      "faq": "ESFPのキャリアに関するよくある質問"
     }
   }
 }

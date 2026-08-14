@@ -3,29 +3,29 @@
   "route": "/ja/personality/isfp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISFPに合う仕事を、自分らしい表現と丁寧な貢献から考える",
+    "lens": "ISFPにとって仕事選びでは、自分の感覚や価値観を生かし、人や成果に誠実に向き合える環境かを確かめることが役立ちます。",
+    "skill": "細かな違いを感じ取り、自分らしい工夫で人や場に応える力",
+    "roles": "検討しやすい役割：デザイン、写真・映像、医療・福祉支援、教育支援、接客、クラフト・ものづくり、コンテンツ制作。",
+    "settings": "個性と落ち着いた集中が尊重され、成果を実感しながら人やものに丁寧に関われる環境でISFPは力を発揮しやすくなります。",
+    "formats": "自分の工夫を生かし、過度な競争よりも信頼できる協力を大切にできる進め方が合いやすい傾向があります。",
+    "skills": "感受性や丁寧さに、希望を言葉にする力や、成果を見せる習慣を加えると、仕事の可能性が広がります。",
+    "stages": "初期は多様な体験から心地よく続けられる表現や支援の形を探し、次に専門性と自分のペースを両立させましょう。",
+    "industries": "検討しやすい分野：デザイン、文化・芸術、医療・福祉、教育、接客、ファッション、地域サービス。",
+    "faqs": "ISFPというタイプは適職を断定するものではありません。価値観、得意なこと、経験、生活の条件を考えるための視点です。",
+    "ctas": "ISFPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISFPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ISFPの感受性や柔軟さを生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ISFPのキャリアを考えるガイド",
+      "ogDescription": "ISFPの強みから、自分らしい仕事の選択肢を考えます。",
+      "twitterTitle": "ISFPのキャリアガイド",
+      "twitterDescription": "ISFPの働き方と職種の選択肢。",
+      "keywords": "ISFP 仕事, ISFP キャリア, ISFP 適職, ISFP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISFPのキャリアガイド",
+      "faq": "ISFPのキャリアに関するよくある質問"
     }
   }
 }

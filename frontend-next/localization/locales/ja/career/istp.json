@@ -3,29 +3,29 @@
   "route": "/ja/personality/istp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISTPに合う仕事を、実践的な問題解決から考える",
+    "lens": "ISTPにとって仕事選びでは、現実の課題に向き合い、仕組みを理解しながら工夫や試行ができる環境かを確かめることが役立ちます。",
+    "skill": "状況を観察し、仕組みを見極め、実用的な解決策を試す力",
+    "roles": "検討しやすい役割：技術職、整備・保守、ソフトウェア開発、データ・品質分析、救急・安全分野、製品テスト、現場改善。",
+    "settings": "裁量があり、課題を具体的に解き、試した結果から学べる環境でISTPは力を発揮しやすくなります。",
+    "formats": "目的を確認したうえで、自分で方法を工夫し、必要なときに短く連携できる進め方が合いやすい傾向があります。",
+    "skills": "現実的な判断力に、途中の考えを共有する力や、長期の優先順位を扱う習慣を加えると、活躍の幅が広がります。",
+    "stages": "初期は幅広い実務を通じて得意な課題を見つけ、中期以降は専門性や複雑な問題解決へ。節目では成長の実感を見直しましょう。",
+    "industries": "検討しやすい分野：技術、製造、ソフトウェア、安全・防災、物流、製品開発、フィールドサービス。",
+    "faqs": "ISTPというタイプは向いている仕事を決めるものではありません。興味、スキル、経験、働く条件を考えるための一つの視点です。",
+    "ctas": "ISTPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISTPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ISTPの観察力や問題解決力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ISTPのキャリアを考えるガイド",
+      "ogDescription": "ISTPの強みから、実践的な仕事の選択肢を考えます。",
+      "twitterTitle": "ISTPのキャリアガイド",
+      "twitterDescription": "ISTPの働き方と職種の選択肢。",
+      "keywords": "ISTP 仕事, ISTP キャリア, ISTP 適職, ISTP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISTPのキャリアガイド",
+      "faq": "ISTPのキャリアに関するよくある質問"
     }
   }
 }

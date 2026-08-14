@@ -3,29 +3,29 @@
   "route": "/ja/personality/estp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ESTPに合う仕事を、行動と変化への適応から考える",
+    "lens": "ESTPにとって仕事選びでは、変化のある状況で行動し、結果を確かめながら人や課題に働きかけられる環境かを確かめることが役立ちます。",
+    "skill": "状況を素早く捉え、現実的な行動に移して機会をつかむ力",
+    "roles": "検討しやすい役割：営業、事業開発、イベント運営、救急・安全分野、現場管理、スポーツ・接客、交渉を伴う仕事。",
+    "settings": "変化があり、行動の結果を早く確かめられ、裁量を持って人や課題に対応できる環境でESTPは力を発揮しやすくなります。",
+    "formats": "小さく動き、結果を見て調整し、必要な人と素早く連携する進め方は、適応力を成果につなげます。",
+    "skills": "行動力に、先を見通す習慣や、約束を管理する仕組みを加えると、短期の成果を長い信頼へつなげられます。",
+    "stages": "初期は幅広い現場経験で得意な動き方を見つけ、中期以降は影響範囲や責任を広げましょう。節目では継続できる条件を確認します。",
+    "industries": "検討しやすい分野：営業、事業開発、観光・イベント、物流、安全、接客、スポーツ、現場運営。",
+    "faqs": "ESTPというタイプは最適な職業を決めるものではありません。強み、経験、関心、働く条件を考えるための一つの視点です。",
+    "ctas": "ESTPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ESTPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ESTPの行動力や適応力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ESTPのキャリアを考えるガイド",
+      "ogDescription": "ESTPの強みから、変化のある仕事の選択肢を考えます。",
+      "twitterTitle": "ESTPのキャリアガイド",
+      "twitterDescription": "ESTPの働き方と職種の選択肢。",
+      "keywords": "ESTP 仕事, ESTP キャリア, ESTP 適職, ESTP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ESTPのキャリアガイド",
+      "faq": "ESTPのキャリアに関するよくある質問"
     }
   }
 }
