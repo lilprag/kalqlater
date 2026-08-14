@@ -3,29 +3,29 @@
   "route": "/ja/personality/intj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INTJに合う仕事を、戦略性と成長の視点から考える",
+    "lens": "INTJにとって大切なのは、肩書きだけでなく、深く考え、改善を重ね、裁量を持てる環境かどうかを見極めることです。",
+    "skill": "複雑な課題を構造化し、長期的な改善につなげる力",
+    "roles": "検討しやすい役割：ソフトウェアエンジニア、研究職、システム設計、データ分析、戦略企画、コンサルティング。",
+    "settings": "専門性を深める時間があり、成果の基準と裁量が明確な環境では、INTJの構想力が生きやすくなります。",
+    "formats": "目的、責任範囲、判断の余地が共有された仕事の進め方は、集中と質の高い成果を支えます。",
+    "skills": "分析力に加え、途中の考えを共有する力や、異なる専門性と協働する力を育てると選択肢が広がります。",
+    "stages": "初期は基礎と専門性を積み、次に複雑な課題や設計へ。節目ごとに、成長の実感と働き方を見直してみましょう。",
+    "industries": "検討しやすい分野：技術、研究開発、データ、設計、金融分析、公共政策、専門コンサルティング。",
+    "faqs": "INTJというタイプは仕事の選択を決めるものではありません。強み、価値観、経験、生活上の条件を合わせて検討するための視点です。",
+    "ctas": "INTJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "INTJの強み、働き方、検討しやすい職種や成長の視点を丁寧に紹介します。",
+      "ogTitle": "INTJのキャリアを考えるガイド",
+      "ogDescription": "INTJの強みと働く環境から、納得できる選択肢を考えます。",
+      "twitterTitle": "INTJのキャリアガイド",
+      "twitterDescription": "INTJの働き方と職種の選択肢。",
+      "keywords": "INTJ 仕事, INTJ キャリア, INTJ 適職, INTJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJのキャリアガイド",
+      "faq": "INTJのキャリアに関するよくある質問"
     }
   }
 }

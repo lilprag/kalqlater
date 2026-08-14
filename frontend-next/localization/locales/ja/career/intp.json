@@ -3,29 +3,29 @@
   "route": "/ja/personality/intp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INTPに合う仕事を、探究心と柔軟な思考から考える",
+    "lens": "INTPにとって役立つのは、職種名だけで判断せず、問いを掘り下げ、仕組みを理解し、試せる余地があるかを確かめることです。",
+    "skill": "概念を整理し、仮説を立てて仕組みを理解する力",
+    "roles": "検討しやすい役割：ソフトウェア開発、研究職、データサイエンス、分析職、プロダクト設計、技術ライター。",
+    "settings": "知的な自由があり、深く考える時間と試行の余地が確保された環境で、INTPは力を発揮しやすくなります。",
+    "formats": "問題設定や方法の工夫に関われ、集中と対話のバランスを取れる仕事の進め方が合いやすい傾向があります。",
+    "skills": "分析の深さに、優先順位を決める力や、考えを分かりやすく共有する力を加えると実務での影響が広がります。",
+    "stages": "初期は複数のテーマに触れながら得意な問いを探し、中期以降は専門性を社会やチームに接続する機会を選びましょう。",
+    "industries": "検討しやすい分野：ソフトウェア、研究、データ、教育技術、設計、科学、専門メディア。",
+    "faqs": "INTPというタイプは適職を断定するものではありません。興味、スキル、経験、働く条件を整理するための一つの視点です。",
+    "ctas": "INTPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "INTPの探究心や分析力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "INTPのキャリアを考えるガイド",
+      "ogDescription": "INTPの思考の強みから、働き方の選択肢を考えます。",
+      "twitterTitle": "INTPのキャリアガイド",
+      "twitterDescription": "INTPの働き方と職種の選択肢。",
+      "keywords": "INTP 仕事, INTP キャリア, INTP 適職, INTP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTPのキャリアガイド",
+      "faq": "INTPのキャリアに関するよくある質問"
     }
   }
 }

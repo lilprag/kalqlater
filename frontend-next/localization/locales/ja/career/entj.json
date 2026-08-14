@@ -3,29 +3,29 @@
   "route": "/ja/personality/entj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ENTJに合う仕事を、推進力と長期的な成果から考える",
+    "lens": "ENTJにとって仕事選びでは、目標を動かす責任、成長の余地、周囲と成果をつくれる環境かを見極めることが役立ちます。",
+    "skill": "目標を構造化し、人と資源を動かして実行につなげる力",
+    "roles": "検討しやすい役割：事業企画、プロダクトマネジメント、経営企画、営業戦略、コンサルティング、組織開発。",
+    "settings": "目標と権限が明確で、成果への責任を持ちながら改善を進められる環境では、ENTJの推進力が生きやすくなります。",
+    "formats": "優先順位を決め、関係者と連携し、進捗を振り返れる仕事の進め方が、強みを持続的な成果へ変えます。",
+    "skills": "決断力に加え、相手の事情を聞く姿勢や、育成のために待つ力を磨くと、より大きなチームを動かせます。",
+    "stages": "初期は実行と専門性の土台をつくり、中期以降は複数の利害を扱う経験へ。節目では成果だけでなく納得感も確かめましょう。",
+    "industries": "検討しやすい分野：事業開発、テクノロジー、金融、コンサルティング、営業企画、公共・社会課題の推進。",
+    "faqs": "ENTJというタイプは進むべき職業を決めるものではありません。目標、経験、価値観、生活上の条件を考える手がかりです。",
+    "ctas": "ENTJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ENTJの推進力やリーダーシップを生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ENTJのキャリアを考えるガイド",
+      "ogDescription": "ENTJの強みから、仕事と成長の選択肢を考えます。",
+      "twitterTitle": "ENTJのキャリアガイド",
+      "twitterDescription": "ENTJの働き方と職種の選択肢。",
+      "keywords": "ENTJ 仕事, ENTJ キャリア, ENTJ 適職, ENTJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTJのキャリアガイド",
+      "faq": "ENTJのキャリアに関するよくある質問"
     }
   }
 }

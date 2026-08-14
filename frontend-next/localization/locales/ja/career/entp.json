@@ -3,29 +3,29 @@
   "route": "/ja/personality/entp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ENTPに合う仕事を、発想力と変化への強さから考える",
+    "lens": "ENTPにとって仕事選びでは、新しい問いに触れ、アイデアを試し、異なる人と議論しながら前進できるかを確かめることが役立ちます。",
+    "skill": "可能性を見つけ、異なる視点をつなぎ、新しい方法を試す力",
+    "roles": "検討しやすい役割：起業・新規事業、プロダクト企画、マーケティング、コンサルティング、クリエイティブ戦略、営業企画。",
+    "settings": "変化と学びがあり、提案や実験を歓迎しつつ、実行へつなげる仲間がいる環境でENTPは力を発揮しやすくなります。",
+    "formats": "問いを立て、議論し、小さく検証できる進め方は、発想力を成果へ結び付ける助けになります。",
+    "skills": "アイデアを出す力に、優先順位を絞る力や、最後まで仕上げる習慣を組み合わせると、影響が長く残ります。",
+    "stages": "初期は幅広い経験から関心の軸を見つけ、中期以降は興味だけでなく、継続して価値を出せる領域を選びましょう。",
+    "industries": "検討しやすい分野：テクノロジー、新規事業、広告・マーケティング、メディア、コンサルティング、教育、スタートアップ。",
+    "faqs": "ENTPというタイプは最適な仕事を決めるものではありません。興味、強み、経験、働く環境を考えるための一つの視点です。",
+    "ctas": "ENTPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ENTPの発想力や適応力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ENTPのキャリアを考えるガイド",
+      "ogDescription": "ENTPの強みから、変化のある仕事の選択肢を考えます。",
+      "twitterTitle": "ENTPのキャリアガイド",
+      "twitterDescription": "ENTPの働き方と職種の選択肢。",
+      "keywords": "ENTP 仕事, ENTP キャリア, ENTP 適職, ENTP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTPのキャリアガイド",
+      "faq": "ENTPのキャリアに関するよくある質問"
     }
   }
 }
