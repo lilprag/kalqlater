@@ -3,27 +3,27 @@
   "route": "/ja/compare/entp-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTPとESFPを比べて見えること",
+    "helper": "可能性を広げるENTPと今を楽しむESFPが、同じ場面で何を大切にしやすいかを丁寧に見つめます。",
+    "intro": "ENTPは新しい選択肢を並べ、意外な可能性を試すことがあり、ESFPは人との反応や目の前の体験を手がかりに選ぶことがあります。違いは優劣ではなく、状況を理解して選択へ進む過程に表れます。",
+    "snapshot": "二人は知的な刺激と発見のある会話と楽しい時間と素直な気持ちの共有をそれぞれ大切にしやすい組み合わせです。期待する関わり方を言葉にすると、違いが信頼の手がかりになります。",
+    "sections": "コミュニケーションでは、ENTPは発想を出し、既存の前提を問い直す視点を持ち込みやすく、ESFPは人を巻き込み、場に明るい動きをつくる傾向があります。意見が分かれたときは、先に互いの判断基準を確認すると対立が建設的になります。仕事では、ENTPの強みとESFPの強みを役割として分け合い、決める時点と相談する範囲を共有すると協働しやすくなります。",
+    "misconceptions": "ENTPが刺激を求め、仕上げや細部への集中が続きにくくなることがあることや、ESFPが気を紛らわせることを優先し、難しい準備を先延ばしにしやすいことがあるからといって、関係が難しいと決まるわけではありません。状況、経験、二人の対話の仕方が関係を形づくります。",
+    "percentage": "ENTPとESFPの相性を一つの数値で決めるより、安心して話せる条件、回復に必要な時間、互いの期待を確かめることが役立ちます。",
+    "faqs": "ENTPとESFPが近づくためには、違いを直す対象にせず、何を守ろうとしている反応かを尋ねてみましょう。",
+    "ui": "ENTPとESFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTPとESFPの違い・相性 | KalQLater",
+      "description": "ENTPとESFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "ENTPとESFPの違いを見つめる",
+      "ogDescription": "ENTPとESFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "ENTPとESFPの比較",
+      "twitterDescription": "ENTPとESFPの違いと関係のヒント。",
+      "keywords": "ENTP ESFP, ENTPとESFPの違い, ENTP ESFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTP vs ESFP",
+      "faq": "ENTPとESFPに関するよくある質問"
     }
   }
 }

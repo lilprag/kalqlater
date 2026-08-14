@@ -47,6 +47,15 @@ const JAPANESE_PREVIEW_PAGES = Object.freeze([
   'compare:intj-vs-enfp', 'compare:intj-vs-istj', 'compare:intj-vs-isfj',
   'compare:intj-vs-estj', 'compare:intj-vs-esfj', 'compare:intj-vs-istp',
   'compare:intj-vs-isfp', 'compare:intj-vs-estp', 'compare:intj-vs-esfp',
+  ...Object.freeze([
+    ['intp', ['entj', 'entp', 'infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp']],
+    ['entj', ['entp', 'infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp']],
+    ['entp', ['infj', 'infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp']],
+    ['infj', ['infp', 'enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp']],
+    ['infp', ['enfj', 'enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp']],
+    ['enfj', ['enfp', 'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp']],
+    ['enfp', ['istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp']],
+  ].flatMap(([first, seconds]) => seconds.map((second) => `compare:${first}-vs-${second}`))),
 ]);
 
 /**

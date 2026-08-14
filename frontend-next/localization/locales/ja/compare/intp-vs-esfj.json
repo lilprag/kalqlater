@@ -3,27 +3,27 @@
   "route": "/ja/compare/intp-vs-esfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTPとESFJを比べて見えること",
+    "helper": "仮説を深めるINTPとつながりを育てるESFJが、同じ場面で何を大切にしやすいかを丁寧に見つめます。",
+    "intro": "INTPは前提を問い直し、納得できるまで仮説を検討することがあり、ESFJは周囲の安心や協調への影響を考えて選ぶことがあります。違いは優劣ではなく、状況を理解して選択へ進む過程に表れます。",
+    "snapshot": "二人は自由に考えられる余白と率直な議論と感謝や気遣いを交わせることをそれぞれ大切にしやすい組み合わせです。期待する関わり方を言葉にすると、違いが信頼の手がかりになります。",
+    "sections": "コミュニケーションでは、INTPは論点を分析し、仕組みの精度を高める視点を持ち込みやすく、ESFJは皆が協力しやすい場を整える傾向があります。意見が分かれたときは、先に互いの判断基準を確認すると対立が建設的になります。仕事では、INTPの強みとESFJの強みを役割として分け合い、決める時点と相談する範囲を共有すると協働しやすくなります。",
+    "misconceptions": "INTPが考えを内側にため込み、決めることを先延ばしにしやすいことや、ESFJが周囲の反応を気にしすぎて、自分の希望を後回しにしやすいことがあるからといって、関係が難しいと決まるわけではありません。状況、経験、二人の対話の仕方が関係を形づくります。",
+    "percentage": "INTPとESFJの相性を一つの数値で決めるより、安心して話せる条件、回復に必要な時間、互いの期待を確かめることが役立ちます。",
+    "faqs": "INTPとESFJが近づくためには、違いを直す対象にせず、何を守ろうとしている反応かを尋ねてみましょう。",
+    "ui": "INTPとESFJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTPとESFJの違い・相性 | KalQLater",
+      "description": "INTPとESFJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTPとESFJの違いを見つめる",
+      "ogDescription": "INTPとESFJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTPとESFJの比較",
+      "twitterDescription": "INTPとESFJの違いと関係のヒント。",
+      "keywords": "INTP ESFJ, INTPとESFJの違い, INTP ESFJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTP vs ESFJ",
+      "faq": "INTPとESFJに関するよくある質問"
     }
   }
 }

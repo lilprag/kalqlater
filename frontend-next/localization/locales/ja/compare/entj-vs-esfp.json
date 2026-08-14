@@ -3,27 +3,27 @@
   "route": "/ja/compare/entj-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTJとESFPを比べて見えること",
+    "helper": "目標を推進するENTJと今を楽しむESFPが、同じ場面で何を大切にしやすいかを丁寧に見つめます。",
+    "intro": "ENTJは目的を定め、関係者を動かしながら決断することがあり、ESFPは人との反応や目の前の体験を手がかりに選ぶことがあります。違いは優劣ではなく、状況を理解して選択へ進む過程に表れます。",
+    "snapshot": "二人は率直さと前進への意欲と楽しい時間と素直な気持ちの共有をそれぞれ大切にしやすい組み合わせです。期待する関わり方を言葉にすると、違いが信頼の手がかりになります。",
+    "sections": "コミュニケーションでは、ENTJは優先順位を整理し、実行を前へ進める視点を持ち込みやすく、ESFPは人を巻き込み、場に明るい動きをつくる傾向があります。意見が分かれたときは、先に互いの判断基準を確認すると対立が建設的になります。仕事では、ENTJの強みとESFPの強みを役割として分け合い、決める時点と相談する範囲を共有すると協働しやすくなります。",
+    "misconceptions": "ENTJが急ぎすぎて、周囲の事情を十分に聞けなくなることがあることや、ESFPが気を紛らわせることを優先し、難しい準備を先延ばしにしやすいことがあるからといって、関係が難しいと決まるわけではありません。状況、経験、二人の対話の仕方が関係を形づくります。",
+    "percentage": "ENTJとESFPの相性を一つの数値で決めるより、安心して話せる条件、回復に必要な時間、互いの期待を確かめることが役立ちます。",
+    "faqs": "ENTJとESFPが近づくためには、違いを直す対象にせず、何を守ろうとしている反応かを尋ねてみましょう。",
+    "ui": "ENTJとESFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTJとESFPの違い・相性 | KalQLater",
+      "description": "ENTJとESFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "ENTJとESFPの違いを見つめる",
+      "ogDescription": "ENTJとESFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "ENTJとESFPの比較",
+      "twitterDescription": "ENTJとESFPの違いと関係のヒント。",
+      "keywords": "ENTJ ESFP, ENTJとESFPの違い, ENTJ ESFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTJ vs ESFP",
+      "faq": "ENTJとESFPに関するよくある質問"
     }
   }
 }

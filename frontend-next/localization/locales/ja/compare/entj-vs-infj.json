@@ -3,27 +3,27 @@
   "route": "/ja/compare/entj-vs-infj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTJとINFJを比べて見えること",
+    "helper": "目標を推進するENTJと意味を見つめるINFJが、同じ場面で何を大切にしやすいかを丁寧に見つめます。",
+    "intro": "ENTJは目的を定め、関係者を動かしながら決断することがあり、INFJは長期の意味や人への影響を考えて選ぶことがあります。違いは優劣ではなく、状況を理解して選択へ進む過程に表れます。",
+    "snapshot": "二人は率直さと前進への意欲と深い理解と価値観の共有をそれぞれ大切にしやすい組み合わせです。期待する関わり方を言葉にすると、違いが信頼の手がかりになります。",
+    "sections": "コミュニケーションでは、ENTJは優先順位を整理し、実行を前へ進める視点を持ち込みやすく、INFJは背景を読み、目的と人を結び付ける傾向があります。意見が分かれたときは、先に互いの判断基準を確認すると対立が建設的になります。仕事では、ENTJの強みとINFJの強みを役割として分け合い、決める時点と相談する範囲を共有すると協働しやすくなります。",
+    "misconceptions": "ENTJが急ぎすぎて、周囲の事情を十分に聞けなくなることがあることや、INFJが周囲の期待を読みすぎて、自分の気持ちを後回しにしやすいことがあるからといって、関係が難しいと決まるわけではありません。状況、経験、二人の対話の仕方が関係を形づくります。",
+    "percentage": "ENTJとINFJの相性を一つの数値で決めるより、安心して話せる条件、回復に必要な時間、互いの期待を確かめることが役立ちます。",
+    "faqs": "ENTJとINFJが近づくためには、違いを直す対象にせず、何を守ろうとしている反応かを尋ねてみましょう。",
+    "ui": "ENTJとINFJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTJとINFJの違い・相性 | KalQLater",
+      "description": "ENTJとINFJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "ENTJとINFJの違いを見つめる",
+      "ogDescription": "ENTJとINFJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "ENTJとINFJの比較",
+      "twitterDescription": "ENTJとINFJの違いと関係のヒント。",
+      "keywords": "ENTJ INFJ, ENTJとINFJの違い, ENTJ INFJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTJ vs INFJ",
+      "faq": "ENTJとINFJに関するよくある質問"
     }
   }
 }
