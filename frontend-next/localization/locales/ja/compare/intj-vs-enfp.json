@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-enfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとENFPを比べて見えること",
+    "helper": "計画を深めるINTJと、可能性に心を動かすENFPの違い",
+    "intro": "INTJは優先順位を定めて構想を形にし、ENFPは人や新しいアイデアとの出会いから方向を広げることがあります。",
+    "snapshot": "INTJとENFPの違いは、どちらが優れているかではなく、物事を理解し、判断し、人と関わる道筋に表れます。",
+    "sections": "INTJは一貫した計画を、ENFPは今生まれる可能性を重視しやすい組み合わせです。変更する余地と守る目的を共有すると協働しやすくなります。",
+    "misconceptions": "INTJがENFPの話題の広がりに疲れたり、ENFPがINTJの反応の少なさに不安を感じたりすることがあります。興味と結論の両方を言葉にしましょう。",
+    "percentage": "相性を一つの数字で決めるより、INTJとENFPがそれぞれ何を大切にしているかを確かめる方が、関係の助けになります。",
+    "faqs": "INTJの構造化する力とENFPの熱意は、試すための小さな枠をつくることで、創造性と実現性を同時に育てられます。",
+    "ui": "INTJとENFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとENFPの違い・相性 | KalQLater",
+      "description": "INTJとENFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとENFPの違いを見つめる",
+      "ogDescription": "INTJとENFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとENFPの比較",
+      "twitterDescription": "INTJとENFPの違いと関係のヒント。",
+      "keywords": "INTJ ENFP, INTJとENFPの違い, INTJ ENFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ENFP",
+      "faq": "INTJとENFPに関するよくある質問"
     }
   }
 }

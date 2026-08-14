@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-isfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとISFPを比べて見えること",
+    "helper": "構造を考えるINTJと、感覚や価値を大切にするISFPの違い",
+    "intro": "INTJは目的に向かう道筋を組み立て、ISFPは今の気持ちや自分らしいあり方を確かめながら選ぶことがあります。",
+    "snapshot": "INTJとISFPの違いは、優劣ではなく、判断、関係、変化への向き合い方に表れる傾向です。",
+    "sections": "INTJは効率と長期の見通しを、ISFPは心地よさや個人の価値観を重視しやすい組み合わせです。正しさだけでなく、何を大切にしたいかを話しましょう。",
+    "misconceptions": "INTJの改善案がISFPには自分らしさへの評価に聞こえることがあります。変える前に、相手が守りたいことを確認することが助けになります。",
+    "percentage": "INTJとISFPの関係は数値だけでは捉えきれません。互いの期待と安心できる距離を話すことが、より確かな手がかりになります。",
+    "faqs": "INTJの計画性とISFPの感受性は、目標を追いながらも一人ひとりが納得できる過程をつくることで、深い協力へつながります。",
+    "ui": "INTJとISFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとISFPの違い・相性 | KalQLater",
+      "description": "INTJとISFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとISFPの違いを見つめる",
+      "ogDescription": "INTJとISFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとISFPの比較",
+      "twitterDescription": "INTJとISFPの違いと関係のヒント。",
+      "keywords": "INTJ ISFP, INTJとISFPの違い, INTJ ISFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ISFP",
+      "faq": "INTJとISFPに関するよくある質問"
     }
   }
 }

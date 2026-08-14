@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-infj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとINFJを比べて見えること",
+    "helper": "長期の構想を描くINTJと、意味や人の背景を読むINFJの違い",
+    "intro": "INTJは仕組みや方向性を整え、INFJは人や出来事の奥にある意味を感じ取りながら考えることがあります。",
+    "snapshot": "INTJとINFJの違いは、優劣ではなく、情報を受け取り、判断し、関係を築く過程に表れます。",
+    "sections": "二人とも内省的に先を見ますが、INTJは構造の一貫性を、INFJは価値観や関係への影響を重視しやすい組み合わせです。",
+    "misconceptions": "INTJが課題解決を急ぎ、INFJが気持ちの理解を求めるときは、解決策の前に何が大切かを確かめる時間を取りましょう。",
+    "percentage": "二人の関係を一つの相性の数値で決めるより、INFJとINTJが安心して話せる条件を見つける方が役立ちます。",
+    "faqs": "将来を考える力を共有する二人は、論理の見通しと人への配慮を同じ計画の中に置くことで、深い信頼を育てやすくなります。",
+    "ui": "INTJとINFJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとINFJの違い・相性 | KalQLater",
+      "description": "INTJとINFJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとINFJの違いを見つめる",
+      "ogDescription": "INTJとINFJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとINFJの比較",
+      "twitterDescription": "INTJとINFJの違いと関係のヒント。",
+      "keywords": "INTJ INFJ, INTJとINFJの違い, INTJ INFJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs INFJ",
+      "faq": "INTJとINFJに関するよくある質問"
     }
   }
 }

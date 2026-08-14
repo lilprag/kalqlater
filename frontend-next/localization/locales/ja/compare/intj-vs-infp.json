@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-infp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとINFPを比べて見えること",
+    "helper": "目標を組み立てるINTJと、価値観に忠実なINFPの違い",
+    "intro": "INTJは長期的な成果へ向けて道筋を設計し、INFPは自分にとって意味のある選択かを丁寧に確かめることがあります。",
+    "snapshot": "INTJとINFPの違いは、優劣ではなく、情報を受け取り、判断し、関係を築く過程に表れます。",
+    "sections": "INTJは効率や構造を、INFPは気持ちや納得感を重視しやすい組み合わせです。互いの判断基準を先に言葉にすると、誤解が減ります。",
+    "misconceptions": "INTJの直接的な助言がINFPには評価のように響くことがあります。目的と気持ちを確認し、求められた形で提案することが助けになります。",
+    "percentage": "二人の関係を一つの相性の数値で決めるより、INFPとINTJが安心して話せる条件を見つける方が役立ちます。",
+    "faqs": "INTJの計画性とINFPの価値への感度は、成果だけでなく納得できる過程も大切にすることで、互いの成長を支えます。",
+    "ui": "INTJとINFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとINFPの違い・相性 | KalQLater",
+      "description": "INTJとINFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとINFPの違いを見つめる",
+      "ogDescription": "INTJとINFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとINFPの比較",
+      "twitterDescription": "INTJとINFPの違いと関係のヒント。",
+      "keywords": "INTJ INFP, INTJとINFPの違い, INTJ INFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs INFP",
+      "faq": "INTJとINFPに関するよくある質問"
     }
   }
 }

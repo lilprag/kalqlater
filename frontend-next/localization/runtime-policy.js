@@ -42,6 +42,11 @@ const JAPANESE_PREVIEW_PAGES = Object.freeze([
   'career:istj', 'career:isfj', 'career:estj', 'career:esfj',
   'career:istp', 'career:isfp', 'career:estp', 'career:esfp',
   'insight:communication', 'insight:conflict', 'insight:leadership', 'insight:learning',
+  'compare:intj-vs-intp', 'compare:intj-vs-entj', 'compare:intj-vs-entp',
+  'compare:intj-vs-infj', 'compare:intj-vs-infp', 'compare:intj-vs-enfj',
+  'compare:intj-vs-enfp', 'compare:intj-vs-istj', 'compare:intj-vs-isfj',
+  'compare:intj-vs-estj', 'compare:intj-vs-esfj', 'compare:intj-vs-istp',
+  'compare:intj-vs-isfp', 'compare:intj-vs-estp', 'compare:intj-vs-esfp',
 ]);
 
 /**

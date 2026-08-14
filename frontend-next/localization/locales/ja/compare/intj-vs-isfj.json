@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-isfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとISFJを比べて見えること",
+    "helper": "構想を優先するINTJと、日々の安心を支えるISFJの違い",
+    "intro": "INTJは将来の改善や仕組みを考え、ISFJは身近な人の必要や今の安定に目を配ることがあります。",
+    "snapshot": "INTJとISFJの違いは、どちらが優れているかではなく、物事を理解し、判断し、人と関わる道筋に表れます。",
+    "sections": "INTJは問題の構造を、ISFJは関係の実感や具体的な配慮を重視しやすい組み合わせです。計画が誰にどう役立つかを共有すると理解が深まります。",
+    "misconceptions": "INTJの率直な提案がISFJには冷たく聞こえることがあります。目的を説明し、相手の努力への感謝を添えると対話が柔らかくなります。",
+    "percentage": "相性を一つの数字で決めるより、INTJとISFJがそれぞれ何を大切にしているかを確かめる方が、関係の助けになります。",
+    "faqs": "INTJの先を見通す力とISFJの細やかな支えは、変化の中でも人の安心を守る方法を一緒に考えることで生きます。",
+    "ui": "INTJとISFJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとISFJの違い・相性 | KalQLater",
+      "description": "INTJとISFJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとISFJの違いを見つめる",
+      "ogDescription": "INTJとISFJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとISFJの比較",
+      "twitterDescription": "INTJとISFJの違いと関係のヒント。",
+      "keywords": "INTJ ISFJ, INTJとISFJの違い, INTJ ISFJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ISFJ",
+      "faq": "INTJとISFJに関するよくある質問"
     }
   }
 }

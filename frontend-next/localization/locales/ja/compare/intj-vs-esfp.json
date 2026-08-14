@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとESFPを比べて見えること",
+    "helper": "計画を深めるINTJと、今のつながりを楽しむESFPの違い",
+    "intro": "INTJは長期の目的を意識して選択を絞り、ESFPは人との交流や目の前の体験からエネルギーを得ることがあります。",
+    "snapshot": "INTJとESFPの違いは、優劣ではなく、判断、関係、変化への向き合い方に表れる傾向です。",
+    "sections": "INTJは静かな集中と計画を、ESFPは反応のある場と柔軟さを重視しやすい組み合わせです。互いの回復の仕方を尊重すると関係が安定します。",
+    "misconceptions": "INTJが一人の時間を必要とするとき、ESFPが拒まれたと感じることがあります。距離を取る理由と再び楽しむ予定を伝えると安心につながります。",
+    "percentage": "INTJとESFPの関係は数値だけでは捉えきれません。互いの期待と安心できる距離を話すことが、より確かな手がかりになります。",
+    "faqs": "INTJの見通しとESFPの明るい行動力は、目的に向けた計画の中に楽しさや人とのつながりを入れることで、互いを支えます。",
+    "ui": "INTJとESFPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとESFPの違い・相性 | KalQLater",
+      "description": "INTJとESFPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとESFPの違いを見つめる",
+      "ogDescription": "INTJとESFPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとESFPの比較",
+      "twitterDescription": "INTJとESFPの違いと関係のヒント。",
+      "keywords": "INTJ ESFP, INTJとESFPの違い, INTJ ESFP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ESFP",
+      "faq": "INTJとESFPに関するよくある質問"
     }
   }
 }

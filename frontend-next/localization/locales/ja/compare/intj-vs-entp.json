@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-entp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとENTPを比べて見えること",
+    "helper": "方向を定めるINTJと、可能性を広げるENTPの違い",
+    "intro": "INTJは一貫した将来像に向かって絞り込み、ENTPは複数の可能性を並べて新しい道を探ることがあります。",
+    "snapshot": "INTJとENTPの違いは、優劣ではなく、情報を受け取り、判断し、関係を築く過程に表れます。",
+    "sections": "INTJは論点を収束させ、ENTPは視点を広げるため、会話には刺激があります。アイデア出しと決定の時間を分けると、双方が満たされやすくなります。",
+    "misconceptions": "INTJが議論の脱線を負担に感じたり、ENTPが結論の早さを窮屈に感じたりしたら、今は発散か収束かを言葉にして確認しましょう。",
+    "percentage": "二人の関係を一つの相性の数値で決めるより、ENTPとINTJが安心して話せる条件を見つける方が役立ちます。",
+    "faqs": "INTJの戦略性とENTPの発想力は、探索する段階と選び取る段階を意識的に分けることで、仕事でも関係でも補い合えます。",
+    "ui": "INTJとENTPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとENTPの違い・相性 | KalQLater",
+      "description": "INTJとENTPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとENTPの違いを見つめる",
+      "ogDescription": "INTJとENTPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとENTPの比較",
+      "twitterDescription": "INTJとENTPの違いと関係のヒント。",
+      "keywords": "INTJ ENTP, INTJとENTPの違い, INTJ ENTP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ENTP",
+      "faq": "INTJとENTPに関するよくある質問"
     }
   }
 }

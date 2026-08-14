@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-esfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとESFJを比べて見えること",
+    "helper": "戦略を優先するINTJと、関係の調和を育てるESFJの違い",
+    "intro": "INTJは長期の目標と仕組みを整え、ESFJは人が安心して協力できる関係を大切にすることがあります。",
+    "snapshot": "INTJとESFJの違いは、優劣ではなく、判断、関係、変化への向き合い方に表れる傾向です。",
+    "sections": "INTJは論理的な見通しを、ESFJは周囲への配慮と実際の反応を重視しやすい組み合わせです。意図と気持ちの両方を共有すると近づきやすくなります。",
+    "misconceptions": "INTJの距離感をESFJが関心のなさと受け取ったり、ESFJの確認をINTJが干渉と感じたりすることがあります。必要な関わり方を具体的に話しましょう。",
+    "percentage": "INTJとESFJの関係は数値だけでは捉えきれません。互いの期待と安心できる距離を話すことが、より確かな手がかりになります。",
+    "faqs": "INTJの方向性とESFJのつながりをつくる力は、計画を人が参加しやすい形に整えることで、互いの強みになります。",
+    "ui": "INTJとESFJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとESFJの違い・相性 | KalQLater",
+      "description": "INTJとESFJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとESFJの違いを見つめる",
+      "ogDescription": "INTJとESFJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとESFJの比較",
+      "twitterDescription": "INTJとESFJの違いと関係のヒント。",
+      "keywords": "INTJ ESFJ, INTJとESFJの違い, INTJ ESFJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ESFJ",
+      "faq": "INTJとESFJに関するよくある質問"
     }
   }
 }

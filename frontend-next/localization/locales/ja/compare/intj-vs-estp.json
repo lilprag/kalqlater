@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-estp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとESTPを比べて見えること",
+    "helper": "長期を見通すINTJと、今の機会をつかむESTPの違い",
+    "intro": "INTJは先の結果を予測して計画を立て、ESTPは現場の変化を捉えてすぐに行動へ移すことがあります。",
+    "snapshot": "INTJとESTPの違いは、優劣ではなく、判断、関係、変化への向き合い方に表れる傾向です。",
+    "sections": "INTJは慎重な設計を、ESTPは素早い実践を重視しやすい組み合わせです。早く動く場面と深く考える場面を分けると互いに生きます。",
+    "misconceptions": "INTJがESTPの即断を危うく感じたり、ESTPがINTJの検討を遅いと感じたりすることがあります。リスクと戻せる範囲を一緒に確認しましょう。",
+    "percentage": "INTJとESTPの関係は数値だけでは捉えきれません。互いの期待と安心できる距離を話すことが、より確かな手がかりになります。",
+    "faqs": "INTJの見通しとESTPの行動力は、戦略を小さな実験に変え、結果をもとに修正することで強い組み合わせになります。",
+    "ui": "INTJとESTPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとESTPの違い・相性 | KalQLater",
+      "description": "INTJとESTPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとESTPの違いを見つめる",
+      "ogDescription": "INTJとESTPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとESTPの比較",
+      "twitterDescription": "INTJとESTPの違いと関係のヒント。",
+      "keywords": "INTJ ESTP, INTJとESTPの違い, INTJ ESTP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ESTP",
+      "faq": "INTJとESTPに関するよくある質問"
     }
   }
 }

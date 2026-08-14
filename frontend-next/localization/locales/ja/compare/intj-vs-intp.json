@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-intp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとINTPを比べて見えること",
+    "helper": "考えを完成へ進めたいINTJと、仮説をさらに検証したいINTPの違い",
+    "intro": "INTJは先の構造を見据えて決めることが多く、INTPは概念の精度を高めるために選択肢を残すことがあります。",
+    "snapshot": "INTJとINTPの違いは、優劣ではなく、情報を受け取り、判断し、関係を築く過程に表れます。",
+    "sections": "INTJは結論と方向性を示しやすく、INTPは前提や例外を問い直しやすい組み合わせです。決定の期限と検討の目的を共有すると、互いの強みが生きます。",
+    "misconceptions": "INTJが早く結論を求め、INTPがさらに検討したいときは、決める範囲と保留する問いを分けると対立が小さくなります。",
+    "percentage": "二人の関係を一つの相性の数値で決めるより、INTPとINTJが安心して話せる条件を見つける方が役立ちます。",
+    "faqs": "長期の構想を持つINTJと、論理の穴を見つけるINTPは、計画に検証の余地をつくることで協働しやすくなります。",
+    "ui": "INTJとINTPを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとINTPの違い・相性 | KalQLater",
+      "description": "INTJとINTPのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとINTPの違いを見つめる",
+      "ogDescription": "INTJとINTPの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとINTPの比較",
+      "twitterDescription": "INTJとINTPの違いと関係のヒント。",
+      "keywords": "INTJ INTP, INTJとINTPの違い, INTJ INTP 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs INTP",
+      "faq": "INTJとINTPに関するよくある質問"
     }
   }
 }

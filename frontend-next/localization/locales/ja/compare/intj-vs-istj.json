@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-istj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとISTJを比べて見えること",
+    "helper": "未来を設計するINTJと、確かな手順を守るISTJの違い",
+    "intro": "INTJは先の可能性から全体像を組み立て、ISTJは経験や事実をもとに信頼できる方法を選ぶことがあります。",
+    "snapshot": "INTJとISTJの違いは、どちらが優れているかではなく、物事を理解し、判断し、人と関わる道筋に表れます。",
+    "sections": "二人とも責任感がありますが、INTJは新しい構造を考え、ISTJは今機能している仕組みを大切にしやすい組み合わせです。",
+    "misconceptions": "INTJが変化の必要性を急ぎ、ISTJが根拠や実務への影響を確かめたいときは、変更の理由と試す範囲を具体的に共有しましょう。",
+    "percentage": "相性を一つの数字で決めるより、INTJとISTJがそれぞれ何を大切にしているかを確かめる方が、関係の助けになります。",
+    "faqs": "長期の視点を持つINTJと着実なISTJは、構想を実行可能な手順に落とし込むことで、安定した信頼をつくりやすくなります。",
+    "ui": "INTJとISTJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとISTJの違い・相性 | KalQLater",
+      "description": "INTJとISTJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとISTJの違いを見つめる",
+      "ogDescription": "INTJとISTJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとISTJの比較",
+      "twitterDescription": "INTJとISTJの違いと関係のヒント。",
+      "keywords": "INTJ ISTJ, INTJとISTJの違い, INTJ ISTJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ISTJ",
+      "faq": "INTJとISTJに関するよくある質問"
     }
   }
 }

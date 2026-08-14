@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-entj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとENTJを比べて見えること",
+    "helper": "静かな戦略を練るINTJと、目標へ組織を動かすENTJの違い",
+    "intro": "INTJは内側で構想を深めてから動き、ENTJは目標を掲げて周囲を巻き込みながら進めることがあります。",
+    "snapshot": "INTJとENTJの違いは、優劣ではなく、情報を受け取り、判断し、関係を築く過程に表れます。",
+    "sections": "INTJは背景の整合性を重視し、ENTJは実行速度と影響範囲を意識しやすい組み合わせです。目的と判断権限を明確にすると、張り合いが協力へ変わります。",
+    "misconceptions": "ENTJの速さをINTJが粗さと受け取るとき、またINTJの慎重さをENTJが停滞と感じるときは、検討に必要な根拠と決定時点を合意しましょう。",
+    "percentage": "二人の関係を一つの相性の数値で決めるより、ENTJとINTJが安心して話せる条件を見つける方が役立ちます。",
+    "faqs": "構想を深めるINTJと実行を推進するENTJは、役割を競うのでなく、設計と実装の往復をつくると力を合わせやすくなります。",
+    "ui": "INTJとENTJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとENTJの違い・相性 | KalQLater",
+      "description": "INTJとENTJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとENTJの違いを見つめる",
+      "ogDescription": "INTJとENTJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとENTJの比較",
+      "twitterDescription": "INTJとENTJの違いと関係のヒント。",
+      "keywords": "INTJ ENTJ, INTJとENTJの違い, INTJ ENTJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ENTJ",
+      "faq": "INTJとENTJに関するよくある質問"
     }
   }
 }

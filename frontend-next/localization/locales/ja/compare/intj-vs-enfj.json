@@ -3,27 +3,27 @@
   "route": "/ja/compare/intj-vs-enfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INTJとENFJを比べて見えること",
+    "helper": "戦略を組み立てるINTJと、人の成長を後押しするENFJの違い",
+    "intro": "INTJは仕組みと長期の方向性を考え、ENFJは人の可能性やチームのまとまりを意識して動くことがあります。",
+    "snapshot": "INTJとENFJの違いは、どちらが優れているかではなく、物事を理解し、判断し、人と関わる道筋に表れます。",
+    "sections": "INTJは目的達成の構造を、ENFJはその過程で人がどう関われるかを重視しやすい組み合わせです。成果と関係の両方を話題にすると、対話が深まります。",
+    "misconceptions": "INTJが一人で考える時間を必要とするとき、ENFJが距離を心配することがあります。必要な静けさと、再び話す時点を共有することが安心につながります。",
+    "percentage": "相性を一つの数字で決めるより、INTJとENFJがそれぞれ何を大切にしているかを確かめる方が、関係の助けになります。",
+    "faqs": "INTJの見通しとENFJの人を育てる力は、目的だけでなく、誰がどのように成長できるかを計画に含めることで補い合えます。",
+    "ui": "INTJとENFJを比較する",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INTJとENFJの違い・相性 | KalQLater",
+      "description": "INTJとENFJのコミュニケーション、人間関係、仕事、考え方の違いを丁寧に比較します。",
+      "ogTitle": "INTJとENFJの違いを見つめる",
+      "ogDescription": "INTJとENFJの関わり方や考え方を、決めつけずに比較します。",
+      "twitterTitle": "INTJとENFJの比較",
+      "twitterDescription": "INTJとENFJの違いと関係のヒント。",
+      "keywords": "INTJ ENFJ, INTJとENFJの違い, INTJ ENFJ 相性"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INTJ vs ENFJ",
+      "faq": "INTJとENFJに関するよくある質問"
     }
   }
 }
