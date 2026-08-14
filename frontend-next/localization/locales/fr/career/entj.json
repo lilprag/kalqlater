@@ -3,29 +3,29 @@
   "route": "/fr/personality/entj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ENTJ : des carrières pour décider et entraîner",
+    "lens": "Ce guide aide les ENTJ à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "pilotage, ambition et organisation collective",
+    "roles": "Pistes à explorer : direction, entrepreneuriat, conseil, finance et opérations.",
+    "settings": "Les ENTJ progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : direction, entrepreneuriat, conseil, finance et opérations.",
+    "faqs": "Le type ENTJ offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ENTJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ENTJ : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ENTJ selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ENTJ : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ENTJ.",
+      "twitterTitle": "Carrières ENTJ : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ENTJ.",
+      "keywords": "carrières ENTJ, métiers ENTJ, travail ENTJ, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ENTJ",
+      "faq": "Questions fréquentes sur les carrières ENTJ"
     }
   }
 }

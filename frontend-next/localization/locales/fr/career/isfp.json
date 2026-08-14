@@ -3,29 +3,29 @@
   "route": "/fr/personality/isfp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISFP : des carrières proches du concret et des valeurs",
+    "lens": "Ce guide aide les ISFP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "sensibilité, adaptabilité et sens esthétique",
+    "roles": "Pistes à explorer : création, soins, design, artisanat et environnement.",
+    "settings": "Les ISFP progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : création, soins, design, artisanat et environnement.",
+    "faqs": "Le type ISFP offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ISFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ISFP : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ISFP selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ISFP : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ISFP.",
+      "twitterTitle": "Carrières ISFP : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ISFP.",
+      "keywords": "carrières ISFP, métiers ISFP, travail ISFP, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ISFP",
+      "faq": "Questions fréquentes sur les carrières ISFP"
     }
   }
 }

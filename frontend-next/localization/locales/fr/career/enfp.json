@@ -3,29 +3,29 @@
   "route": "/fr/personality/enfp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ENFP : des carrières ouvertes aux possibilités",
+    "lens": "Ce guide aide les ENFP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "créativité, enthousiasme et relationnel",
+    "roles": "Pistes à explorer : communication, innovation, création, conseil et entrepreneuriat.",
+    "settings": "Les ENFP progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : communication, innovation, création, conseil et entrepreneuriat.",
+    "faqs": "Le type ENFP offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ENFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ENFP : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ENFP selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ENFP : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ENFP.",
+      "twitterTitle": "Carrières ENFP : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ENFP.",
+      "keywords": "carrières ENFP, métiers ENFP, travail ENFP, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ENFP",
+      "faq": "Questions fréquentes sur les carrières ENFP"
     }
   }
 }

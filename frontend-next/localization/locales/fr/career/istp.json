@@ -3,29 +3,29 @@
   "route": "/fr/personality/istp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISTP : des carrières pour diagnostiquer et agir",
+    "lens": "Ce guide aide les ISTP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "sang-froid, précision et résolution concrète",
+    "roles": "Pistes à explorer : technique, ingénierie, sécurité, artisanat et intervention.",
+    "settings": "Les ISTP progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : technique, ingénierie, sécurité, artisanat et intervention.",
+    "faqs": "Le type ISTP offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ISTP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ISTP : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ISTP selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ISTP : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ISTP.",
+      "twitterTitle": "Carrières ISTP : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ISTP.",
+      "keywords": "carrières ISTP, métiers ISTP, travail ISTP, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ISTP",
+      "faq": "Questions fréquentes sur les carrières ISTP"
     }
   }
 }

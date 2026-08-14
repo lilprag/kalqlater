@@ -3,29 +3,29 @@
   "route": "/fr/personality/istj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISTJ : des carrières fondées sur la fiabilité",
+    "lens": "Ce guide aide les ISTJ à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "rigueur, méthode et sens des responsabilités",
+    "roles": "Pistes à explorer : gestion, qualité, droit, finance, administration et ingénierie.",
+    "settings": "Les ISTJ progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : gestion, qualité, droit, finance, administration et ingénierie.",
+    "faqs": "Le type ISTJ offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ISTJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ISTJ : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ISTJ selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ISTJ : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ISTJ.",
+      "twitterTitle": "Carrières ISTJ : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ISTJ.",
+      "keywords": "carrières ISTJ, métiers ISTJ, travail ISTJ, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ISTJ",
+      "faq": "Questions fréquentes sur les carrières ISTJ"
     }
   }
 }

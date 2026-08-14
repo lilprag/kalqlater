@@ -20,7 +20,11 @@ const FRENCH_PERSONALITY_GUIDES = Object.freeze([
   'intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp',
   'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp',
 ].map((type) => `personality:${type}`));
-const FRENCH_PREVIEW_PAGES = Object.freeze([...FRENCH_PHASE_ONE_PAGES, ...FRENCH_PERSONALITY_GUIDES]);
+const FRENCH_CAREER_GUIDES = Object.freeze([
+  'intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp',
+  'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp',
+].map((type) => `career:${type}`));
+const FRENCH_PREVIEW_PAGES = Object.freeze([...FRENCH_PHASE_ONE_PAGES, ...FRENCH_PERSONALITY_GUIDES, ...FRENCH_CAREER_GUIDES]);
 
 /**
  * This is configuration, not a list of locale-specific code paths. Adding a

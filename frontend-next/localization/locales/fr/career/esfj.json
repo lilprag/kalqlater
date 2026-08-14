@@ -3,29 +3,29 @@
   "route": "/fr/personality/esfj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ESFJ : des carrières ancrées dans la coopération",
+    "lens": "Ce guide aide les ESFJ à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "écoute, coordination et sens du collectif",
+    "roles": "Pistes à explorer : santé, éducation, ressources humaines, accueil et événementiel.",
+    "settings": "Les ESFJ progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : santé, éducation, ressources humaines, accueil et événementiel.",
+    "faqs": "Le type ESFJ offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ESFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ESFJ : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ESFJ selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ESFJ : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ESFJ.",
+      "twitterTitle": "Carrières ESFJ : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ESFJ.",
+      "keywords": "carrières ESFJ, métiers ESFJ, travail ESFJ, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ESFJ",
+      "faq": "Questions fréquentes sur les carrières ESFJ"
     }
   }
 }

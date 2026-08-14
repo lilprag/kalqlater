@@ -3,29 +3,29 @@
   "route": "/fr/personality/estj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ESTJ : des carrières pour organiser et concrétiser",
+    "lens": "Ce guide aide les ESTJ à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "décision, efficacité et sens pratique",
+    "roles": "Pistes à explorer : opérations, gestion, finance, logistique et administration.",
+    "settings": "Les ESTJ progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : opérations, gestion, finance, logistique et administration.",
+    "faqs": "Le type ESTJ offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ESTJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ESTJ : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ESTJ selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ESTJ : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ESTJ.",
+      "twitterTitle": "Carrières ESTJ : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ESTJ.",
+      "keywords": "carrières ESTJ, métiers ESTJ, travail ESTJ, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ESTJ",
+      "faq": "Questions fréquentes sur les carrières ESTJ"
     }
   }
 }

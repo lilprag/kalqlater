@@ -3,29 +3,29 @@
   "route": "/fr/personality/intj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INTJ : des carrières à la hauteur d’une vision stratégique",
+    "lens": "Ce guide aide les INTJ à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "analyse systémique, stratégie et amélioration durable",
+    "roles": "Pistes à explorer : ingénierie, recherche, architecture, conseil et stratégie.",
+    "settings": "Les INTJ progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : ingénierie, recherche, architecture, conseil et stratégie.",
+    "faqs": "Le type INTJ offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes INTJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières INTJ : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour INTJ selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières INTJ : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les INTJ.",
+      "twitterTitle": "Carrières INTJ : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil INTJ.",
+      "keywords": "carrières INTJ, métiers INTJ, travail INTJ, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières INTJ",
+      "faq": "Questions fréquentes sur les carrières INTJ"
     }
   }
 }

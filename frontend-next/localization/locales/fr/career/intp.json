@@ -3,29 +3,29 @@
   "route": "/fr/personality/intp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INTP : des carrières pour explorer et comprendre",
+    "lens": "Ce guide aide les INTP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "raisonnement analytique, curiosité et résolution de problèmes",
+    "roles": "Pistes à explorer : recherche, technologie, données, conception et sciences.",
+    "settings": "Les INTP progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : recherche, technologie, données, conception et sciences.",
+    "faqs": "Le type INTP offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes INTP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières INTP : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour INTP selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières INTP : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les INTP.",
+      "twitterTitle": "Carrières INTP : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil INTP.",
+      "keywords": "carrières INTP, métiers INTP, travail INTP, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières INTP",
+      "faq": "Questions fréquentes sur les carrières INTP"
     }
   }
 }

@@ -3,29 +3,29 @@
   "route": "/fr/personality/infp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INFP : des carrières fidèles aux valeurs",
+    "lens": "Ce guide aide les INFP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "créativité, empathie et expression personnelle",
+    "roles": "Pistes à explorer : écriture, création, accompagnement, culture et éducation.",
+    "settings": "Les INFP progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : écriture, création, accompagnement, culture et éducation.",
+    "faqs": "Le type INFP offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes INFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières INFP : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour INFP selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières INFP : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les INFP.",
+      "twitterTitle": "Carrières INFP : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil INFP.",
+      "keywords": "carrières INFP, métiers INFP, travail INFP, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières INFP",
+      "faq": "Questions fréquentes sur les carrières INFP"
     }
   }
 }

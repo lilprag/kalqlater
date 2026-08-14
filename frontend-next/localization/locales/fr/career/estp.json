@@ -3,29 +3,29 @@
   "route": "/fr/personality/estp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ESTP : des carrières au rythme de l’action",
+    "lens": "Ce guide aide les ESTP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "réactivité, négociation et réalisme",
+    "roles": "Pistes à explorer : vente, entrepreneuriat, sport, opérations et gestion de crise.",
+    "settings": "Les ESTP progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : vente, entrepreneuriat, sport, opérations et gestion de crise.",
+    "faqs": "Le type ESTP offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ESTP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ESTP : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ESTP selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ESTP : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ESTP.",
+      "twitterTitle": "Carrières ESTP : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ESTP.",
+      "keywords": "carrières ESTP, métiers ESTP, travail ESTP, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ESTP",
+      "faq": "Questions fréquentes sur les carrières ESTP"
     }
   }
 }

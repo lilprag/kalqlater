@@ -3,29 +3,29 @@
   "route": "/fr/personality/entp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ENTP : des carrières pour inventer et convaincre",
+    "lens": "Ce guide aide les ENTP à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "innovation, adaptabilité et argumentation",
+    "roles": "Pistes à explorer : produit, entrepreneuriat, stratégie, vente et création.",
+    "settings": "Les ENTP progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : produit, entrepreneuriat, stratégie, vente et création.",
+    "faqs": "Le type ENTP offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ENTP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ENTP : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ENTP selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ENTP : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ENTP.",
+      "twitterTitle": "Carrières ENTP : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ENTP.",
+      "keywords": "carrières ENTP, métiers ENTP, travail ENTP, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ENTP",
+      "faq": "Questions fréquentes sur les carrières ENTP"
     }
   }
 }

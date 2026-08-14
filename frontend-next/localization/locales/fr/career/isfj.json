@@ -3,29 +3,29 @@
   "route": "/fr/personality/isfj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISFJ : des carrières de soutien et de confiance",
+    "lens": "Ce guide aide les ISFJ à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "attention, organisation et sens du service",
+    "roles": "Pistes à explorer : santé, éducation, coordination, administration et accompagnement.",
+    "settings": "Les ISFJ progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : santé, éducation, coordination, administration et accompagnement.",
+    "faqs": "Le type ISFJ offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes ISFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières ISFJ : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour ISFJ selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières ISFJ : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les ISFJ.",
+      "twitterTitle": "Carrières ISFJ : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil ISFJ.",
+      "keywords": "carrières ISFJ, métiers ISFJ, travail ISFJ, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières ISFJ",
+      "faq": "Questions fréquentes sur les carrières ISFJ"
     }
   }
 }

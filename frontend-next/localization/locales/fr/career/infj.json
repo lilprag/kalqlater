@@ -3,29 +3,29 @@
   "route": "/fr/personality/infj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INFJ : des carrières guidées par le sens",
+    "lens": "Ce guide aide les INFJ à examiner un contexte professionnel plutôt qu’un intitulé parfait.",
+    "skill": "vision, écoute et compréhension des personnes",
+    "roles": "Pistes à explorer : conseil, écriture, éducation, psychologie et impact social.",
+    "settings": "Les INFJ progressent dans un environnement qui respecte leurs préférences sans les enfermer.",
+    "formats": "Privilégiez des missions où les attentes, l’autonomie et le rythme sont cohérents.",
+    "skills": "Développez vos forces tout en cultivant les compétences qui élargissent vos options.",
+    "stages": "À chaque étape, réévaluez ce qui vous stimule, vous fatigue et vous permet d’apprendre.",
+    "industries": "Secteurs à explorer : conseil, écriture, éducation, psychologie et impact social.",
+    "faqs": "Le type INFJ offre des repères de réflexion ; il ne détermine ni la réussite ni le métier à choisir.",
+    "ctas": "Explorer les pistes INFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Carrières INFJ : pistes professionnelles | KalQLater",
+      "description": "Explorez des pistes de carrière pour INFJ selon vos préférences, vos forces et votre contexte.",
+      "ogTitle": "Carrières INFJ : pistes à explorer",
+      "ogDescription": "Des repères professionnels nuancés pour les INFJ.",
+      "twitterTitle": "Carrières INFJ : repères",
+      "twitterDescription": "Explorez les pistes professionnelles du profil INFJ.",
+      "keywords": "carrières INFJ, métiers INFJ, travail INFJ, orientation professionnelle"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Carrières INFJ",
+      "faq": "Questions fréquentes sur les carrières INFJ"
     }
   }
 }
