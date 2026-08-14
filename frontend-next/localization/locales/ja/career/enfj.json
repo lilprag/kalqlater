@@ -3,29 +3,29 @@
   "route": "/ja/personality/enfj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ENFJに合う仕事を、人の成長と協働から考える",
+    "lens": "ENFJにとって仕事選びでは、人の可能性を引き出し、目的に向けて周囲と力を合わせられる環境かを確かめることが役立ちます。",
+    "skill": "人の強みを見つけ、共通の目的に向けて関係を育てる力",
+    "roles": "検討しやすい役割：人材開発、教育、組織開発、採用、広報、プロジェクトマネジメント、社会課題の推進。",
+    "settings": "成長と協働が重視され、対話を通じて人を支えながら成果をつくれる環境で、ENFJは力を発揮しやすくなります。",
+    "formats": "目的を共有し、定期的に対話と振り返りを行える進め方は、関係づくりの強みを成果に結び付けます。",
+    "skills": "周囲を支える力に、負担を配分する力や、難しい意見も扱う力を加えると、より持続的に活躍できます。",
+    "stages": "初期は対人支援や調整の経験を積み、中期以降は育成や組織づくりへ。節目ごとに自分の余力も確認しましょう。",
+    "industries": "検討しやすい分野：教育、人材、医療・福祉、広報、非営利、組織開発、地域・社会事業。",
+    "faqs": "ENFJというタイプは仕事の選択を決めるものではありません。人への関わり方、強み、経験を考えるための視点です。",
+    "ctas": "ENFJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENFJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ENFJの共感力やリーダーシップを生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ENFJのキャリアを考えるガイド",
+      "ogDescription": "ENFJの強みから、人と協働する仕事の選択肢を考えます。",
+      "twitterTitle": "ENFJのキャリアガイド",
+      "twitterDescription": "ENFJの働き方と職種の選択肢。",
+      "keywords": "ENFJ 仕事, ENFJ キャリア, ENFJ 適職, ENFJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENFJのキャリアガイド",
+      "faq": "ENFJのキャリアに関するよくある質問"
     }
   }
 }

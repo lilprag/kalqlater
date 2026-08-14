@@ -3,29 +3,29 @@
   "route": "/ja/personality/infj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INFJに合う仕事を、意味と人への貢献から考える",
+    "lens": "INFJにとって仕事選びでは、誰かや社会にとっての意味を感じられ、自分の洞察を丁寧に生かせる環境かを確かめることが役立ちます。",
+    "skill": "人や状況の背景を読み取り、長期的な可能性を言葉にする力",
+    "roles": "検討しやすい役割：心理・福祉支援、教育、編集・執筆、研究、組織開発、社会課題に関わる企画。",
+    "settings": "価値観が共有され、静かに考える時間と信頼できる協働の両方がある環境で、INFJは力を発揮しやすくなります。",
+    "formats": "目的の意味を確認しながら、少人数で深く協力できる進め方は、集中と貢献の実感を支えます。",
+    "skills": "洞察力に、優先順位を決める力や、自分の考えを早めに伝える力を加えると、働き方の選択肢が広がります。",
+    "stages": "初期は興味のあるテーマと実務経験を結び付け、中期以降は専門性を深めながら、無理のない責任範囲を選びましょう。",
+    "industries": "検討しやすい分野：教育、医療・福祉、研究、出版、デザイン、非営利、組織・人材開発。",
+    "faqs": "INFJというタイプは職業を決めるものではありません。価値観、経験、生活の条件を含めてキャリアを考えるための視点です。",
+    "ctas": "INFJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INFJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "INFJの洞察力や価値観を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "INFJのキャリアを考えるガイド",
+      "ogDescription": "INFJの強みと大切にしたいことから、仕事の選択肢を考えます。",
+      "twitterTitle": "INFJのキャリアガイド",
+      "twitterDescription": "INFJの働き方と職種の選択肢。",
+      "keywords": "INFJ 仕事, INFJ キャリア, INFJ 適職, INFJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INFJのキャリアガイド",
+      "faq": "INFJのキャリアに関するよくある質問"
     }
   }
 }

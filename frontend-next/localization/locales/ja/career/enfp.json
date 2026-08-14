@@ -3,29 +3,29 @@
   "route": "/ja/personality/enfp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ENFPに合う仕事を、可能性と人とのつながりから考える",
+    "lens": "ENFPにとって仕事選びでは、好奇心を生かし、人やアイデアと関わりながら、新しい価値を育てられるかを確かめることが役立ちます。",
+    "skill": "可能性を見つけ、人やアイデアをつなぎ、前向きな動きを生み出す力",
+    "roles": "検討しやすい役割：企画、マーケティング、教育、採用、コミュニティ運営、コンテンツ制作、起業・新規事業。",
+    "settings": "変化と学びがあり、多様な人と関わりながら提案を試せる環境で、ENFPは力を発揮しやすくなります。",
+    "formats": "アイデアを共有し、小さく試し、仲間と改善を重ねられる進め方は、熱意を継続した成果へ変えます。",
+    "skills": "人を惹きつける力に、優先順位を絞る力や、完了まで進める仕組みを加えると、選択肢が広がります。",
+    "stages": "初期は関心の幅を生かして多様な経験を積み、次に情熱と安定した成長の両方を満たせる役割を選びましょう。",
+    "industries": "検討しやすい分野：教育、メディア、マーケティング、人材、地域・社会事業、クリエイティブ、テクノロジー。",
+    "faqs": "ENFPというタイプは適職を決めるものではありません。興味、経験、スキル、生活上の条件を考えるための一つの視点です。",
+    "ctas": "ENFPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENFPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ENFPの好奇心や共感力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ENFPのキャリアを考えるガイド",
+      "ogDescription": "ENFPの強みから、人と可能性を広げる仕事の選択肢を考えます。",
+      "twitterTitle": "ENFPのキャリアガイド",
+      "twitterDescription": "ENFPの働き方と職種の選択肢。",
+      "keywords": "ENFP 仕事, ENFP キャリア, ENFP 適職, ENFP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENFPのキャリアガイド",
+      "faq": "ENFPのキャリアに関するよくある質問"
     }
   }
 }

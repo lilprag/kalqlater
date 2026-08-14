@@ -3,29 +3,29 @@
   "route": "/ja/personality/infp/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "INFPに合う仕事を、価値観と創造性から考える",
+    "lens": "INFPにとって仕事選びでは、自分が大切にしたいことと結び付き、個性や想像力を生かして貢献できるかを確かめることが役立ちます。",
+    "skill": "人の気持ちや可能性を捉え、自分らしい言葉や表現に変える力",
+    "roles": "検討しやすい役割：執筆・編集、デザイン、教育、カウンセリング支援、コンテンツ企画、非営利の仕事。",
+    "settings": "価値観への理解があり、個人の工夫と落ち着いた集中を尊重する環境で、INFPは力を発揮しやすくなります。",
+    "formats": "目的に納得し、創意工夫と自分のペースを保ちながら進められる仕事の形が合いやすい傾向があります。",
+    "skills": "共感性と創造性に、期限や優先順位を扱う習慣を組み合わせると、思いを継続した成果へつなげやすくなります。",
+    "stages": "初期は複数の関心に触れながら表現や支援の方法を試し、次に自分の価値観と働き方が重なる領域を選びましょう。",
+    "industries": "検討しやすい分野：教育、出版、デザイン、文化・芸術、福祉、非営利、コンテンツ制作。",
+    "faqs": "INFPというタイプは向いている仕事を断定するものではありません。関心、得意なこと、生活上の条件を考えるための視点です。",
+    "ctas": "INFPのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INFPの仕事・キャリアの選択肢 | KalQLater",
+      "description": "INFPの価値観や創造性を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "INFPのキャリアを考えるガイド",
+      "ogDescription": "INFPらしい強みから、納得できる仕事の選択肢を考えます。",
+      "twitterTitle": "INFPのキャリアガイド",
+      "twitterDescription": "INFPの働き方と職種の選択肢。",
+      "keywords": "INFP 仕事, INFP キャリア, INFP 適職, INFP 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INFPのキャリアガイド",
+      "faq": "INFPのキャリアに関するよくある質問"
     }
   }
 }
