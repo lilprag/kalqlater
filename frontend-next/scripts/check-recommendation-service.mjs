@@ -57,7 +57,7 @@ assert.equal(service.get({ sourceType: 'personality-guide', sourceEntityId: 'per
 assert.equal(service.get({ sourceType: 'career-guide', sourceEntityId: 'personality-guide:intj', locale: 'en' }).primary, null, 'source type mismatch fails closed');
 assert.throws(() => service.get({ sourceType: 'personality-guide', sourceEntityId: 'personality-guide:intj', locale: 'fr' }), /Unknown recommendation locale/);
 assert.throws(() => service.get({ sourceType: 'unknown', sourceEntityId: 'personality-guide:intj', locale: 'en' }), /Unknown recommendation source type/);
-assert.equal(recommendationService.get({ sourceType: 'personality-guide', sourceEntityId: 'personality-guide:intj', locale: 'en' }).primary, null, 'empty production graph stays empty');
+assert.equal(recommendationService.get({ sourceType: 'personality-guide', sourceEntityId: 'personality-guide:intj', locale: 'en' }).primary.entityId, 'career-guide:intj', 'production graph exposes the approved Personality-to-Career relationship');
 
 const futureGraph = createRecommendationGraph([
   edge('personality-guide:intj', 'future-entity:extension', 'expands', 80, 80),

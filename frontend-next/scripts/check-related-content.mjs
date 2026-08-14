@@ -22,7 +22,7 @@ assert.equal(populated.secondary[1].label, 'Communication Insights', 'insight la
 const primaryOnly = buildRelatedContentModel({ sourceEntityId: 'career-guide:intj', sourceType: 'career-guide', locale: 'hi', service: fixtureService(response(item({ locale: 'hi', path: '/hi/personality/intj/careers' }))) });
 assert.equal(primaryOnly.primary.label, 'INTJ — करियर गाइड');
 assert.equal(primaryOnly.secondary.length, 0);
-assert.equal(buildRelatedContentModel({ sourceEntityId: 'personality-guide:intj', sourceType: 'personality-guide', locale: 'en', service: fixtureService(response(null)) }), null, 'empty production graph produces no UI');
+assert.equal(buildRelatedContentModel({ sourceEntityId: 'personality-guide:intj', sourceType: 'personality-guide', locale: 'en', service: fixtureService(response(null)) }), null, 'an empty service response produces no UI');
 
 assert.equal(buildRelatedContentModel({ sourceEntityId: 'personality-guide:intj', sourceType: 'personality-guide', locale: 'es', service: fixtureService(response(item({ locale: 'es', path: '/es/personality/intj/careers', availability: 'preview' }))) }), null, 'public mode never exposes a preview target');
 assert.equal(buildRelatedContentModel({ sourceEntityId: 'personality-guide:intj', sourceType: 'personality-guide', locale: 'es', mode: 'preview', service: fixtureService(response(item({ locale: 'es', path: '/es/personality/intj/careers', availability: 'preview' }))) }).primary.label, 'INTJ — Guía profesional');

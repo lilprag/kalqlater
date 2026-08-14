@@ -6,6 +6,7 @@ import {
   isAvailabilityState,
   isPublicationState,
 } from './content-entities.js';
+import { TYPE_CODES, TYPES } from '../data/types.js';
 
 /** @typedef {'related_to'|'continue_to'|'learn_before'|'learn_after'|'recommended_after'|'supports'|'expands'|'contrasts_with'|'similar_to'|'career_for'|'compare_with'} RecommendationRelationshipType */
 
@@ -137,5 +138,85 @@ export function getOutgoingEdges(graph, entityId) {
   return graph.outgoing[entityId] || Object.freeze([]);
 }
 
-/** Domain configuration only. Population and delivery belong to later PRs. */
-export const recommendationGraph = createRecommendationGraph([]);
+const PUBLIC_LOCALES = new Set(['en', 'hi']);
+
+function editorialAvailability({ spanishPreview = false } = {}) {
+  return Object.freeze(Object.fromEntries(contentEntityRegistry.configuredLocales.map((locale) => [
+    locale,
+    PUBLIC_LOCALES.has(locale) ? 'published' : locale === 'es' && spanishPreview ? 'preview' : 'planned',
+  ])));
+}
+
+function editorialEdge(from, to, relationshipType, priority, weight, options) {
+  return Object.freeze({
+    from, to, relationshipType, priority, weight,
+    publicationState: 'published', availability: editorialAvailability(options),
+  });
+}
+
+function sameGroupTypes(code) {
+  return TYPE_CODES.filter((candidate) => candidate !== code && TYPES[candidate].group === TYPES[code].group).slice(0, 3);
+}
+
+function pairId(first, second) {
+  const firstIndex = TYPE_CODES.indexOf(first);
+  const secondIndex = TYPE_CODES.indexOf(second);
+  const [left, right] = firstIndex < secondIndex ? [first, second] : [second, first];
+  return `compare:${left.toLowerCase()}-vs-${right.toLowerCase()}`;
+}
+
+const SPANISH_PREVIEW = Object.freeze({ spanishPreview: true });
+const editorialRecommendationEdges = Object.freeze([
+  // Every guide already presents its own career direction, group comparisons,
+  // communication, leadership, learning, relationship, community, and jobs
+  // content. These edges only make those authored connections explicit.
+  ...TYPE_CODES.flatMap((code) => {
+    const slug = code.toLowerCase();
+    return [
+      editorialEdge(`personality-guide:${slug}`, `career-guide:${slug}`, 'career_for', 100, 100, SPANISH_PREVIEW),
+      ...sameGroupTypes(code).map((other, index) => editorialEdge(`personality-guide:${slug}`, pairId(code, other), 'compare_with', 90 - index, 90 - index, SPANISH_PREVIEW)),
+      editorialEdge(`personality-guide:${slug}`, 'insight:communication', 'expands', 70, 80),
+      editorialEdge(`personality-guide:${slug}`, 'insight:leadership', 'expands', 69, 78),
+      editorialEdge(`personality-guide:${slug}`, 'insight:learning', 'expands', 68, 76),
+      editorialEdge(`personality-guide:${slug}`, 'insight:conflict', 'expands', 67, 74),
+      editorialEdge(`personality-guide:${slug}`, 'community:directory', 'related_to', 50, 60),
+      editorialEdge(`personality-guide:${slug}`, 'jobs:directory', 'supports', 49, 58),
+    ];
+  }),
+  ...TYPE_CODES.flatMap((code) => {
+    const slug = code.toLowerCase();
+    return [
+      editorialEdge(`career-guide:${slug}`, `personality-guide:${slug}`, 'career_for', 100, 100, SPANISH_PREVIEW),
+      ...sameGroupTypes(code).map((other, index) => editorialEdge(`career-guide:${slug}`, pairId(code, other), 'compare_with', 90 - index, 90 - index, SPANISH_PREVIEW)),
+      editorialEdge(`career-guide:${slug}`, 'insight:communication', 'expands', 70, 80),
+      editorialEdge(`career-guide:${slug}`, 'insight:leadership', 'expands', 69, 78),
+      editorialEdge(`career-guide:${slug}`, 'insight:learning', 'expands', 68, 76),
+      editorialEdge(`career-guide:${slug}`, 'community:directory', 'related_to', 50, 60),
+      editorialEdge(`career-guide:${slug}`, 'jobs:directory', 'supports', 49, 58),
+    ];
+  }),
+  ...TYPE_CODES.flatMap((first, index) => TYPE_CODES.slice(index + 1).flatMap((second) => {
+    const source = pairId(first, second);
+    return [
+      editorialEdge(source, `personality-guide:${first.toLowerCase()}`, 'compare_with', 100, 100, SPANISH_PREVIEW),
+      editorialEdge(source, `personality-guide:${second.toLowerCase()}`, 'compare_with', 99, 99, SPANISH_PREVIEW),
+      editorialEdge(source, `career-guide:${first.toLowerCase()}`, 'career_for', 90, 92, SPANISH_PREVIEW),
+      editorialEdge(source, `career-guide:${second.toLowerCase()}`, 'career_for', 89, 91, SPANISH_PREVIEW),
+      editorialEdge(source, 'insight:communication', 'expands', 70, 80),
+      editorialEdge(source, 'insight:conflict', 'related_to', 69, 78),
+    ];
+  })),
+  // Personality guides contain authored communication, leadership, learning,
+  // relationship, and stress sections; career guides contain authored work,
+  // skills, and development sections. The published Insight pages extend that
+  // existing material without creating any new destination or claim.
+  ...['communication', 'conflict', 'leadership', 'learning'].flatMap((insight) => [
+    ...TYPE_CODES.map((code) => editorialEdge(`insight:${insight}`, `personality-guide:${code.toLowerCase()}`, 'related_to', 60, 70)),
+    ...TYPE_CODES.map((code) => editorialEdge(`insight:${insight}`, `career-guide:${code.toLowerCase()}`, 'supports', 50, 60)),
+  ]),
+  editorialEdge('insight:communication', 'community:directory', 'related_to', 40, 50),
+  editorialEdge('insight:conflict', 'insight:communication', 'continue_to', 80, 85),
+]);
+
+/** Editorial configuration only. Ranking and delivery remain in PR-005/006. */
+export const recommendationGraph = createRecommendationGraph(editorialRecommendationEdges);

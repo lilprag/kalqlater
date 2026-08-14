@@ -31,7 +31,11 @@ assert.equal(getIncomingEdges(graph, 'future-entity:target').length, 1);
 assert.equal(getIncomingEdges(graph, 'future-entity:source').length, 0);
 assert(RECOMMENDATION_RELATIONSHIP_TYPES.includes('career_for'));
 assert(RECOMMENDATION_RELATIONSHIP_TYPES.includes('compare_with'));
-assert.equal(recommendationGraph.edges.length, 0, 'production graph intentionally has no recommendation delivery configuration yet');
+assert.equal(recommendationGraph.edges.length, 1154, 'production graph contains the approved editorial relationships');
+assert(recommendationGraph.edges.every((item) => item.availability.en === 'published' && item.availability.hi === 'published'), 'every production edge is available in published locales');
+assert(recommendationGraph.edges.filter((item) => item.availability.es === 'preview').every((item) => item.from.startsWith('personality-guide:') || item.from.startsWith('career-guide:') || item.from.startsWith('compare:')), 'Spanish preview edges originate only from Spanish-preview page families');
+const disconnected = recommendationGraph.nodes.filter((node) => getIncomingEdges(recommendationGraph, node.id).length === 0 && getOutgoingEdges(recommendationGraph, node.id).length === 0);
+assert(disconnected.every((node) => node.type === 'language'), 'only non-routable language registry nodes remain disconnected');
 
 assert.throws(() => createRecommendationGraph([{ ...edge, to: 'future-entity:source' }], { entityRegistry: registry }), /self-reference/);
 assert.throws(() => createRecommendationGraph([{ ...edge, to: 'future-entity:unknown' }], { entityRegistry: registry }), /Unknown content entity/);
