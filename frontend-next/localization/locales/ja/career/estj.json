@@ -3,29 +3,29 @@
   "route": "/ja/personality/estj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ESTJに合う仕事を、推進力と組織力から考える",
+    "lens": "ESTJにとって仕事選びでは、目標と責任を明確にし、人や業務を前へ進める力を生かせる環境かを確かめることが役立ちます。",
+    "skill": "優先順位を定め、役割を整え、実行を継続させる力",
+    "roles": "検討しやすい役割：業務管理、営業マネジメント、プロジェクト管理、経営管理、物流・運営、行政、現場責任者。",
+    "settings": "成果の基準と意思決定の範囲が明確で、責任を持って実行と改善を進められる環境でESTJは力を発揮しやすくなります。",
+    "formats": "目標、役割、進捗を可視化し、率直に連携できる進め方は、組織を動かす強みを成果につなげます。",
+    "skills": "実行力に、異なる意見を丁寧に聞く姿勢や、長期の影響を検討する習慣を加えると、リーダーシップが広がります。",
+    "stages": "初期は実務と責任を着実に担い、中期以降はチームや仕組みの改善へ。節目では自分の価値観にも目を向けましょう。",
+    "industries": "検討しやすい分野：運営、営業、金融、行政、物流、製造、公共サービス、組織マネジメント。",
+    "faqs": "ESTJというタイプは就くべき仕事を決めるものではありません。目標、強み、経験、生活の条件を整理するための視点です。",
+    "ctas": "ESTJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ESTJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ESTJの実行力や組織力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ESTJのキャリアを考えるガイド",
+      "ogDescription": "ESTJの強みから、成果を動かす仕事の選択肢を考えます。",
+      "twitterTitle": "ESTJのキャリアガイド",
+      "twitterDescription": "ESTJの働き方と職種の選択肢。",
+      "keywords": "ESTJ 仕事, ESTJ キャリア, ESTJ 適職, ESTJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ESTJのキャリアガイド",
+      "faq": "ESTJのキャリアに関するよくある質問"
     }
   }
 }

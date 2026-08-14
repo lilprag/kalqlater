@@ -3,29 +3,29 @@
   "route": "/ja/personality/isfj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISFJに合う仕事を、支援と着実な貢献から考える",
+    "lens": "ISFJにとって仕事選びでは、人の役に立つ実感があり、丁寧な配慮や継続的な支援を生かせる環境かを確かめることが役立ちます。",
+    "skill": "人の必要に気づき、細かな配慮を確かな行動に変える力",
+    "roles": "検討しやすい役割：医療・福祉支援、教育支援、人事・労務、カスタマーサポート、事務、図書館・地域サービス。",
+    "settings": "協力と敬意があり、細かな気配りや安定した貢献がきちんと認められる環境でISFJは力を発揮しやすくなります。",
+    "formats": "期待や役割が共有され、信頼できる人と無理なく連携できる進め方は、安心して力を出す助けになります。",
+    "skills": "支える力に、希望を伝える力や、負担の境界線をつくる習慣を加えると、長く働き続ける選択がしやすくなります。",
+    "stages": "初期は基礎的な支援と協働の経験を積み、次に専門性や後輩支援へ。節目では自分の余力も確かめましょう。",
+    "industries": "検討しやすい分野：医療・福祉、教育、公共サービス、人事、顧客支援、事務、地域サービス。",
+    "faqs": "ISFJというタイプは適職を断定するものではありません。大切にしたいこと、スキル、経験、働く条件を考える視点です。",
+    "ctas": "ISFJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISFJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ISFJの思いやりや実務力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ISFJのキャリアを考えるガイド",
+      "ogDescription": "ISFJの強みから、人を支える仕事の選択肢を考えます。",
+      "twitterTitle": "ISFJのキャリアガイド",
+      "twitterDescription": "ISFJの働き方と職種の選択肢。",
+      "keywords": "ISFJ 仕事, ISFJ キャリア, ISFJ 適職, ISFJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISFJのキャリアガイド",
+      "faq": "ISFJのキャリアに関するよくある質問"
     }
   }
 }

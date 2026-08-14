@@ -3,29 +3,29 @@
   "route": "/ja/personality/istj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ISTJに合う仕事を、信頼性と実務の積み重ねから考える",
+    "lens": "ISTJにとって仕事選びでは、責任を果たす基準が明確で、専門性と着実な改善を生かせる環境かを確かめることが役立ちます。",
+    "skill": "事実と手順を丁寧に扱い、安定した品質でやり切る力",
+    "roles": "検討しやすい役割：経理・財務、品質管理、システム運用、行政事務、法務支援、プロジェクト管理、専門技術職。",
+    "settings": "役割、手順、責任範囲が明確で、丁寧な仕事と継続的な貢献が認められる環境でISTJは力を発揮しやすくなります。",
+    "formats": "計画、基準、期限を共有し、落ち着いて集中できる進め方は、正確さと信頼性を成果へ結び付けます。",
+    "skills": "着実な実行力に、変化の意図を尋ねる習慣や、新しい方法を小さく試す姿勢を加えると選択肢が広がります。",
+    "stages": "初期は業務の基礎と信頼を積み、中期以降は専門性や改善の責任を深めましょう。節目では働く条件も見直します。",
+    "industries": "検討しやすい分野：金融、行政、法務、製造、技術運用、物流、医療事務、品質管理。",
+    "faqs": "ISTJというタイプは仕事を決めるものではありません。強み、経験、価値観、生活上の条件を考えるための一つの視点です。",
+    "ctas": "ISTJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISTJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ISTJの信頼性や実務力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ISTJのキャリアを考えるガイド",
+      "ogDescription": "ISTJの強みから、着実に働ける選択肢を考えます。",
+      "twitterTitle": "ISTJのキャリアガイド",
+      "twitterDescription": "ISTJの働き方と職種の選択肢。",
+      "keywords": "ISTJ 仕事, ISTJ キャリア, ISTJ 適職, ISTJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISTJのキャリアガイド",
+      "faq": "ISTJのキャリアに関するよくある質問"
     }
   }
 }

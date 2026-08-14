@@ -3,29 +3,29 @@
   "route": "/ja/personality/esfj/careers",
   "status": "draft",
   "fields": {
-    "hero": null,
-    "lens": null,
-    "skill": null,
-    "roles": null,
-    "settings": null,
-    "formats": null,
-    "skills": null,
-    "stages": null,
-    "industries": null,
-    "faqs": null,
-    "ctas": null,
+    "hero": "ESFJに合う仕事を、人との協力と実感ある貢献から考える",
+    "lens": "ESFJにとって仕事選びでは、人との関係を大切にしながら、目に見える形で役に立ち、協力を育てられる環境かを確かめることが役立ちます。",
+    "skill": "人が関わりやすい場をつくり、細かな気配りを協働へつなげる力",
+    "roles": "検討しやすい役割：教育、医療・福祉、人事、カスタマーサクセス、広報、イベント運営、地域サービス。",
+    "settings": "互いの努力を認め、連携と配慮が大切にされる環境で、ESFJは人とのつながりを成果へ生かしやすくなります。",
+    "formats": "役割と期待を確認しながら、対話や感謝を交わせる進め方は、協調性を持続した貢献につなげます。",
+    "skills": "周囲を支える力に、自分の優先順位を守る力や、異なる意見を受け止める力を加えると、働き方の幅が広がります。",
+    "stages": "初期は人と協力する経験を積み、中期以降は育成やチーム運営へ。節目では自分が望む成長も確認しましょう。",
+    "industries": "検討しやすい分野：教育、医療・福祉、人材、広報、接客・顧客支援、地域サービス、イベント・運営。",
+    "faqs": "ESFJというタイプはキャリアを決めるものではありません。関心、経験、価値観、働き方の希望を考えるための視点です。",
+    "ctas": "ESFJのキャリアの選択肢を見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ESFJの仕事・キャリアの選択肢 | KalQLater",
+      "description": "ESFJの協調性や支援力を生かす働き方、職種、成長の視点を紹介します。",
+      "ogTitle": "ESFJのキャリアを考えるガイド",
+      "ogDescription": "ESFJの強みから、人と協力する仕事の選択肢を考えます。",
+      "twitterTitle": "ESFJのキャリアガイド",
+      "twitterDescription": "ESFJの働き方と職種の選択肢。",
+      "keywords": "ESFJ 仕事, ESFJ キャリア, ESFJ 適職, ESFJ 働き方"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ESFJのキャリアガイド",
+      "faq": "ESFJのキャリアに関するよくある質問"
     }
   }
 }
