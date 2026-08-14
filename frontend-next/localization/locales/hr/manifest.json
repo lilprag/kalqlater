@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "locale": "hr",
+  "nativeName": "Hrvatski",
+  "direction": "ltr",
+  "state": "draft",
+  "sourceLocale": "es",
+  "generatedBy": "language-bootstrap-factory",
+  "publication": {
+    "sitemap": false,
+    "hreflang": false,
+    "languageSelector": false,
+    "robots": "noindex"
+  }
+}

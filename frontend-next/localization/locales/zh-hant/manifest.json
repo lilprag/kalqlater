@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "locale": "zh-hant",
+  "nativeName": "繁體中文",
+  "direction": "ltr",
+  "state": "draft",
+  "sourceLocale": "es",
+  "generatedBy": "language-bootstrap-factory",
+  "publication": {
+    "sitemap": false,
+    "hreflang": false,
+    "languageSelector": false,
+    "robots": "noindex"
+  }
+}

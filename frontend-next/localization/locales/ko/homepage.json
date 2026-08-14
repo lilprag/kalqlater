@@ -1,0 +1,32 @@
+{
+  "id": "homepage",
+  "route": "/ko",
+  "status": "draft",
+  "fields": {
+    "eyebrow": null,
+    "h1": null,
+    "body": null,
+    "primaryCta": null,
+    "secondaryCta": null,
+    "trustLine": null,
+    "features": null,
+    "dimensions": null,
+    "insights": null,
+    "community": null,
+    "finalCta": null,
+    "footer": null,
+    "seo": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "jsonLd": {
+      "websiteName": null,
+      "organizationName": null
+    }
+  }
+}

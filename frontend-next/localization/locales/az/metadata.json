@@ -1,0 +1,79 @@
+{
+  "id": "metadata",
+  "route": null,
+  "status": "draft",
+  "fields": {
+    "homepage": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "personality": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "career": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "compare": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "insights": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "community": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "jobs": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "static": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    }
+  }
+}

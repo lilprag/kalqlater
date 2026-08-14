@@ -1,0 +1,28 @@
+{
+  "id": "insight:conflict",
+  "route": "/lv/insights/conflict",
+  "status": "draft",
+  "fields": {
+    "eyebrow": null,
+    "h1": null,
+    "promise": null,
+    "dimensions": null,
+    "examples": null,
+    "howItWorks": null,
+    "faqs": null,
+    "ctas": null,
+    "seo": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "jsonLd": {
+      "breadcrumb": null,
+      "faq": null
+    }
+  }
+}

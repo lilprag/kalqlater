@@ -1,0 +1,13 @@
+{
+  "id": "json-ld",
+  "route": null,
+  "status": "draft",
+  "fields": {
+    "breadcrumbHome": null,
+    "websiteName": null,
+    "organizationName": null,
+    "collectionPageName": null,
+    "faqQuestion": null,
+    "faqAnswer": null
+  }
+}

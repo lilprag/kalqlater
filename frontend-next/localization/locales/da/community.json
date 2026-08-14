@@ -1,0 +1,23 @@
+{
+  "id": "community",
+  "route": "/da/community",
+  "status": "draft",
+  "fields": {
+    "h1": null,
+    "body": null,
+    "ctas": null,
+    "seo": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "jsonLd": {
+      "breadcrumb": null,
+      "collectionPage": null
+    }
+  }
+}

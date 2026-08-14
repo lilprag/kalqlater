@@ -1,0 +1,39 @@
+{
+  "id": "personality:isfj",
+  "route": "/et/personality/isfj",
+  "status": "draft",
+  "fields": {
+    "displayName": null,
+    "summary": null,
+    "overview": null,
+    "coreTraits": null,
+    "strengths": null,
+    "growthAreas": null,
+    "communication": null,
+    "relationships": null,
+    "friendship": null,
+    "romance": null,
+    "family": null,
+    "teamwork": null,
+    "workStyle": null,
+    "leadership": null,
+    "learning": null,
+    "stress": null,
+    "recommendations": null,
+    "faqs": null,
+    "ctas": null,
+    "seo": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "jsonLd": {
+      "breadcrumb": null,
+      "faq": null
+    }
+  }
+}

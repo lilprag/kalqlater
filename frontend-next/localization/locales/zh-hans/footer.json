@@ -1,0 +1,18 @@
+{
+  "id": "footer",
+  "route": null,
+  "status": "draft",
+  "fields": {
+    "description": null,
+    "insights": null,
+    "communication": null,
+    "compare": null,
+    "community": null,
+    "jobs": null,
+    "privacy": null,
+    "terms": null,
+    "contact": null,
+    "takeTest": null,
+    "copyright": null
+  }
+}

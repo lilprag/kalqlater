@@ -1,0 +1,31 @@
+{
+  "id": "career:entp",
+  "route": "/ka/personality/entp/careers",
+  "status": "draft",
+  "fields": {
+    "hero": null,
+    "lens": null,
+    "skill": null,
+    "roles": null,
+    "settings": null,
+    "formats": null,
+    "skills": null,
+    "stages": null,
+    "industries": null,
+    "faqs": null,
+    "ctas": null,
+    "seo": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "jsonLd": {
+      "breadcrumb": null,
+      "faq": null
+    }
+  }
+}

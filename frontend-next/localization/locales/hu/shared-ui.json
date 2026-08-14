@@ -1,0 +1,16 @@
+{
+  "id": "shared-ui",
+  "route": null,
+  "status": "draft",
+  "fields": {
+    "loading": null,
+    "empty": null,
+    "success": null,
+    "retry": null,
+    "back": null,
+    "next": null,
+    "networkError": null,
+    "notFound": null,
+    "validationError": null
+  }
+}

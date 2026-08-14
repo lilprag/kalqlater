@@ -1,0 +1,29 @@
+{
+  "id": "compare:istj-vs-esfj",
+  "route": "/sw/compare/istj-vs-esfj",
+  "status": "draft",
+  "fields": {
+    "eyebrow": null,
+    "helper": null,
+    "intro": null,
+    "snapshot": null,
+    "sections": null,
+    "misconceptions": null,
+    "percentage": null,
+    "faqs": null,
+    "ui": null,
+    "seo": {
+      "title": null,
+      "description": null,
+      "ogTitle": null,
+      "ogDescription": null,
+      "twitterTitle": null,
+      "twitterDescription": null,
+      "keywords": null
+    },
+    "jsonLd": {
+      "breadcrumb": null,
+      "faq": null
+    }
+  }
+}

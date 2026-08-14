@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "locale": "ja",
+  "nativeName": "日本語",
+  "direction": "ltr",
+  "state": "draft",
+  "sourceLocale": "es",
+  "generatedBy": "language-bootstrap-factory",
+  "publication": {
+    "sitemap": false,
+    "hreflang": false,
+    "languageSelector": false,
+    "robots": "noindex"
+  }
+}
