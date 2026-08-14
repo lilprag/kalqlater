@@ -16,6 +16,11 @@ const FRENCH_PHASE_ONE_PAGES = Object.freeze([
   'homepage', 'navigation', 'footer', 'shared-ui', 'metadata', 'json-ld',
   'community', 'jobs', 'static:contact', 'static:privacy', 'static:terms',
 ]);
+const FRENCH_PERSONALITY_GUIDES = Object.freeze([
+  'intj', 'intp', 'entj', 'entp', 'infj', 'infp', 'enfj', 'enfp',
+  'istj', 'isfj', 'estj', 'esfj', 'istp', 'isfp', 'estp', 'esfp',
+].map((type) => `personality:${type}`));
+const FRENCH_PREVIEW_PAGES = Object.freeze([...FRENCH_PHASE_ONE_PAGES, ...FRENCH_PERSONALITY_GUIDES]);
 
 /**
  * This is configuration, not a list of locale-specific code paths. Adding a
@@ -26,7 +31,7 @@ export const localeRuntimeRegistry = Object.freeze(Object.fromEntries(localeRegi
   locale: locale.code,
   state: locale.published ? 'published' : ['es', 'fr'].includes(locale.code) ? 'preview' : 'draft',
   packageSource: locale.published ? 'application' : locale.code === 'es' ? 'legacy-preview' : 'json-package',
-  previewPageIds: locale.code === 'fr' ? FRENCH_PHASE_ONE_PAGES : null,
+  previewPageIds: locale.code === 'fr' ? FRENCH_PREVIEW_PAGES : null,
 })])));
 
 export function localeRuntime(locale) {

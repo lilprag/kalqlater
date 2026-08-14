@@ -49,7 +49,8 @@ try {
 const frenchHomepage = await loadLocalePage('fr', 'homepage');
 assert(frenchHomepage && frenchHomepage.fields.h1.includes('Mieux vous comprendre'));
 assert.equal((await loadLocalePage('fr', 'static:contact'))?.fields?.h1, 'Nous contacter');
-assert.equal(await loadLocalePage('fr', 'personality:intj'), null);
+assert.equal((await loadLocalePage('fr', 'personality:intj'))?.fields?.displayName, 'INTJ — l’architecte stratégique');
+assert.equal(await loadLocalePage('fr', 'career:intj'), null);
 assert.equal((await loadLocaleChrome('fr'))?.navigation?.home, 'Accueil');
 assert.equal(localePreviewMetadata('fr', frenchHomepage).robots.index, false);
 
