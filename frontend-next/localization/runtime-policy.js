@@ -30,6 +30,10 @@ const FRENCH_COMPARE_GUIDES = Object.freeze([
 ].flatMap((first, index, types) => types.slice(index + 1).map((second) => `compare:${first}-vs-${second}`)));
 const FRENCH_INSIGHTS = Object.freeze(['communication', 'conflict', 'leadership', 'learning'].map((insight) => `insight:${insight}`));
 const FRENCH_PREVIEW_PAGES = Object.freeze([...FRENCH_PHASE_ONE_PAGES, ...FRENCH_PERSONALITY_GUIDES, ...FRENCH_CAREER_GUIDES, ...FRENCH_COMPARE_GUIDES, ...FRENCH_INSIGHTS]);
+const JAPANESE_PREVIEW_PAGES = Object.freeze([
+  'homepage', 'navigation', 'footer', 'shared-ui', 'metadata', 'json-ld',
+  'community', 'jobs', 'static:contact', 'static:privacy', 'static:terms',
+]);
 
 /**
  * This is configuration, not a list of locale-specific code paths. Adding a
@@ -38,9 +42,9 @@ const FRENCH_PREVIEW_PAGES = Object.freeze([...FRENCH_PHASE_ONE_PAGES, ...FRENCH
  */
 export const localeRuntimeRegistry = Object.freeze(Object.fromEntries(localeRegistry.map((locale) => [locale.code, Object.freeze({
   locale: locale.code,
-  state: locale.published ? 'published' : ['es', 'fr'].includes(locale.code) ? 'preview' : 'draft',
+  state: locale.published ? 'published' : ['es', 'fr', 'ja'].includes(locale.code) ? 'preview' : 'draft',
   packageSource: locale.published ? 'application' : locale.code === 'es' ? 'legacy-preview' : 'json-package',
-  previewPageIds: locale.code === 'fr' ? FRENCH_PREVIEW_PAGES : null,
+  previewPageIds: locale.code === 'fr' ? FRENCH_PREVIEW_PAGES : locale.code === 'ja' ? JAPANESE_PREVIEW_PAGES : null,
 })])));
 
 export function localeRuntime(locale) {

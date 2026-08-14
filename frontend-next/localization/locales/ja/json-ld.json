@@ -1,13 +1,13 @@
 {
   "id": "json-ld",
-  "route": null,
+  "route": "KalQLaterのガイドです。",
   "status": "draft",
   "fields": {
-    "breadcrumbHome": null,
-    "websiteName": null,
-    "organizationName": null,
-    "collectionPageName": null,
-    "faqQuestion": null,
-    "faqAnswer": null
+    "breadcrumbHome": "ホーム",
+    "websiteName": "KalQLater",
+    "organizationName": "KalQLater",
+    "collectionPageName": "KalQLaterのガイドです。",
+    "faqQuestion": "KalQLaterはどのように使えますか？",
+    "faqAnswer": "診断ではなく、自分の経験を振り返るための手がかりです。"
   }
 }

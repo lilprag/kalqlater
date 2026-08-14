@@ -3,20 +3,20 @@
   "route": "/ja/contact",
   "status": "draft",
   "fields": {
-    "h1": null,
-    "body": null,
-    "ctas": null,
+    "h1": "自分らしさを丁寧に見つめる",
+    "body": "自分の考え方、人との関わり方、日々の選択を振り返るためのガイドです。",
+    "ctas": "詳しく見る",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "jsonLd": {
-      "breadcrumb": null
+      "breadcrumb": "パンくず"
     }
   }
 }

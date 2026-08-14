@@ -1,18 +1,18 @@
 {
   "id": "footer",
-  "route": null,
+  "route": "KalQLaterのガイドです。",
   "status": "draft",
   "fields": {
-    "description": null,
-    "insights": null,
-    "communication": null,
-    "compare": null,
-    "community": null,
-    "jobs": null,
-    "privacy": null,
-    "terms": null,
-    "contact": null,
-    "takeTest": null,
-    "copyright": null
+    "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+    "insights": "インサイト",
+    "communication": "コミュニケーション・インサイト",
+    "compare": "タイプを比較",
+    "community": "コミュニティ",
+    "jobs": "仕事",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "contact": "お問い合わせ",
+    "takeTest": "診断を受ける",
+    "copyright": "すべての権利を保有します。"
   }
 }

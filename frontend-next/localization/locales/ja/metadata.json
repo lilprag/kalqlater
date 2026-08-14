@@ -1,79 +1,79 @@
 {
   "id": "metadata",
-  "route": null,
+  "route": "KalQLaterのガイドです。",
   "status": "draft",
   "fields": {
     "homepage": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "personality": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "career": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "compare": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "insights": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "community": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "jobs": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     },
     "static": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "KalQLater：自己理解のためのガイド",
+      "description": "自分らしい選択と人との関わりを考えるためのKalQLaterガイドです。",
+      "ogTitle": "KalQLater：自己理解のためのガイド",
+      "ogDescription": "自分らしさを丁寧に見つめるためのガイドです。",
+      "twitterTitle": "KalQLater：自己理解のためのガイド",
+      "twitterDescription": "自分らしさを考えるためのヒント。",
+      "keywords": "性格、自己理解、KalQLater"
     }
   }
 }

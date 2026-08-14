@@ -1,16 +1,16 @@
 {
   "id": "shared-ui",
-  "route": null,
+  "route": "KalQLaterのガイドです。",
   "status": "draft",
   "fields": {
-    "loading": null,
-    "empty": null,
-    "success": null,
-    "retry": null,
-    "back": null,
-    "next": null,
-    "networkError": null,
-    "notFound": null,
-    "validationError": null
+    "loading": "読み込み中です…",
+    "empty": "現在表示できる内容はありません。",
+    "success": "保存しました。",
+    "retry": "もう一度試す",
+    "back": "戻る",
+    "next": "続ける",
+    "networkError": "接続に問題が発生しました。もう一度お試しください。",
+    "notFound": "このページは利用できません。",
+    "validationError": "入力内容を確認してください。"
   }
 }

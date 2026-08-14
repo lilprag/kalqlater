@@ -3,30 +3,30 @@
   "route": "/ja",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "body": null,
-    "primaryCta": null,
-    "secondaryCta": null,
-    "trustLine": null,
-    "features": null,
-    "dimensions": null,
-    "insights": null,
-    "community": null,
-    "finalCta": null,
-    "footer": null,
+    "eyebrow": "16タイプの性格を、自分の言葉で見つめ直す",
+    "h1": "自分らしさを知り、これからの選択を少し軽やかに",
+    "body": "ものの考え方、人との距離の取り方、日々の決め方を手がかりに、自分の傾向を丁寧に振り返るための場所です。",
+    "primaryCta": "無料で診断を始める",
+    "secondaryCta": "16タイプを見てみる",
+    "trustLine": "誰かに決めつけられるためではなく、自分を理解するための時間です。",
+    "features": "日常に持ち帰れる、自分理解のヒント",
+    "dimensions": "好みの違いを読み解く、四つの視点",
+    "insights": "性格の先にある、行動の癖にも目を向ける",
+    "community": "気づきを、人との関わりの中で育てていく",
+    "finalCta": "自分を知るところから、始めよう",
+    "footer": "性格タイプは可能性を狭める札ではなく、自分を考えるための出発点です。",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "無料性格診断・16タイプ解説 | KalQLater",
+      "description": "性格タイプ、考え方、人間関係の傾向を手がかりに、自分らしい選択を考えるための無料ガイドです。",
+      "ogTitle": "自分らしさを、もう少し深く知る | KalQLater",
+      "ogDescription": "性格タイプを出発点に、考え方、人間関係、仕事との向き合い方を丁寧に見つめます。",
+      "twitterTitle": "無料性格診断・16タイプ解説 | KalQLater",
+      "twitterDescription": "自分の傾向を知り、日々の選択に生かすための性格ガイド。",
+      "keywords": "性格診断, 16タイプ, 自己理解, 性格タイプ, 人間関係, 適職"
     },
     "jsonLd": {
-      "websiteName": null,
-      "organizationName": null
+      "websiteName": "KalQLater — 性格と自己理解",
+      "organizationName": "KalQLater"
     }
   }
 }
