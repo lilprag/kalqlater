@@ -3,26 +3,26 @@
   "route": "/fr/insights/learning",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "Exploration personnelle KalQLater",
+    "h1": "Réfléchir à votre manière d’apprendre",
+    "promise": "Observez les conditions qui nourrissent votre curiosité, votre pratique et votre progression.",
+    "dimensions": "Cette exploration met en lumière des dimensions telles que curiosité, pratique, réflexion, progression.",
+    "examples": "Répondez à des situations concrètes, puis prenez le temps de relier les résultats à votre expérience.",
+    "howItWorks": "Il ne s’agit ni d’un diagnostic ni d’un classement : ce parcours propose des repères pour réfléchir.",
+    "faqs": "Vos réponses décrivent un moment et un contexte ; elles peuvent évoluer avec vos expériences.",
+    "ctas": "Commencer cette exploration",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Réfléchir à votre manière d’apprendre | KalQLater",
+      "description": "Observez les conditions qui nourrissent votre curiosité, votre pratique et votre progression.",
+      "ogTitle": "Réfléchir à votre manière d’apprendre",
+      "ogDescription": "Observez les conditions qui nourrissent votre curiosité, votre pratique et votre progression.",
+      "twitterTitle": "Réfléchir à votre manière d’apprendre",
+      "twitterDescription": "Observez les conditions qui nourrissent votre curiosité, votre pratique et votre progression.",
+      "keywords": "curiosité, pratique, réflexion, progression"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Réfléchir à votre manière d’apprendre",
+      "faq": "Questions fréquentes : Réfléchir à votre manière d’apprendre"
     }
   }
 }

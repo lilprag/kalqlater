@@ -41,6 +41,7 @@ assert.equal(resolveLocaleRoute('fr', '/fr/contact').isPreview, true, 'French st
 assert.equal(resolveLocaleRoute('fr', '/fr/personality/intj').isPreview, true, 'French personality route is previewable once authored');
 assert.equal(resolveLocaleRoute('fr', '/fr/personality/intj/careers').isPreview, true, 'French career route is previewable once authored');
 assert.equal(resolveLocaleRoute('fr', '/fr/compare/intj-vs-intp').isPreview, true, 'French comparison route is previewable once authored');
+assert.equal(resolveLocaleRoute('fr', '/fr/insights/communication').isPreview, true, 'French Insight route is previewable once authored');
 assert.equal(resolveLocaleRoute('de', '/de').isRoutable, false, 'unknown locale is never routable');
 assert.equal(entityIdForLocaleRoute('es', '/es/personality/intj'), 'personality-guide:intj');
 assert.equal(entityIdForLocaleRoute('es', '/es/personality/intj/careers'), 'career-guide:intj');

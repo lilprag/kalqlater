@@ -3,26 +3,26 @@
   "route": "/fr/insights/leadership",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "Exploration personnelle KalQLater",
+    "h1": "Observer votre manière d’exercer une influence",
+    "promise": "Explorez la façon dont vous donnez une direction, soutenez les autres et prenez vos responsabilités.",
+    "dimensions": "Cette exploration met en lumière des dimensions telles que influence, direction, responsabilité, coopération.",
+    "examples": "Répondez à des situations concrètes, puis prenez le temps de relier les résultats à votre expérience.",
+    "howItWorks": "Il ne s’agit ni d’un diagnostic ni d’un classement : ce parcours propose des repères pour réfléchir.",
+    "faqs": "Vos réponses décrivent un moment et un contexte ; elles peuvent évoluer avec vos expériences.",
+    "ctas": "Commencer cette exploration",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Observer votre manière d’exercer une influence | KalQLater",
+      "description": "Explorez la façon dont vous donnez une direction, soutenez les autres et prenez vos responsabilités.",
+      "ogTitle": "Observer votre manière d’exercer une influence",
+      "ogDescription": "Explorez la façon dont vous donnez une direction, soutenez les autres et prenez vos responsabilités.",
+      "twitterTitle": "Observer votre manière d’exercer une influence",
+      "twitterDescription": "Explorez la façon dont vous donnez une direction, soutenez les autres et prenez vos responsabilités.",
+      "keywords": "influence, direction, responsabilité, coopération"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Observer votre manière d’exercer une influence",
+      "faq": "Questions fréquentes : Observer votre manière d’exercer une influence"
     }
   }
 }

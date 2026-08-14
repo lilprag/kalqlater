@@ -3,26 +3,26 @@
   "route": "/fr/insights/communication",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "Exploration personnelle KalQLater",
+    "h1": "Explorer votre manière de communiquer",
+    "promise": "Mieux comprendre comment vous écoutez, exprimez vos idées et traversez les désaccords.",
+    "dimensions": "Cette exploration met en lumière des dimensions telles que communication, écoute, expression, adaptation.",
+    "examples": "Répondez à des situations concrètes, puis prenez le temps de relier les résultats à votre expérience.",
+    "howItWorks": "Il ne s’agit ni d’un diagnostic ni d’un classement : ce parcours propose des repères pour réfléchir.",
+    "faqs": "Vos réponses décrivent un moment et un contexte ; elles peuvent évoluer avec vos expériences.",
+    "ctas": "Commencer cette exploration",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Explorer votre manière de communiquer | KalQLater",
+      "description": "Mieux comprendre comment vous écoutez, exprimez vos idées et traversez les désaccords.",
+      "ogTitle": "Explorer votre manière de communiquer",
+      "ogDescription": "Mieux comprendre comment vous écoutez, exprimez vos idées et traversez les désaccords.",
+      "twitterTitle": "Explorer votre manière de communiquer",
+      "twitterDescription": "Mieux comprendre comment vous écoutez, exprimez vos idées et traversez les désaccords.",
+      "keywords": "communication, écoute, expression, adaptation"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Explorer votre manière de communiquer",
+      "faq": "Questions fréquentes : Explorer votre manière de communiquer"
     }
   }
 }

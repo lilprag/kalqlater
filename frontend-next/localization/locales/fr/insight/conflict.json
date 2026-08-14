@@ -3,26 +3,26 @@
   "route": "/fr/insights/conflict",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "h1": null,
-    "promise": null,
-    "dimensions": null,
-    "examples": null,
-    "howItWorks": null,
-    "faqs": null,
-    "ctas": null,
+    "eyebrow": "Exploration personnelle KalQLater",
+    "h1": "Observer votre manière d’aborder les tensions",
+    "promise": "Repérez vos réflexes face au désaccord pour choisir des réponses plus conscientes.",
+    "dimensions": "Cette exploration met en lumière des dimensions telles que tension, limites, dialogue, réparation.",
+    "examples": "Répondez à des situations concrètes, puis prenez le temps de relier les résultats à votre expérience.",
+    "howItWorks": "Il ne s’agit ni d’un diagnostic ni d’un classement : ce parcours propose des repères pour réfléchir.",
+    "faqs": "Vos réponses décrivent un moment et un contexte ; elles peuvent évoluer avec vos expériences.",
+    "ctas": "Commencer cette exploration",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "Observer votre manière d’aborder les tensions | KalQLater",
+      "description": "Repérez vos réflexes face au désaccord pour choisir des réponses plus conscientes.",
+      "ogTitle": "Observer votre manière d’aborder les tensions",
+      "ogDescription": "Repérez vos réflexes face au désaccord pour choisir des réponses plus conscientes.",
+      "twitterTitle": "Observer votre manière d’aborder les tensions",
+      "twitterDescription": "Repérez vos réflexes face au désaccord pour choisir des réponses plus conscientes.",
+      "keywords": "tension, limites, dialogue, réparation"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "Observer votre manière d’aborder les tensions",
+      "faq": "Questions fréquentes : Observer votre manière d’aborder les tensions"
     }
   }
 }
