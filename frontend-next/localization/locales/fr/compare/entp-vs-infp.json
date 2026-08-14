@@ -3,27 +3,27 @@
   "route": "/fr/compare/entp-vs-infp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTP et INFP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre invention stimulante et fidélité intérieure.",
+    "intro": "ENTP privilégie souvent tester les possibilités, tandis que INFP tend davantage à suivre ses valeurs. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENTP recherche la nouveauté des pistes et que INFP accorde plus de poids à l’authenticité du choix.",
+    "sections": "Dans la communication, ENTP peut paraître plus orienté vers invention stimulante, alors que INFP apporte fidélité intérieure. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENTP et INFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTP vs INFP : différences et compatibilité | KalQLater",
+      "description": "Comparez ENTP et INFP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENTP vs INFP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENTP et INFP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENTP vs INFP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENTP et INFP.",
+      "keywords": "ENTP vs INFP, différence ENTP INFP, compatibilité ENTP INFP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTP vs INFP",
+      "faq": "Questions fréquentes sur ENTP et INFP"
     }
   }
 }

@@ -3,27 +3,27 @@
   "route": "/fr/compare/istj-vs-estj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISTJ et ESTJ : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre fiabilité méthodique et organisation pragmatique.",
+    "intro": "ISTJ privilégie souvent s’appuyer sur l’expérience, tandis que ESTJ tend davantage à clarifier puis exécuter. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ISTJ recherche la solidité des engagements et que ESTJ accorde plus de poids à l’efficacité partagée.",
+    "sections": "Dans la communication, ISTJ peut paraître plus orienté vers fiabilité méthodique, alors que ESTJ apporte organisation pragmatique. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ISTJ et ESTJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISTJ vs ESTJ : différences et compatibilité | KalQLater",
+      "description": "Comparez ISTJ et ESTJ : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ISTJ vs ESTJ : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ISTJ et ESTJ, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ISTJ vs ESTJ : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ISTJ et ESTJ.",
+      "keywords": "ISTJ vs ESTJ, différence ISTJ ESTJ, compatibilité ISTJ ESTJ"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISTJ vs ESTJ",
+      "faq": "Questions fréquentes sur ISTJ et ESTJ"
     }
   }
 }

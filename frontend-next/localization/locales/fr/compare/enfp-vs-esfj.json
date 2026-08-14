@@ -3,27 +3,27 @@
   "route": "/fr/compare/enfp-vs-esfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENFP et ESFJ : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre élan créatif et coopération attentive.",
+    "intro": "ENFP privilégie souvent ouvrir de nouveaux chemins, tandis que ESFJ tend davantage à tenir compte du groupe. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENFP recherche la possibilité et le lien et que ESFJ accorde plus de poids à l’harmonie au quotidien.",
+    "sections": "Dans la communication, ENFP peut paraître plus orienté vers élan créatif, alors que ESFJ apporte coopération attentive. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENFP et ESFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENFP vs ESFJ : différences et compatibilité | KalQLater",
+      "description": "Comparez ENFP et ESFJ : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENFP vs ESFJ : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENFP et ESFJ, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENFP vs ESFJ : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENFP et ESFJ.",
+      "keywords": "ENFP vs ESFJ, différence ENFP ESFJ, compatibilité ENFP ESFJ"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENFP vs ESFJ",
+      "faq": "Questions fréquentes sur ENFP et ESFJ"
     }
   }
 }

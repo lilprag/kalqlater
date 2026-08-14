@@ -3,27 +3,27 @@
   "route": "/fr/compare/istp-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISTP et ESFP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre résolution pratique et présence chaleureuse.",
+    "intro": "ISTP privilégie souvent observer avant d’intervenir, tandis que ESFP tend davantage à vivre pleinement la situation. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ISTP recherche la solution qui fonctionne et que ESFP accorde plus de poids à l’énergie relationnelle.",
+    "sections": "Dans la communication, ISTP peut paraître plus orienté vers résolution pratique, alors que ESFP apporte présence chaleureuse. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ISTP et ESFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISTP vs ESFP : différences et compatibilité | KalQLater",
+      "description": "Comparez ISTP et ESFP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ISTP vs ESFP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ISTP et ESFP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ISTP vs ESFP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ISTP et ESFP.",
+      "keywords": "ISTP vs ESFP, différence ISTP ESFP, compatibilité ISTP ESFP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISTP vs ESFP",
+      "faq": "Questions fréquentes sur ISTP et ESFP"
     }
   }
 }

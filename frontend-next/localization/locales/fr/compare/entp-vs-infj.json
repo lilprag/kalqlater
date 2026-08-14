@@ -3,27 +3,27 @@
   "route": "/fr/compare/entp-vs-infj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTP et INFJ : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre invention stimulante et compréhension intuitive.",
+    "intro": "ENTP privilégie souvent tester les possibilités, tandis que INFJ tend davantage à chercher le sens profond. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENTP recherche la nouveauté des pistes et que INFJ accorde plus de poids à la cohérence humaine.",
+    "sections": "Dans la communication, ENTP peut paraître plus orienté vers invention stimulante, alors que INFJ apporte compréhension intuitive. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENTP et INFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTP vs INFJ : différences et compatibilité | KalQLater",
+      "description": "Comparez ENTP et INFJ : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENTP vs INFJ : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENTP et INFJ, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENTP vs INFJ : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENTP et INFJ.",
+      "keywords": "ENTP vs INFJ, différence ENTP INFJ, compatibilité ENTP INFJ"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTP vs INFJ",
+      "faq": "Questions fréquentes sur ENTP et INFJ"
     }
   }
 }

@@ -3,27 +3,27 @@
   "route": "/fr/compare/infj-vs-estj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INFJ et ESTJ : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre compréhension intuitive et organisation pragmatique.",
+    "intro": "INFJ privilégie souvent chercher le sens profond, tandis que ESTJ tend davantage à clarifier puis exécuter. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que INFJ recherche la cohérence humaine et que ESTJ accorde plus de poids à l’efficacité partagée.",
+    "sections": "Dans la communication, INFJ peut paraître plus orienté vers compréhension intuitive, alors que ESTJ apporte organisation pragmatique. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer INFJ et ESTJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INFJ vs ESTJ : différences et compatibilité | KalQLater",
+      "description": "Comparez INFJ et ESTJ : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "INFJ vs ESTJ : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre INFJ et ESTJ, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "INFJ vs ESTJ : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre INFJ et ESTJ.",
+      "keywords": "INFJ vs ESTJ, différence INFJ ESTJ, compatibilité INFJ ESTJ"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INFJ vs ESTJ",
+      "faq": "Questions fréquentes sur INFJ et ESTJ"
     }
   }
 }

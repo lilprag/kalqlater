@@ -3,27 +3,27 @@
   "route": "/fr/compare/isfj-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISFJ et ESFP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre attention protectrice et présence chaleureuse.",
+    "intro": "ISFJ privilégie souvent préserver la continuité, tandis que ESFP tend davantage à vivre pleinement la situation. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ISFJ recherche le bien-être concret et que ESFP accorde plus de poids à l’énergie relationnelle.",
+    "sections": "Dans la communication, ISFJ peut paraître plus orienté vers attention protectrice, alors que ESFP apporte présence chaleureuse. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ISFJ et ESFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISFJ vs ESFP : différences et compatibilité | KalQLater",
+      "description": "Comparez ISFJ et ESFP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ISFJ vs ESFP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ISFJ et ESFP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ISFJ vs ESFP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ISFJ et ESFP.",
+      "keywords": "ISFJ vs ESFP, différence ISFJ ESFP, compatibilité ISFJ ESFP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISFJ vs ESFP",
+      "faq": "Questions fréquentes sur ISFJ et ESFP"
     }
   }
 }

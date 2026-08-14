@@ -3,27 +3,27 @@
   "route": "/fr/compare/entj-vs-entp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTJ et ENTP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre pilotage décisif et invention stimulante.",
+    "intro": "ENTJ privilégie souvent organiser l’action, tandis que ENTP tend davantage à tester les possibilités. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENTJ recherche les résultats et le cap et que ENTP accorde plus de poids à la nouveauté des pistes.",
+    "sections": "Dans la communication, ENTJ peut paraître plus orienté vers pilotage décisif, alors que ENTP apporte invention stimulante. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENTJ et ENTP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTJ vs ENTP : différences et compatibilité | KalQLater",
+      "description": "Comparez ENTJ et ENTP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENTJ vs ENTP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENTJ et ENTP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENTJ vs ENTP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENTJ et ENTP.",
+      "keywords": "ENTJ vs ENTP, différence ENTJ ENTP, compatibilité ENTJ ENTP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTJ vs ENTP",
+      "faq": "Questions fréquentes sur ENTJ et ENTP"
     }
   }
 }

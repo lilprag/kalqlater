@@ -3,27 +3,27 @@
   "route": "/fr/compare/enfj-vs-isfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENFJ et ISFJ : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre mobilisation relationnelle et attention protectrice.",
+    "intro": "ENFJ privilégie souvent rassembler les personnes, tandis que ISFJ tend davantage à préserver la continuité. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENFJ recherche la progression collective et que ISFJ accorde plus de poids à le bien-être concret.",
+    "sections": "Dans la communication, ENFJ peut paraître plus orienté vers mobilisation relationnelle, alors que ISFJ apporte attention protectrice. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENFJ et ISFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENFJ vs ISFJ : différences et compatibilité | KalQLater",
+      "description": "Comparez ENFJ et ISFJ : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENFJ vs ISFJ : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENFJ et ISFJ, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENFJ vs ISFJ : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENFJ et ISFJ.",
+      "keywords": "ENFJ vs ISFJ, différence ENFJ ISFJ, compatibilité ENFJ ISFJ"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENFJ vs ISFJ",
+      "faq": "Questions fréquentes sur ENFJ et ISFJ"
     }
   }
 }

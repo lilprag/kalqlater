@@ -3,27 +3,27 @@
   "route": "/fr/compare/estj-vs-esfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ESTJ et ESFJ : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre organisation pragmatique et coopération attentive.",
+    "intro": "ESTJ privilégie souvent clarifier puis exécuter, tandis que ESFJ tend davantage à tenir compte du groupe. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ESTJ recherche l’efficacité partagée et que ESFJ accorde plus de poids à l’harmonie au quotidien.",
+    "sections": "Dans la communication, ESTJ peut paraître plus orienté vers organisation pragmatique, alors que ESFJ apporte coopération attentive. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ESTJ et ESFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ESTJ vs ESFJ : différences et compatibilité | KalQLater",
+      "description": "Comparez ESTJ et ESFJ : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ESTJ vs ESFJ : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ESTJ et ESFJ, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ESTJ vs ESFJ : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ESTJ et ESFJ.",
+      "keywords": "ESTJ vs ESFJ, différence ESTJ ESFJ, compatibilité ESTJ ESFJ"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ESTJ vs ESFJ",
+      "faq": "Questions fréquentes sur ESTJ et ESFJ"
     }
   }
 }

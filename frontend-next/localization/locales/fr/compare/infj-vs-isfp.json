@@ -3,27 +3,27 @@
   "route": "/fr/compare/infj-vs-isfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "INFJ et ISFP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre compréhension intuitive et sensibilité concrète.",
+    "intro": "INFJ privilégie souvent chercher le sens profond, tandis que ISFP tend davantage à rester fidèle à son ressenti. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que INFJ recherche la cohérence humaine et que ISFP accorde plus de poids à la liberté d’être soi.",
+    "sections": "Dans la communication, INFJ peut paraître plus orienté vers compréhension intuitive, alors que ISFP apporte sensibilité concrète. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer INFJ et ISFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "INFJ vs ISFP : différences et compatibilité | KalQLater",
+      "description": "Comparez INFJ et ISFP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "INFJ vs ISFP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre INFJ et ISFP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "INFJ vs ISFP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre INFJ et ISFP.",
+      "keywords": "INFJ vs ISFP, différence INFJ ISFP, compatibilité INFJ ISFP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "INFJ vs ISFP",
+      "faq": "Questions fréquentes sur INFJ et ISFP"
     }
   }
 }

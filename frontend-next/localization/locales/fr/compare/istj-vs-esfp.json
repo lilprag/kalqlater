@@ -3,27 +3,27 @@
   "route": "/fr/compare/istj-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ISTJ et ESFP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre fiabilité méthodique et présence chaleureuse.",
+    "intro": "ISTJ privilégie souvent s’appuyer sur l’expérience, tandis que ESFP tend davantage à vivre pleinement la situation. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ISTJ recherche la solidité des engagements et que ESFP accorde plus de poids à l’énergie relationnelle.",
+    "sections": "Dans la communication, ISTJ peut paraître plus orienté vers fiabilité méthodique, alors que ESFP apporte présence chaleureuse. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ISTJ et ESFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ISTJ vs ESFP : différences et compatibilité | KalQLater",
+      "description": "Comparez ISTJ et ESFP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ISTJ vs ESFP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ISTJ et ESFP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ISTJ vs ESFP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ISTJ et ESFP.",
+      "keywords": "ISTJ vs ESFP, différence ISTJ ESFP, compatibilité ISTJ ESFP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ISTJ vs ESFP",
+      "faq": "Questions fréquentes sur ISTJ et ESFP"
     }
   }
 }

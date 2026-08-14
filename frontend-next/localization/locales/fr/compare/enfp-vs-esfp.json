@@ -3,27 +3,27 @@
   "route": "/fr/compare/enfp-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENFP et ESFP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre élan créatif et présence chaleureuse.",
+    "intro": "ENFP privilégie souvent ouvrir de nouveaux chemins, tandis que ESFP tend davantage à vivre pleinement la situation. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENFP recherche la possibilité et le lien et que ESFP accorde plus de poids à l’énergie relationnelle.",
+    "sections": "Dans la communication, ENFP peut paraître plus orienté vers élan créatif, alors que ESFP apporte présence chaleureuse. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENFP et ESFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENFP vs ESFP : différences et compatibilité | KalQLater",
+      "description": "Comparez ENFP et ESFP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENFP vs ESFP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENFP et ESFP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENFP vs ESFP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENFP et ESFP.",
+      "keywords": "ENFP vs ESFP, différence ENFP ESFP, compatibilité ENFP ESFP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENFP vs ESFP",
+      "faq": "Questions fréquentes sur ENFP et ESFP"
     }
   }
 }

@@ -3,27 +3,27 @@
   "route": "/fr/compare/entj-vs-esfp",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTJ et ESFP : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre pilotage décisif et présence chaleureuse.",
+    "intro": "ENTJ privilégie souvent organiser l’action, tandis que ESFP tend davantage à vivre pleinement la situation. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENTJ recherche les résultats et le cap et que ESFP accorde plus de poids à l’énergie relationnelle.",
+    "sections": "Dans la communication, ENTJ peut paraître plus orienté vers pilotage décisif, alors que ESFP apporte présence chaleureuse. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENTJ et ESFP",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTJ vs ESFP : différences et compatibilité | KalQLater",
+      "description": "Comparez ENTJ et ESFP : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENTJ vs ESFP : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENTJ et ESFP, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENTJ vs ESFP : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENTJ et ESFP.",
+      "keywords": "ENTJ vs ESFP, différence ENTJ ESFP, compatibilité ENTJ ESFP"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTJ vs ESFP",
+      "faq": "Questions fréquentes sur ENTJ et ESFP"
     }
   }
 }

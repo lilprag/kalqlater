@@ -3,27 +3,27 @@
   "route": "/fr/compare/entj-vs-enfj",
   "status": "draft",
   "fields": {
-    "eyebrow": null,
-    "helper": null,
-    "intro": null,
-    "snapshot": null,
-    "sections": null,
-    "misconceptions": null,
-    "percentage": null,
-    "faqs": null,
-    "ui": null,
+    "eyebrow": "ENTJ et ENFJ : deux façons de se comprendre",
+    "helper": "Une comparaison nuancée entre pilotage décisif et mobilisation relationnelle.",
+    "intro": "ENTJ privilégie souvent organiser l’action, tandis que ENFJ tend davantage à rassembler les personnes. Leur différence apparaît moins dans la valeur de leurs choix que dans la manière de les construire.",
+    "snapshot": "Leurs échanges deviennent féconds lorsqu’ils reconnaissent que ENTJ recherche les résultats et le cap et que ENFJ accorde plus de poids à la progression collective.",
+    "sections": "Dans la communication, ENTJ peut paraître plus orienté vers pilotage décisif, alors que ENFJ apporte mobilisation relationnelle. Au travail, leurs rythmes se complètent lorsqu’ils explicitent les décisions, les rôles et les critères de réussite.",
+    "misconceptions": "Aucun de ces profils n’est automatiquement plus raisonnable, plus sociable ou mieux adapté. Le contexte, l’expérience et les habitudes restent déterminants.",
+    "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
+    "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
+    "ui": "Comparer ENTJ et ENFJ",
     "seo": {
-      "title": null,
-      "description": null,
-      "ogTitle": null,
-      "ogDescription": null,
-      "twitterTitle": null,
-      "twitterDescription": null,
-      "keywords": null
+      "title": "ENTJ vs ENFJ : différences et compatibilité | KalQLater",
+      "description": "Comparez ENTJ et ENFJ : communication, relations, travail, décisions et pistes de compréhension.",
+      "ogTitle": "ENTJ vs ENFJ : comprendre leurs différences",
+      "ogDescription": "Une comparaison nuancée entre ENTJ et ENFJ, leurs échanges et leurs dynamiques.",
+      "twitterTitle": "ENTJ vs ENFJ : comparaison",
+      "twitterDescription": "Explorez les dynamiques entre ENTJ et ENFJ.",
+      "keywords": "ENTJ vs ENFJ, différence ENTJ ENFJ, compatibilité ENTJ ENFJ"
     },
     "jsonLd": {
-      "breadcrumb": null,
-      "faq": null
+      "breadcrumb": "ENTJ vs ENFJ",
+      "faq": "Questions fréquentes sur ENTJ et ENFJ"
     }
   }
 }
