@@ -12,8 +12,8 @@ export function Header({ locale }) {
   const copy = COPY[locale].nav;
   const links = filterPublicNavigation(locale, [
     { label: copy.home, href: localePath(locale), entityId: `language:${locale}` },
-    { label: copy.test, href: productionAppUrl('/test') },
-    { label: copy.types, href: productionAppUrl('/types') },
+    { label: copy.test, href: localePath(locale, 'test') },
+    { label: copy.types, href: localePath(locale, 'types') },
     { label: copy.insights, href: localePath(locale, 'insights'), entityId: `language:${locale}` },
     { label: copy.about, href: productionAppUrl('/about') },
     { label: copy.compare, href: localePath(locale, 'compare'), entityId: `language:${locale}` },

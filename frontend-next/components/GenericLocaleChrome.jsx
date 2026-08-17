@@ -6,6 +6,8 @@ import { localePath } from '../lib/site';
 import { isRuntimePublishedLocale, localeAllowsPreviewPage } from '../localization/runtime-policy.js';
 import { LocaleSwitcher } from './LocaleSwitcher';
 
+// The product application has no localized Next.js assessment or type-index
+// route. Do not advertise package-local paths that fail closed at runtime.
 const NAVIGATION_KEYS = Object.freeze(['home', 'takeTest', 'types', 'insights', 'compare', 'community', 'jobs', 'contact']);
 const FOOTER_KEYS = Object.freeze(['insights', 'communication', 'compare', 'community', 'jobs', 'privacy', 'terms', 'contact', 'takeTest']);
 const PAGE_FOR_LINK = Object.freeze({ home: 'homepage', community: 'community', jobs: 'jobs', contact: 'static:contact', privacy: 'static:privacy', terms: 'static:terms' });

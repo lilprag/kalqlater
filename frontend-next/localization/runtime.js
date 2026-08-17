@@ -108,7 +108,10 @@ function entityIdForPage(pageId) {
 export function localePreviewMetadata(locale, page, pagePath = '') {
   const seo = page?.fields?.seo;
   if (!seo?.title || !seo?.description) return null;
-  if (page.state === 'published') return buildLocalizedMetadata({ locale, path: pagePath, title: seo.title, description: seo.description, entityId: entityIdForPage(page.id) });
+  if (page.state === 'published') {
+    const title = seo.title.replace(/\s*\|\s*KalQLater\s*$/i, '').trim();
+    return buildLocalizedMetadata({ locale, path: pagePath, title, description: seo.description, entityId: entityIdForPage(page.id) });
+  }
   const url = `https://kalqlater.com/${locale}${pagePath ? `/${pagePath.replace(/^\//, '')}` : ''}`;
   return {
     title: { absolute: seo.title }, description: seo.description,
