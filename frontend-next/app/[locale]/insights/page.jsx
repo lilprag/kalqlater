@@ -4,28 +4,28 @@ import { JsonLd } from '../../../components/JsonLd';
 import { insightsHubCopy } from '../../../data/insights-hub';
 import { breadcrumbJsonLd, pageMetadata } from '../../../lib/metadata';
 import { isLocale, localePath } from '../../../lib/site';
-import { LocalePackagePreview } from '../../../components/LocalePackagePreview';
-import { loadLocalePage, localePreviewMetadata } from '../../../localization/runtime';
 
 export const dynamicParams = true;
 export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
 export async function generateMetadata({ params }) {
   const { locale } = await params;
-  const packagePage = await loadLocalePage(locale, 'insights');
-  if (packagePage) return localePreviewMetadata(locale, packagePage, 'insights');
   if (!isLocale(locale)) return {};
+  const seo = locale === 'fr'
+    ? ['Perspectives KalQLater : au-delà de la personnalité', 'Explorez les outils de réflexion KalQLater sur la communication, les décisions, le travail et les relations au quotidien.']
+    : locale === 'ja'
+      ? ['KalQLaterインサイト：パーソナリティの、その先へ', 'コミュニケーション、意思決定、仕事、人とのつながりを振り返るKalQLaterの実践的なツールをご覧ください。']
+      : locale === 'hi'
+        ? ['KalQLater इनसाइट्स: पर्सनैलिटी से आगे', 'संवाद, निर्णय, काम और जुड़ाव की रोज़मर्रा की आदतों पर विचार करने के लिए KalQLater के इनसाइट्स साधन देखें।']
+        : ['KalQLater Insights: Go Beyond Personality', 'Explore KalQLater reflection tools for everyday communication, decision-making, work, and connection patterns.'];
   return pageMetadata({
     locale,
     path: 'insights',
-    title: locale === 'hi' ? 'KalQLater इनसाइट्स: पर्सनैलिटी से आगे' : 'KalQLater Insights: Go Beyond Personality',
-    description: locale === 'hi' ? 'संवाद, निर्णय, काम और जुड़ाव की रोज़मर्रा की आदतों पर विचार करने के लिए KalQLater के इनसाइट्स साधन देखें।' : 'Explore KalQLater reflection tools for everyday communication, decision-making, work, and connection patterns.',
+    title: seo[0], description: seo[1],
   });
 }
 
 export default async function InsightsHubPage({ params }) {
   const { locale } = await params;
-  const packagePage = await loadLocalePage(locale, 'insights');
-  if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path="insights" />;
   if (!isLocale(locale)) notFound();
   const c = insightsHubCopy[locale];
   const jsonLd = {

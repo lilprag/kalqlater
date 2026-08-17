@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { BrandMark } from './BrandMark';
-import { localePath, productionAppUrl } from '../lib/site';
+import { localePath } from '../lib/site';
 import { homepageContent } from '../localization/homepage';
 
 const ICONS = {
@@ -69,8 +69,8 @@ const content = {
 };
 
 export function HomeVisual({ locale }) {
-  const copy = locale === 'es' ? homepageContent(locale) : content[locale];
-  const testUrl = productionAppUrl('/test');
+  const copy = ['es', 'fr', 'ja'].includes(locale) ? homepageContent(locale) : content[locale];
+  const testUrl = localePath(locale, 'test');
   return <>
     <section className="hero-shell relative overflow-hidden">
       <div className="hero-blob hero-blob-saffron" aria-hidden="true" />
@@ -83,7 +83,7 @@ export function HomeVisual({ locale }) {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-brand-subtle sm:text-lg">{copy.body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href={testUrl} className="button-primary"><span>{copy.start}</span><span aria-hidden="true" className="button-arrow">→</span></a>
-            <a href={productionAppUrl('/types')} className="button-secondary">{copy.types}</a>
+            <Link href={localePath(locale, 'types')} className="button-secondary">{copy.types}</Link>
           </div>
           <div className="mt-8 flex items-center gap-3 text-sm text-brand-subtle">
             <div className="flex -space-x-2" aria-hidden="true"><span className="avatar-dot bg-brand-saffron" /><span className="avatar-dot bg-brand-teal" /><span className="avatar-dot bg-brand-plum" /><span className="avatar-dot bg-brand-sand" /></div>
@@ -95,7 +95,7 @@ export function HomeVisual({ locale }) {
           <div className="personality-preview reveal-up">
             <div><p className="text-xs font-semibold uppercase tracking-[.25em] text-brand-subtle">INTJ</p><h2 className="display-font mt-2 text-3xl text-brand-ink">{copy.architect}</h2><p className="mt-2 text-sm leading-relaxed text-brand-subtle">{copy.architectBody}</p></div>
             <div className="space-y-3">{[['I', 78], ['N', 65], ['T', 71], ['J', 60]].map(([label, value]) => <div key={label}><div className="mb-1 flex justify-between text-[11px] font-medium text-brand-subtle"><span>{label}</span><span>{value}%</span></div><div className="trait-track"><span style={{ width: `${value}%` }} /></div></div>)}</div>
-            <div className="flex items-center gap-3 border-t border-brand-line pt-5 text-sm text-brand-subtle"><BrandMark className="h-9 w-9" /><span>{copy.map || (locale === 'hi' ? 'आपकी पसंद का व्यावहारिक नक्शा' : 'A practical map of your preferences')}</span></div>
+          <div className="flex items-center gap-3 border-t border-brand-line pt-5 text-sm text-brand-subtle"><BrandMark className="h-9 w-9" /><span>{copy.map || (locale === 'hi' ? 'आपकी पसंद का व्यावहारिक नक्शा' : 'A practical map of your preferences')}</span></div>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ export function HomeVisual({ locale }) {
 
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"><div className="rounded-[2rem] border border-brand-line bg-white p-7 shadow-[0_20px_50px_rgba(45,40,37,.06)] sm:p-10"><div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr]"><div><p className="section-kicker">{copy.insightsEyebrow}</p><h2 className="display-font mt-3 text-4xl text-brand-ink">{copy.insightsTitle}</h2><p className="mt-4 max-w-xl leading-relaxed text-brand-subtle">{copy.insightsBody}</p><Link href={localePath(locale, 'insights')} className="button-secondary mt-7">{copy.allInsights || (locale === 'hi' ? 'सभी इनसाइट्स देखें' : 'Explore all Insights')}</Link></div><div className="grid gap-3 sm:grid-cols-2"><article className="rounded-2xl bg-brand-ink p-6 text-white sm:col-span-2"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-sand">{copy.insightsLive}</p><h3 className="display-font mt-3 text-3xl">{copy.insightsTool}</h3><p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">{copy.insightsToolBody}</p><Link href={localePath(locale, 'insights/communication')} className="button-light mt-6">{copy.insightsCta}<span aria-hidden="true">→</span></Link></article>{copy.insightsPlanned.map((item) => <article key={item} className="rounded-2xl bg-brand-cream p-5"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-teal">{copy.insightsSoon}</p><h3 className="display-font mt-3 text-2xl text-brand-ink">{item}</h3></article>)}</div></div></div></section>
 
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"><div className="community-band"><div><p className="section-kicker text-brand-sand">{copy.communityEyebrow}</p><h2 className="display-font mt-3 max-w-2xl text-3xl sm:text-4xl">{copy.communityTitle}</h2><p className="mt-4 max-w-2xl leading-relaxed text-white/75">{copy.communityBody}</p></div><div className="mt-8 flex flex-wrap gap-3"><Link href={localePath(locale, 'community')} className="button-light">{copy.community}</Link><a href={productionAppUrl('/compare')} className="button-dark-outline">{copy.compare}</a><Link href={localePath(locale, 'jobs')} className="button-dark-outline">{copy.jobs}</Link></div></div></section>
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"><div className="community-band"><div><p className="section-kicker text-brand-sand">{copy.communityEyebrow}</p><h2 className="display-font mt-3 max-w-2xl text-3xl sm:text-4xl">{copy.communityTitle}</h2><p className="mt-4 max-w-2xl leading-relaxed text-white/75">{copy.communityBody}</p></div><div className="mt-8 flex flex-wrap gap-3"><Link href={localePath(locale, 'community')} className="button-light">{copy.community}</Link><Link href={localePath(locale, 'compare')} className="button-dark-outline">{copy.compare}</Link><Link href={localePath(locale, 'jobs')} className="button-dark-outline">{copy.jobs}</Link></div></div></section>
 
     <section className="mx-auto max-w-4xl px-4 pb-20 pt-4 text-center sm:px-6 lg:pb-24"><p className="section-kicker">KalQLater</p><h2 className="display-font section-title mt-3">{copy.finalTitle}</h2><p className="mx-auto mt-4 max-w-xl leading-relaxed text-brand-subtle">{copy.finalBody}</p><a href={testUrl} className="button-primary mt-7"><span>{copy.start}</span><span aria-hidden="true" className="button-arrow">→</span></a></section>
   </>;
