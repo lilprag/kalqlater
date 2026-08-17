@@ -4,7 +4,7 @@ import { JsonLd } from './JsonLd';
 import { localePath } from '../lib/site';
 
 function displayTitle(fields) {
-  return fields.h1 || fields.hero || fields.title || fields.seo?.title || fields.overview || fields.body || fields.summary;
+  return fields.h1 || fields.hero || fields.displayName || fields.ui || fields.title || fields.seo?.title || fields.overview || fields.body || fields.summary;
 }
 
 const SECTION_LABELS = Object.freeze({
@@ -14,6 +14,7 @@ const SECTION_LABELS = Object.freeze({
   lens: 'Angle de réflexion', skill: 'Forces professionnelles', roles: 'Pistes professionnelles', settings: 'Environnements', formats: 'Formats de travail', skills: 'Compétences', stages: 'Évolution de carrière', industries: 'Secteurs',
   helper: 'À garder en tête', intro: 'Leur dynamique', snapshot: 'En bref', sections: 'Communication et travail', misconceptions: 'Éviter les raccourcis', percentage: 'Compatibilité',
   promise: 'Ce que vous allez explorer', dimensions: 'Repères', examples: 'Situations', howItWorks: 'Comment cela fonctionne',
+  faqs: 'Questions fréquentes',
 });
 
 const SECTION_LABELS_JA = Object.freeze({
@@ -23,29 +24,52 @@ const SECTION_LABELS_JA = Object.freeze({
   lens: '考える視点', skill: '仕事で生きる強み', roles: '検討したい役割', settings: '環境', formats: '働き方', skills: 'スキル', stages: 'キャリアの段階', industries: '分野',
   helper: '覚えておきたいこと', intro: '二人の関係性', snapshot: '要点', sections: 'コミュニケーションと仕事', misconceptions: '短絡的に決めつけないために', percentage: '相性',
   promise: 'ここで見つめること', dimensions: '視点', examples: '場面', howItWorks: '進め方',
+  faqs: 'よくある質問',
 });
 
 function sectionEntries(fields, labels) {
-  return Object.entries(fields).filter(([key, value]) => labels[key] && typeof value === 'string' && value.trim());
+  return Object.entries(fields).filter(([key, value]) => labels[key] && typeof value === 'string' && value.trim() && key !== 'summary' && key !== 'intro' && key !== 'promise' && key !== 'faqs');
+}
+
+function familyFor(pageId) {
+  return pageId.split(':', 1)[0];
+}
+
+function leadCopy(fields) {
+  return fields.summary || fields.intro || fields.promise || fields.overview || fields.body;
+}
+
+function highlightEntries(fields, family) {
+  const keys = family === 'personality'
+    ? ['coreTraits', 'strengths', 'growthAreas']
+    : family === 'career'
+      ? ['skill', 'roles', 'settings']
+      : family === 'compare'
+        ? ['snapshot', 'sections', 'percentage']
+        : ['dimensions', 'examples', 'howItWorks'];
+  return keys.map((key) => [key, fields[key]]).filter(([, value]) => typeof value === 'string' && value.trim());
 }
 
 /** Generic SSR renderer for an approved preview package; it never supplies fallback copy. */
 export function LocalePackagePreview({ locale, page, path = '' }) {
-  const title = displayTitle(page.fields);
+  const { fields } = page;
+  const title = displayTitle(fields);
   const labels = locale === 'ja' ? SECTION_LABELS_JA : SECTION_LABELS;
-  const sections = sectionEntries(page.fields, labels);
+  const family = familyFor(page.id);
+  const sections = sectionEntries(fields, labels);
+  const highlights = highlightEntries(fields, family);
   const schema = {
     '@context': 'https://schema.org', '@type': 'WebPage', name: title,
     url: `https://kalqlater.com${localePath(locale, path)}`,
     inLanguage: locale,
     isPartOf: { '@type': 'WebSite', name: 'KalQLater' },
   };
-  const breadcrumb = page.id === 'homepage' ? null : (page.fields.jsonLd?.breadcrumb || 'KalQLater');
-  const faq = page.fields.jsonLd?.faq || page.fields.faqs;
+  const breadcrumb = page.id === 'homepage' ? null : (fields.jsonLd?.breadcrumb || 'KalQLater');
+  const faq = fields.jsonLd?.faq || fields.faqs;
   const schemas = [schema,
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'KalQLater', item: `https://kalqlater.com/${locale}` }, { '@type': 'ListItem', position: 2, name: breadcrumb, item: `https://kalqlater.com${localePath(locale, path)}` }] },
     ...(faq ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [{ '@type': 'Question', name: faq, acceptedAnswer: { '@type': 'Answer', text: page.fields.faqs || faq } }] }] : []),
   ];
   const ctaPath = page.id.startsWith('insight:') ? `insights/${page.id.slice('insight:'.length)}/start` : '';
-  return <><JsonLd data={schemas} /><main className="mx-auto max-w-5xl px-4 py-16 sm:px-6">{page.id !== 'homepage' && <nav aria-label="KalQLater" className="text-sm text-brand-subtle"><Link href={localePath(locale)}>KalQLater</Link>{path && <><span aria-hidden="true"> / </span>{breadcrumb}</>}</nav>}<header className="mt-8 max-w-3xl"><p className="text-xs font-semibold uppercase tracking-[.2em] text-brand-teal">{page.fields.eyebrow || breadcrumb || 'KalQLater'}</p><h1 className="display-font mt-3 text-4xl text-brand-ink sm:text-5xl">{title}</h1><p className="mt-5 text-lg leading-relaxed text-brand-subtle">{page.fields.body || page.fields.summary || page.fields.intro || page.fields.promise || page.fields.overview}</p></header><div className="mt-10 grid gap-5 md:grid-cols-2">{sections.map(([key, value]) => <section key={key} className="rounded-2xl border border-brand-line bg-white p-6 shadow-sm"><h2 className="display-font text-xl text-brand-ink">{labels[key]}</h2><p className="mt-3 leading-relaxed text-brand-subtle">{value}</p></section>)}</div>{page.fields.ctas && <Link href={localePath(locale, ctaPath)} className="mt-10 inline-flex rounded-full bg-brand-teal px-6 py-3 font-semibold text-white">{page.fields.ctas}</Link>}</main></>;
+  return <><JsonLd data={schemas} /><main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16">{page.id !== 'homepage' && <nav aria-label="KalQLater" className="text-sm text-brand-subtle"><Link href={localePath(locale)}>KalQLater</Link>{path && <><span aria-hidden="true"> / </span>{breadcrumb}</>}</nav>}<header className="relative mt-6 overflow-hidden rounded-[2rem] bg-brand-ink px-7 py-10 text-white shadow-[0_24px_70px_rgba(45,40,37,.16)] sm:px-10 sm:py-14"><span aria-hidden="true" className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-teal/35 blur-3xl" /><div className="relative grid gap-8 lg:grid-cols-[1.2fr_.8fr]"><div><p className="text-xs font-semibold uppercase tracking-[.2em] text-brand-sand">{fields.eyebrow || breadcrumb || 'KalQLater'}</p><h1 className="display-font mt-4 text-4xl leading-tight sm:text-6xl">{title}</h1>{leadCopy(fields) && <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/80">{leadCopy(fields)}</p>}</div>{highlights.length > 0 && <aside className="grid gap-3">{highlights.map(([key, value], index) => <div key={key} className={`rounded-2xl p-4 ${index === 0 ? 'bg-white/15' : 'bg-white/10'}`}><p className="text-xs font-bold tracking-[.14em] text-brand-sand">{labels[key]}</p><p className="mt-2 text-sm leading-relaxed text-white/85">{value}</p></div>)}</aside>}</div></header><div className="mt-12 grid gap-5 md:grid-cols-2">{sections.map(([key, value], index) => <section key={key} className={`rounded-[1.75rem] p-6 shadow-sm sm:p-7 ${index % 4 === 1 ? 'bg-brand-cream' : index % 4 === 2 ? 'bg-brand-sand/25' : index % 4 === 3 ? 'bg-brand-teal/5' : 'border border-brand-line bg-white'}`}><p className="section-kicker">{String(index + 1).padStart(2, '0')}</p><h2 className="display-font mt-3 text-2xl text-brand-ink">{labels[key]}</h2><p className="mt-4 leading-relaxed text-brand-subtle">{value}</p></section>)}</div>{fields.faqs && <section className="mt-12 rounded-[2rem] border border-brand-line bg-white p-7 sm:p-9"><p className="section-kicker">{labels.faqs}</p><h2 className="display-font mt-3 text-3xl text-brand-ink">{faq}</h2><details className="mt-6 rounded-2xl bg-brand-cream p-5" open><summary className="cursor-pointer font-semibold text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal">{faq}</summary><p className="mt-4 max-w-4xl leading-relaxed text-brand-subtle">{fields.faqs}</p></details></section>}{fields.ctas && <section className="mt-12 rounded-[2rem] bg-brand-teal p-8 text-white sm:p-10"><p className="section-kicker text-brand-sand">KalQLater</p><h2 className="display-font mt-3 text-3xl">{fields.ctas}</h2><Link href={localePath(locale, ctaPath)} className="button-light mt-6">{fields.ctas}<span aria-hidden="true">→</span></Link></section>}</main></>;
 }
