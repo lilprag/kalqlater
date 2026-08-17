@@ -21,6 +21,14 @@ function compareContract(actual, expected, currentPath = '', insideFields = fals
   }
   if (!expected || typeof expected !== 'object') return actual === expected ? [] : [`Contract changed: ${currentPath}`];
   if (!actual || typeof actual !== 'object' || Array.isArray(actual)) return [`Invalid object: ${currentPath}`];
+  if (currentPath === 'fields' && actual.editorial !== undefined && actual.__structuredCompare === true) {
+    const editorial = actual.editorial;
+    const valid = editorial && Array.isArray(editorial.sections) && editorial.sections.length === 17 && editorial.sections.every((section) => typeof section?.id === 'string' && typeof section?.title === 'string' && typeof section?.body === 'string') && Array.isArray(editorial.faqs) && editorial.faqs.length >= 4 && editorial.faqs.length <= 6 && editorial.faqs.every((faq) => typeof faq?.question === 'string' && typeof faq?.answer === 'string') && Array.isArray(editorial.relatedLinks) && editorial.relatedLinks.length === 6 && editorial.relatedLinks.every((link) => typeof link?.label === 'string' && typeof link?.href === 'string');
+    if (!valid) return [`Invalid structured editorial content: ${currentPath}.editorial`];
+    actual = { ...actual };
+    delete actual.editorial;
+    delete actual.__structuredCompare;
+  }
   const actualKeys = Object.keys(actual);
   const expectedKeys = Object.keys(expected);
   const errors = actualKeys.filter((key) => !expectedKeys.includes(key)).map((key) => `Extra key: ${currentPath ? `${currentPath}.` : ''}${key}`);
@@ -29,12 +37,19 @@ function compareContract(actual, expected, currentPath = '', insideFields = fals
   return errors;
 }
 
-function fieldProblems(fields, file, locale) {
+function structuredCompare(page, locale) {
+  const editorial = page?.fields?.editorial;
+  if (!String(page?.id || '').startsWith('compare:') || !editorial) return null;
+  const valid = Array.isArray(editorial.sections) && editorial.sections.length === 17 && new Set(editorial.sections.map((item) => item?.id)).size === 17 && editorial.sections.every((item) => typeof item?.id === 'string' && typeof item?.title === 'string' && item.title.trim() && typeof item?.body === 'string' && item.body.trim()) && Array.isArray(editorial.faqs) && editorial.faqs.length >= 4 && editorial.faqs.length <= 6 && new Set(editorial.faqs.map((item) => item?.question)).size === editorial.faqs.length && editorial.faqs.every((item) => typeof item?.question === 'string' && item.question.trim() && typeof item?.answer === 'string' && item.answer.trim()) && Array.isArray(editorial.relatedLinks) && editorial.relatedLinks.length === 6 && editorial.relatedLinks.every((item) => typeof item?.label === 'string' && item.label.trim() && new RegExp(`^/${locale}/(?:personality/[a-z]{4}(?:/careers)?|insights/(?:communication|conflict|leadership|learning))$`).test(item?.href || '') && !item.href.endsWith('/start'));
+  return valid ? editorial : null;
+}
+
+function fieldProblems(fields, file, locale, structured = false) {
   const missing = [];
   const englishResidue = [];
   for (const [fieldPath, value] of leafValues(fields)) {
     if (value === null || value === undefined || (typeof value === 'string' && value.trim() === '') || (Array.isArray(value) && value.length === 0)) missing.push(`${file}:fields.${fieldPath}`);
-    if (typeof value === 'string') {
+    if (typeof value === 'string' && !(structured && /^editorial\.relatedLinks\[\d+\]\.href$/.test(fieldPath))) {
       for (const match of value.matchAll(ENGLISH_WORDS)) {
         if (!LOCALE_COGNATES[locale]?.has(match[0].toLowerCase())) englishResidue.push(`${file}:fields.${fieldPath}:${match[0]}`);
       }
@@ -78,10 +93,12 @@ export async function validateLocalePackage({ locale, localesRoot, dictionary = 
     }
     files.push(file);
     if (!isStandardJson(raw, parsed)) schemaErrors.push(`Non-standard JSON formatting: ${file}`);
-    schemaErrors.push(...compareContract(parsed, expected, '', false).map((error) => `${file}: ${error}`));
+    const editorial = structuredCompare(parsed, locale);
+    const contractActual = editorial ? { ...parsed, fields: { ...parsed.fields, __structuredCompare: true } } : parsed;
+    schemaErrors.push(...compareContract(contractActual, expected, '', false).map((error) => `${file}: ${error}`));
     if (parsed.fields && (!requiredPageIds || requiredPageIds.includes(parsed.id))) {
       fieldCount += leafValues(parsed.fields).length;
-      const problems = fieldProblems(parsed.fields, file, locale);
+      const problems = fieldProblems(parsed.fields, file, locale, Boolean(editorial));
       missing.push(...problems.missing);
       englishResidue.push(...problems.englishResidue);
       words += countWords(parsed.fields);

@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INFJ et ENFJ",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INFJ et ENFJ peuvent se reconnaître dans leur attention aux personnes, aux motivations et à ce qui donne une direction à un groupe. La différence se remarque souvent dans le mouvement : l’INFJ traite volontiers une impression en privé, tandis que l’ENFJ la met plus facilement en circulation pour créer du lien ou coordonner."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Les deux profils peuvent rechercher des relations sincères, une vision qui dépasse l’immédiat et des échanges où chacun se sent considéré. Ils peuvent aussi être sensibles à l’ambiance d’une équipe ou d’un foyer, sans que cette sensibilité implique la même manière d’agir."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INFJ peut préférer approfondir une intuition avant de la partager. L’ENFJ peut clarifier sa pensée en parlant avec les personnes concernées et en organisant les contributions. Cette différence entre profondeur individuelle et coordination visible demande du temps, pas une hiérarchie."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "L’INFJ peut choisir ses mots avec soin et attendre le bon contexte. L’ENFJ peut poser rapidement une question, reformuler et chercher un accord qui permette d’avancer. Ils se comprennent mieux lorsque l’ENFJ laisse de la place à la réflexion silencieuse et que l’INFJ indique quand il a besoin de ce délai."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "Le retrait temporaire de l’INFJ peut être lu comme une distance relationnelle. L’initiative sociale de l’ENFJ peut être ressentie comme une pression ou comme une prise en charge excessive. Nommer l’intention — se ressourcer, aider, écouter, organiser — évite de transformer ces gestes en jugement."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Tous deux peuvent vouloir préserver l’harmonie, mais y parvenir différemment. L’INFJ peut éviter un échange tant qu’il n’a pas compris ce qu’il ressent ; l’ENFJ peut chercher à le résoudre rapidement pour protéger le groupe ou le lien. Un conflit gagne en clarté quand la réparation ne devient pas une obligation immédiate."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "Une réparation utile consiste à reconnaître l’impact sans exiger que l’autre se sente mieux tout de suite. L’ENFJ peut proposer un moment précis pour reprendre la conversation ; l’INFJ peut dire ce qui lui permettrait de revenir. Cette combinaison protège à la fois le lien et l’espace personnel."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit lorsque les confidences restent respectées et que les promesses relationnelles sont suivies d’actes. L’INFJ peut apprécier une discrétion fiable ; l’ENFJ peut apprécier une participation sincère plutôt qu’une politesse distante. Elle grandit avec le temps et des limites tenues."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "Les deux peuvent prendre beaucoup de responsabilités émotionnelles. La sécurité augmente lorsqu’il devient possible de dire « je ne peux pas porter cela maintenant » sans que ce refus soit interprété comme un manque d’attachement. Un besoin de calme ou de soutien mérite d’être entendu sans surinterprétation."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, l’INFJ peut valoriser une présence choisie et des conversations en tête-à-tête ; l’ENFJ peut créer volontiers des occasions de réunir les gens. Ils peuvent apprécier les deux formats s’ils évitent de mesurer l’affection à la fréquence sociale ou à la disponibilité immédiate."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Une relation amoureuse peut trouver un bel équilibre entre intimité, encouragement et projet commun. Elle devient plus stable lorsque les attentes autour de la sociabilité, de l’expression affective et des moments de solitude sont formulées, plutôt que déduites d’un type de personnalité."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’INFJ peut apporter une lecture fine des conséquences humaines et une vision de long terme. L’ENFJ peut mobiliser, faciliter une discussion et rendre une intention partagée plus concrète. Des responsabilités explicites évitent que l’un devienne le conseiller invisible et l’autre le coordinateur de tout."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "L’INFJ peut vouloir vérifier l’alignement avec une conviction profonde avant de s’engager. L’ENFJ peut considérer rapidement les besoins des personnes touchées et chercher une solution mobilisatrice. Une décision est plus solide quand ils distinguent les informations à recueillir des responsabilités à répartir."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "Sous pression, l’INFJ peut se fermer ou se sentir saturé par les demandes relationnelles. L’ENFJ peut multiplier les efforts pour garder chacun à flot et s’épuiser à son tour. Prévoir des limites, des relais et un temps de décompression réduit le risque de sur-responsabilité."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’INFJ peut apporter une perspective nuancée qui protège le sens d’un projet ; l’ENFJ peut lui donner une forme collective et accessible. Ensemble, ils peuvent relier vision et coopération, à condition que la participation de chacun reste choisie et non attendue par défaut."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INFJ peut s’entraîner à exprimer un désaccord avant qu’il ne devienne lourd. L’ENFJ peut s’entraîner à demander s’il souhaite une réponse ou simplement une écoute. Un court point régulier sur les limites et les besoins permet de ne pas attendre la fatigue pour ajuster."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Avant un sujet sensible, choisissez le cadre : échange privé, discussion d’équipe ou pause avant de répondre. Formulez une observation, un effet et une demande réaliste. Après la conversation, vérifiez qu’aucun des deux n’a repris seul une responsabilité qui devrait être partagée."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "INFJ et ENFJ se comprennent-ils facilement ?",
+          "answer": "Ils peuvent partager une attention forte aux relations et aux idées porteuses de sens, tout en différant dans leur manière de traiter ce qu’ils perçoivent. Prendre le temps de préciser ce besoin rend souvent leur compréhension plus fiable."
+        },
+        {
+          "question": "Pourquoi l’INFJ a-t-il parfois besoin de se retirer face à un ENFJ ?",
+          "answer": "Le retrait peut servir à organiser ses pensées ou à retrouver de l’énergie, non à rejeter la relation. Prévenir ce besoin et convenir d’un moment pour se reparler peut rassurer les deux personnes."
+        },
+        {
+          "question": "Comment INFJ et ENFJ peuvent-ils gérer un conflit ?",
+          "answer": "Ils peuvent éviter de résoudre trop vite ou de garder le silence trop longtemps. Définir le problème, écouter l’effet produit et décider d’une prochaine étape limitée rend la réparation plus praticable."
+        },
+        {
+          "question": "INFJ et ENFJ peuvent-ils bien travailler ensemble ?",
+          "answer": "Ils le peuvent lorsque la réflexion stratégique, la facilitation et la responsabilité émotionnelle sont réparties clairement. Le contexte de travail et les attentes de l’équipe comptent davantage qu’une étiquette."
+        },
+        {
+          "question": "Comment préserver les limites dans ce duo ?",
+          "answer": "Il est utile de distinguer l’aide choisie de l’aide supposée. Dire ce qui est disponible, ce qui ne l’est pas et quand reprendre la discussion protège la confiance sans demander à l’un ou l’autre d’être constamment accessible."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INFJ",
+          "href": "/fr/personality/infj"
+        },
+        {
+          "label": "Profil ENFJ",
+          "href": "/fr/personality/enfj"
+        },
+        {
+          "label": "Carrières INFJ",
+          "href": "/fr/personality/infj/careers"
+        },
+        {
+          "label": "Carrières ENFJ",
+          "href": "/fr/personality/enfj/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir au leadership",
+          "href": "/fr/insights/leadership"
+        }
+      ]
+    },
     "seo": {
       "title": "INFJ vs ENFJ : différences et compatibilité | KalQLater",
       "description": "Comparez INFJ et ENFJ : communication, relations, travail, décisions et pistes de compréhension.",

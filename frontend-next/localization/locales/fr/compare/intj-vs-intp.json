@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INTJ et INTP",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INTJ et INTP peuvent reconnaître très vite chez l’autre le goût des idées, de l’autonomie et des raisonnements précis. Leur différence apparaît souvent après ce premier terrain commun : l’INTJ cherche volontiers à donner une direction à une réflexion, tandis que l’INTP peut vouloir en tester encore les contours."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Ces deux profils apprécient fréquemment l’espace pour penser, les conversations substantielles et les systèmes que l’on peut comprendre de l’intérieur. Ils peuvent aussi respecter une forme de réserve mutuelle, à condition que le silence ne devienne pas la seule manière de signaler un besoin."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INTJ tend à chercher une architecture qui permette d’avancer ; l’INTP peut préserver une question ouverte tant qu’une explication plus élégante reste possible. L’un n’est pas nécessairement plus pragmatique ni l’autre plus profond : ils accordent simplement une valeur différente au moment de conclure."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "Leurs échanges peuvent être stimulants, mais aussi devenir très abstraits. L’INTJ gagne à indiquer la décision ou l’effet concret recherché ; l’INTP gagne à dire lorsqu’il explore une hypothèse plutôt qu’il ne conteste une conclusion. Cette distinction évite que la discussion ressemble à une opposition de principes."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "L’INTJ peut lire le besoin de raffinement de l’INTP comme une hésitation qui bloque l’action. L’INTP peut ressentir une conclusion rapide comme une fermeture prématurée. Ils ont souvent intérêt à préciser si la conversation sert à comprendre, à choisir ou à préparer une mise en œuvre."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Le désaccord peut rester intellectuel longtemps, puis devenir personnel si chacun a l’impression que sa méthode de pensée est dévalorisée. L’INTJ peut durcir le cadre ; l’INTP peut se retirer dans des objections successives. Revenir à une question limitée aide davantage que de vouloir résoudre tout le système d’un coup."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "Pour réparer, il peut être utile de distinguer l’idée critiquée de la personne qui l’a proposée. Une phrase simple comme « je comprends mieux ce que tu cherchais à protéger » ouvre souvent la voie à un essai concret, suivi d’une révision plutôt qu’à une victoire argumentative."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se développe lorsque l’INTJ constate que l’INTP ne remet pas en cause un accord par principe, et lorsque l’INTP voit que l’INTJ peut modifier son plan face à une meilleure explication. La fiabilité comprend ici autant la clarté des engagements que l’honnêteté intellectuelle."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "Ce duo peut minimiser les signaux affectifs parce que l’analyse paraît plus confortable. Pourtant, dire qu’une remarque a blessé, qu’un délai inquiète ou qu’un silence est nécessaire rend la relation plus prévisible. Il n’est pas besoin de tout ressentir de la même façon pour traiter l’expérience de l’autre avec sérieux."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "L’amitié peut se nourrir de centres d’intérêt spécialisés, de jeux intellectuels ou de projets que chacun enrichit à sa manière. Elle reste plus solide quand les invitations sont explicites : une autonomie appréciée ne signifie pas automatiquement que l’autre n’a pas envie de se voir."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Dans une relation amoureuse, les deux peuvent apprécier le calme et une forte complicité mentale. Des sujets pratiques — rythme quotidien, gestion des décisions, temps séparé et démonstrations d’affection — méritent toutefois d’être abordés directement, sans attendre que l’autre les déduise."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’INTJ peut apporter une séquence, des priorités et une vision de l’exécution ; l’INTP peut relever les hypothèses fragiles, clarifier le modèle et imaginer des options moins évidentes. Une collaboration devient plus fluide avec une phase d’exploration limitée dans le temps, puis un responsable clairement nommé pour la suite."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Avant une décision, l’INTJ peut demander : « quelle option sert le mieux notre objectif ? » ; l’INTP peut demander : « qu’est-ce qui nous manque encore pour être sûrs de comprendre ? ». Fixer un seuil d’information suffisant et une date de choix protège à la fois la rigueur et l’élan."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "Sous pression, l’INTJ peut chercher à contrôler davantage les délais et les résultats. L’INTP peut repousser une conclusion en poursuivant l’analyse ou s’isoler pour réfléchir. Un découpage en petites décisions, accompagné d’un temps de récupération, peut réduire la sensation d’impasse."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’INTJ peut aider l’INTP à transformer une intuition solide en projet lisible ; l’INTP peut aider l’INTJ à repérer une alternative que le plan initial avait écartée trop tôt. Leur complémentarité apparaît quand la structure reste suffisamment souple pour accueillir une bonne objection."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INTJ peut expérimenter le fait de demander « qu’est-ce qui reste à explorer ? » avant de fermer une décision. L’INTP peut expérimenter le fait de proposer une recommandation provisoire, même imparfaite. Un bilan après l’action permet de vérifier laquelle de leurs hypothèses était la plus utile."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Pour les sujets complexes, commencez par écrire la question, les critères et le délai. Donnez un espace limité aux alternatives, puis notez la décision et ce qui pourra être revu. En relation, ajoutez une question moins technique : « de quoi as-tu besoin pour que cette conversation reste constructive ? »."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi INTJ et INTP peuvent-ils se comprendre intellectuellement tout en se heurtant ?",
+          "answer": "Ils peuvent partager le goût de l’analyse tout en divergeant sur le moment où elle doit conduire à une décision. Rendre ce moment explicite aide à éviter qu’une différence de méthode devienne une critique personnelle."
+        },
+        {
+          "question": "Comment INTJ et INTP peuvent-ils mieux planifier ensemble ?",
+          "answer": "Ils peuvent ouvrir une phase courte pour examiner les options, définir le niveau d’information attendu, puis confier la mise en œuvre à une personne identifiée. Un point de révision laisse de la place à l’apprentissage."
+        },
+        {
+          "question": "Les INTJ et INTP communiquent-ils facilement ?",
+          "answer": "Ils peuvent apprécier la précision et les idées complexes, mais risquent aussi de rester trop implicites sur leurs attentes ou leur ressenti. Dire le but de la conversation et vérifier la compréhension est souvent utile."
+        },
+        {
+          "question": "Que faire lorsqu’un désaccord entre INTJ et INTP s’éternise ?",
+          "answer": "Réduire le sujet à une décision précise, distinguer les faits des préférences et convenir d’un essai limité peut aider. L’objectif n’est pas d’éliminer toute incertitude, mais de choisir une prochaine étape raisonnable."
+        },
+        {
+          "question": "INTJ et INTP peuvent-ils bien travailler ensemble ?",
+          "answer": "Oui, notamment lorsque la contribution de chacun est visible : l’un peut organiser la direction et l’exécution, l’autre tester les hypothèses et enrichir le raisonnement. Le contexte, les rôles et les habitudes d’équipe restent décisifs."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INTJ",
+          "href": "/fr/personality/intj"
+        },
+        {
+          "label": "Profil INTP",
+          "href": "/fr/personality/intp"
+        },
+        {
+          "label": "Carrières INTJ",
+          "href": "/fr/personality/intj/careers"
+        },
+        {
+          "label": "Carrières INTP",
+          "href": "/fr/personality/intp/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir au leadership",
+          "href": "/fr/insights/leadership"
+        }
+      ]
+    },
     "seo": {
       "title": "INTJ vs INTP : différences et compatibilité | KalQLater",
       "description": "Comparez INTJ et INTP : communication, relations, travail, décisions et pistes de compréhension.",

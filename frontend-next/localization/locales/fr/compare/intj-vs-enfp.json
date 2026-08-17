@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INTJ et ENFP",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "L’INTJ apporte souvent une lecture structurée de ce qui vient, tandis que l’ENFP repère rapidement les possibilités encore ouvertes. Leur échange peut paraître contrasté dès le départ : l’un cherche une logique durable, l’autre veut d’abord voir où une idée peut mener."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Les deux profils apprécient fréquemment les conversations qui sortent de l’ordinaire et les projets qui ont du sens. Ils peuvent aussi se retrouver dans le goût des idées, de l’autonomie et d’une relation qui laisse de la place à la curiosité."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INTJ tend à réduire les options pour construire une direction claire. L’ENFP peut préférer garder plusieurs pistes vivantes plus longtemps. Cette différence n’indique pas qu’un rythme est supérieur à l’autre ; elle demande surtout de rendre les critères de décision visibles."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "L’INTJ peut privilégier une formulation concise, orientée vers le problème à résoudre. L’ENFP peut penser à voix haute, ajouter des associations et chercher une réponse relationnelle avant de conclure. Ils se comprennent mieux lorsque l’INTJ explique son raisonnement et que l’ENFP précise ce qui mérite encore d’être exploré."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "Une réserve de l’INTJ peut être interprétée comme du désintérêt, et l’enthousiasme de l’ENFP comme de l’inconstance. Dans les deux cas, une hypothèse rapide peut masquer une intention plus nuancée : prendre du recul, tester une idée, ou chercher un lien plus vivant."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Sous tension, l’INTJ peut vouloir fermer la discussion pour retrouver de la cohérence, tandis que l’ENFP peut multiplier les angles afin de ne pas perdre une possibilité importante. Le conflit devient plus productif quand ils séparent le besoin d’être entendu de la décision à prendre."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "Une réparation utile commence souvent par un retour concret : nommer ce qui a été mal compris, reconnaître l’effet produit, puis convenir d’un prochain geste. Pour ce duo, reprendre la conversation avec un cadre léger et une question précise évite de rejouer tout le débat."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance peut grandir lorsque l’INTJ voit que les engagements sont suivis d’effets et que l’ENFP sent que ses idées ne sont pas écartées trop vite. Fiabilité, curiosité réciproque et droit de dire « je ne suis pas encore prêt à décider » comptent davantage qu’une supposée compatibilité."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "L’ENFP peut se sentir plus en sécurité si les critiques portent sur une situation précise plutôt que sur sa personnalité. L’INTJ peut se sentir plus à l’aise si une émotion est accompagnée d’une demande claire. Ces ajustements ne doivent pas effacer les styles de chacun, mais faciliter un échange honnête."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, ce duo peut alterner entre discussions profondes et découvertes spontanées. L’INTJ apprécie souvent une invitation simple et sans pression ; l’ENFP peut apprécier que l’intérêt soit exprimé plutôt que seulement supposé. Des projets communs donnent facilement un rythme au lien."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Dans une relation amoureuse, l’attrait peut venir de perspectives très différentes sur le futur. L’INTJ peut apporter de la continuité ; l’ENFP, de l’élan et de la chaleur relationnelle. Les attentes autour du temps seul, de la spontanéité et des décisions communes gagnent à être discutées tôt."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, l’INTJ peut structurer une stratégie, identifier les dépendances et rendre un projet plus robuste. L’ENFP peut ouvrir le champ, mobiliser les personnes et repérer une occasion que le plan initial n’avait pas prévue. Des rôles explicites et un moment de revue transforment cette différence en complément utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "L’INTJ peut souhaiter comparer les conséquences avant de s’engager ; l’ENFP peut tester une option pour apprendre en chemin. Un bon compromis consiste à distinguer les décisions faciles à réviser de celles qui engagent davantage, puis à fixer le moment où la phase d’exploration se termine."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "Lorsque la pression dure, l’INTJ peut devenir plus abrupt ou se replier sur le contrôle. L’ENFP peut chercher davantage de stimulation ou de validation relationnelle. Une pause convenue, suivie d’un échange plus calme sur les priorités, est souvent plus utile qu’une tentative de résoudre tout immédiatement."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’INTJ aide à transformer une ambition en système cohérent ; l’ENFP aide à éviter qu’un système devienne trop fermé aux occasions humaines ou créatives. Ensemble, ils peuvent articuler vision, expérimentation et capacité d’ajustement sans demander à l’autre de devenir quelqu’un d’autre."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INTJ peut s’entraîner à partager une intention avant d’exposer sa conclusion. L’ENFP peut s’entraîner à résumer les options qu’il souhaite réellement garder ouvertes. Tous deux bénéficient d’un court bilan : ce qui a fonctionné, ce qui a été difficile et ce qui mérite un nouvel essai."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Avant une discussion importante, convenez du but : explorer, décider ou réparer. Pendant l’échange, alternez une question de clarification et une synthèse courte. Après la décision, notez un responsable, une échéance et un point de révision ; cela respecte à la fois le besoin de structure et le besoin de garder un apprentissage vivant."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "INTJ et ENFP peuvent-ils bien s’entendre ?",
+          "answer": "Ils le peuvent lorsque leurs différences de rythme deviennent un sujet de conversation plutôt qu’un verdict. La qualité du lien dépend notamment des attentes, du respect, de la communication et des expériences partagées."
+        },
+        {
+          "question": "Pourquoi l’INTJ et l’ENFP se comprennent-ils parfois mal ?",
+          "answer": "L’INTJ peut chercher une conclusion claire là où l’ENFP est encore en train d’explorer. Inversement, l’ENFP peut attendre davantage de signes relationnels qu’un INTJ n’en exprime spontanément. Nommer le besoin du moment réduit souvent ce décalage."
+        },
+        {
+          "question": "Comment ce duo peut-il mieux décider ensemble ?",
+          "answer": "Il peut définir ce qui doit être analysé, ce qui peut être testé, puis le moment où une décision sera revue. Cette méthode donne de la place à l’exploration sans laisser le projet indéfiniment ouvert."
+        },
+        {
+          "question": "Quel est un bon réflexe après un conflit entre INTJ et ENFP ?",
+          "answer": "Faire une pause si nécessaire, revenir avec un exemple concret et formuler une demande pour la suite. Chercher à comprendre l’intention avant de discuter de la solution aide souvent à restaurer la confiance."
+        },
+        {
+          "question": "Cette comparaison prédit-elle la réussite d’une relation ?",
+          "answer": "Non. Les préférences de personnalité offrent des pistes de réflexion ; elles ne prédisent ni la qualité d’une relation, ni les choix, ni l’avenir de deux personnes."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INTJ",
+          "href": "/fr/personality/intj"
+        },
+        {
+          "label": "Profil ENFP",
+          "href": "/fr/personality/enfp"
+        },
+        {
+          "label": "Carrières INTJ",
+          "href": "/fr/personality/intj/careers"
+        },
+        {
+          "label": "Carrières ENFP",
+          "href": "/fr/personality/enfp/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir aux désaccords",
+          "href": "/fr/insights/conflict"
+        }
+      ]
+    },
     "seo": {
       "title": "INTJ vs ENFP : différences et compatibilité | KalQLater",
       "description": "Comparez INTJ et ENFP : communication, relations, travail, décisions et pistes de compréhension.",

@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer ISTJ et ISFJ",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "ISTJ et ISFJ peuvent donner une impression de fiabilité, de calme et d’attention aux choses concrètes. Tous deux prennent souvent les engagements au sérieux ; leur différence apparaît davantage dans ce qu’ils observent lorsqu’une responsabilité doit être tenue : critères, procédure et cohérence pour l’un, personnes concernées et continuité du soin pour l’autre."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Ils peuvent apprécier les repères stables, l’expérience acquise et les gestes qui rendent la vie quotidienne plus prévisible. Leur confiance se construit fréquemment dans la durée, au fil de promesses suivies d’effets, plutôt que dans de grandes déclarations."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’ISTJ peut accorder davantage de poids à une règle claire ou à un critère vérifiable. L’ISFJ peut examiner plus spontanément l’effet d’une décision sur les personnes et les relations. Cela ne signifie ni absence d’empathie chez l’un, ni absence de logique chez l’autre ; les priorités sont simplement mises dans un ordre différent."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "Une communication simple, précise et régulière convient souvent à ce duo. L’ISTJ peut rendre son raisonnement plus facile à suivre en expliquant le contexte ; l’ISFJ peut rendre une préoccupation plus concrète en formulant une demande. Ainsi, l’attention au lien et l’attention au fait se soutiennent au lieu de se concurrencer."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "Un rappel de standard peut être reçu comme une critique personnelle, tandis qu’une hésitation liée à l’impact humain peut être lue comme un manque de fermeté. Vérifier ce que chacun essaie de protéger — qualité, équité, confort ou continuité — évite de réduire l’autre à une intention qu’il n’a pas."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Les désaccords peuvent rester silencieux lorsque tous deux préfèrent éviter de perturber l’équilibre. Pourtant, une accumulation de petites concessions rend souvent le sujet plus lourd. Mieux vaut choisir un moment calme, décrire un fait précis et rechercher un ajustement réalisable."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "La réparation gagne en crédibilité lorsqu’elle associe une reconnaissance et un changement visible : clarifier une attente, corriger une omission ou convenir d’un nouveau repère. Pour ce duo, la constance après l’échange compte souvent autant que les mots employés pendant celui-ci."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance peut s’installer lorsque les horaires, les limites et les engagements sont respectés. L’ISTJ peut apprécier que les décisions annoncées soient suivies ; l’ISFJ peut apprécier que les besoins exprimés ne soient pas oubliés. Une fiabilité attentive renforce les deux dimensions."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité relationnelle ne demande pas de deviner ce que l’autre ressent. Dire qu’une remarque a eu un effet, qu’une aide est bienvenue ou qu’une limite est atteinte permet de rester concret sans minimiser l’expérience personnelle."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "L’amitié peut se développer autour d’habitudes simples, de services rendus et d’intérêts partagés. Les initiatives directes — proposer une date, remercier clairement, demander comment aider — évitent que l’affection soit seulement présumée à partir de la disponibilité."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Dans une relation, la stabilité peut être une force si elle laisse aussi de la place à l’évolution. Discuter des tâches, des traditions, des dépenses et du repos rend les attentes moins implicites. Les attentions pratiques ont plus de valeur lorsqu’elles ne deviennent pas une obligation silencieuse."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’ISTJ peut contribuer par le contrôle de qualité, la méthode et le suivi. L’ISFJ peut repérer les effets d’un changement sur les collègues ou les utilisateurs et soutenir la continuité du travail. Des rôles écrits et des retours réguliers aident à faire dialoguer exigences et coopération."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Face à une décision, l’ISTJ peut demander quelle option respecte le mieux les faits et les obligations. L’ISFJ peut demander qui sera touché et quel soutien sera nécessaire. Examiner successivement les critères, les conséquences et les moyens d’accompagnement produit un choix plus complet."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "Les changements imprévus peuvent fatiguer les deux profils, surtout si les responsabilités restent floues. L’ISTJ peut resserrer le cadre ; l’ISFJ peut essayer de prendre davantage en charge. Répartir explicitement le travail et reconnaître ce qui ne peut pas être fait immédiatement réduit cette surcharge."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’ISTJ peut aider à maintenir un standard lorsque la situation devient confuse. L’ISFJ peut rappeler qu’un standard fonctionne mieux lorsqu’il tient compte des conditions réelles des personnes. Cette complémentarité est utile lorsqu’aucun des deux n’a à porter seul toute la responsabilité."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’ISTJ peut s’entraîner à demander quel impact humain mérite d’être pris en compte avant de trancher. L’ISFJ peut s’entraîner à exprimer une limite ou un désaccord avant de se suradapter. Tous deux peuvent revoir leurs habitudes après une situation concrète, sans chercher une perfection abstraite."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Pour une difficulté récurrente, notez le fait, la responsabilité de chacun et l’effet recherché. Convenez d’un petit ajustement, puis d’un moment pour vérifier s’il aide réellement. Cette méthode évite que les besoins relationnels ou les critères pratiques soient laissés hors de la conversation."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi ISTJ et ISFJ peuvent-ils sembler très proches ?",
+          "answer": "Ils peuvent partager une attention à la fiabilité, aux détails et aux engagements. Des priorités différentes apparaissent toutefois lorsqu’il faut arbitrer entre un critère, une procédure et l’effet d’une décision sur les personnes."
+        },
+        {
+          "question": "Quelle différence compte le plus entre ISTJ et ISFJ ?",
+          "answer": "Il ne s’agit pas d’une opposition entre logique et empathie. L’ISTJ peut commencer par les standards et les faits ; l’ISFJ peut commencer par les besoins et la continuité relationnelle. Les deux angles peuvent être utiles."
+        },
+        {
+          "question": "Comment ISTJ et ISFJ peuvent-ils mieux communiquer ?",
+          "answer": "Ils gagnent à dire clairement ce qui est attendu, ce qui a été difficile et quelle aide serait concrète. Les non-dits s’accumulent plus facilement lorsque chacun suppose que l’autre a déjà compris."
+        },
+        {
+          "question": "Comment gérer un conflit dans ce duo ?",
+          "answer": "Choisir un fait précis, éviter les généralisations et décider d’un changement observable aide souvent. Une réparation durable passe aussi par le respect de l’engagement pris après la conversation."
+        },
+        {
+          "question": "ISTJ et ISFJ peuvent-ils bien travailler ensemble ?",
+          "answer": "Ils le peuvent lorsque la qualité, le suivi et les effets humains font partie du même échange. La répartition des rôles et le contexte de l’équipe restent essentiels."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil ISTJ",
+          "href": "/fr/personality/istj"
+        },
+        {
+          "label": "Profil ISFJ",
+          "href": "/fr/personality/isfj"
+        },
+        {
+          "label": "Carrières ISTJ",
+          "href": "/fr/personality/istj/careers"
+        },
+        {
+          "label": "Carrières ISFJ",
+          "href": "/fr/personality/isfj/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir aux désaccords",
+          "href": "/fr/insights/conflict"
+        }
+      ]
+    },
     "seo": {
       "title": "ISTJ vs ISFJ : différences et compatibilité | KalQLater",
       "description": "Comparez ISTJ et ISFJ : communication, relations, travail, décisions et pistes de compréhension.",

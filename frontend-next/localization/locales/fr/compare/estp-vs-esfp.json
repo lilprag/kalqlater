@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer ESTP et ESFP",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "ESTP et ESFP peuvent se retrouver dans le goût de l’expérience directe, de l’adaptation et d’une énergie tournée vers ce qui se passe maintenant. Leur différence apparaît souvent dans l’attention portée à une situation : l’ESTP cherche volontiers la solution praticable, l’ESFP remarque plus vite ce qui est important pour les personnes présentes."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Ils peuvent apprécier les échanges vivants, les occasions concrètes et la liberté d’ajuster un plan au réel. Une activité partagée, un défi immédiat ou un environnement stimulant peuvent leur donner plus de matière qu’une longue discussion théorique."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’ESTP peut évaluer une option par son efficacité, son risque et ce qu’elle permet de faire. L’ESFP peut y ajouter plus spontanément l’expérience vécue, les valeurs en jeu et l’effet relationnel. Ces angles ne s’excluent pas ; ils invitent à regarder des conséquences différentes."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "Les deux peuvent préférer une parole franche et réactive. L’ESTP peut aller vite vers le point à résoudre ; l’ESFP peut avoir besoin que l’impact personnel soit reconnu avant de passer à la suite. Poser une question de clarification plutôt que répondre immédiatement conserve la vivacité sans perdre l’écoute."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "Une solution directe peut sembler trop abrupte si elle arrive avant la reconnaissance d’un ressenti. À l’inverse, le besoin de parler de l’expérience peut paraître détourner l’attention du problème concret. Dire si l’on cherche du soutien, une idée ou une décision réduit ce décalage."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Le conflit peut monter vite lorsque chacun réagit à l’ambiance du moment. L’ESTP peut vouloir agir tout de suite pour débloquer la situation ; l’ESFP peut vouloir protéger la relation ou l’équité d’un échange. Ralentir juste assez pour identifier le sujet évite de confondre intensité et importance."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "Une réparation concrète est souvent plus convaincante qu’une longue analyse : reconnaître l’effet d’une parole, revenir vers l’autre et proposer un geste précis. Elle reste plus solide lorsque ce geste n’efface pas la limite ou le besoin qui avait été exprimé."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance peut croître grâce à la réactivité, à la loyauté dans les situations réelles et à la capacité de tenir parole après l’enthousiasme initial. L’ESTP peut apprécier une communication nette ; l’ESFP peut apprécier que la considération montrée en public reste la même en privé."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "Ce duo peut se sentir plus en sécurité lorsque la franchise n’est pas utilisée pour minimiser une émotion et lorsque l’émotion n’est pas utilisée pour éviter un fait difficile. Reconnaître à la fois le vécu et le prochain choix possible garde la discussion ouverte."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "L’amitié peut se nourrir d’expériences spontanées, de sorties et de projets qui donnent de l’élan. Elle s’approfondit aussi lorsque chacun prend l’initiative de vérifier ce que l’autre souhaite réellement, plutôt que de supposer qu’une même énergie sociale implique les mêmes besoins."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Dans une relation amoureuse, l’attraction peut venir de la légèreté, de l’audace et du plaisir de vivre des choses ensemble. Les attentes autour de l’attention, de la liberté, de l’argent ou des décisions gagnent néanmoins à être nommées, sans présenter leurs préférences comme une promesse de réussite."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’ESTP peut aider une équipe à décider et à débloquer une situation concrète. L’ESFP peut repérer la réception d’une idée et créer une coopération plus immédiate. Leur collaboration est plus utile lorsque la vitesse d’exécution s’accompagne d’un retour sur les personnes affectées."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Sous pression, l’ESTP peut demander ce qui fonctionne maintenant ; l’ESFP peut demander quel choix reste fidèle à ce qui compte pour les personnes concernées. Examiner le bénéfice, le risque, l’effet relationnel et la possibilité de revenir en arrière donne un cadre plus complet."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "Une restriction prolongée, une routine rigide ou l’impression de ne plus pouvoir agir peuvent fatiguer les deux profils. L’ESTP peut chercher une sortie rapide ; l’ESFP peut chercher davantage de contact ou de plaisir immédiat. Une pause choisie et une marge d’action réaliste peuvent aider."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’ESTP peut apporter une lecture pragmatique et du courage face à l’incertitude. L’ESFP peut rappeler la qualité de l’expérience et l’importance de ne pas traiter les personnes comme de simples variables. Ensemble, ils peuvent relier action, adaptation et attention au contexte humain."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’ESTP peut essayer de demander quel effet sa solution aura sur les autres avant de conclure. L’ESFP peut essayer de préciser le choix concret attendu après avoir exprimé son ressenti. Tous deux peuvent reprendre une situation récente pour distinguer l’impulsion utile de la réaction précipitée."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Dans une décision rapide, prenez deux minutes pour nommer l’objectif, le risque principal, la personne concernée et le prochain point de vérification. Cette courte pause préserve l’avantage de l’action sans obliger l’un ou l’autre à renoncer à sa manière de percevoir la situation."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi ESTP et ESFP paraissent-ils souvent très semblables ?",
+          "answer": "Ils peuvent partager une préférence pour l’expérience directe, l’adaptation et la réactivité. Des différences apparaissent toutefois dans les critères employés pour interpréter une conséquence ou choisir une prochaine action."
+        },
+        {
+          "question": "Quelle différence est la plus utile à comprendre entre ESTP et ESFP ?",
+          "answer": "L’ESTP peut s’orienter d’abord vers la solution praticable, tandis que l’ESFP peut donner davantage de poids à l’expérience et à l’impact relationnel. Les deux approches peuvent enrichir une même décision."
+        },
+        {
+          "question": "Comment ESTP et ESFP peuvent-ils mieux communiquer ?",
+          "answer": "Ils peuvent dire s’ils cherchent une écoute, une idée ou un choix immédiat. Cette clarification évite qu’une réponse directe soit reçue comme une mise à distance, ou qu’un ressenti soit pris pour une absence de solution."
+        },
+        {
+          "question": "Comment gérer un conflit entre ESTP et ESFP ?",
+          "answer": "Faire une pause courte, revenir au fait précis et nommer l’effet produit aide souvent. Une réparation concrète et un accord sur la suite valent mieux qu’une escalade autour de qui a eu raison."
+        },
+        {
+          "question": "ESTP et ESFP peuvent-ils bien travailler ensemble ?",
+          "answer": "Ils le peuvent quand ils associent action rapide, informations du terrain et attention aux personnes affectées. Les rôles, le contexte et la qualité des retours restent plus déterminants qu’un type de personnalité."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil ESTP",
+          "href": "/fr/personality/estp"
+        },
+        {
+          "label": "Profil ESFP",
+          "href": "/fr/personality/esfp"
+        },
+        {
+          "label": "Carrières ESTP",
+          "href": "/fr/personality/estp/careers"
+        },
+        {
+          "label": "Carrières ESFP",
+          "href": "/fr/personality/esfp/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir aux désaccords",
+          "href": "/fr/insights/conflict"
+        }
+      ]
+    },
     "seo": {
       "title": "ESTP vs ESFP : différences et compatibilité | KalQLater",
       "description": "Comparez ESTP et ESFP : communication, relations, travail, décisions et pistes de compréhension.",

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { JsonLd } from './JsonLd';
+import { LocalizedCompareContent } from './LocalizedCompareContent';
 import { localePath } from '../lib/site';
 
 function displayTitle(fields) {
@@ -56,6 +57,7 @@ export function LocalePackagePreview({ locale, page, path = '' }) {
   const title = displayTitle(fields);
   const labels = locale === 'ja' ? SECTION_LABELS_JA : SECTION_LABELS;
   const family = familyFor(page.id);
+  if (family === 'compare' && Array.isArray(fields.editorial?.sections) && Array.isArray(fields.editorial?.faqs) && Array.isArray(fields.editorial?.relatedLinks)) return <LocalizedCompareContent locale={locale} page={page} path={path} />;
   const sections = sectionEntries(fields, labels);
   const highlights = highlightEntries(fields, family);
   const schema = {
