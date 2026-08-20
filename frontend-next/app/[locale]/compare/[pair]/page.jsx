@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { JsonLd } from '../../../../components/JsonLd';
 import { comparisonContent } from '../../../../lib/comparison-content';
+import { requiresLocalizedComparisonPackage } from '../../../../lib/comparison-locales';
 import { allPairs, comparisonProfile, parsePair } from '../../../../lib/comparisons';
 import { getComparisonContent, spanishComparisonSlugs } from '../../../../localization/compare-guide';
 import { breadcrumbJsonLd, pageMetadata } from '../../../../lib/metadata';
@@ -19,9 +20,10 @@ export const dynamicParams = true;
 
 export async function generateMetadata({ params }) {
   const { locale, pair } = await params;
-  const packagePage = await loadLocalePage(locale, `compare:${String(pair).toLowerCase()}`);
-  if (packagePage) return localePreviewMetadata(locale, packagePage, `compare/${pair}`);
   const parsed = parsePair(pair);
+  const packagePage = await loadLocalePage(locale, `compare:${requiresLocalizedComparisonPackage(locale) && parsed ? parsed.slug : String(pair).toLowerCase()}`);
+  if (packagePage) return localePreviewMetadata(locale, packagePage, `compare/${pair}`);
+  if (requiresLocalizedComparisonPackage(locale)) return { robots: { index: false, follow: false } };
   const preview = isComparisonPreviewLocale(locale, pair);
   if ((!isLocale(locale) && !preview) || !parsed) return {};
   if (preview) {
@@ -49,11 +51,13 @@ export async function generateMetadata({ params }) {
 
 export default async function ComparisonPage({ params }) {
   const { locale, pair } = await params;
-  const packagePage = await loadLocalePage(locale, `compare:${String(pair).toLowerCase()}`);
+  const parsed = parsePair(pair);
+  if (requiresLocalizedComparisonPackage(locale) && parsed && !parsed.isCanonical) permanentRedirect(localePath(locale, `compare/${parsed.slug}`));
+  const packagePage = await loadLocalePage(locale, `compare:${requiresLocalizedComparisonPackage(locale) && parsed ? parsed.slug : String(pair).toLowerCase()}`);
   if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path={`compare/${pair}`} />;
+  if (requiresLocalizedComparisonPackage(locale)) notFound();
   const preview = isComparisonPreviewLocale(locale, pair);
   if (!isLocale(locale) && !preview) notFound();
-  const parsed = parsePair(pair);
   if (!parsed) notFound();
   if (!parsed.isCanonical) permanentRedirect(localePath(locale, `compare/${parsed.slug}`));
 

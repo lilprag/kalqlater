@@ -6,6 +6,7 @@ import path from 'node:path';
 import { localeBootstrapFiles } from '../localization/bootstrap.js';
 import { loadLocale, loadLocaleChrome, loadLocalePage, localePreviewMetadata } from '../localization/runtime.js';
 import { canTransitionLocaleRuntime, isRuntimePreviewLocale } from '../localization/runtime-policy.js';
+import { requiresLocalizedComparisonPackage } from '../lib/comparison-locales.js';
 
 function authored(value) {
   if (value === null) return 'Contenu localisé';
@@ -55,5 +56,11 @@ assert.equal((await loadLocalePage('fr', 'compare:intj-vs-intp'))?.fields?.eyebr
 assert.equal((await loadLocalePage('fr', 'insight:communication'))?.fields?.h1, 'Explorer votre manière de communiquer');
 assert.equal((await loadLocaleChrome('fr'))?.navigation?.home, 'Accueil');
 assert.equal(localePreviewMetadata('fr', frenchHomepage).robots.index, true);
+assert.equal(requiresLocalizedComparisonPackage('fr'), true);
+assert.equal(requiresLocalizedComparisonPackage('ja'), true);
+assert.equal(requiresLocalizedComparisonPackage('en'), false);
+assert.equal(requiresLocalizedComparisonPackage('hi'), false);
+assert.equal(await loadLocalePage('fr', 'compare:missing-pair'), null);
+assert.equal(await loadLocalePage('ja', 'compare:missing-pair'), null);
 
-console.log('Generic locale runtime checks passed for complete-package SSR loading, public French metadata, lifecycle transitions, and draft fail-closed behaviour.');
+console.log('Generic locale runtime checks passed for complete-package SSR loading, public French metadata, lifecycle transitions, and FR/JA Compare package-required policy.');
