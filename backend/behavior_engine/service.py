@@ -38,6 +38,19 @@ class SessionExpiredError(AssessmentError):
 class AssessmentService:
     """Generic, server-authoritative orchestration for version-pinned analyzers."""
 
+    COMMUNICATION_CATEGORIES_FR = {
+        "meeting": "Réunion",
+        "remote-work": "Travail à distance",
+        "feedback": "Retours",
+        "friendship": "Amitié",
+        "leadership": "Leadership",
+        "customer-service": "Service client",
+        "close-relationship": "Relation proche",
+        "stress": "Stress",
+        "disagreement": "Désaccord",
+        "family": "Famille",
+    }
+
     def __init__(
         self,
         content_repository: AnalyzerContentRepository | None = None,
@@ -61,7 +74,7 @@ class AssessmentService:
 
     def create_session(self, slug: str, locale: str, personality_context: PersonalityContext | None = None) -> AssessmentSessionState:
         definition = self.get_analyzer_definition(slug)
-        if locale not in definition.analyzer.locales:
+        if locale not in FileAnalyzerContentRepository.supported_locales(definition.analyzer.slug) or locale not in definition.analyzer.locales:
             raise AssessmentError("Locale unavailable")
         now = datetime.now(timezone.utc)
         session = AssessmentSessionState(
@@ -103,7 +116,7 @@ class AssessmentService:
         scenario = next(item for item in definition.scenarios if item.id == next_id)
         return {
             "scenario_id": scenario.id,
-            "category": scenario.category,
+            "category": self._scenario_category(definition.analyzer.slug, scenario.category, session.locale),
             "prompt": getattr(scenario.prompt, session.locale),
             "options": [{"id": option.id, "text": getattr(option.text, session.locale)} for option in scenario.options],
             "progress": {"answered": len(session.responses), "total": len(session.scenario_ids)},
@@ -119,7 +132,7 @@ class AssessmentService:
         existing = session.responses.get(scenario_id)
         return {
             "scenario_id": scenario.id,
-            "category": scenario.category,
+            "category": self._scenario_category(definition.analyzer.slug, scenario.category, session.locale),
             "prompt": getattr(scenario.prompt, session.locale),
             "options": [{"id": option.id, "text": getattr(option.text, session.locale)} for option in scenario.options],
             "selected_option_id": existing.option_id if existing else None,
@@ -186,32 +199,32 @@ class AssessmentService:
         strengths = [result.explanation for result in meaningful if result.direction == DirectionBand.HIGHER][:3]
         balanced = [result for result in meaningful if result.direction == DirectionBand.BALANCED]
         for result in balanced:
-            strengths.append(self._localized(session.locale, f"Your {name(result)} responses show useful flexibility across contexts.", f"{name(result)} से जुड़े आपके उत्तर अलग संदर्भों में उपयोगी लचीलापन दिखाते हैं।"))
+            strengths.append(self._localized(session.locale, f"Your {name(result)} responses show useful flexibility across contexts.", f"{name(result)} से जुड़े आपके उत्तर अलग संदर्भों में उपयोगी लचीलापन दिखाते हैं。", f"Vos réponses liées à {name(result)} montrent une souplesse utile selon les contextes.", definition.analyzer.slug))
         for result in dimensions:
             if len(strengths) >= 3:
                 break
-            strengths.append(self._localized(session.locale, f"You have enough evidence to begin a careful reflection on {name(result)}.", f"{name(result)} पर सावधानी से विचार शुरू करने के लिए आपके पास पर्याप्त संकेत हैं।"))
+            strengths.append(self._localized(session.locale, f"You have enough evidence to begin a careful reflection on {name(result)}.", f"{name(result)} पर सावधानी से विचार शुरू करने के लिए आपके पास पर्याप्त संकेत हैं।", f"Vous disposez de suffisamment d’éléments pour commencer une réflexion attentive sur {name(result)}.", definition.analyzer.slug))
         blind_spots = [result.explanation for result in meaningful if result.direction == DirectionBand.LOWER][:3]
         for result in balanced:
             if len(blind_spots) >= 3:
                 break
-            blind_spots.append(self._localized(session.locale, f"Because {name(result)} shifts by context, naming what you need may help others respond well.", f"क्योंकि {name(result)} संदर्भ के साथ बदलता है, अपनी जरूरत स्पष्ट करने से दूसरों को बेहतर प्रतिक्रिया देने में मदद मिल सकती है।"))
+            blind_spots.append(self._localized(session.locale, f"Because {name(result)} shifts by context, naming what you need may help others respond well.", f"क्योंकि {name(result)} संदर्भ के साथ बदलता है, अपनी जरूरत स्पष्ट करने से दूसरों को बेहतर प्रतिक्रिया देने में मदद मिल सकती है।", f"Comme {name(result)} varie selon le contexte, exprimer ce dont vous avez besoin peut aider les autres à mieux répondre.", definition.analyzer.slug))
         for result in dimensions:
             if len(blind_spots) >= 3:
                 break
-            blind_spots.append(self._localized(session.locale, f"A strong or still-emerging {name(result)} pattern can be worth checking with a trusted person.", f"{name(result)} के इस उभरते पैटर्न को किसी भरोसेमंद व्यक्ति के साथ जाँचना उपयोगी हो सकता है।"))
+            blind_spots.append(self._localized(session.locale, f"A strong or still-emerging {name(result)} pattern can be worth checking with a trusted person.", f"{name(result)} के इस उभरते पैटर्न को किसी भरोसेमंद व्यक्ति के साथ जाँचना उपयोगी हो सकता है।", f"Une tendance marquée ou encore émergente autour de {name(result)} peut mériter d’être examinée avec une personne de confiance.", definition.analyzer.slug))
         misunderstandings = [item.text for item in selected_rules][:2]
         for result in meaningful:
             if len(misunderstandings) >= 2:
                 break
             if result.direction == DirectionBand.HIGHER:
-                misunderstandings.append(self._localized(session.locale, f"Others may read your stronger {name(result)} as certainty when you are simply trying to be useful.", f"दूसरे आपके {name(result)} को निश्चितता समझ सकते हैं, जबकि आप केवल उपयोगी बनने की कोशिश कर रहे हों।"))
+                misunderstandings.append(self._localized(session.locale, f"Others may read your stronger {name(result)} as certainty when you are simply trying to be useful.", f"दूसरे आपके {name(result)} को निश्चितता समझ सकते हैं, जबकि आप केवल उपयोगी बनने की कोशिश कर रहे हों।", f"Les autres peuvent interpréter une tendance plus marquée en matière de {name(result)} comme de la certitude, alors que vous cherchez simplement à être utile.", definition.analyzer.slug))
             elif result.direction == DirectionBand.BALANCED:
-                misunderstandings.append(self._localized(session.locale, f"Others may miss how much context shapes your {name(result)} response.", f"दूसरे यह नहीं समझ पाते कि संदर्भ आपके {name(result)} को कितना प्रभावित करता है।"))
+                misunderstandings.append(self._localized(session.locale, f"Others may miss how much context shapes your {name(result)} response.", f"दूसरे यह नहीं समझ पाते कि संदर्भ आपके {name(result)} को कितना प्रभावित करता है।", f"Les autres peuvent ne pas percevoir à quel point le contexte façonne votre réponse en matière de {name(result)}.", definition.analyzer.slug))
         for result in dimensions:
             if len(misunderstandings) >= 2:
                 break
-            misunderstandings.append(self._localized(session.locale, f"A limited signal about {name(result)} can be mistaken for a fixed style; it is better treated as provisional.", f"{name(result)} का सीमित संकेत एक स्थायी शैली समझा जा सकता है; इसे अभी अंतिम निष्कर्ष न मानना बेहतर है।"))
+            misunderstandings.append(self._localized(session.locale, f"A limited signal about {name(result)} can be mistaken for a fixed style; it is better treated as provisional.", f"{name(result)} का सीमित संकेत एक स्थायी शैली समझा जा सकता है; इसे अभी अंतिम निष्कर्ष न मानना बेहतर है।", f"Un signal limité concernant {name(result)} peut être pris pour un style fixe ; il vaut mieux le considérer comme provisoire.", definition.analyzer.slug))
         target = next((result for result in dimensions if result.direction in {DirectionBand.LOWER, DirectionBand.BALANCED} and result.confidence != ConfidenceBand.LIMITED), None)
         if target is None:
             target = next((result for result in dimensions if result.confidence != ConfidenceBand.LIMITED), None)
@@ -273,9 +286,12 @@ class AssessmentService:
         personality_note = None
         if session.personality_context:
             code = session.personality_context.type_code
-            personality_note = (
-                f"Your responses add another practical layer to your {code} profile."
-                if session.locale == "en" else f"आपके उत्तर आपके {code} प्रोफ़ाइल में एक और व्यावहारिक परत जोड़ते हैं।"
+            personality_note = self._localized(
+                session.locale,
+                f"Your responses add another practical layer to your {code} profile.",
+                f"आपके उत्तर आपके {code} प्रोफ़ाइल में एक और व्यावहारिक परत जोड़ते हैं।",
+                f"Vos réponses ajoutent une dimension pratique supplémentaire à votre profil {code}.",
+                definition.analyzer.slug,
             )
         return AnalyzerResult(
             analyzer_slug=definition.analyzer.slug,
@@ -295,8 +311,16 @@ class AssessmentService:
         )
 
     @staticmethod
-    def _localized(locale: str, en: str, hi: str) -> str:
-        return hi if locale == "hi" else en
+    def _localized(locale: str, en: str, hi: str, fr: str | None = None, analyzer_slug: str | None = None) -> str:
+        if locale == "hi": return hi
+        if locale == "fr" and analyzer_slug == "communication-style" and fr: return fr
+        return en
+
+    @classmethod
+    def _scenario_category(cls, analyzer_slug: str, category: str, locale: str) -> str:
+        if analyzer_slug == "communication-style" and locale == "fr":
+            return cls.COMMUNICATION_CATEGORIES_FR.get(category, category)
+        return category
 
     @staticmethod
     def _dimension_name(definition: AnalyzerDefinition, dimension_id: str, locale: str) -> str:
@@ -306,9 +330,9 @@ class AssessmentService:
     def _summary(self, locale: str, lead, definition: AnalyzerDefinition) -> str:
         name = self._dimension_name(definition, lead.dimension_id, locale)
         if lead.confidence == ConfidenceBand.MIXED:
-            return self._localized(locale, f"Your responses suggest that {name} changes with context rather than following one fixed style.", f"आपके उत्तर संकेत देते हैं कि {name} एक स्थायी शैली के बजाय संदर्भ के साथ बदलता है।")
+            return self._localized(locale, f"Your responses suggest that {name} changes with context rather than following one fixed style.", f"आपके उत्तर संकेत देते हैं कि {name} एक स्थायी शैली के बजाय संदर्भ के साथ बदलता है।", f"Vos réponses suggèrent que votre tendance en matière de {name} varie selon le contexte plutôt que de suivre un style unique et constant.", definition.analyzer.slug)
         if lead.confidence == ConfidenceBand.LIMITED:
-            return self._localized(locale, "Your responses offer a starting point for reflection; some patterns need more situations before they become clear.", "आपके उत्तर आत्मचिंतन की शुरुआत देते हैं; कुछ पैटर्न स्पष्ट होने के लिए और स्थितियों की जरूरत है।")
+            return self._localized(locale, "Your responses offer a starting point for reflection; some patterns need more situations before they become clear.", "आपके उत्तर आत्मचिंतन की शुरुआत देते हैं; कुछ पैटर्न स्पष्ट होने के लिए और स्थितियों की जरूरत है।", "Vos réponses constituent un point de départ pour la réflexion ; certaines tendances nécessitent davantage de situations pour se préciser.", definition.analyzer.slug)
         tendency = "more present" if lead.direction == DirectionBand.HIGHER else "lighter"
         if definition.analyzer.slug == "conflict-insights":
             return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you meet tension and repair.", f"इन स्थितियों में तनाव और सुधार से जुड़ी आपकी प्रतिक्रियाओं में {name} अधिक स्पष्ट दिखता है।")
@@ -316,7 +340,7 @@ class AssessmentService:
             return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you guide shared work.", f"इन स्थितियों में साझा काम को दिशा देने में {name} अधिक स्पष्ट दिखता है।")
         if definition.analyzer.slug == "learning-insights":
             return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you build understanding and practice.", f"इन स्थितियों में समझ और अभ्यास बनाने में {name} अधिक स्पष्ट दिखता है।")
-        return self._localized(locale, f"Across these situations, {name} appears {tendency} in your communication.", f"इन स्थितियों में आपके संवाद में {name} अधिक स्पष्ट दिखता है।")
+        return self._localized(locale, f"Across these situations, {name} appears {tendency} in your communication.", f"इन स्थितियों में आपके संवाद में {name} अधिक स्पष्ट दिखता है।", f"Dans ces situations, votre tendance en matière de {name} paraît {('plus marquée' if lead.direction == DirectionBand.HIGHER else 'moins marquée')} dans votre communication.", definition.analyzer.slug)
 
     def complete_session(self, session_id: str, access_token: str) -> ResultSnapshot:
         session = self._session(session_id, access_token)

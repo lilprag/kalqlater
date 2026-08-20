@@ -306,6 +306,77 @@ def test_api_vertical_slice_hides_scoring_internals_and_handles_errors():
     assert client.post(f"/api/analyzer-sessions/{credentials['session_id']}/responses", headers=headers, json={"scenario_id": "bad", "option_id": "a", "idempotency_key": "bad-response"}).status_code == 422
 
 
+def test_analyzer_specific_locale_capabilities_allow_only_french_communication():
+    engine = AssessmentService()
+    app = FastAPI()
+    app.include_router(create_engine_router(engine), prefix="/api")
+    client = TestClient(app)
+
+    assert FileAnalyzerContentRepository.ANALYZER_LOCALES == {
+        "communication-style": ("en", "hi", "fr"),
+        "conflict-insights": ("en", "hi"),
+        "leadership-insights": ("en", "hi"),
+        "learning-insights": ("en", "hi"),
+    }
+    for locale in ("en", "hi", "fr"):
+        assert client.post("/api/analyzers/communication-style/sessions", json={"locale": locale}).status_code == 201
+    for slug in ("conflict-insights", "leadership-insights", "learning-insights"):
+        assert client.post(f"/api/analyzers/{slug}/sessions", json={"locale": "fr"}).status_code == 422
+    for slug in FileAnalyzerContentRepository.ANALYZER_LOCALES:
+        assert client.post(f"/api/analyzers/{slug}/sessions", json={"locale": "ja"}).status_code == 422
+
+    created = client.post("/api/analyzers/communication-style/sessions", json={"locale": "fr"})
+    credentials = created.json()
+    headers = {"X-Assessment-Access": credentials["access_token"]}
+    session = client.get(f"/api/analyzer-sessions/{credentials['session_id']}", headers=headers)
+    assert session.status_code == 200
+    assert session.json()["status"] == "active"
+    assert session.json()["locale"] == "fr"
+    scenario = client.get(f"/api/analyzer-sessions/{credentials['session_id']}/next", headers=headers).json()["scenario"]
+    definition = engine.get_analyzer_definition("communication-style")
+    authored = definition.scenarios[0]
+    assert scenario["category"] == "Réunion"
+    assert scenario["prompt"] == authored.prompt.fr
+    assert [option["text"] for option in scenario["options"]] == [option.text.fr for option in authored.options]
+
+
+def test_french_communication_end_to_end_is_localized_and_scoring_matches_english():
+    personality = PersonalityContext(type_code="INTJ", source="user_selected")
+    english_engine = AssessmentService()
+    french_engine = AssessmentService()
+    _, english = complete_with_option(english_engine, "a", locale="en", personality=personality)
+    french_session, french = complete_with_option(french_engine, "a", locale="fr", personality=personality)
+
+    english_scores = [(item.dimension_id, item.direction, item.confidence, item.evidence.model_dump()) for item in english.result.dimension_results]
+    french_scores = [(item.dimension_id, item.direction, item.confidence, item.evidence.model_dump()) for item in french.result.dimension_results]
+    assert french_scores == english_scores
+    assert french.result.locale == "fr"
+    assert french.result.summary != english.result.summary
+    assert french.result.strengths != english.result.strengths
+    assert french.result.blind_spots != english.result.blind_spots
+    assert french.result.misunderstandings != english.result.misunderstandings
+    assert [item.text for item in french.result.practical_suggestions] != [item.text for item in english.result.practical_suggestions]
+    assert all(item.explanation != english.result.dimension_results[index].explanation for index, item in enumerate(french.result.dimension_results))
+    assert french.result.weekly_challenge.title.fr
+    assert french.result.weekly_challenge.instruction.fr
+    assert french.result.personality_note == "Vos réponses ajoutent une dimension pratique supplémentaire à votre profil INTJ."
+    assert french.result.disclaimer == french_engine.get_analyzer_definition("communication-style").analyzer.disclosures.fr
+
+    app = FastAPI()
+    app.include_router(create_engine_router(french_engine), prefix="/api")
+    client = TestClient(app)
+    headers = {"X-Assessment-Access": french_session.access_token}
+    retrieved = client.get(f"/api/analyzer-results/{french.id}", headers=headers)
+    assert retrieved.status_code == 200
+    payload = retrieved.json()["result"]
+    assert payload["locale"] == "fr"
+    assert payload["summary"] == french.result.summary
+    assert payload["strengths"] == french.result.strengths
+    assert payload["blind_spots"] == french.result.blind_spots
+    assert payload["misunderstandings"] == french.result.misunderstandings
+    assert payload["personality_note"] == french.result.personality_note
+
+
 def test_safe_result_text_has_no_diagnostic_hiring_or_benchmarking_claims():
     _, snapshot = complete_with_option(service())
     rendered = json.dumps(snapshot.result.model_dump(mode="json")).lower()

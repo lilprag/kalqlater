@@ -6,11 +6,14 @@ from typing import Dict, List, Literal, Optional, Set
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+LocaleCode = Literal["en", "hi", "fr"]
+
 
 class LocalizedText(BaseModel):
     model_config = ConfigDict(extra="forbid")
     en: str = Field(min_length=1)
     hi: str = Field(min_length=1)
+    fr: Optional[str] = Field(default=None, min_length=1)
 
 
 class AnalyzerStatus(str, Enum):
@@ -155,7 +158,7 @@ class AnalyzerMetadata(BaseModel):
     version: str = Field(min_length=1, max_length=80)
     status: AnalyzerStatus
     type: str = Field(min_length=1)
-    locales: List[Literal["en", "hi"]] = Field(min_length=1)
+    locales: List[LocaleCode] = Field(min_length=1)
     no_overall_score: bool = Field(alias="noOverallScore")
     disclosures: LocalizedText
 
@@ -222,7 +225,7 @@ class AssessmentSessionState(BaseModel):
     access_token: str
     analyzer_slug: str
     analyzer_version: str
-    locale: Literal["en", "hi"]
+    locale: LocaleCode
     scenario_ids: List[str]
     status: SessionStatus
     created_at: datetime
@@ -267,7 +270,7 @@ class EvidenceMoment(BaseModel):
 class AnalyzerResult(BaseModel):
     analyzer_slug: str
     analyzer_version: str
-    locale: Literal["en", "hi"]
+    locale: LocaleCode
     summary: str
     dimension_results: List[DimensionResult]
     strengths: List[str]

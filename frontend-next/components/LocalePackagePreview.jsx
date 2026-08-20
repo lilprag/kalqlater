@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { JsonLd } from './JsonLd';
 import { LocalizedCompareContent } from './LocalizedCompareContent';
+import { isAssessmentLocaleSupported } from '../lib/assessment-capabilities';
 import { localePath } from '../lib/site';
 
 function displayTitle(fields) {
@@ -72,7 +73,8 @@ export function LocalePackagePreview({ locale, page, path = '' }) {
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'KalQLater', item: `https://kalqlater.com/${locale}` }, { '@type': 'ListItem', position: 2, name: breadcrumb, item: `https://kalqlater.com${localePath(locale, path)}` }] },
     ...(faq ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [{ '@type': 'Question', name: faq, acceptedAnswer: { '@type': 'Answer', text: page.fields.faqs || faq } }] }] : []),
   ];
-  const isUnsupportedInsight = page.id.startsWith('insight:') && (locale === 'fr' || locale === 'ja');
+  const insightAnalyzer = page.id.startsWith('insight:') ? page.id.slice('insight:'.length) : null;
+  const isUnsupportedInsight = insightAnalyzer && !isAssessmentLocaleSupported(insightAnalyzer, locale);
   const ctaPath = page.id.startsWith('insight:') ? `insights/${page.id.slice('insight:'.length)}/start` : '';
   const unavailableCopy = locale === 'ja'
     ? 'インタラクティブ診断は日本語版を準備中です。公開までの間は、ガイドや比較ページで自分の傾向をじっくり探ってみてください。'

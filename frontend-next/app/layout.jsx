@@ -13,6 +13,6 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const requestHeaders = await headers();
   const locale = requestHeaders.get('x-kalqlater-locale') || 'en';
-  const skipLink = locale === 'es' ? 'Ir al contenido' : isRuntimePreviewLocale(locale) ? null : 'Skip to content';
+  const skipLink = locale === 'es' ? 'Ir al contenido' : locale === 'fr' ? 'Aller au contenu' : isRuntimePreviewLocale(locale) ? null : 'Skip to content';
   return <html lang={locale} dir={localeDirection(locale)}><body>{skipLink && <a className="skip-link" href="#main-content">{skipLink}</a>}{children}<Analytics /></body></html>;
 }

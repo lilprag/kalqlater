@@ -12,8 +12,10 @@ from .models import (
 )
 
 
-def _localized(locale: str, en: str, hi: str) -> str:
-    return hi if locale == "hi" else en
+def _localized(locale: str, analyzer_slug: str, en: str, hi: str, fr: str) -> str:
+    if locale == "hi": return hi
+    if locale == "fr" and analyzer_slug == "communication-style": return fr
+    return en
 
 
 def _confidence(evidence: DimensionEvidence) -> ConfidenceBand:
@@ -36,21 +38,25 @@ def _direction(evidence: DimensionEvidence, confidence: ConfidenceBand) -> Direc
     return DirectionBand.HIGHER if evidence.raw_score > 0 else DirectionBand.LOWER
 
 
-def _explanation(locale: str, name: str, direction: DirectionBand, confidence: ConfidenceBand) -> tuple[str, str | None]:
+def _explanation(locale: str, analyzer_slug: str, name: str, direction: DirectionBand, confidence: ConfidenceBand) -> tuple[str, str | None]:
     if confidence == ConfidenceBand.LIMITED:
         return (
-            _localized(locale, f"There is not enough evidence yet to describe your {name} pattern.", f"आपके {name} पैटर्न का वर्णन करने के लिए अभी पर्याप्त संकेत नहीं हैं।"),
-            _localized(locale, "More relevant situations would make this reflection clearer.", "और प्रासंगिक स्थितियाँ इस चिंतन को अधिक स्पष्ट बनाएँगी।"),
+            _localized(locale, analyzer_slug, f"There is not enough evidence yet to describe your {name} pattern.", f"आपके {name} पैटर्न का वर्णन करने के लिए अभी पर्याप्त संकेत नहीं हैं।", f"Les éléments sont encore insuffisants pour décrire votre tendance en matière de {name}."),
+            _localized(locale, analyzer_slug, "More relevant situations would make this reflection clearer.", "और प्रासंगिक स्थितियाँ इस चिंतन को अधिक स्पष्ट बनाएँगी।", "Des situations plus pertinentes rendraient cette réflexion plus claire."),
         )
     if confidence == ConfidenceBand.MIXED:
         return (
-            _localized(locale, f"Your {name} pattern appears mixed across these situations.", f"इन स्थितियों में आपका {name} पैटर्न मिश्रित दिखता है।"),
-            _localized(locale, "Context may matter more than a single default style.", "एक ही स्थायी शैली से अधिक संदर्भ महत्वपूर्ण हो सकता है।"),
+            _localized(locale, analyzer_slug, f"Your {name} pattern appears mixed across these situations.", f"इन स्थितियों में आपका {name} पैटर्न मिश्रित दिखता है।", f"Votre tendance en matière de {name} paraît contrastée selon ces situations."),
+            _localized(locale, analyzer_slug, "Context may matter more than a single default style.", "एक ही स्थायी शैली से अधिक संदर्भ महत्वपूर्ण हो सकता है।", "Le contexte peut compter davantage qu’un style unique et constant."),
         )
     if locale == "hi":
         if confidence == ConfidenceBand.CLEAR:
             return (f"इन स्थितियों में {name} अधिक स्पष्ट दिखता है।" if direction == DirectionBand.HIGHER else f"इन स्थितियों में {name} अपेक्षाकृत कम दिखता है।", None)
         return (f"आपके उत्तरों में {name} अधिक स्पष्ट होने के संकेत मिलते हैं।" if direction == DirectionBand.HIGHER else f"आपके उत्तरों में {name} अपेक्षाकृत कम होने के संकेत मिलते हैं।", None)
+    if locale == "fr" and analyzer_slug == "communication-style":
+        tendency = "plus marquée" if direction == DirectionBand.HIGHER else "moins marquée"
+        opening = "Dans ces situations, votre tendance en matière de" if confidence == ConfidenceBand.CLEAR else "Vos réponses suggèrent que votre tendance en matière de"
+        return (f"{opening} {name} est {tendency}.", None)
     tendency = "more present" if direction == DirectionBand.HIGHER else "less present"
     opening = "Across these situations," if confidence == ConfidenceBand.CLEAR else "Your responses suggest that"
     return (f"{opening} {name} is {tendency}.", None)
@@ -96,7 +102,7 @@ def calculate_dimension_results(
         )
         confidence = _confidence(evidence)
         direction = _direction(evidence, confidence)
-        explanation, caveat = _explanation(locale, getattr(dimension.name, locale), direction, confidence)
+        explanation, caveat = _explanation(locale, definition.analyzer.slug, getattr(dimension.name, locale), direction, confidence)
         results.append(DimensionResult(
             dimension_id=dimension.id,
             direction=direction,

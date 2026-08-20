@@ -41,6 +41,12 @@ class FileAnalyzerContentRepository:
     }
 
     REQUIRED_PUBLISHED_SLUGS = tuple(RELEASE_FILES)
+    ANALYZER_LOCALES = {
+        "communication-style": ("en", "hi", "fr"),
+        "conflict-insights": ("en", "hi"),
+        "leadership-insights": ("en", "hi"),
+        "learning-insights": ("en", "hi"),
+    }
 
     def __init__(self, content_directory: Path | None = None):
         # Resolve relative to this installed backend module, never the process cwd.
@@ -51,6 +57,10 @@ class FileAnalyzerContentRepository:
     @classmethod
     def canonical_slug(cls, slug: str) -> str:
         return cls.SLUG_ALIASES.get(slug, slug)
+
+    @classmethod
+    def supported_locales(cls, slug: str) -> tuple[str, ...]:
+        return cls.ANALYZER_LOCALES.get(cls.canonical_slug(slug), ())
 
     def validate_required_published_analyzers(self) -> tuple[str, ...]:
         """Fail startup explicitly if any required public analyzer is unavailable."""
@@ -74,6 +84,8 @@ class FileAnalyzerContentRepository:
         definition = self._load_definition(manifest["source"])
         if hashlib.sha256((self.content_directory / manifest["source"]).read_bytes()).hexdigest() != manifest["sourceContentSha256"]:
             raise InvalidAnalyzerContentError("Analyzer content integrity check failed")
+        if tuple(definition.analyzer.locales) != self.supported_locales(slug):
+            raise InvalidAnalyzerContentError("Analyzer locale capabilities do not match its definition")
         definition = definition.model_copy(update={"analyzer": definition.analyzer.model_copy(update={"version": manifest["version"], "status": AnalyzerStatus.PUBLISHED})})
         if version and definition.analyzer.version != version:
             raise ContentNotAvailableError("Analyzer version unavailable")
@@ -109,7 +121,7 @@ class FileAnalyzerContentRepository:
 
     @staticmethod
     def safe_metadata(definition: AnalyzerDefinition, locale: str) -> dict:
-        if locale not in definition.analyzer.locales:
+        if locale not in FileAnalyzerContentRepository.supported_locales(definition.analyzer.slug) or locale not in definition.analyzer.locales:
             raise ContentNotAvailableError("Locale unavailable")
         return {
             "slug": definition.analyzer.slug,

@@ -4,13 +4,13 @@ from fastapi import APIRouter, Header, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
 
 from .content import ContentNotAvailableError
-from .models import AssessmentResponseInput, PersonalityContext
+from .models import AssessmentResponseInput, LocaleCode, PersonalityContext
 from .service import AssessmentError, AssessmentService, SessionConflictError, SessionExpiredError, SessionNotFoundError
 
 
 class SessionCreateInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    locale: str = Field(pattern=r"^(en|hi)$")
+    locale: LocaleCode
     personality_context: Optional[PersonalityContext] = None
 
 
@@ -60,7 +60,7 @@ def create_engine_router(service: Optional[AssessmentService] = None) -> APIRout
     def get_session(session_id: str, x_assessment_access: Optional[str] = Header(default=None)) -> dict:
         try:
             session = service._session(session_id, _access_token(x_assessment_access))
-            return {"session_id": session.id, "status": session.status, "answered": len(session.responses), "total": len(session.scenario_ids), "scenario_ids": session.scenario_ids, "answered_scenario_ids": [scenario_id for scenario_id in session.scenario_ids if scenario_id in session.responses], "expires_at": session.expires_at}
+            return {"session_id": session.id, "status": session.status, "locale": session.locale, "answered": len(session.responses), "total": len(session.scenario_ids), "scenario_ids": session.scenario_ids, "answered_scenario_ids": [scenario_id for scenario_id in session.scenario_ids if scenario_id in session.responses], "expires_at": session.expires_at}
         except Exception as error:
             raise _error(error) from error
 
