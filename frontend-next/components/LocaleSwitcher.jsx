@@ -17,6 +17,6 @@ export function LocaleSwitcher({ locale, availableLocales = publishedLanguageLoc
   if (availableLocales.length < 2) return null;
   const order = ['en', 'hi', 'fr', 'ja'];
   const visibleLocales = order.filter((candidate) => availableLocales.includes(candidate));
-  const languageLabel = locale === 'fr' ? 'Langue' : 'Language';
+  const languageLabel = locale === 'fr' ? 'Langue' : locale === 'ja' ? '言語' : 'Language';
   return <label className="inline-flex h-10 items-center rounded-full border border-brand-line bg-white px-3 text-sm font-semibold text-brand-ink transition-colors hover:border-brand-teal hover:bg-brand-cream"><span className="sr-only">{languageLabel}</span><select aria-label={languageLabel} className="max-w-28 bg-transparent outline-none" value={locale} onChange={(event) => router.push(equivalentPath(pathname, event.target.value))}>{visibleLocales.map((candidate) => <option key={candidate} value={candidate}>{localeConfig(candidate)?.nativeName || candidate}</option>)}</select></label>;
 }

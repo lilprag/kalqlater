@@ -84,10 +84,35 @@ const resultCopy = {
     saveBody: 'Avec un compte, vous pourrez revenir sur ce résultat, le comparer à de futures évaluations et accéder à de nouveaux outils. Votre résultat reste disponible dès maintenant ; l’inscription est facultative.',
     saveOptions: 'Découvrir les options de sauvegarde',
   },
+  ja: {
+    privateResultMissing: 'この非公開の結果は、このブラウザーのセッションでは利用できません。',
+    resultUnavailable: '現在、結果を表示できません。新しい振り返りを始めてください。',
+    unavailableTitle: '非公開の結果を表示できません',
+    retry: '再試行',
+    newReflection: '新しい振り返りを始める',
+    loadingTitle: '回答から傾向を確認しています…',
+    loadingBody: '準備ができ次第、振り返りの結果を表示します。',
+    resultTitle: 'あなたのコミュニケーションの傾向',
+    evidenceTitle: '結果の手がかりを理解する',
+    evidenceBody: 'これらの手がかりは、限られた場面での選択から得られたものです。固定した自分像ではなく、振り返りのきっかけとして受け取ってください。',
+    patternMap: '傾向マップ',
+    band: { higher: '強く表れている', lower: '控えめに表れている', balanced: '状況によって異なる', limited: 'まだ見え始めた段階' },
+    confidence: { 'clear-pattern': '明確な傾向', 'emerging-pattern': '見え始めた傾向', 'mixed-evidence': '手がかりにばらつきあり', 'limited-evidence': '手がかりが限定的' },
+    strengths: '活かせる強み',
+    blindSpots: '意識したいポイント',
+    misunderstandings: '起こりうる行き違い',
+    suggestions: '実践のヒント',
+    weeklyExperiment: '今週の実践',
+    weeklyPrompt: '時間：短い実際の会話を一度。振り返り：何が変わりましたか？',
+    personalityProfile: 'パーソナリティプロフィールとあわせて',
+    saveTitle: 'あとで見返せるように保存',
+    saveBody: 'アカウントがあれば、あとで結果を見返し、今後の振り返り結果と比較して、新しいツールも利用できます。現在の結果はこのまま確認でき、登録は任意です。',
+    saveOptions: '保存方法を見る',
+  },
 };
 
 const copyFor = (locale) => resultCopy[locale] || resultCopy.en;
-const localizedResultText = (value, locale) => value?.[locale] || (locale === 'fr' ? '' : value?.en);
+const localizedResultText = (value, locale) => value?.[locale] || (['fr', 'ja'].includes(locale) ? '' : value?.en);
 
 export function CommunicationResult({ locale, resultId }) {
   const copy = insightsCopy(locale); const ui = copyFor(locale); const [result, setResult] = useState(null); const [error, setError] = useState('');

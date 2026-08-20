@@ -50,6 +50,18 @@ class AssessmentService:
         "disagreement": "Désaccord",
         "family": "Famille",
     }
+    COMMUNICATION_CATEGORIES_JA = {
+        "meeting": "会議",
+        "remote-work": "リモートワーク",
+        "feedback": "フィードバック",
+        "friendship": "友人関係",
+        "leadership": "リーダーシップ",
+        "customer-service": "カスタマーサービス",
+        "close-relationship": "親しい関係",
+        "stress": "ストレス",
+        "disagreement": "意見の相違",
+        "family": "家族",
+    }
 
     def __init__(
         self,
@@ -199,32 +211,32 @@ class AssessmentService:
         strengths = [result.explanation for result in meaningful if result.direction == DirectionBand.HIGHER][:3]
         balanced = [result for result in meaningful if result.direction == DirectionBand.BALANCED]
         for result in balanced:
-            strengths.append(self._localized(session.locale, f"Your {name(result)} responses show useful flexibility across contexts.", f"{name(result)} से जुड़े आपके उत्तर अलग संदर्भों में उपयोगी लचीलापन दिखाते हैं。", f"Vos réponses liées à {name(result)} montrent une souplesse utile selon les contextes.", definition.analyzer.slug))
+            strengths.append(self._localized(session.locale, f"Your {name(result)} responses show useful flexibility across contexts.", f"{name(result)} से जुड़े आपके उत्तर अलग संदर्भों में उपयोगी लचीलापन दिखाते हैं。", f"Vos réponses liées à {name(result)} montrent une souplesse utile selon les contextes.", definition.analyzer.slug, f"{name(result)}に関する回答から、状況に応じた柔軟さがうかがえます。"))
         for result in dimensions:
             if len(strengths) >= 3:
                 break
-            strengths.append(self._localized(session.locale, f"You have enough evidence to begin a careful reflection on {name(result)}.", f"{name(result)} पर सावधानी से विचार शुरू करने के लिए आपके पास पर्याप्त संकेत हैं।", f"Vous disposez de suffisamment d’éléments pour commencer une réflexion attentive sur {name(result)}.", definition.analyzer.slug))
+            strengths.append(self._localized(session.locale, f"You have enough evidence to begin a careful reflection on {name(result)}.", f"{name(result)} पर सावधानी से विचार शुरू करने के लिए आपके पास पर्याप्त संकेत हैं।", f"Vous disposez de suffisamment d’éléments pour commencer une réflexion attentive sur {name(result)}.", definition.analyzer.slug, f"{name(result)}について丁寧に振り返り始めるための材料が得られています。"))
         blind_spots = [result.explanation for result in meaningful if result.direction == DirectionBand.LOWER][:3]
         for result in balanced:
             if len(blind_spots) >= 3:
                 break
-            blind_spots.append(self._localized(session.locale, f"Because {name(result)} shifts by context, naming what you need may help others respond well.", f"क्योंकि {name(result)} संदर्भ के साथ बदलता है, अपनी जरूरत स्पष्ट करने से दूसरों को बेहतर प्रतिक्रिया देने में मदद मिल सकती है।", f"Comme {name(result)} varie selon le contexte, exprimer ce dont vous avez besoin peut aider les autres à mieux répondre.", definition.analyzer.slug))
+            blind_spots.append(self._localized(session.locale, f"Because {name(result)} shifts by context, naming what you need may help others respond well.", f"क्योंकि {name(result)} संदर्भ के साथ बदलता है, अपनी जरूरत स्पष्ट करने से दूसरों को बेहतर प्रतिक्रिया देने में मदद मिल सकती है।", f"Comme {name(result)} varie selon le contexte, exprimer ce dont vous avez besoin peut aider les autres à mieux répondre.", definition.analyzer.slug, f"{name(result)}は状況によって変わるため、必要としていることを言葉にすると、相手が応じやすくなるかもしれません。"))
         for result in dimensions:
             if len(blind_spots) >= 3:
                 break
-            blind_spots.append(self._localized(session.locale, f"A strong or still-emerging {name(result)} pattern can be worth checking with a trusted person.", f"{name(result)} के इस उभरते पैटर्न को किसी भरोसेमंद व्यक्ति के साथ जाँचना उपयोगी हो सकता है।", f"Une tendance marquée ou encore émergente autour de {name(result)} peut mériter d’être examinée avec une personne de confiance.", definition.analyzer.slug))
+            blind_spots.append(self._localized(session.locale, f"A strong or still-emerging {name(result)} pattern can be worth checking with a trusted person.", f"{name(result)} के इस उभरते पैटर्न को किसी भरोसेमंद व्यक्ति के साथ जाँचना उपयोगी हो सकता है।", f"Une tendance marquée ou encore émergente autour de {name(result)} peut mériter d’être examinée avec une personne de confiance.", definition.analyzer.slug, f"{name(result)}に見られる強い傾向や芽生えつつある傾向について、信頼できる人に確かめてみるのもよいでしょう。"))
         misunderstandings = [item.text for item in selected_rules][:2]
         for result in meaningful:
             if len(misunderstandings) >= 2:
                 break
             if result.direction == DirectionBand.HIGHER:
-                misunderstandings.append(self._localized(session.locale, f"Others may read your stronger {name(result)} as certainty when you are simply trying to be useful.", f"दूसरे आपके {name(result)} को निश्चितता समझ सकते हैं, जबकि आप केवल उपयोगी बनने की कोशिश कर रहे हों।", f"Les autres peuvent interpréter une tendance plus marquée en matière de {name(result)} comme de la certitude, alors que vous cherchez simplement à être utile.", definition.analyzer.slug))
+                misunderstandings.append(self._localized(session.locale, f"Others may read your stronger {name(result)} as certainty when you are simply trying to be useful.", f"दूसरे आपके {name(result)} को निश्चितता समझ सकते हैं, जबकि आप केवल उपयोगी बनने की कोशिश कर रहे हों।", f"Les autres peuvent interpréter une tendance plus marquée en matière de {name(result)} comme de la certitude, alors que vous cherchez simplement à être utile.", definition.analyzer.slug, f"役に立とうとしているだけでも、{name(result)}が強く表れることで、相手には断定的に見えることがあります。"))
             elif result.direction == DirectionBand.BALANCED:
-                misunderstandings.append(self._localized(session.locale, f"Others may miss how much context shapes your {name(result)} response.", f"दूसरे यह नहीं समझ पाते कि संदर्भ आपके {name(result)} को कितना प्रभावित करता है।", f"Les autres peuvent ne pas percevoir à quel point le contexte façonne votre réponse en matière de {name(result)}.", definition.analyzer.slug))
+                misunderstandings.append(self._localized(session.locale, f"Others may miss how much context shapes your {name(result)} response.", f"दूसरे यह नहीं समझ पाते कि संदर्भ आपके {name(result)} को कितना प्रभावित करता है।", f"Les autres peuvent ne pas percevoir à quel point le contexte façonne votre réponse en matière de {name(result)}.", definition.analyzer.slug, f"{name(result)}への対応が状況に大きく左右されていることは、相手には伝わりにくいかもしれません。"))
         for result in dimensions:
             if len(misunderstandings) >= 2:
                 break
-            misunderstandings.append(self._localized(session.locale, f"A limited signal about {name(result)} can be mistaken for a fixed style; it is better treated as provisional.", f"{name(result)} का सीमित संकेत एक स्थायी शैली समझा जा सकता है; इसे अभी अंतिम निष्कर्ष न मानना बेहतर है।", f"Un signal limité concernant {name(result)} peut être pris pour un style fixe ; il vaut mieux le considérer comme provisoire.", definition.analyzer.slug))
+            misunderstandings.append(self._localized(session.locale, f"A limited signal about {name(result)} can be mistaken for a fixed style; it is better treated as provisional.", f"{name(result)} का सीमित संकेत एक स्थायी शैली समझा जा सकता है; इसे अभी अंतिम निष्कर्ष न मानना बेहतर है।", f"Un signal limité concernant {name(result)} peut être pris pour un style fixe ; il vaut mieux le considérer comme provisoire.", definition.analyzer.slug, f"{name(result)}についての限られた手がかりを、固定したスタイルと受け取られることがあります。現時点では仮の傾向として捉えるのがよいでしょう。"))
         target = next((result for result in dimensions if result.direction in {DirectionBand.LOWER, DirectionBand.BALANCED} and result.confidence != ConfidenceBand.LIMITED), None)
         if target is None:
             target = next((result for result in dimensions if result.confidence != ConfidenceBand.LIMITED), None)
@@ -292,6 +304,7 @@ class AssessmentService:
                 f"आपके उत्तर आपके {code} प्रोफ़ाइल में एक और व्यावहारिक परत जोड़ते हैं।",
                 f"Vos réponses ajoutent une dimension pratique supplémentaire à votre profil {code}.",
                 definition.analyzer.slug,
+                f"回答から、{code}プロフィールに実践的な視点がもう一つ加わります。",
             )
         return AnalyzerResult(
             analyzer_slug=definition.analyzer.slug,
@@ -311,15 +324,18 @@ class AssessmentService:
         )
 
     @staticmethod
-    def _localized(locale: str, en: str, hi: str, fr: str | None = None, analyzer_slug: str | None = None) -> str:
+    def _localized(locale: str, en: str, hi: str, fr: str | None = None, analyzer_slug: str | None = None, ja: str | None = None) -> str:
         if locale == "hi": return hi
         if locale == "fr" and analyzer_slug == "communication-style" and fr: return fr
+        if locale == "ja" and analyzer_slug == "communication-style" and ja: return ja
         return en
 
     @classmethod
     def _scenario_category(cls, analyzer_slug: str, category: str, locale: str) -> str:
         if analyzer_slug == "communication-style" and locale == "fr":
             return cls.COMMUNICATION_CATEGORIES_FR.get(category, category)
+        if analyzer_slug == "communication-style" and locale == "ja":
+            return cls.COMMUNICATION_CATEGORIES_JA.get(category, category)
         return category
 
     @staticmethod
@@ -330,9 +346,9 @@ class AssessmentService:
     def _summary(self, locale: str, lead, definition: AnalyzerDefinition) -> str:
         name = self._dimension_name(definition, lead.dimension_id, locale)
         if lead.confidence == ConfidenceBand.MIXED:
-            return self._localized(locale, f"Your responses suggest that {name} changes with context rather than following one fixed style.", f"आपके उत्तर संकेत देते हैं कि {name} एक स्थायी शैली के बजाय संदर्भ के साथ बदलता है।", f"Vos réponses suggèrent que votre tendance en matière de {name} varie selon le contexte plutôt que de suivre un style unique et constant.", definition.analyzer.slug)
+            return self._localized(locale, f"Your responses suggest that {name} changes with context rather than following one fixed style.", f"आपके उत्तर संकेत देते हैं कि {name} एक स्थायी शैली के बजाय संदर्भ के साथ बदलता है।", f"Vos réponses suggèrent que votre tendance en matière de {name} varie selon le contexte plutôt que de suivre un style unique et constant.", definition.analyzer.slug, f"回答からは、{name}が一つの決まったスタイルではなく、状況に応じて変化することがうかがえます。")
         if lead.confidence == ConfidenceBand.LIMITED:
-            return self._localized(locale, "Your responses offer a starting point for reflection; some patterns need more situations before they become clear.", "आपके उत्तर आत्मचिंतन की शुरुआत देते हैं; कुछ पैटर्न स्पष्ट होने के लिए और स्थितियों की जरूरत है।", "Vos réponses constituent un point de départ pour la réflexion ; certaines tendances nécessitent davantage de situations pour se préciser.", definition.analyzer.slug)
+            return self._localized(locale, "Your responses offer a starting point for reflection; some patterns need more situations before they become clear.", "आपके उत्तर आत्मचिंतन की शुरुआत देते हैं; कुछ पैटर्न स्पष्ट होने के लिए और स्थितियों की जरूरत है।", "Vos réponses constituent un point de départ pour la réflexion ; certaines tendances nécessitent davantage de situations pour se préciser.", definition.analyzer.slug, "回答は振り返りの出発点になります。傾向をより明確にするには、もう少し多くの場面が必要です。")
         tendency = "more present" if lead.direction == DirectionBand.HIGHER else "lighter"
         if definition.analyzer.slug == "conflict-insights":
             return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you meet tension and repair.", f"इन स्थितियों में तनाव और सुधार से जुड़ी आपकी प्रतिक्रियाओं में {name} अधिक स्पष्ट दिखता है।")
@@ -340,7 +356,7 @@ class AssessmentService:
             return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you guide shared work.", f"इन स्थितियों में साझा काम को दिशा देने में {name} अधिक स्पष्ट दिखता है।")
         if definition.analyzer.slug == "learning-insights":
             return self._localized(locale, f"Across these situations, {name} appears {tendency} in how you build understanding and practice.", f"इन स्थितियों में समझ और अभ्यास बनाने में {name} अधिक स्पष्ट दिखता है।")
-        return self._localized(locale, f"Across these situations, {name} appears {tendency} in your communication.", f"इन स्थितियों में आपके संवाद में {name} अधिक स्पष्ट दिखता है।", f"Dans ces situations, votre tendance en matière de {name} paraît {('plus marquée' if lead.direction == DirectionBand.HIGHER else 'moins marquée')} dans votre communication.", definition.analyzer.slug)
+        return self._localized(locale, f"Across these situations, {name} appears {tendency} in your communication.", f"इन स्थितियों में आपके संवाद में {name} अधिक स्पष्ट दिखता है।", f"Dans ces situations, votre tendance en matière de {name} paraît {('plus marquée' if lead.direction == DirectionBand.HIGHER else 'moins marquée')} dans votre communication.", definition.analyzer.slug, f"これらの場面では、コミュニケーションにおける{name}が{('強く' if lead.direction == DirectionBand.HIGHER else '控えめに')}表れています。")
 
     def complete_session(self, session_id: str, access_token: str) -> ResultSnapshot:
         session = self._session(session_id, access_token)

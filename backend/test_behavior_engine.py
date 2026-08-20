@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 
 from behavior_engine.api import create_engine_router
 from behavior_engine.content import ContentNotAvailableError, FileAnalyzerContentRepository, InvalidAnalyzerContentError
-from behavior_engine.models import AssessmentResponseInput, ConfidenceBand, PersonalityContext, SessionStatus
+from behavior_engine.models import AnalyzerDefinition, AssessmentResponseInput, AssessmentSessionState, ConfidenceBand, PersonalityContext, SessionStatus, StoredResponse
 from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
 from behavior_engine.service import AssessmentError, AssessmentService, SessionConflictError, SessionExpiredError, SessionNotFoundError
 from behavior_engine.timestamps import normalize_utc
@@ -306,23 +306,23 @@ def test_api_vertical_slice_hides_scoring_internals_and_handles_errors():
     assert client.post(f"/api/analyzer-sessions/{credentials['session_id']}/responses", headers=headers, json={"scenario_id": "bad", "option_id": "a", "idempotency_key": "bad-response"}).status_code == 422
 
 
-def test_analyzer_specific_locale_capabilities_allow_only_french_communication():
+def test_analyzer_specific_locale_capabilities_allow_extended_communication_only():
     engine = AssessmentService()
     app = FastAPI()
     app.include_router(create_engine_router(engine), prefix="/api")
     client = TestClient(app)
 
     assert FileAnalyzerContentRepository.ANALYZER_LOCALES == {
-        "communication-style": ("en", "hi", "fr"),
+        "communication-style": ("en", "hi", "fr", "ja"),
         "conflict-insights": ("en", "hi"),
         "leadership-insights": ("en", "hi"),
         "learning-insights": ("en", "hi"),
     }
-    for locale in ("en", "hi", "fr"):
+    for locale in ("en", "hi", "fr", "ja"):
         assert client.post("/api/analyzers/communication-style/sessions", json={"locale": locale}).status_code == 201
     for slug in ("conflict-insights", "leadership-insights", "learning-insights"):
         assert client.post(f"/api/analyzers/{slug}/sessions", json={"locale": "fr"}).status_code == 422
-    for slug in FileAnalyzerContentRepository.ANALYZER_LOCALES:
+    for slug in ("conflict-insights", "leadership-insights", "learning-insights"):
         assert client.post(f"/api/analyzers/{slug}/sessions", json={"locale": "ja"}).status_code == 422
 
     created = client.post("/api/analyzers/communication-style/sessions", json={"locale": "fr"})
@@ -338,6 +338,17 @@ def test_analyzer_specific_locale_capabilities_allow_only_french_communication()
     assert scenario["category"] == "Réunion"
     assert scenario["prompt"] == authored.prompt.fr
     assert [option["text"] for option in scenario["options"]] == [option.text.fr for option in authored.options]
+
+    created = client.post("/api/analyzers/communication-style/sessions", json={"locale": "ja"})
+    credentials = created.json()
+    headers = {"X-Assessment-Access": credentials["access_token"]}
+    session = client.get(f"/api/analyzer-sessions/{credentials['session_id']}", headers=headers)
+    assert session.status_code == 200
+    assert session.json()["locale"] == "ja"
+    scenario = client.get(f"/api/analyzer-sessions/{credentials['session_id']}/next", headers=headers).json()["scenario"]
+    assert scenario["category"] == "会議"
+    assert scenario["prompt"] == authored.prompt.ja
+    assert [option["text"] for option in scenario["options"]] == [option.text.ja for option in authored.options]
 
 
 def test_french_communication_end_to_end_is_localized_and_scoring_matches_english():
@@ -375,6 +386,178 @@ def test_french_communication_end_to_end_is_localized_and_scoring_matches_englis
     assert payload["blind_spots"] == french.result.blind_spots
     assert payload["misunderstandings"] == french.result.misunderstandings
     assert payload["personality_note"] == french.result.personality_note
+
+
+def test_japanese_communication_authoring_is_complete_localized_and_score_neutral():
+    source = FileAnalyzerContentRepository().content_directory / "communication-analyzer.v1.draft.json"
+    raw = json.loads(source.read_text(encoding="utf-8"))
+    definition = AnalyzerDefinition.model_validate(raw)
+    localized_records = []
+
+    def collect(value):
+        if isinstance(value, dict):
+            if all(isinstance(value.get(locale), str) for locale in ("en", "hi", "fr", "ja")):
+                localized_records.append(value)
+            for child in value.values():
+                collect(child)
+        elif isinstance(value, list):
+            for child in value:
+                collect(child)
+
+    collect(raw)
+    assert len(localized_records) == 111
+    assert all(item["ja"].strip() and item["ja"] != item["en"] for item in localized_records)
+    assert all(any("ぁ" <= character <= "ん" or "ァ" <= character <= "ン" or "一" <= character <= "龯" for character in item["ja"]) for item in localized_records)
+
+    class DraftRepository:
+        def get(self, slug, version=None, allow_test_drafts=False):
+            if FileAnalyzerContentRepository.canonical_slug(slug) != "communication-style":
+                raise ContentNotAvailableError("Analyzer unavailable")
+            return definition
+
+    engine = AssessmentService(content_repository=DraftRepository())
+    for locale in ("en", "hi", "fr", "ja"):
+        assert engine.create_session("communication-style", locale).locale == locale
+
+    personality = PersonalityContext(type_code="INTJ", source="user_selected")
+
+    def generated_result(locale, choices=None):
+        now = datetime.now(timezone.utc)
+        selected = choices or ["a"] * len(definition.scenarios)
+        responses = {
+            scenario.id: StoredResponse(
+                scenario_id=scenario.id,
+                option_id=selected[index],
+                idempotency_key=f"{locale}-{index:03d}",
+                submitted_at=now,
+            )
+            for index, scenario in enumerate(definition.scenarios)
+        }
+        session = AssessmentSessionState(
+            id=f"authoring-{locale}",
+            access_token=f"authoring-access-{locale}",
+            analyzer_slug="communication-style",
+            analyzer_version=definition.analyzer.version,
+            locale=locale,
+            scenario_ids=[scenario.id for scenario in definition.scenarios],
+            status=SessionStatus.ACTIVE,
+            created_at=now,
+            expires_at=now + timedelta(hours=1),
+            responses=responses,
+            personality_context=personality,
+        )
+        return engine._result_from_session(session, definition)
+
+    english = generated_result("en")
+    hindi = generated_result("hi")
+    french = generated_result("fr")
+    japanese = generated_result("ja")
+
+    def score_signature(result):
+        return [
+            (item.dimension_id, item.direction, item.confidence, item.evidence.model_dump())
+            for item in result.dimension_results
+        ]
+
+    assert score_signature(japanese) == score_signature(english) == score_signature(french)
+    assert japanese.weekly_challenge.id == english.weekly_challenge.id == french.weekly_challenge.id
+    assert score_signature(hindi) == score_signature(english)
+
+    japanese_text = [
+        japanese.summary,
+        *japanese.strengths,
+        *japanese.blind_spots,
+        *japanese.misunderstandings,
+        *(item.text for item in japanese.practical_suggestions),
+        *(item.explanation for item in japanese.dimension_results),
+        *(item.caveat for item in japanese.dimension_results if item.caveat),
+        japanese.weekly_challenge.title.ja,
+        japanese.weekly_challenge.instruction.ja,
+        japanese.personality_note,
+        japanese.disclaimer,
+    ]
+    assert all(text and any("ぁ" <= character <= "ん" or "ァ" <= character <= "ン" or "一" <= character <= "龯" for character in text) for text in japanese_text)
+    assert japanese.summary != english.summary
+    assert japanese.strengths != english.strengths
+    assert japanese.blind_spots != english.blind_spots
+    assert japanese.misunderstandings != english.misunderstandings
+    assert japanese.personality_note == "回答から、INTJプロフィールに実践的な視点がもう一つ加わります。"
+    assert french.summary != english.summary and hindi.summary != english.summary
+
+    app = FastAPI()
+    app.include_router(create_engine_router(engine), prefix="/api")
+    client = TestClient(app)
+    created = client.post(
+        "/api/analyzers/communication-style/sessions",
+        json={"locale": "ja", "personality_context": {"type_code": "INTJ", "source": "user_selected"}},
+    )
+    assert created.status_code == 201
+    credentials = created.json()
+    headers = {"X-Assessment-Access": credentials["access_token"]}
+    session = client.get(f"/api/analyzer-sessions/{credentials['session_id']}", headers=headers)
+    assert session.status_code == 200
+    assert session.json()["locale"] == "ja"
+    assert session.json()["total"] == 12
+
+    seen_scenarios = []
+    for index, authored in enumerate(definition.scenarios):
+        next_response = client.get(f"/api/analyzer-sessions/{credentials['session_id']}/next", headers=headers)
+        assert next_response.status_code == 200
+        scenario = next_response.json()["scenario"]
+        seen_scenarios.append(scenario["scenario_id"])
+        assert scenario["prompt"] == authored.prompt.ja
+        assert [option["text"] for option in scenario["options"]] == [option.text.ja for option in authored.options]
+        assert any("ぁ" <= character <= "ん" or "ァ" <= character <= "ン" or "一" <= character <= "龯" for character in scenario["category"])
+        submitted = client.post(
+            f"/api/analyzer-sessions/{credentials['session_id']}/responses",
+            headers=headers,
+            json={"scenario_id": scenario["scenario_id"], "option_id": "a", "idempotency_key": f"ja-api-{index:03d}"},
+        )
+        assert submitted.status_code == 200
+        assert submitted.json()["answered"] == index + 1
+    assert seen_scenarios == [scenario.id for scenario in definition.scenarios]
+
+    completed = client.post(f"/api/analyzer-sessions/{credentials['session_id']}/complete", headers=headers)
+    assert completed.status_code == 200
+    retrieved = client.get(f"/api/analyzer-results/{completed.json()['result_id']}", headers=headers)
+    assert retrieved.status_code == 200
+    payload = retrieved.json()["result"]
+    assert payload["locale"] == "ja"
+    result_text = [
+        payload["summary"],
+        *payload["strengths"],
+        *payload["blind_spots"],
+        *payload["misunderstandings"],
+        *(item["text"] for item in payload["practical_suggestions"]),
+        *(item["explanation"] for item in payload["dimension_results"]),
+        *(item["caveat"] for item in payload["dimension_results"] if item.get("caveat")),
+        payload["weekly_challenge"]["title"]["ja"],
+        payload["weekly_challenge"]["instruction"]["ja"],
+        payload["personality_note"],
+        payload["disclaimer"],
+    ]
+    assert all(text and any("ぁ" <= character <= "ん" or "ァ" <= character <= "ン" or "一" <= character <= "龯" for character in text) for text in result_text)
+    assert payload["summary"] == japanese.summary
+    assert payload["personality_note"] == japanese.personality_note
+
+    for choices in (
+        ["d", "b", "b", "a", "b", "b", "c", "c", "c", "b", "b", "c"],
+        ["d"] * len(definition.scenarios),
+    ):
+        english_variant = generated_result("en", choices)
+        french_variant = generated_result("fr", choices)
+        japanese_variant = generated_result("ja", choices)
+        assert score_signature(japanese_variant) == score_signature(english_variant) == score_signature(french_variant)
+        assert japanese_variant.weekly_challenge.id == english_variant.weekly_challenge.id == french_variant.weekly_challenge.id
+        variant_text = [
+            japanese_variant.summary,
+            *japanese_variant.strengths,
+            *japanese_variant.blind_spots,
+            *japanese_variant.misunderstandings,
+            *(item.explanation for item in japanese_variant.dimension_results),
+            *(item.caveat for item in japanese_variant.dimension_results if item.caveat),
+        ]
+        assert all(text and any("ぁ" <= character <= "ん" or "ァ" <= character <= "ン" or "一" <= character <= "龯" for character in text) for text in variant_text)
 
 
 def test_safe_result_text_has_no_diagnostic_hiring_or_benchmarking_claims():

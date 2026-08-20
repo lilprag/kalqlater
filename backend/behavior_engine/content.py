@@ -42,7 +42,7 @@ class FileAnalyzerContentRepository:
 
     REQUIRED_PUBLISHED_SLUGS = tuple(RELEASE_FILES)
     ANALYZER_LOCALES = {
-        "communication-style": ("en", "hi", "fr"),
+        "communication-style": ("en", "hi", "fr", "ja"),
         "conflict-insights": ("en", "hi"),
         "leadership-insights": ("en", "hi"),
         "learning-insights": ("en", "hi"),

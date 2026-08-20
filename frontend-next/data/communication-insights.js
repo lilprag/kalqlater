@@ -74,7 +74,23 @@ export const COMMUNICATION_INSIGHTS = {
     ],
     start: 'Commencer la réflexion', startTitle: 'Un espace calme pour observer votre manière de communiquer', startBody: 'Vous verrez une situation quotidienne à la fois. Choisissez la réponse qui vous ressemble le plus : il n’y a pas de bonne réponse.', time: 'Environ 8 à 10 minutes', privacy: 'Vos réponses individuelles restent dans le service d’évaluation et ne sont pas enregistrées dans ce navigateur.', safety: 'Cet outil n’est ni une thérapie, ni un soutien de crise, ni une évaluation clinique.',
   },
-  ja: { title: 'コミュニケーション・インサイト', promise: '日常の場面で、考えをどう伝え、どう聴き、意見の違いにどう向き合い、どう適応するかを振り返ります。', start: '振り返りを始める', startTitle: '自分のコミュニケーションの傾向を見つめる、静かな時間', startBody: '一度に一つの日常的な場面が表示されます。正解はありません。普段の自分にもっとも近い答えを選んでください。', time: '約8〜10分', privacy: '個別の回答は評価サービスに保存され、このブラウザーには保存されません。', safety: 'このツールは、治療・危機支援・臨床的な評価ではありません。' },
+  ja: {
+    title: 'コミュニケーション・インサイト',
+    promise: '日常の場面で、考えをどう伝え、どう聴き、意見の違いにどう向き合い、どう適応するかを振り返ります。',
+    dimensions: [
+      ['message-clarity', 'メッセージの明確さ'],
+      ['directness-with-tact', '配慮ある率直さ'],
+      ['receptive-listening', '受け止める聴き方'],
+      ['emotional-transparency', '感情の伝わりやすさ'],
+      ['collaborative-inquiry', '協働的な問いかけ'],
+      ['constructive-assertion', '建設的な自己主張'],
+      ['feedback-exchange', 'フィードバックのやり取り'],
+      ['conflict-navigation', '対立への向き合い方'],
+      ['audience-adaptability', '相手に合わせる柔軟さ'],
+      ['decision-alignment', '意思決定のすり合わせ'],
+    ],
+    start: '振り返りを始める', startTitle: '自分のコミュニケーションの傾向を見つめる、静かな時間', startBody: '一度に一つの日常的な場面が表示されます。正解はありません。普段の自分にもっとも近い答えを選んでください。', time: '約8〜10分', privacy: '個別の回答は評価サービスに保存され、このブラウザーには保存されません。', safety: 'このツールは、治療・危機支援・臨床的な評価ではありません。',
+  },
 };
 
 export function insightsCopy(locale) {

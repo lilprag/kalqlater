@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "status": "published",
   "source": "communication-analyzer.v1.draft.json",
-  "sourceContentSha256": "e4a5118c75e2d3e5cf5af9baded921324f760005d69cc42012394916bcf36f86",
+  "sourceContentSha256": "79fd3c1970b0ef9f8f1f986e8c67e9e53efe81261c63e9c83cd449b265ece5b4",
   "publishedAt": "2026-08-04",
   "scoringVersion": "1.0.0",
   "interpretationVersion": "1.0.0",
-  "localeVersions": { "en": "1.0.0", "hi": "1.0.0", "fr": "1.0.0" },
+  "localeVersions": { "en": "1.0.0", "hi": "1.0.0", "fr": "1.0.0", "ja": "1.0.0" },
   "approvalRecord": {
     "productOwner": {
       "reviewer": "Nikhil Shrivastava",

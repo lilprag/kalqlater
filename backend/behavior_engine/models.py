@@ -6,7 +6,7 @@ from typing import Dict, List, Literal, Optional, Set
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-LocaleCode = Literal["en", "hi", "fr"]
+LocaleCode = Literal["en", "hi", "fr", "ja"]
 
 
 class LocalizedText(BaseModel):
@@ -14,6 +14,7 @@ class LocalizedText(BaseModel):
     en: str = Field(min_length=1)
     hi: str = Field(min_length=1)
     fr: Optional[str] = Field(default=None, min_length=1)
+    ja: Optional[str] = Field(default=None, min_length=1)
 
 
 class AnalyzerStatus(str, Enum):
