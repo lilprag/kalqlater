@@ -1,6 +1,6 @@
 const DEFAULT_TIMEOUT = 12000;
 
-function baseUrl() { return (process.env.NEXT_PUBLIC_BACKEND_URL || '').replace(/\/$/, ''); }
+function baseUrl() { return (process.env.NEXT_PUBLIC_BACKEND_URL || 'https://kalqlater.onrender.com').replace(/\/$/, ''); }
 
 export class CommunicationInsightsError extends Error {
   constructor(code, message) { super(message); this.code = code; }

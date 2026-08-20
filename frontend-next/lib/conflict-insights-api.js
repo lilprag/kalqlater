@@ -5,7 +5,7 @@ export class ConflictInsightsError extends Error {
 }
 
 async function request(path, { method = 'GET', body, token, signal } = {}) {
-  const base = (process.env.NEXT_PUBLIC_BACKEND_URL || '').replace(/\/$/, '');
+  const base = (process.env.NEXT_PUBLIC_BACKEND_URL || 'https://kalqlater.onrender.com').replace(/\/$/, '');
   if (!base) throw new ConflictInsightsError('unavailable', 'The Conflict Insights service is not configured.');
   const controller = new AbortController();
   const timer = window.setTimeout(() => controller.abort(), TIMEOUT);
