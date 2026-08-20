@@ -26,6 +26,7 @@
     "check:translation-pipeline": "node --experimental-default-type=module scripts/check-translation-pipeline.mjs",
     "check:locale-runtime": "node --experimental-default-type=module scripts/check-locale-runtime.mjs",
     "check:content-integrity": "node scripts/check-content-integrity.mjs",
+    "check:comparison-pages": "node --experimental-default-type=module scripts/check-comparison-pages.mjs",
     "check:localization": "node --experimental-default-type=module scripts/check-localization-production.mjs",
     "check:localization-studio": "node --experimental-default-type=module scripts/check-localization-studio.mjs",
     "localization:report": "node --experimental-default-type=module scripts/localization-report.mjs",

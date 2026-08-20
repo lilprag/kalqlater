@@ -2,8 +2,10 @@ import { getRelationshipIntelligence } from '../data/comparison';
 import { TYPE_ORDER, typeFromSlug, typeSlug } from './personality';
 
 export function canonicalPair(first, second) {
-  if (!first || !second || first === second) return null;
-  return [first, second].sort((a, b) => TYPE_ORDER.indexOf(a) - TYPE_ORDER.indexOf(b));
+  const left = String(first || '').trim().toUpperCase();
+  const right = String(second || '').trim().toUpperCase();
+  if (!TYPE_ORDER.includes(left) || !TYPE_ORDER.includes(right) || left === right) return null;
+  return [left, right].sort((a, b) => TYPE_ORDER.indexOf(a) - TYPE_ORDER.indexOf(b));
 }
 export function pairSlug(first, second) { const pair = canonicalPair(first, second); return pair ? `${typeSlug(pair[0])}-vs-${typeSlug(pair[1])}` : null; }
 export function parsePair(value) {
