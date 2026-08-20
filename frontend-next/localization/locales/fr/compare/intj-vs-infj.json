@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INTJ et INFJ",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INTJ et INFJ peuvent se reconnaître dans leur réserve, leur profondeur et leur attention au long terme. L’INTJ observe surtout la cohérence du système ; l’INFJ remarque davantage le sens humain et les effets relationnels."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Ils apprécient souvent les échanges réfléchis, l’autonomie et les projets porteurs d’une vision. Leur besoin commun de recul peut créer une proximité calme, à condition que chacun rende ses attentes visibles."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INTJ évalue volontiers une option par sa logique et sa viabilité ; l’INFJ considère aussi l’alignement avec les valeurs et l’expérience des personnes. Ils peuvent viser le même avenir tout en choisissant des critères différents pour y parvenir."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "L’INTJ peut présenter directement une solution, alors que l’INFJ souhaite parfois que le vécu soit reconnu avant d’avancer. Demander si l’autre attend une écoute, une analyse ou une décision rend leur dialogue plus précis."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "L’INFJ peut ressentir la concision de l’INTJ comme une distance ; l’INTJ peut trouver les nuances relationnelles difficiles à traduire en action. Relier une émotion à un besoin et une solution à son impact aide à combler l’écart."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Tous deux peuvent se retirer quand un conflit devient trop chargé, puis revenir avec une conclusion déjà formée. Partager ce qui reste incertain avant de se fermer évite deux silences parallèles et des interprétations durables."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "Une réparation utile reconnaît l’intention et l’effet : l’INTJ peut expliquer ce qu’il cherchait à résoudre, l’INFJ ce qui a été fragilisé dans la relation. Ils peuvent ensuite convenir d’un changement observable."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "L’INTJ valorise la cohérence entre les paroles et les actes ; l’INFJ, la sincérité et la considération du contexte humain. Tenir les accords tout en restant disponible à une conversation sensible nourrit les deux formes de confiance."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "Leur vie intérieure peut être riche mais peu visible. Dire « j’ai besoin de temps » sans couper le lien, puis annoncer quand la conversation reprendra, protège l’espace personnel et la continuité relationnelle."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "Une amitié peut se développer autour de discussions profondes, de valeurs partagées et d’un respect du calme. Des invitations explicites empêchent toutefois que leur indépendance commune devienne une distance involontaire."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Ils peuvent rechercher une relation engagée et porteuse de sens. Aborder directement l’affection, les décisions pratiques et la façon de traverser un désaccord évite de supposer que la profondeur suffit à rendre les besoins évidents."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’INTJ structure la stratégie et anticipe les dépendances ; l’INFJ repère l’adhésion, les valeurs et les conséquences pour l’équipe. Une décision solide associe leurs critères techniques et humains sans demander à l’un de représenter seul toute la réalité."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Ils peuvent écrire séparément les résultats attendus, les risques et les personnes affectées, puis comparer leurs priorités. Cette méthode rend visibles des critères qui resteraient autrement implicites."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "L’INTJ peut devenir plus tranchant et solitaire ; l’INFJ peut absorber l’ambiance ou éviter la confrontation. Réduire la stimulation, limiter le problème et fixer un moment de reprise soutient une réponse plus mesurée."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’INTJ apporte une architecture durable ; l’INFJ aide à vérifier qu’elle reste compréhensible et vivable pour les personnes concernées. Ensemble, ils peuvent relier vision, sens et mise en œuvre."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INTJ peut reconnaître l’expérience avant de proposer une correction ; l’INFJ peut formuler une demande concrète plutôt que d’espérer qu’elle soit devinée. Une vérification après l’action transforme l’intuition en apprentissage partagé."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Pour une décision importante, listez le but, les contraintes, les valeurs concernées et les personnes touchées. Concluez par une action, un responsable et une date où vous vérifierez à la fois le résultat et son impact."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi INTJ et INFJ semblent-ils proches mais décident-ils différemment ?",
+          "answer": "Ils peuvent partager une vision à long terme tout en privilégiant des critères distincts : cohérence structurelle pour l’un, sens et impact humain pour l’autre."
+        },
+        {
+          "question": "Comment peuvent-ils mieux parler de leurs émotions ?",
+          "answer": "Des formulations concrètes sur le ressenti, le besoin et la prochaine étape réduisent la pression de devoir tout expliquer ou tout deviner."
+        },
+        {
+          "question": "Que faire quand tous deux se retirent après un conflit ?",
+          "answer": "Ils peuvent annoncer la durée de la pause et fixer un moment de reprise, afin que le recul ne soit pas interprété comme une rupture du lien."
+        },
+        {
+          "question": "Peuvent-ils bien travailler ensemble ?",
+          "answer": "Oui, notamment lorsque la stratégie et l’impact humain sont évalués ensemble, avec des responsabilités et des critères de décision explicites."
+        },
+        {
+          "question": "Quel est leur principal terrain de progression ?",
+          "answer": "Rendre visible ce qui reste intérieur : objections, valeurs, inquiétudes et attentes relationnelles."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INTJ",
+          "href": "/fr/personality/intj"
+        },
+        {
+          "label": "Profil INFJ",
+          "href": "/fr/personality/infj"
+        },
+        {
+          "label": "Carrières INTJ",
+          "href": "/fr/personality/intj/careers"
+        },
+        {
+          "label": "Carrières INFJ",
+          "href": "/fr/personality/infj/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir au leadership",
+          "href": "/fr/insights/leadership"
+        }
+      ]
+    },
     "seo": {
       "title": "INTJ vs INFJ : différences et compatibilité | KalQLater",
       "description": "Comparez INTJ et INFJ : communication, relations, travail, décisions et pistes de compréhension.",

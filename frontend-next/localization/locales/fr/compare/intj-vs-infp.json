@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INTJ et INFP",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INTJ et INFP peuvent être attirés par l’indépendance et la profondeur de l’autre. L’INTJ donne forme à une vision ; l’INFP vérifie si le chemin respecte ce qui compte intimement."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Ils peuvent partager une forte vie intérieure, le besoin d’authenticité et peu d’intérêt pour les conventions vides. Une conversation calme leur permet souvent d’aller au-delà des premières différences de langage."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INTJ privilégie la cohérence, l’efficacité et les conséquences à long terme. L’INFP accorde davantage de poids à l’intégrité du choix et à son accord avec les valeurs personnelles. Aucun de ces critères ne suffit seul dans toutes les situations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "L’INTJ peut demander directement ce qui doit changer ; l’INFP a parfois besoin de comprendre l’intention et de formuler sa réponse à son rythme. Demander la permission avant de conseiller et exprimer clairement une limite favorisent l’écoute."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "Une analyse factuelle peut sembler à l’INFP être un jugement sur sa personne. Une réaction réservée peut sembler à l’INTJ manquer de clarté. Séparer la décision, la valeur défendue et le ressenti évite ces raccourcis."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Sous tension, l’INTJ peut devenir plus critique et l’INFP se protéger par le retrait. Ralentir l’échange, bannir les généralisations et traiter un comportement précis aide chacun à rester présent."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "L’INTJ peut reconnaître l’effet d’une formulation sans renoncer à son point ; l’INFP peut nommer la valeur ou la limite touchée. Une excuse précise suivie d’un ajustement concret rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La fiabilité et le respect de l’autonomie comptent pour tous deux. L’INFP a aussi besoin que sa sensibilité ne soit pas disqualifiée ; l’INTJ, que les engagements restent praticables. Des promesses modestes et tenues rapprochent ces besoins."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité augmente quand les critiques visent un acte plutôt qu’une identité et quand les émotions peuvent être dites sans devenir l’unique critère. Chacun peut demander une pause tout en confirmant son intention de revenir."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "Leur amitié peut réunir imagination, conversations profondes et respect de l’espace personnel. Elle se renforce lorsque chacun propose des moments partagés au lieu d’attendre que l’autre devine son envie de proximité."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "L’INTJ peut exprimer son attachement par la constance et l’aide concrète ; l’INFP par l’attention au sens et à l’unicité du lien. Traduire ces gestes et parler des besoins quotidiens prévient un sentiment de manque malgré une réelle loyauté."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’INTJ organise les priorités et les systèmes ; l’INFP veille à la cohérence avec la mission, la qualité du message et l’expérience humaine. Des objectifs clairs assortis d’une marge de choix permettent aux deux contributions d’exister."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Ils peuvent distinguer les contraintes non négociables, les valeurs concernées et les options encore ouvertes. L’INTJ aide à choisir une trajectoire ; l’INFP vérifie qu’elle reste défendable intérieurement."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "L’INTJ peut resserrer le contrôle et parler plus sèchement ; l’INFP peut ruminer ou se retirer. Un délai réaliste, une demande précise et un espace sans évaluation réduisent la défensive."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’INTJ transforme une intention en structure durable ; l’INFP rappelle pourquoi cette structure mérite d’exister et comment elle peut rester authentique. Leur alliance relie direction et conscience."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INTJ peut vérifier l’impact de ses conseils avant d’aller plus loin. L’INFP peut traduire une gêne en limite ou en demande observable. Tous deux gagnent à tester une solution sans la confondre avec un verdict définitif."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Commencez par demander : « veux-tu être écouté, réfléchir ensemble ou recevoir une proposition ? ». Pour décider, écrivez les contraintes, les valeurs protégées, la prochaine action et le moment où vous en reparlerez."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi un conseil INTJ peut-il blesser un INFP ?",
+          "answer": "Une proposition directe peut être entendue comme une évaluation personnelle. Demander ce qui est attendu et expliquer l’intention rend le conseil plus facile à recevoir."
+        },
+        {
+          "question": "Comment INTJ et INFP prennent-ils une décision commune ?",
+          "answer": "Ils peuvent rendre visibles les contraintes pratiques et les valeurs, puis choisir une option qui respecte le seuil essentiel de chacun."
+        },
+        {
+          "question": "Comment traverser un conflit sans retrait durable ?",
+          "answer": "Une pause annoncée, une reprise planifiée et une discussion centrée sur un comportement précis réduisent la pression et les généralisations."
+        },
+        {
+          "question": "Leur différence entre logique et valeurs est-elle incompatible ?",
+          "answer": "Non. Les décisions utiles ont souvent besoin de cohérence opérationnelle et d’intégrité. Le contexte détermine la place à donner à chaque critère."
+        },
+        {
+          "question": "Qu’est-ce qui soutient leur proximité ?",
+          "answer": "Le respect de l’espace personnel, des échanges sincères et la traduction explicite de leurs différentes manières de montrer leur attachement."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INTJ",
+          "href": "/fr/personality/intj"
+        },
+        {
+          "label": "Profil INFP",
+          "href": "/fr/personality/infp"
+        },
+        {
+          "label": "Carrières INTJ",
+          "href": "/fr/personality/intj/careers"
+        },
+        {
+          "label": "Carrières INFP",
+          "href": "/fr/personality/infp/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Comprendre les désaccords",
+          "href": "/fr/insights/conflict"
+        }
+      ]
+    },
     "seo": {
       "title": "INTJ vs INFP : différences et compatibilité | KalQLater",
       "description": "Comparez INTJ et INFP : communication, relations, travail, décisions et pistes de compréhension.",

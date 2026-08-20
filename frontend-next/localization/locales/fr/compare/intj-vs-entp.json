@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INTJ et ENTP",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INTJ et ENTP peuvent être rapidement intrigués par la pensée de l’autre. L’INTJ apporte une direction construite ; l’ENTP ouvre des pistes inattendues et teste volontiers la solidité des idées."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Ils peuvent partager le plaisir des problèmes complexes, de l’indépendance intellectuelle et des conversations qui déplacent le point de vue. Tous deux apprécient souvent qu’une idée soit examinée pour sa qualité plutôt que pour son statut."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INTJ cherche généralement à réduire les options autour d’une vision cohérente, tandis que l’ENTP gagne de l’énergie en multipliant les possibilités. La différence porte moins sur l’imagination que sur le moment où l’exploration doit céder la place au choix."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "L’ENTP gagne à signaler s’il joue avec une hypothèse ou propose réellement de changer de cap. L’INTJ peut expliquer ce qui rend une digression coûteuse au lieu de la fermer sans contexte. Un ordre du jour souple donne de la place aux deux rythmes."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "L’INTJ peut percevoir les détours de l’ENTP comme un manque de sérieux ; l’ENTP peut lire la concentration de l’INTJ comme de la rigidité. Dire « nous explorons » ou « nous décidons » évite que chacun attribue une intention négative à l’autre."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "Le conflit peut devenir un duel verbal : l’ENTP relance, nuance ou provoque, tandis que l’INTJ resserre sa position. Suspendre le débat, reformuler l’argument adverse et choisir une seule question à résoudre empêche l’escalade."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "L’ENTP peut reconnaître lorsqu’une joute a dépassé le plaisir intellectuel ; l’INTJ peut dire ce qu’il a protégé derrière son retrait ou sa fermeté. Une reprise courte, centrée sur l’impact et la prochaine étape, restaure mieux le lien qu’un nouveau débat."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "L’INTJ fait davantage confiance lorsque les idées prometteuses sont suivies et les engagements stables. L’ENTP se sent en confiance lorsque ses questions restent recevables. Un espace d’expérimentation assorti de limites claires répond aux deux besoins."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "L’humour, l’analyse et l’argumentation peuvent masquer la vulnérabilité. Dire qu’une remarque a touché un point sensible ou qu’un temps de recul est nécessaire permet de ne pas confondre aisance verbale et absence d’émotion."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "Leur amitié peut être vive, inventive et nourrie de découvertes partagées. Elle gagne en stabilité lorsque l’ENTP respecte le besoin de calme de l’INTJ et que l’INTJ accepte parfois une rencontre sans programme entièrement défini."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Dans une relation amoureuse, la stimulation mentale peut être forte, mais les besoins quotidiens demandent une attention explicite. Parler des engagements, de la spontanéité, du temps seul et de la manière de se rassurer évite de laisser la logistique porter tout le lien."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’ENTP peut ouvrir le champ, repérer une occasion et remettre en cause une convention ; l’INTJ peut sélectionner, ordonner et construire une trajectoire. Définir une fin à la phase d’idéation empêche les nouveautés de désorganiser l’exécution."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Ils peuvent lister les options, choisir ensemble trois critères, puis fixer une heure de décision. L’ENTP conserve un canal pour les idées nouvelles ; l’INTJ obtient un engagement clair, avec une condition précise de réouverture."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "Sous pression, l’ENTP peut disperser son attention ou chercher encore une sortie créative ; l’INTJ peut contrôler davantage et réduire brutalement les options. Revenir au minimum viable et reporter les explorations non urgentes réduit la friction."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’ENTP aide l’INTJ à voir des chemins que la stratégie initiale excluait ; l’INTJ aide l’ENTP à transformer une intuition en résultat durable. Leur force apparaît quand la curiosité nourrit la direction au lieu de la remplacer."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INTJ peut réserver un moment où aucune conclusion n’est exigée. L’ENTP peut choisir une piste et la soutenir assez longtemps pour apprendre de son exécution. Un retour d’expérience commun relie découverte et cohérence."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Séparez sur le calendrier l’idéation, la sélection et l’exécution. Notez les idées écartées dans une liste de reprise, puis convenez de la décision actuelle, du responsable et du signal qui justifierait de la revoir."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi les échanges entre INTJ et ENTP sont-ils si stimulants ?",
+          "answer": "L’ENTP élargit les possibilités tandis que l’INTJ cherche une logique directrice. Cette tension peut produire des idées solides si le but de la conversation est explicite."
+        },
+        {
+          "question": "Comment éviter les discussions sans fin ?",
+          "answer": "Ils peuvent distinguer une phase d’exploration d’une phase de choix, limiter le nombre de critères et fixer un moment où une décision provisoire sera prise."
+        },
+        {
+          "question": "Comment INTJ et ENTP gèrent-ils mieux un conflit ?",
+          "answer": "Reformuler honnêtement le point de l’autre, réduire le sujet et reconnaître l’impact du ton aide à sortir d’un duel d’arguments."
+        },
+        {
+          "question": "Peuvent-ils bien collaborer au travail ?",
+          "answer": "Oui, lorsque l’ENTP dispose d’un espace pour ouvrir les options et que l’INTJ peut ensuite stabiliser la direction, les responsabilités et le suivi."
+        },
+        {
+          "question": "Quel équilibre peut soutenir leur relation ?",
+          "answer": "Un mélange de nouveauté et de continuité, avec du temps autonome, des engagements explicites et des moments où ils explorent sans devoir immédiatement conclure."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INTJ",
+          "href": "/fr/personality/intj"
+        },
+        {
+          "label": "Profil ENTP",
+          "href": "/fr/personality/entp"
+        },
+        {
+          "label": "Carrières INTJ",
+          "href": "/fr/personality/intj/careers"
+        },
+        {
+          "label": "Carrières ENTP",
+          "href": "/fr/personality/entp/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Comprendre les désaccords",
+          "href": "/fr/insights/conflict"
+        }
+      ]
+    },
     "seo": {
       "title": "INTJ vs ENTP : différences et compatibilité | KalQLater",
       "description": "Comparez INTJ et ENTP : communication, relations, travail, décisions et pistes de compréhension.",

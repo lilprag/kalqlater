@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INTJ et ENFJ",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INTJ et ENFJ peuvent être impressionnés par la vision et l’engagement de l’autre. L’INTJ structure le chemin en profondeur ; l’ENFJ rend la direction partageable et mobilise les personnes autour d’elle."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Ils peuvent rechercher une progression à long terme, prendre leurs engagements au sérieux et vouloir produire un effet utile. Leur coopération devient forte lorsque résultats et développement humain sont traités comme deux dimensions du même projet."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INTJ préfère souvent réfléchir seul avant d’intervenir ; l’ENFJ élabore davantage dans l’échange et suit l’état du groupe. L’un protège la cohérence du système, l’autre la qualité de l’adhésion."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "L’ENFJ peut annoncer pourquoi un échange collectif est nécessaire ; l’INTJ peut partager son raisonnement sans attendre qu’il soit parfaitement achevé. Des questions directes, posées sans pression sociale, les aident à se comprendre."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "L’ENFJ peut interpréter le retrait de l’INTJ comme un désengagement relationnel. L’INTJ peut vivre les relances de l’ENFJ comme une intrusion. Indiquer le besoin de calme et le moment du retour évite ces conclusions."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "L’INTJ peut réduire le conflit à la solution la plus logique, tandis que l’ENFJ veut aussi réparer la dynamique du groupe. Traiter successivement les faits, l’impact et la décision permet de ne sacrifier ni l’efficacité ni le lien."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "Une réparation peut commencer par reconnaître ce que chacun protégeait : la qualité du résultat ou la capacité des personnes à rester engagées. Ils peuvent ensuite définir une nouvelle manière de consulter, décider et informer."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "L’INTJ fait confiance aux accords cohérents et à la discrétion ; l’ENFJ à la disponibilité et aux signes de considération. Prévenir d’un retrait, respecter une confidence et tenir un engagement renforcent leur sécurité mutuelle."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "L’ENFJ peut laisser de l’espace sans exiger une réponse immédiate ; l’INTJ peut confirmer le lien même lorsqu’il a besoin de solitude. Des attentes claires rendent la proximité moins envahissante et la distance moins inquiétante."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "L’ENFJ apporte volontiers des occasions de rencontre et une attention régulière ; l’INTJ offre une présence sélective mais profonde. Leur amitié s’équilibre lorsque chacun respecte le niveau d’activité sociale de l’autre."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Ils peuvent construire un projet de couple ambitieux et attentif. Il reste important de parler de l’expression de l’affection, du temps seul, de la vie sociale et de la manière dont les décisions communes seront prises."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’INTJ conçoit la structure, les priorités et les risques ; l’ENFJ développe l’adhésion, la coopération et les compétences. Clarifier qui consulte, qui tranche et comment les changements seront expliqués évite les doubles commandes."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Ils peuvent évaluer chaque option selon sa solidité, son coût humain et sa capacité à être comprise. Fixer un délai de consultation empêche la recherche de consensus de retarder indéfiniment le choix."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "L’INTJ peut se fermer et devenir plus critique ; l’ENFJ peut multiplier les échanges pour restaurer l’harmonie. Une pause définie, suivie d’une conversation courte avec un objectif précis, modère ces réflexes opposés."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’INTJ apporte une vision robuste et l’ENFJ la relie aux motivations des personnes. Ensemble, ils peuvent conduire une évolution qui a du sens, à condition que mobilisation et architecture se corrigent mutuellement."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INTJ peut communiquer plus tôt sur son processus ; l’ENFJ peut tolérer qu’une relation reste bonne sans validation immédiate. Ils progressent en demandant un retour précis plutôt qu’en interprétant le silence ou l’ambiance."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Avant une initiative, définissez le but, les personnes concernées, les critères de réussite et le mode de décision. Prévoyez un temps de réflexion individuel puis un échange où chacun formule une objection et un soutien."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi ENFJ peut-il trouver INTJ distant ?",
+          "answer": "L’INTJ peut avoir besoin de traiter seul ses pensées sans que cela signifie une perte d’intérêt. Annoncer ce besoin et le moment du retour rassure la relation."
+        },
+        {
+          "question": "Comment concilier stratégie et harmonie du groupe ?",
+          "answer": "Ils peuvent évaluer séparément la solidité du plan et les conditions d’adhésion, puis intégrer les deux dans le calendrier et la communication."
+        },
+        {
+          "question": "Comment gèrent-ils une décision impopulaire ?",
+          "answer": "L’INTJ peut expliciter les critères ; l’ENFJ peut aider à écouter les effets et à expliquer le choix sans promettre un consensus impossible."
+        },
+        {
+          "question": "Peuvent-ils bien diriger ensemble ?",
+          "answer": "Oui, si l’architecture, la mobilisation et l’autorité finale sont clairement réparties plutôt que laissées à une négociation implicite."
+        },
+        {
+          "question": "Quel équilibre soutient leur relation ?",
+          "answer": "Alterner temps individuel et échange, rendre l’affection explicite et parler autant du processus humain que du résultat."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INTJ",
+          "href": "/fr/personality/intj"
+        },
+        {
+          "label": "Profil ENFJ",
+          "href": "/fr/personality/enfj"
+        },
+        {
+          "label": "Carrières INTJ",
+          "href": "/fr/personality/intj/careers"
+        },
+        {
+          "label": "Carrières ENFJ",
+          "href": "/fr/personality/enfj/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir au leadership",
+          "href": "/fr/insights/leadership"
+        }
+      ]
+    },
     "seo": {
       "title": "INTJ vs ENFJ : différences et compatibilité | KalQLater",
       "description": "Comparez INTJ et ENFJ : communication, relations, travail, décisions et pistes de compréhension.",

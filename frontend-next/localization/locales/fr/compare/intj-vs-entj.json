@@ -12,6 +12,143 @@
     "percentage": "Il est plus utile d’observer les préférences réelles du duo que de chercher un pourcentage de compatibilité.",
     "faqs": "Pour faire grandir cette relation, nommez ce qui vous aide à décider, à récupérer et à vous sentir entendu.",
     "ui": "Comparer INTJ et ENTJ",
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INTJ et ENTJ peuvent reconnaître chez l’autre une ambition structurée, une pensée stratégique et le goût des objectifs exigeants. L’INTJ paraît souvent plus réservé dans l’élaboration de sa vision, tandis que l’ENTJ la met plus vite en discussion et en mouvement."
+        },
+        {
+          "id": "similarities",
+          "title": "Points de rencontre",
+          "body": "Tous deux peuvent apprécier la compétence, l’autonomie et les décisions reliées à un cap clair. Ils se comprennent particulièrement bien lorsque chacun peut contribuer à une stratégie sans devoir simplifier son raisonnement."
+        },
+        {
+          "id": "differences",
+          "title": "Différences importantes",
+          "body": "L’INTJ consolide volontiers le modèle avant d’exposer sa position ; l’ENTJ affine souvent sa pensée en dirigeant l’échange et l’action. Cette différence de rythme peut ressembler à de la prudence excessive ou à de la précipitation, alors qu’elle reflète deux manières d’organiser l’efficacité."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "Le dialogue gagne en qualité quand l’ENTJ laisse à l’INTJ un temps de préparation et quand l’INTJ partage ses objections avant qu’elles ne deviennent un refus définitif. Nommer l’objectif, les contraintes et la décision attendue limite les débats de position."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Risques de malentendu",
+          "body": "L’ENTJ peut interpréter le silence de l’INTJ comme un manque d’engagement. L’INTJ peut vivre l’assurance de l’ENTJ comme une tentative de prendre le contrôle. Indiquer qui propose, qui décide et ce qui reste discutable réduit cette lecture compétitive."
+        },
+        {
+          "id": "conflict",
+          "title": "Désaccords et tensions",
+          "body": "En tension, chacun peut défendre sa stratégie avec fermeté et accumuler des arguments plutôt que d’examiner l’impact relationnel. Le conflit devient plus utile lorsqu’ils comparent des critères observables au lieu de chercher lequel des deux a la meilleure autorité."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un désaccord",
+          "body": "Une réparation crédible reconnaît à la fois le contenu et la manière : ce qui devait être décidé, mais aussi la pression ou la mise à l’écart ressentie. Reprendre une décision avec des rôles clarifiés permet de restaurer la coopération sans nier le désaccord."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance grandit grâce à des engagements tenus, des informations partagées à temps et la possibilité de contester une idée sans perdre sa place. L’INTJ a besoin de voir que la vitesse ne remplace pas la rigueur ; l’ENTJ, que la réflexion mène bien à une contribution."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "Leur langage commun peut rester très orienté vers les solutions. Dire clairement qu’une intervention a découragé, inquiété ou mis sous pression aide à traiter l’expérience humaine avant de retourner au plan."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "Une amitié peut se construire autour de projets ambitieux, de discussions prospectives et d’un respect mutuel pour l’indépendance. Elle reste vivante lorsque le temps partagé n’est pas toujours transformé en objectif à atteindre."
+        },
+        {
+          "id": "romance",
+          "title": "Vie amoureuse",
+          "body": "Dans l’intimité, la loyauté et les projets communs peuvent compter beaucoup, mais l’affection ne doit pas être supposée évidente. Parler du temps disponible, de la façon de soutenir l’autre et de la place du travail protège la relation d’une organisation trop fonctionnelle."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "L’INTJ peut approfondir l’architecture, anticiper les conséquences et repérer les incohérences ; l’ENTJ peut aligner les personnes, arbitrer et maintenir l’élan. Une répartition explicite entre conception, décision et pilotage évite une lutte de territoire."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "Ils peuvent convenir d’un temps pour éprouver la stratégie, puis d’un moment où l’ENTJ ou un responsable désigné tranche. Documenter les hypothèses de l’INTJ et les critères d’exécution de l’ENTJ rend la décision révisable sans la fragiliser."
+        },
+        {
+          "id": "stress",
+          "title": "Sous pression",
+          "body": "L’INTJ peut se retirer pour reprendre le contrôle du modèle, tandis que l’ENTJ peut augmenter le rythme et les directives. Réduire le champ, distinguer l’urgent de l’important et fixer un prochain point de contact évite que distance et intensité s’alimentent."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "L’INTJ apporte une profondeur stratégique qui peut sécuriser l’action ; l’ENTJ donne à cette stratégie une portée collective et une cadence. Ensemble, ils peuvent transformer une vision complexe en mouvement coordonné lorsque l’influence reste partagée."
+        },
+        {
+          "id": "growth",
+          "title": "Habitudes de progression",
+          "body": "L’INTJ peut pratiquer le partage d’une pensée encore incomplète ; l’ENTJ peut demander une objection avant d’annoncer la direction. Un bilan où chacun nomme ce qui a renforcé ou freiné la coopération développe leur souplesse."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Repères pratiques",
+          "body": "Avant un projet, écrivez le résultat, les critères, les zones d’incertitude et les responsabilités. Pendant l’échange, réservez un temps aux objections puis confirmez la décision, son propriétaire et la date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Pourquoi INTJ et ENTJ peuvent-ils entrer en compétition ?",
+          "answer": "Ils peuvent tous deux avoir une vision forte et vouloir protéger la qualité de la direction. Clarifier les responsabilités et comparer les critères plutôt que l’autorité aide à transformer cette énergie en coopération."
+        },
+        {
+          "question": "Comment INTJ et ENTJ peuvent-ils mieux décider ensemble ?",
+          "answer": "Ils peuvent séparer le temps d’analyse du temps d’arbitrage, définir le niveau de preuve nécessaire et nommer la personne responsable de la décision finale."
+        },
+        {
+          "question": "Comment éviter que leurs échanges deviennent trop directs ?",
+          "answer": "Ajouter l’intention, demander la lecture de l’autre et reconnaître l’effet d’une formulation permet de conserver la franchise sans réduire la sécurité relationnelle."
+        },
+        {
+          "question": "INTJ et ENTJ travaillent-ils bien ensemble ?",
+          "answer": "Ils peuvent former un duo efficace lorsque la conception stratégique, la mobilisation et l’exécution sont réparties clairement. Le contexte et les habitudes de collaboration restent déterminants."
+        },
+        {
+          "question": "Que peuvent-ils apprendre l’un de l’autre ?",
+          "answer": "L’INTJ peut observer comment rendre une vision mobilisatrice ; l’ENTJ peut apprendre à laisser davantage de temps aux conséquences et aux objections avant d’engager l’action."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INTJ",
+          "href": "/fr/personality/intj"
+        },
+        {
+          "label": "Profil ENTJ",
+          "href": "/fr/personality/entj"
+        },
+        {
+          "label": "Carrières INTJ",
+          "href": "/fr/personality/intj/careers"
+        },
+        {
+          "label": "Carrières ENTJ",
+          "href": "/fr/personality/entj/careers"
+        },
+        {
+          "label": "Explorer la communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Réfléchir au leadership",
+          "href": "/fr/insights/leadership"
+        }
+      ]
+    },
     "seo": {
       "title": "INTJ vs ENTJ : différences et compatibilité | KalQLater",
       "description": "Comparez INTJ et ENTJ : communication, relations, travail, décisions et pistes de compréhension.",
