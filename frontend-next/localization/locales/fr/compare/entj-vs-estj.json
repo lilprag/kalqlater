@@ -24,6 +24,143 @@
     "jsonLd": {
       "breadcrumb": "ENTJ vs ESTJ",
       "faq": "Questions fréquentes sur ENTJ et ESTJ"
+    },
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "ENTJ fixe un objectif et organise les moyens de l’atteindre, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Leur rythme et leur centre d’attention marquent souvent la première impression, avant que leurs qualités moins visibles n’apparaissent."
+        },
+        {
+          "id": "similarities",
+          "title": "Points communs",
+          "body": "Ils peuvent partager un rythme social et un besoin d’espace comparables. Le lien devient plus fluide lorsque ENTJ et ESTJ peuvent nommer les repères qui comptent pour eux, sans les hiérarchiser ni les juger."
+        },
+        {
+          "id": "differences",
+          "title": "Différences de perspective",
+          "body": "ENTJ fixe un objectif et organise les moyens de l’atteindre, alors que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Cette différence ne mesure pas leurs capacités : elle montre surtout dans quel ordre chacun remarque et traite les informations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "ENTJ exprime directement sa conclusion et ses attentes, alors que ESTJ communique sobrement les faits et les délais. Distinguer la conclusion, son contexte et la réponse attendue évite de confondre une différence de style avec un désaccord."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Malentendus possibles",
+          "body": "La manière de parler de ENTJ peut sembler froide ou indirecte à ESTJ; celle de ESTJ peut paraître brusque ou trop prudente à ENTJ. Avant d’interpréter, mieux vaut préciser s’il faut écouter, explorer ou décider."
+        },
+        {
+          "id": "conflict",
+          "title": "Gestion des désaccords",
+          "body": "Sous tension, ENTJ accentue le contrôle et presse la résolution, tandis que ESTJ multiplie les directives pour reprendre la main. Revenir à un seul sujet, puis décrire les faits, leur impact et l’action souhaitée empêche le débat de devenir personnel."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un conflit",
+          "body": "ENTJ peut reconnaître l’effet produit, même si son intention était différente; ESTJ peut expliquer ce qu’il cherchait à protéger. Une excuse précise, suivie d’un engagement réaliste, rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit quand les repères essentiels de ENTJ et de ESTJ sont tous deux respectés. Définir ce qui est promis, ce qui reste flexible et quand annoncer un changement réduit l’incertitude."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité émotionnelle laisse à ENTJ le temps de formuler sa pensée et à ESTJ celui d’exprimer sa réaction. Reformuler ce que l’on a compris avant de proposer une solution aide chacun à rester présent."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, ENTJ et ESTJ peuvent respecter leurs besoins respectifs si le rythme des invitations et des nouvelles n’est pas supposé. Dire clairement quand partager une activité ou retrouver du calme protège le lien sans imposer un modèle unique."
+        },
+        {
+          "id": "romance",
+          "title": "Relation amoureuse",
+          "body": "Dans une relation amoureuse, les marques d’affection ne sont pas nécessairement les mêmes. Parler concrètement du temps ensemble, des projets, de l’espace personnel et des gestes rassurants limite les attentes silencieuses."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, ENTJ fixe un objectif et organise les moyens de l’atteindre, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Des livrables, un décideur et des points de contrôle explicites transforment leurs méthodes différentes en collaboration utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "ENTJ privilégie rapidement une option réalisable, tandis que ESTJ retient l’option la plus efficace et éprouvée. Fixer les critères et l’échéance, puis examiner un risque important pour chacun, permet de décider sans effacer leurs priorités."
+        },
+        {
+          "id": "stress",
+          "title": "Réactions au stress",
+          "body": "Quand la pression monte, ENTJ accentue le contrôle et presse la résolution, alors que ESTJ multiplie les directives pour reprendre la main. Vérifier d’abord l’urgence et le besoin de repos, puis différer les grandes conclusions, évite de figer une réaction passagère."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "ENTJ fixe un objectif et organise les moyens de l’atteindre, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Le bénéfice apparaît lorsqu’ils confient à l’autre les moments adaptés à ses forces au lieu de chercher à uniformiser leurs méthodes."
+        },
+        {
+          "id": "growth",
+          "title": "Pistes de progression",
+          "body": "ENTJ peut apprendre du regard de ESTJ à remarquer des données qu’il néglige habituellement; ESTJ peut essayer une nouvelle façon d’avancer grâce au choix de ENTJ. Un bilan régulier rend cet apprentissage concret."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Conseils pratiques",
+          "body": "Pour la prochaine discussion, formulez l’objectif en une phrase, puis notez un besoin important pour ENTJ et un pour ESTJ. Choisissez ensuite une petite action, un responsable et une date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Comment ENTJ et ESTJ peuvent-ils mieux communiquer ?",
+          "answer": "En tenant compte du fait que ENTJ exprime directement sa conclusion et ses attentes et que ESTJ communique sobrement les faits et les délais. Nommer le but de l’échange et la réponse attendue rend leurs styles plus lisibles."
+        },
+        {
+          "question": "Dans quelles situations ENTJ et ESTJ risquent-ils de se heurter ?",
+          "answer": "Notamment lorsque ENTJ accentue le contrôle et presse la résolution tandis que ESTJ multiplie les directives pour reprendre la main. Limiter la discussion à un sujet et convenir d’une pause aide à éviter l’escalade."
+        },
+        {
+          "question": "Comment ENTJ et ESTJ peuvent-ils se compléter au travail ?",
+          "answer": "ENTJ fixe un objectif et organise les moyens de l’atteindre, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Des rôles, délais et règles de décision clairs facilitent cette complémentarité."
+        },
+        {
+          "question": "De quoi ENTJ et ESTJ ont-ils besoin pour se faire confiance ?",
+          "answer": "De gestes qui respectent les repères importants pour ENTJ comme pour ESTJ. Tenir de petits engagements et annoncer tôt les changements est essentiel."
+        },
+        {
+          "question": "Quelle habitude peut renforcer la relation entre ENTJ et ESTJ ?",
+          "answer": "Partager chacun une situation confortable et une situation difficile, choisir un ajustement concret, puis revenir ensemble sur son effet."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil ENTJ",
+          "href": "/fr/personality/entj"
+        },
+        {
+          "label": "Profil ESTJ",
+          "href": "/fr/personality/estj"
+        },
+        {
+          "label": "Carrières pour ENTJ",
+          "href": "/fr/personality/entj/careers"
+        },
+        {
+          "label": "Carrières pour ESTJ",
+          "href": "/fr/personality/estj/careers"
+        },
+        {
+          "label": "Explorer votre communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Mieux comprendre votre gestion des conflits",
+          "href": "/fr/insights/conflict"
+        }
+      ]
     }
   }
 }

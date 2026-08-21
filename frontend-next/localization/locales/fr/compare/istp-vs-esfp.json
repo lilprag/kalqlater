@@ -24,6 +24,143 @@
     "jsonLd": {
       "breadcrumb": "ISTP vs ESFP",
       "faq": "Questions fréquentes sur ISTP et ESFP"
+    },
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "ISTP observe le fonctionnement réel et intervient avec adresse, tandis que ESFP partage avec chaleur les personnes et les expériences du présent. Leur rythme et leur centre d’attention marquent souvent la première impression, avant que leurs qualités moins visibles n’apparaissent."
+        },
+        {
+          "id": "similarities",
+          "title": "Points communs",
+          "body": "Ils disposent d’un terrain commun dans leur manière de recueillir l’information. Le lien devient plus fluide lorsque ISTP et ESFP peuvent nommer les repères qui comptent pour eux, sans les hiérarchiser ni les juger."
+        },
+        {
+          "id": "differences",
+          "title": "Différences de perspective",
+          "body": "ISTP observe le fonctionnement réel et intervient avec adresse, alors que ESFP partage avec chaleur les personnes et les expériences du présent. Cette différence ne mesure pas leurs capacités : elle montre surtout dans quel ordre chacun remarque et traite les informations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "ISTP partage brièvement les faits nécessaires, alors que ESFP communique avec expressivité et proximité. Distinguer la conclusion, son contexte et la réponse attendue évite de confondre une différence de style avec un désaccord."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Malentendus possibles",
+          "body": "La manière de parler de ISTP peut sembler froide ou indirecte à ESFP; celle de ESFP peut paraître brusque ou trop prudente à ISTP. Avant d’interpréter, mieux vaut préciser s’il faut écouter, explorer ou décider."
+        },
+        {
+          "id": "conflict",
+          "title": "Gestion des désaccords",
+          "body": "Sous tension, ISTP résout seul le problème et s’éloigne de l’émotion, tandis que ESFP retrouve son énergie dans l’échange ou le changement. Revenir à un seul sujet, puis décrire les faits, leur impact et l’action souhaitée empêche le débat de devenir personnel."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un conflit",
+          "body": "ISTP peut reconnaître l’effet produit, même si son intention était différente; ESFP peut expliquer ce qu’il cherchait à protéger. Une excuse précise, suivie d’un engagement réaliste, rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit quand les repères essentiels de ISTP et de ESFP sont tous deux respectés. Définir ce qui est promis, ce qui reste flexible et quand annoncer un changement réduit l’incertitude."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité émotionnelle laisse à ISTP le temps de formuler sa pensée et à ESFP celui d’exprimer sa réaction. Reformuler ce que l’on a compris avant de proposer une solution aide chacun à rester présent."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, ISTP et ESFP peuvent respecter leurs besoins respectifs si le rythme des invitations et des nouvelles n’est pas supposé. Dire clairement quand partager une activité ou retrouver du calme protège le lien sans imposer un modèle unique."
+        },
+        {
+          "id": "romance",
+          "title": "Relation amoureuse",
+          "body": "Dans une relation amoureuse, les marques d’affection ne sont pas nécessairement les mêmes. Parler concrètement du temps ensemble, des projets, de l’espace personnel et des gestes rassurants limite les attentes silencieuses."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, ISTP observe le fonctionnement réel et intervient avec adresse, tandis que ESFP partage avec chaleur les personnes et les expériences du présent. Des livrables, un décideur et des points de contrôle explicites transforment leurs méthodes différentes en collaboration utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "ISTP réagit aux informations disponibles sur le terrain, tandis que ESFP vérifie aussitôt l’effet humain et concret. Fixer les critères et l’échéance, puis examiner un risque important pour chacun, permet de décider sans effacer leurs priorités."
+        },
+        {
+          "id": "stress",
+          "title": "Réactions au stress",
+          "body": "Quand la pression monte, ISTP résout seul le problème et s’éloigne de l’émotion, alors que ESFP retrouve son énergie dans l’échange ou le changement. Vérifier d’abord l’urgence et le besoin de repos, puis différer les grandes conclusions, évite de figer une réaction passagère."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "ISTP observe le fonctionnement réel et intervient avec adresse, tandis que ESFP partage avec chaleur les personnes et les expériences du présent. Le bénéfice apparaît lorsqu’ils confient à l’autre les moments adaptés à ses forces au lieu de chercher à uniformiser leurs méthodes."
+        },
+        {
+          "id": "growth",
+          "title": "Pistes de progression",
+          "body": "ISTP peut apprendre du regard de ESFP à remarquer des données qu’il néglige habituellement; ESFP peut essayer une nouvelle façon d’avancer grâce au choix de ISTP. Un bilan régulier rend cet apprentissage concret."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Conseils pratiques",
+          "body": "Pour la prochaine discussion, formulez l’objectif en une phrase, puis notez un besoin important pour ISTP et un pour ESFP. Choisissez ensuite une petite action, un responsable et une date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Comment ISTP et ESFP peuvent-ils mieux communiquer ?",
+          "answer": "En tenant compte du fait que ISTP partage brièvement les faits nécessaires et que ESFP communique avec expressivité et proximité. Nommer le but de l’échange et la réponse attendue rend leurs styles plus lisibles."
+        },
+        {
+          "question": "Dans quelles situations ISTP et ESFP risquent-ils de se heurter ?",
+          "answer": "Notamment lorsque ISTP résout seul le problème et s’éloigne de l’émotion tandis que ESFP retrouve son énergie dans l’échange ou le changement. Limiter la discussion à un sujet et convenir d’une pause aide à éviter l’escalade."
+        },
+        {
+          "question": "Comment ISTP et ESFP peuvent-ils se compléter au travail ?",
+          "answer": "ISTP observe le fonctionnement réel et intervient avec adresse, tandis que ESFP partage avec chaleur les personnes et les expériences du présent. Des rôles, délais et règles de décision clairs facilitent cette complémentarité."
+        },
+        {
+          "question": "De quoi ISTP et ESFP ont-ils besoin pour se faire confiance ?",
+          "answer": "De gestes qui respectent les repères importants pour ISTP comme pour ESFP. Tenir de petits engagements et annoncer tôt les changements est essentiel."
+        },
+        {
+          "question": "Quelle habitude peut renforcer la relation entre ISTP et ESFP ?",
+          "answer": "Partager chacun une situation confortable et une situation difficile, choisir un ajustement concret, puis revenir ensemble sur son effet."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil ISTP",
+          "href": "/fr/personality/istp"
+        },
+        {
+          "label": "Profil ESFP",
+          "href": "/fr/personality/esfp"
+        },
+        {
+          "label": "Carrières pour ISTP",
+          "href": "/fr/personality/istp/careers"
+        },
+        {
+          "label": "Carrières pour ESFP",
+          "href": "/fr/personality/esfp/careers"
+        },
+        {
+          "label": "Explorer votre communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Mieux comprendre votre gestion des conflits",
+          "href": "/fr/insights/conflict"
+        }
+      ]
     }
   }
 }

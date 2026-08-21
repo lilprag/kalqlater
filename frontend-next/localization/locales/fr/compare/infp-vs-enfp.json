@@ -24,6 +24,143 @@
     "jsonLd": {
       "breadcrumb": "INFP vs ENFP",
       "faq": "Questions fréquentes sur INFP et ENFP"
+    },
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INFP fait grandir les possibles à partir de ses valeurs, tandis que ENFP repère avec énergie le potentiel des personnes et des idées. Leur rythme et leur centre d’attention marquent souvent la première impression, avant que leurs qualités moins visibles n’apparaissent."
+        },
+        {
+          "id": "similarities",
+          "title": "Points communs",
+          "body": "Ils disposent d’un terrain commun dans leur manière de recueillir l’information. Le lien devient plus fluide lorsque INFP et ENFP peuvent nommer les repères qui comptent pour eux, sans les hiérarchiser ni les juger."
+        },
+        {
+          "id": "differences",
+          "title": "Différences de perspective",
+          "body": "INFP fait grandir les possibles à partir de ses valeurs, alors que ENFP repère avec énergie le potentiel des personnes et des idées. Cette différence ne mesure pas leurs capacités : elle montre surtout dans quel ordre chacun remarque et traite les informations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "INFP choisit ses mots pour rester fidèle à son ressenti, alors que ENFP parle spontanément en mêlant associations et ressenti. Distinguer la conclusion, son contexte et la réponse attendue évite de confondre une différence de style avec un désaccord."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Malentendus possibles",
+          "body": "La manière de parler de INFP peut sembler froide ou indirecte à ENFP; celle de ENFP peut paraître brusque ou trop prudente à INFP. Avant d’interpréter, mieux vaut préciser s’il faut écouter, explorer ou décider."
+        },
+        {
+          "id": "conflict",
+          "title": "Gestion des désaccords",
+          "body": "Sous tension, INFP traite ses émotions en privé et retarde la décision, tandis que ENFP cherche de nouveaux stimuli et perd son point de mire. Revenir à un seul sujet, puis décrire les faits, leur impact et l’action souhaitée empêche le débat de devenir personnel."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un conflit",
+          "body": "INFP peut reconnaître l’effet produit, même si son intention était différente; ENFP peut expliquer ce qu’il cherchait à protéger. Une excuse précise, suivie d’un engagement réaliste, rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit quand les repères essentiels de INFP et de ENFP sont tous deux respectés. Définir ce qui est promis, ce qui reste flexible et quand annoncer un changement réduit l’incertitude."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité émotionnelle laisse à INFP le temps de formuler sa pensée et à ENFP celui d’exprimer sa réaction. Reformuler ce que l’on a compris avant de proposer une solution aide chacun à rester présent."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, INFP et ENFP peuvent respecter leurs besoins respectifs si le rythme des invitations et des nouvelles n’est pas supposé. Dire clairement quand partager une activité ou retrouver du calme protège le lien sans imposer un modèle unique."
+        },
+        {
+          "id": "romance",
+          "title": "Relation amoureuse",
+          "body": "Dans une relation amoureuse, les marques d’affection ne sont pas nécessairement les mêmes. Parler concrètement du temps ensemble, des projets, de l’espace personnel et des gestes rassurants limite les attentes silencieuses."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, INFP fait grandir les possibles à partir de ses valeurs, tandis que ENFP repère avec énergie le potentiel des personnes et des idées. Des livrables, un décideur et des points de contrôle explicites transforment leurs méthodes différentes en collaboration utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "INFP cherche un accord intérieur avant de décider, tandis que ENFP éclaire ses choix par ses valeurs et les possibilités. Fixer les critères et l’échéance, puis examiner un risque important pour chacun, permet de décider sans effacer leurs priorités."
+        },
+        {
+          "id": "stress",
+          "title": "Réactions au stress",
+          "body": "Quand la pression monte, INFP traite ses émotions en privé et retarde la décision, alors que ENFP cherche de nouveaux stimuli et perd son point de mire. Vérifier d’abord l’urgence et le besoin de repos, puis différer les grandes conclusions, évite de figer une réaction passagère."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "INFP fait grandir les possibles à partir de ses valeurs, tandis que ENFP repère avec énergie le potentiel des personnes et des idées. Le bénéfice apparaît lorsqu’ils confient à l’autre les moments adaptés à ses forces au lieu de chercher à uniformiser leurs méthodes."
+        },
+        {
+          "id": "growth",
+          "title": "Pistes de progression",
+          "body": "INFP peut apprendre du regard de ENFP à remarquer des données qu’il néglige habituellement; ENFP peut essayer une nouvelle façon d’avancer grâce au choix de INFP. Un bilan régulier rend cet apprentissage concret."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Conseils pratiques",
+          "body": "Pour la prochaine discussion, formulez l’objectif en une phrase, puis notez un besoin important pour INFP et un pour ENFP. Choisissez ensuite une petite action, un responsable et une date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Comment INFP et ENFP peuvent-ils mieux communiquer ?",
+          "answer": "En tenant compte du fait que INFP choisit ses mots pour rester fidèle à son ressenti et que ENFP parle spontanément en mêlant associations et ressenti. Nommer le but de l’échange et la réponse attendue rend leurs styles plus lisibles."
+        },
+        {
+          "question": "Dans quelles situations INFP et ENFP risquent-ils de se heurter ?",
+          "answer": "Notamment lorsque INFP traite ses émotions en privé et retarde la décision tandis que ENFP cherche de nouveaux stimuli et perd son point de mire. Limiter la discussion à un sujet et convenir d’une pause aide à éviter l’escalade."
+        },
+        {
+          "question": "Comment INFP et ENFP peuvent-ils se compléter au travail ?",
+          "answer": "INFP fait grandir les possibles à partir de ses valeurs, tandis que ENFP repère avec énergie le potentiel des personnes et des idées. Des rôles, délais et règles de décision clairs facilitent cette complémentarité."
+        },
+        {
+          "question": "De quoi INFP et ENFP ont-ils besoin pour se faire confiance ?",
+          "answer": "De gestes qui respectent les repères importants pour INFP comme pour ENFP. Tenir de petits engagements et annoncer tôt les changements est essentiel."
+        },
+        {
+          "question": "Quelle habitude peut renforcer la relation entre INFP et ENFP ?",
+          "answer": "Partager chacun une situation confortable et une situation difficile, choisir un ajustement concret, puis revenir ensemble sur son effet."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INFP",
+          "href": "/fr/personality/infp"
+        },
+        {
+          "label": "Profil ENFP",
+          "href": "/fr/personality/enfp"
+        },
+        {
+          "label": "Carrières pour INFP",
+          "href": "/fr/personality/infp/careers"
+        },
+        {
+          "label": "Carrières pour ENFP",
+          "href": "/fr/personality/enfp/careers"
+        },
+        {
+          "label": "Explorer votre communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Mieux comprendre votre gestion des conflits",
+          "href": "/fr/insights/conflict"
+        }
+      ]
     }
   }
 }

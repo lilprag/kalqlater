@@ -24,6 +24,143 @@
     "jsonLd": {
       "breadcrumb": "ISTJ vs ISFP",
       "faq": "Questions fréquentes sur ISTJ et ISFP"
+    },
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "ISTJ s’appuie sur l’expérience et des méthodes éprouvées, tandis que ISFP protège par ses actes ce qui compte dans l’instant. Leur rythme et leur centre d’attention marquent souvent la première impression, avant que leurs qualités moins visibles n’apparaissent."
+        },
+        {
+          "id": "similarities",
+          "title": "Points communs",
+          "body": "Ils peuvent partager un rythme social et un besoin d’espace comparables. Le lien devient plus fluide lorsque ISTJ et ISFP peuvent nommer les repères qui comptent pour eux, sans les hiérarchiser ni les juger."
+        },
+        {
+          "id": "differences",
+          "title": "Différences de perspective",
+          "body": "ISTJ s’appuie sur l’expérience et des méthodes éprouvées, alors que ISFP protège par ses actes ce qui compte dans l’instant. Cette différence ne mesure pas leurs capacités : elle montre surtout dans quel ordre chacun remarque et traite les informations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "ISTJ présente les faits concrets dans un ordre clair, alors que ISFP exprime son ressenti sans l’imposer. Distinguer la conclusion, son contexte et la réponse attendue évite de confondre une différence de style avec un désaccord."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Malentendus possibles",
+          "body": "La manière de parler de ISTJ peut sembler froide ou indirecte à ISFP; celle de ISFP peut paraître brusque ou trop prudente à ISTJ. Avant d’interpréter, mieux vaut préciser s’il faut écouter, explorer ou décider."
+        },
+        {
+          "id": "conflict",
+          "title": "Gestion des désaccords",
+          "body": "Sous tension, ISTJ se concentre sur les procédures familières, tandis que ISFP se retire au calme pour préserver ses repères. Revenir à un seul sujet, puis décrire les faits, leur impact et l’action souhaitée empêche le débat de devenir personnel."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un conflit",
+          "body": "ISTJ peut reconnaître l’effet produit, même si son intention était différente; ISFP peut expliquer ce qu’il cherchait à protéger. Une excuse précise, suivie d’un engagement réaliste, rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit quand les repères essentiels de ISTJ et de ISFP sont tous deux respectés. Définir ce qui est promis, ce qui reste flexible et quand annoncer un changement réduit l’incertitude."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité émotionnelle laisse à ISTJ le temps de formuler sa pensée et à ISFP celui d’exprimer sa réaction. Reformuler ce que l’on a compris avant de proposer une solution aide chacun à rester présent."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, ISTJ et ISFP peuvent respecter leurs besoins respectifs si le rythme des invitations et des nouvelles n’est pas supposé. Dire clairement quand partager une activité ou retrouver du calme protège le lien sans imposer un modèle unique."
+        },
+        {
+          "id": "romance",
+          "title": "Relation amoureuse",
+          "body": "Dans une relation amoureuse, les marques d’affection ne sont pas nécessairement les mêmes. Parler concrètement du temps ensemble, des projets, de l’espace personnel et des gestes rassurants limite les attentes silencieuses."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, ISTJ s’appuie sur l’expérience et des méthodes éprouvées, tandis que ISFP protège par ses actes ce qui compte dans l’instant. Des livrables, un décideur et des points de contrôle explicites transforment leurs méthodes différentes en collaboration utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "ISTJ s’appuie sur les faits et l’expérience, tandis que ISFP accorde ses valeurs à la réalité présente. Fixer les critères et l’échéance, puis examiner un risque important pour chacun, permet de décider sans effacer leurs priorités."
+        },
+        {
+          "id": "stress",
+          "title": "Réactions au stress",
+          "body": "Quand la pression monte, ISTJ se concentre sur les procédures familières, alors que ISFP se retire au calme pour préserver ses repères. Vérifier d’abord l’urgence et le besoin de repos, puis différer les grandes conclusions, évite de figer une réaction passagère."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "ISTJ s’appuie sur l’expérience et des méthodes éprouvées, tandis que ISFP protège par ses actes ce qui compte dans l’instant. Le bénéfice apparaît lorsqu’ils confient à l’autre les moments adaptés à ses forces au lieu de chercher à uniformiser leurs méthodes."
+        },
+        {
+          "id": "growth",
+          "title": "Pistes de progression",
+          "body": "ISTJ peut apprendre du regard de ISFP à remarquer des données qu’il néglige habituellement; ISFP peut essayer une nouvelle façon d’avancer grâce au choix de ISTJ. Un bilan régulier rend cet apprentissage concret."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Conseils pratiques",
+          "body": "Pour la prochaine discussion, formulez l’objectif en une phrase, puis notez un besoin important pour ISTJ et un pour ISFP. Choisissez ensuite une petite action, un responsable et une date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Comment ISTJ et ISFP peuvent-ils mieux communiquer ?",
+          "answer": "En tenant compte du fait que ISTJ présente les faits concrets dans un ordre clair et que ISFP exprime son ressenti sans l’imposer. Nommer le but de l’échange et la réponse attendue rend leurs styles plus lisibles."
+        },
+        {
+          "question": "Dans quelles situations ISTJ et ISFP risquent-ils de se heurter ?",
+          "answer": "Notamment lorsque ISTJ se concentre sur les procédures familières tandis que ISFP se retire au calme pour préserver ses repères. Limiter la discussion à un sujet et convenir d’une pause aide à éviter l’escalade."
+        },
+        {
+          "question": "Comment ISTJ et ISFP peuvent-ils se compléter au travail ?",
+          "answer": "ISTJ s’appuie sur l’expérience et des méthodes éprouvées, tandis que ISFP protège par ses actes ce qui compte dans l’instant. Des rôles, délais et règles de décision clairs facilitent cette complémentarité."
+        },
+        {
+          "question": "De quoi ISTJ et ISFP ont-ils besoin pour se faire confiance ?",
+          "answer": "De gestes qui respectent les repères importants pour ISTJ comme pour ISFP. Tenir de petits engagements et annoncer tôt les changements est essentiel."
+        },
+        {
+          "question": "Quelle habitude peut renforcer la relation entre ISTJ et ISFP ?",
+          "answer": "Partager chacun une situation confortable et une situation difficile, choisir un ajustement concret, puis revenir ensemble sur son effet."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil ISTJ",
+          "href": "/fr/personality/istj"
+        },
+        {
+          "label": "Profil ISFP",
+          "href": "/fr/personality/isfp"
+        },
+        {
+          "label": "Carrières pour ISTJ",
+          "href": "/fr/personality/istj/careers"
+        },
+        {
+          "label": "Carrières pour ISFP",
+          "href": "/fr/personality/isfp/careers"
+        },
+        {
+          "label": "Explorer votre communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Mieux comprendre votre gestion des conflits",
+          "href": "/fr/insights/conflict"
+        }
+      ]
     }
   }
 }

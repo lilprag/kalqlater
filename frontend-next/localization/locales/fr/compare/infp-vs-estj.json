@@ -24,6 +24,143 @@
     "jsonLd": {
       "breadcrumb": "INFP vs ESTJ",
       "faq": "Questions fréquentes sur INFP et ESTJ"
+    },
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "INFP fait grandir les possibles à partir de ses valeurs, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Leur rythme et leur centre d’attention marquent souvent la première impression, avant que leurs qualités moins visibles n’apparaissent."
+        },
+        {
+          "id": "similarities",
+          "title": "Points communs",
+          "body": "Leurs angles diffèrent, mais chacun cherche une raison à laquelle il puisse adhérer. Le lien devient plus fluide lorsque INFP et ESTJ peuvent nommer les repères qui comptent pour eux, sans les hiérarchiser ni les juger."
+        },
+        {
+          "id": "differences",
+          "title": "Différences de perspective",
+          "body": "INFP fait grandir les possibles à partir de ses valeurs, alors que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Cette différence ne mesure pas leurs capacités : elle montre surtout dans quel ordre chacun remarque et traite les informations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "INFP choisit ses mots pour rester fidèle à son ressenti, alors que ESTJ communique sobrement les faits et les délais. Distinguer la conclusion, son contexte et la réponse attendue évite de confondre une différence de style avec un désaccord."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Malentendus possibles",
+          "body": "La manière de parler de INFP peut sembler froide ou indirecte à ESTJ; celle de ESTJ peut paraître brusque ou trop prudente à INFP. Avant d’interpréter, mieux vaut préciser s’il faut écouter, explorer ou décider."
+        },
+        {
+          "id": "conflict",
+          "title": "Gestion des désaccords",
+          "body": "Sous tension, INFP traite ses émotions en privé et retarde la décision, tandis que ESTJ multiplie les directives pour reprendre la main. Revenir à un seul sujet, puis décrire les faits, leur impact et l’action souhaitée empêche le débat de devenir personnel."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un conflit",
+          "body": "INFP peut reconnaître l’effet produit, même si son intention était différente; ESTJ peut expliquer ce qu’il cherchait à protéger. Une excuse précise, suivie d’un engagement réaliste, rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit quand les repères essentiels de INFP et de ESTJ sont tous deux respectés. Définir ce qui est promis, ce qui reste flexible et quand annoncer un changement réduit l’incertitude."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité émotionnelle laisse à INFP le temps de formuler sa pensée et à ESTJ celui d’exprimer sa réaction. Reformuler ce que l’on a compris avant de proposer une solution aide chacun à rester présent."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, INFP et ESTJ peuvent respecter leurs besoins respectifs si le rythme des invitations et des nouvelles n’est pas supposé. Dire clairement quand partager une activité ou retrouver du calme protège le lien sans imposer un modèle unique."
+        },
+        {
+          "id": "romance",
+          "title": "Relation amoureuse",
+          "body": "Dans une relation amoureuse, les marques d’affection ne sont pas nécessairement les mêmes. Parler concrètement du temps ensemble, des projets, de l’espace personnel et des gestes rassurants limite les attentes silencieuses."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, INFP fait grandir les possibles à partir de ses valeurs, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Des livrables, un décideur et des points de contrôle explicites transforment leurs méthodes différentes en collaboration utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "INFP cherche un accord intérieur avant de décider, tandis que ESTJ retient l’option la plus efficace et éprouvée. Fixer les critères et l’échéance, puis examiner un risque important pour chacun, permet de décider sans effacer leurs priorités."
+        },
+        {
+          "id": "stress",
+          "title": "Réactions au stress",
+          "body": "Quand la pression monte, INFP traite ses émotions en privé et retarde la décision, alors que ESTJ multiplie les directives pour reprendre la main. Vérifier d’abord l’urgence et le besoin de repos, puis différer les grandes conclusions, évite de figer une réaction passagère."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "INFP fait grandir les possibles à partir de ses valeurs, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Le bénéfice apparaît lorsqu’ils confient à l’autre les moments adaptés à ses forces au lieu de chercher à uniformiser leurs méthodes."
+        },
+        {
+          "id": "growth",
+          "title": "Pistes de progression",
+          "body": "INFP peut apprendre du regard de ESTJ à remarquer des données qu’il néglige habituellement; ESTJ peut essayer une nouvelle façon d’avancer grâce au choix de INFP. Un bilan régulier rend cet apprentissage concret."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Conseils pratiques",
+          "body": "Pour la prochaine discussion, formulez l’objectif en une phrase, puis notez un besoin important pour INFP et un pour ESTJ. Choisissez ensuite une petite action, un responsable et une date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Comment INFP et ESTJ peuvent-ils mieux communiquer ?",
+          "answer": "En tenant compte du fait que INFP choisit ses mots pour rester fidèle à son ressenti et que ESTJ communique sobrement les faits et les délais. Nommer le but de l’échange et la réponse attendue rend leurs styles plus lisibles."
+        },
+        {
+          "question": "Dans quelles situations INFP et ESTJ risquent-ils de se heurter ?",
+          "answer": "Notamment lorsque INFP traite ses émotions en privé et retarde la décision tandis que ESTJ multiplie les directives pour reprendre la main. Limiter la discussion à un sujet et convenir d’une pause aide à éviter l’escalade."
+        },
+        {
+          "question": "Comment INFP et ESTJ peuvent-ils se compléter au travail ?",
+          "answer": "INFP fait grandir les possibles à partir de ses valeurs, tandis que ESTJ clarifie les règles et les rôles pour faire avancer l’action. Des rôles, délais et règles de décision clairs facilitent cette complémentarité."
+        },
+        {
+          "question": "De quoi INFP et ESTJ ont-ils besoin pour se faire confiance ?",
+          "answer": "De gestes qui respectent les repères importants pour INFP comme pour ESTJ. Tenir de petits engagements et annoncer tôt les changements est essentiel."
+        },
+        {
+          "question": "Quelle habitude peut renforcer la relation entre INFP et ESTJ ?",
+          "answer": "Partager chacun une situation confortable et une situation difficile, choisir un ajustement concret, puis revenir ensemble sur son effet."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil INFP",
+          "href": "/fr/personality/infp"
+        },
+        {
+          "label": "Profil ESTJ",
+          "href": "/fr/personality/estj"
+        },
+        {
+          "label": "Carrières pour INFP",
+          "href": "/fr/personality/infp/careers"
+        },
+        {
+          "label": "Carrières pour ESTJ",
+          "href": "/fr/personality/estj/careers"
+        },
+        {
+          "label": "Explorer votre communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Mieux comprendre votre gestion des conflits",
+          "href": "/fr/insights/conflict"
+        }
+      ]
     }
   }
 }

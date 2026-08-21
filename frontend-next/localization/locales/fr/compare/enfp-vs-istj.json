@@ -24,6 +24,143 @@
     "jsonLd": {
       "breadcrumb": "ENFP vs ISTJ",
       "faq": "Questions fréquentes sur ENFP et ISTJ"
+    },
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "ENFP repère avec énergie le potentiel des personnes et des idées, tandis que ISTJ s’appuie sur l’expérience et des méthodes éprouvées. Leur rythme et leur centre d’attention marquent souvent la première impression, avant que leurs qualités moins visibles n’apparaissent."
+        },
+        {
+          "id": "similarities",
+          "title": "Points communs",
+          "body": "Leurs angles diffèrent, mais chacun cherche une raison à laquelle il puisse adhérer. Le lien devient plus fluide lorsque ENFP et ISTJ peuvent nommer les repères qui comptent pour eux, sans les hiérarchiser ni les juger."
+        },
+        {
+          "id": "differences",
+          "title": "Différences de perspective",
+          "body": "ENFP repère avec énergie le potentiel des personnes et des idées, alors que ISTJ s’appuie sur l’expérience et des méthodes éprouvées. Cette différence ne mesure pas leurs capacités : elle montre surtout dans quel ordre chacun remarque et traite les informations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "ENFP parle spontanément en mêlant associations et ressenti, alors que ISTJ présente les faits concrets dans un ordre clair. Distinguer la conclusion, son contexte et la réponse attendue évite de confondre une différence de style avec un désaccord."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Malentendus possibles",
+          "body": "La manière de parler de ENFP peut sembler froide ou indirecte à ISTJ; celle de ISTJ peut paraître brusque ou trop prudente à ENFP. Avant d’interpréter, mieux vaut préciser s’il faut écouter, explorer ou décider."
+        },
+        {
+          "id": "conflict",
+          "title": "Gestion des désaccords",
+          "body": "Sous tension, ENFP cherche de nouveaux stimuli et perd son point de mire, tandis que ISTJ se concentre sur les procédures familières. Revenir à un seul sujet, puis décrire les faits, leur impact et l’action souhaitée empêche le débat de devenir personnel."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un conflit",
+          "body": "ENFP peut reconnaître l’effet produit, même si son intention était différente; ISTJ peut expliquer ce qu’il cherchait à protéger. Une excuse précise, suivie d’un engagement réaliste, rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit quand les repères essentiels de ENFP et de ISTJ sont tous deux respectés. Définir ce qui est promis, ce qui reste flexible et quand annoncer un changement réduit l’incertitude."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité émotionnelle laisse à ENFP le temps de formuler sa pensée et à ISTJ celui d’exprimer sa réaction. Reformuler ce que l’on a compris avant de proposer une solution aide chacun à rester présent."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, ENFP et ISTJ peuvent respecter leurs besoins respectifs si le rythme des invitations et des nouvelles n’est pas supposé. Dire clairement quand partager une activité ou retrouver du calme protège le lien sans imposer un modèle unique."
+        },
+        {
+          "id": "romance",
+          "title": "Relation amoureuse",
+          "body": "Dans une relation amoureuse, les marques d’affection ne sont pas nécessairement les mêmes. Parler concrètement du temps ensemble, des projets, de l’espace personnel et des gestes rassurants limite les attentes silencieuses."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, ENFP repère avec énergie le potentiel des personnes et des idées, tandis que ISTJ s’appuie sur l’expérience et des méthodes éprouvées. Des livrables, un décideur et des points de contrôle explicites transforment leurs méthodes différentes en collaboration utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "ENFP éclaire ses choix par ses valeurs et les possibilités, tandis que ISTJ s’appuie sur les faits et l’expérience. Fixer les critères et l’échéance, puis examiner un risque important pour chacun, permet de décider sans effacer leurs priorités."
+        },
+        {
+          "id": "stress",
+          "title": "Réactions au stress",
+          "body": "Quand la pression monte, ENFP cherche de nouveaux stimuli et perd son point de mire, alors que ISTJ se concentre sur les procédures familières. Vérifier d’abord l’urgence et le besoin de repos, puis différer les grandes conclusions, évite de figer une réaction passagère."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "ENFP repère avec énergie le potentiel des personnes et des idées, tandis que ISTJ s’appuie sur l’expérience et des méthodes éprouvées. Le bénéfice apparaît lorsqu’ils confient à l’autre les moments adaptés à ses forces au lieu de chercher à uniformiser leurs méthodes."
+        },
+        {
+          "id": "growth",
+          "title": "Pistes de progression",
+          "body": "ENFP peut apprendre du regard de ISTJ à remarquer des données qu’il néglige habituellement; ISTJ peut essayer une nouvelle façon d’avancer grâce au choix de ENFP. Un bilan régulier rend cet apprentissage concret."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Conseils pratiques",
+          "body": "Pour la prochaine discussion, formulez l’objectif en une phrase, puis notez un besoin important pour ENFP et un pour ISTJ. Choisissez ensuite une petite action, un responsable et une date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Comment ENFP et ISTJ peuvent-ils mieux communiquer ?",
+          "answer": "En tenant compte du fait que ENFP parle spontanément en mêlant associations et ressenti et que ISTJ présente les faits concrets dans un ordre clair. Nommer le but de l’échange et la réponse attendue rend leurs styles plus lisibles."
+        },
+        {
+          "question": "Dans quelles situations ENFP et ISTJ risquent-ils de se heurter ?",
+          "answer": "Notamment lorsque ENFP cherche de nouveaux stimuli et perd son point de mire tandis que ISTJ se concentre sur les procédures familières. Limiter la discussion à un sujet et convenir d’une pause aide à éviter l’escalade."
+        },
+        {
+          "question": "Comment ENFP et ISTJ peuvent-ils se compléter au travail ?",
+          "answer": "ENFP repère avec énergie le potentiel des personnes et des idées, tandis que ISTJ s’appuie sur l’expérience et des méthodes éprouvées. Des rôles, délais et règles de décision clairs facilitent cette complémentarité."
+        },
+        {
+          "question": "De quoi ENFP et ISTJ ont-ils besoin pour se faire confiance ?",
+          "answer": "De gestes qui respectent les repères importants pour ENFP comme pour ISTJ. Tenir de petits engagements et annoncer tôt les changements est essentiel."
+        },
+        {
+          "question": "Quelle habitude peut renforcer la relation entre ENFP et ISTJ ?",
+          "answer": "Partager chacun une situation confortable et une situation difficile, choisir un ajustement concret, puis revenir ensemble sur son effet."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil ENFP",
+          "href": "/fr/personality/enfp"
+        },
+        {
+          "label": "Profil ISTJ",
+          "href": "/fr/personality/istj"
+        },
+        {
+          "label": "Carrières pour ENFP",
+          "href": "/fr/personality/enfp/careers"
+        },
+        {
+          "label": "Carrières pour ISTJ",
+          "href": "/fr/personality/istj/careers"
+        },
+        {
+          "label": "Explorer votre communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Mieux comprendre votre gestion des conflits",
+          "href": "/fr/insights/conflict"
+        }
+      ]
     }
   }
 }

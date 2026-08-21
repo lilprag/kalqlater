@@ -24,6 +24,143 @@
     "jsonLd": {
       "breadcrumb": "ENTP vs ISFJ",
       "faq": "Questions fréquentes sur ENTP et ISFJ"
+    },
+    "editorial": {
+      "sections": [
+        {
+          "id": "first-impression",
+          "title": "Première impression",
+          "body": "ENTP relie les possibilités et expérimente des idées nouvelles, tandis que ISFJ soutient les autres par des attentions concrètes et régulières. Leur rythme et leur centre d’attention marquent souvent la première impression, avant que leurs qualités moins visibles n’apparaissent."
+        },
+        {
+          "id": "similarities",
+          "title": "Points communs",
+          "body": "Leurs angles diffèrent, mais chacun cherche une raison à laquelle il puisse adhérer. Le lien devient plus fluide lorsque ENTP et ISFJ peuvent nommer les repères qui comptent pour eux, sans les hiérarchiser ni les juger."
+        },
+        {
+          "id": "differences",
+          "title": "Différences de perspective",
+          "body": "ENTP relie les possibilités et expérimente des idées nouvelles, alors que ISFJ soutient les autres par des attentions concrètes et régulières. Cette différence ne mesure pas leurs capacités : elle montre surtout dans quel ordre chacun remarque et traite les informations."
+        },
+        {
+          "id": "communication",
+          "title": "Communication",
+          "body": "ENTP développe ses hypothèses dans l’échange, alors que ISFJ observe les réactions et s’exprime avec douceur. Distinguer la conclusion, son contexte et la réponse attendue évite de confondre une différence de style avec un désaccord."
+        },
+        {
+          "id": "misunderstandings",
+          "title": "Malentendus possibles",
+          "body": "La manière de parler de ENTP peut sembler froide ou indirecte à ISFJ; celle de ISFJ peut paraître brusque ou trop prudente à ENTP. Avant d’interpréter, mieux vaut préciser s’il faut écouter, explorer ou décider."
+        },
+        {
+          "id": "conflict",
+          "title": "Gestion des désaccords",
+          "body": "Sous tension, ENTP cherche une autre issue et disperse son attention, tandis que ISFJ absorbe la charge et retient ses besoins. Revenir à un seul sujet, puis décrire les faits, leur impact et l’action souhaitée empêche le débat de devenir personnel."
+        },
+        {
+          "id": "repair",
+          "title": "Réparer après un conflit",
+          "body": "ENTP peut reconnaître l’effet produit, même si son intention était différente; ISFJ peut expliquer ce qu’il cherchait à protéger. Une excuse précise, suivie d’un engagement réaliste, rend la réparation crédible."
+        },
+        {
+          "id": "trust",
+          "title": "Construire la confiance",
+          "body": "La confiance se construit quand les repères essentiels de ENTP et de ISFJ sont tous deux respectés. Définir ce qui est promis, ce qui reste flexible et quand annoncer un changement réduit l’incertitude."
+        },
+        {
+          "id": "emotional-safety",
+          "title": "Sécurité émotionnelle",
+          "body": "La sécurité émotionnelle laisse à ENTP le temps de formuler sa pensée et à ISFJ celui d’exprimer sa réaction. Reformuler ce que l’on a compris avant de proposer une solution aide chacun à rester présent."
+        },
+        {
+          "id": "friendship",
+          "title": "Amitié",
+          "body": "En amitié, ENTP et ISFJ peuvent respecter leurs besoins respectifs si le rythme des invitations et des nouvelles n’est pas supposé. Dire clairement quand partager une activité ou retrouver du calme protège le lien sans imposer un modèle unique."
+        },
+        {
+          "id": "romance",
+          "title": "Relation amoureuse",
+          "body": "Dans une relation amoureuse, les marques d’affection ne sont pas nécessairement les mêmes. Parler concrètement du temps ensemble, des projets, de l’espace personnel et des gestes rassurants limite les attentes silencieuses."
+        },
+        {
+          "id": "workplace",
+          "title": "Collaboration au travail",
+          "body": "Au travail, ENTP relie les possibilités et expérimente des idées nouvelles, tandis que ISFJ soutient les autres par des attentions concrètes et régulières. Des livrables, un décideur et des points de contrôle explicites transforment leurs méthodes différentes en collaboration utile."
+        },
+        {
+          "id": "decisions",
+          "title": "Prise de décision",
+          "body": "ENTP garde plusieurs pistes ouvertes, tandis que ISFJ combine expérience et impact humain. Fixer les critères et l’échéance, puis examiner un risque important pour chacun, permet de décider sans effacer leurs priorités."
+        },
+        {
+          "id": "stress",
+          "title": "Réactions au stress",
+          "body": "Quand la pression monte, ENTP cherche une autre issue et disperse son attention, alors que ISFJ absorbe la charge et retient ses besoins. Vérifier d’abord l’urgence et le besoin de repos, puis différer les grandes conclusions, évite de figer une réaction passagère."
+        },
+        {
+          "id": "complementary-strengths",
+          "title": "Forces complémentaires",
+          "body": "ENTP relie les possibilités et expérimente des idées nouvelles, tandis que ISFJ soutient les autres par des attentions concrètes et régulières. Le bénéfice apparaît lorsqu’ils confient à l’autre les moments adaptés à ses forces au lieu de chercher à uniformiser leurs méthodes."
+        },
+        {
+          "id": "growth",
+          "title": "Pistes de progression",
+          "body": "ENTP peut apprendre du regard de ISFJ à remarquer des données qu’il néglige habituellement; ISFJ peut essayer une nouvelle façon d’avancer grâce au choix de ENTP. Un bilan régulier rend cet apprentissage concret."
+        },
+        {
+          "id": "practical-guidance",
+          "title": "Conseils pratiques",
+          "body": "Pour la prochaine discussion, formulez l’objectif en une phrase, puis notez un besoin important pour ENTP et un pour ISFJ. Choisissez ensuite une petite action, un responsable et une date de révision."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Comment ENTP et ISFJ peuvent-ils mieux communiquer ?",
+          "answer": "En tenant compte du fait que ENTP développe ses hypothèses dans l’échange et que ISFJ observe les réactions et s’exprime avec douceur. Nommer le but de l’échange et la réponse attendue rend leurs styles plus lisibles."
+        },
+        {
+          "question": "Dans quelles situations ENTP et ISFJ risquent-ils de se heurter ?",
+          "answer": "Notamment lorsque ENTP cherche une autre issue et disperse son attention tandis que ISFJ absorbe la charge et retient ses besoins. Limiter la discussion à un sujet et convenir d’une pause aide à éviter l’escalade."
+        },
+        {
+          "question": "Comment ENTP et ISFJ peuvent-ils se compléter au travail ?",
+          "answer": "ENTP relie les possibilités et expérimente des idées nouvelles, tandis que ISFJ soutient les autres par des attentions concrètes et régulières. Des rôles, délais et règles de décision clairs facilitent cette complémentarité."
+        },
+        {
+          "question": "De quoi ENTP et ISFJ ont-ils besoin pour se faire confiance ?",
+          "answer": "De gestes qui respectent les repères importants pour ENTP comme pour ISFJ. Tenir de petits engagements et annoncer tôt les changements est essentiel."
+        },
+        {
+          "question": "Quelle habitude peut renforcer la relation entre ENTP et ISFJ ?",
+          "answer": "Partager chacun une situation confortable et une situation difficile, choisir un ajustement concret, puis revenir ensemble sur son effet."
+        }
+      ],
+      "relatedLinks": [
+        {
+          "label": "Profil ENTP",
+          "href": "/fr/personality/entp"
+        },
+        {
+          "label": "Profil ISFJ",
+          "href": "/fr/personality/isfj"
+        },
+        {
+          "label": "Carrières pour ENTP",
+          "href": "/fr/personality/entp/careers"
+        },
+        {
+          "label": "Carrières pour ISFJ",
+          "href": "/fr/personality/isfj/careers"
+        },
+        {
+          "label": "Explorer votre communication",
+          "href": "/fr/insights/communication"
+        },
+        {
+          "label": "Mieux comprendre votre gestion des conflits",
+          "href": "/fr/insights/conflict"
+        }
+      ]
     }
   }
 }
