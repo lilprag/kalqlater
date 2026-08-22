@@ -1,0 +1,1 @@
+import{CareerProfileForm}from'../../../../components/CareerProfileForm';export const metadata={title:'Career profile | KalQLater Jobs',robots:{index:false,follow:false}};export default async function Page({params}){const{locale}=await params;return <CareerProfileForm locale={locale}/>}

@@ -23,6 +23,7 @@ from behavior_engine.api import create_engine_router
 from behavior_engine.content import FileAnalyzerContentRepository
 from behavior_engine.repositories import MongoAnalyzerResultRepository, MongoAssessmentSessionRepository
 from behavior_engine.service import AssessmentService
+from job_marketplace import career_identity, create_job_marketplace_router, ensure_job_marketplace_indexes, now as job_now
 from localization_access import require_localization_reviewer
 from localization_provider import configured_localization_provider_registry
 from localization_workbench import LocalizationBlockEdit, LocalizationBlockSave, LocalizationReviewInput, apply_human_edit, apply_review_action, initialize_block
@@ -608,7 +609,9 @@ async def create_profile(payload:CommunityProfilePayload,user=Depends(current_us
     now=datetime.now(timezone.utc).isoformat(); data=payload.model_dump(); data.update({"owner_id":user["id"],"username":username,"personality_type":payload.personality_type.upper(),"created_at":now,"updated_at":now})
     for field in ["display_name","bio","country","city","profession"]: data[field]=clean_text(data[field],280)
     data["languages"]=[clean_text(x,40) for x in data["languages"]]; data["skills"]=[clean_text(x,50) for x in data["skills"]]; data["industries"]=[clean_text(x,50) for x in data["industries"]]
-    await db.community_profiles.insert_one(data); return public_profile(data)
+    await db.community_profiles.insert_one(data)
+    await db.career_profiles.update_one({'candidate_id':user['id']},{'$set':{**career_identity(data),'updated_at':job_now()}})
+    return public_profile(data)
 
 @api_router.put("/community/profile")
 async def update_profile(payload:CommunityProfilePayload,user=Depends(current_user)):
@@ -617,7 +620,9 @@ async def update_profile(payload:CommunityProfilePayload,user=Depends(current_us
     username=validate_profile(payload); conflict=await db.community_profiles.find_one({"username":username,"owner_id":{"$ne":user["id"]}})
     if conflict: raise HTTPException(409,"Username is unavailable")
     data=payload.model_dump(); data.update({"username":username,"personality_type":payload.personality_type.upper(),"updated_at":datetime.now(timezone.utc).isoformat()})
-    await db.community_profiles.update_one({"owner_id":user["id"]},{"$set":data}); return public_profile({**existing,**data})
+    await db.community_profiles.update_one({"owner_id":user["id"]},{"$set":data})
+    await db.career_profiles.update_one({'candidate_id':user['id']},{'$set':{**career_identity({**existing,**data}),'updated_at':job_now()}})
+    return public_profile({**existing,**data})
 
 @api_router.post("/community/profile/deactivate")
 async def deactivate_profile(user=Depends(current_user)):
@@ -882,6 +887,7 @@ async def submit_contact(payload: ContactSubmission, request: Request):
 
 
 # Assessment sessions must survive process changes between the start and session routes.
+api_router.include_router(create_job_marketplace_router(db, current_user))
 api_router.include_router(create_engine_router(behavior_engine))
 app.include_router(api_router)
 
@@ -938,3 +944,4 @@ async def initialize_community_indexes():
     await db.community_jobs.create_index([("country", 1), ("city", 1), ("remote_mode", 1)])
     await db.community_jobs.create_index("expires_at")
     await db.community_job_apply_intents.create_index([("job_id", 1), ("created_at", -1)])
+    await ensure_job_marketplace_indexes(db)
