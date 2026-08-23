@@ -27,5 +27,6 @@ export default function sitemap() {
   const comparisons = allPairs().flatMap((pair) => publicLocalesForEntity(`compare:${pair.slug}`)
     .map((locale) => entry(locale, `compare/${pair.slug}`, 0.7, `compare:${pair.slug}`)));
   const jobs = [entry('en', 'jobs', 0.6, undefined)];
-  return [...base, ...jobs, ...personalities, ...careers, ...comparisons];
+  const careersHub = [{ ...entry('en', 'careers', 0.8, undefined), alternates: { languages: { en: `${siteUrl()}/en/careers`, 'x-default': `${siteUrl()}/en/careers` } } }];
+  return [...base, ...careersHub, ...jobs, ...personalities, ...careers, ...comparisons];
 }

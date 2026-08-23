@@ -83,6 +83,11 @@ def match_job(profile,job):
 def public_job(job,profile=None):
     x={k:iso(v) for k,v in job.items() if k not in {'_id'}}; x['posted_age_days']=age_days(job); x['match']=match_job(profile,job); return x
 
+def sitemap_job(job):
+    """Use a stricter contract than browsing so crawlers only receive verified URLs."""
+    if job.get('status')!='active' or not job.get('slug') or not job.get('posted_at') or not job.get('last_verified_at'):return None
+    return {'slug':job['slug'],'posted_at':iso(job['posted_at']),'last_verified_at':iso(job['last_verified_at'])}
+
 def create_job_marketplace_router(db,current_user):
     r=APIRouter(prefix='/jobs',tags=['job-marketplace'])
     async def unified_profile(user_id):
@@ -124,6 +129,11 @@ def create_job_marketplace_router(db,current_user):
             except HTTPException:pass
         docs=await db.jobs.find(q,{'_id':0}).sort([('posted_at',-1),('last_verified_at',-1)]).limit(limit).to_list(limit)
         items=[public_job(x,profile) for x in docs]; items.sort(key=lambda x:((x.get('match')or{}).get('overall_score',0),-x['posted_age_days']),reverse=True)
+        return {'items':items,'total':len(items)}
+    @r.get('/sitemap')
+    async def sitemap_jobs():
+        docs=await db.jobs.find(active_job_query(),{'_id':0,'slug':1,'status':1,'posted_at':1,'last_verified_at':1}).sort([('last_verified_at',-1),('posted_at',-1)]).limit(50000).to_list(50000)
+        items=[item for item in (sitemap_job(doc) for doc in docs) if item]
         return {'items':items,'total':len(items)}
     @r.get('/saved')
     async def saved(user=Depends(current_user)):

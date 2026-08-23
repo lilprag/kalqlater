@@ -47,3 +47,35 @@ Keep the backend auth API while moving UI from legacy React into locale-aware `f
 Flow: interrupted guest action → localized login/signup → minimum credentials → server session → validated original action. Resume Jobs save/apply and Insights result claiming through short-lived server-side continuation state. Defer skills, LinkedIn, role, and career enrichment to progressive profile completion using canonical profile fields. Defer Community username until first Community participation.
 
 Auth, recovery, account, and continuation routes stay noindex and outside sitemap/hreflang. Expected files are new `frontend-next/app/[locale]/(auth)` routes, shared auth/session helpers and middleware, Jobs/Insights continuation adapters, focused API/session tests, and route/profile registry updates. Blockers are legacy JWT/localStorage, cross-shell returns, cookie issuance/rotation, and result-claim ownership.
+
+## Traffic Growth Batch 1 implementation
+
+The English Careers hub now owns broad career-exploration intent and links to all 16 deeper type-career guides. Other locale hubs remain unpublished until equivalent editorial localization exists. The static canonical sitemap therefore grows from 657 to 658 URLs; active English job details are supplied separately by the dynamic Jobs sitemap.
+
+Active Jobs sitemap eligibility requires `status=active`, a slug, a real posting date, and a real verification date. `last_verified_at` supplies `lastmod`. Inventory dependency failure returns 503 with `Retry-After`; it never emits a deceptive empty replacement. Robots advertises both sitemap endpoints.
+
+Modeled English career-guide depth improves from Home → Types → Personality → Career guide (3) to Home → Careers → Career guide (2) once the hub is linked from a major surface. Across the prior 657 static URLs, baseline average modeled depth is approximately 2.04 and maximum is 3. With one new hub and the 16 English guides reduced by one click, modeled average is approximately 2.02 and maximum remains 3. Active Jobs are directory children at depth 2. Non-English career guides remain the weakest career nodes until localized hubs are publishable; they are not orphans because Personality remains their parent.
+
+## Variable-based 100K model
+
+`P + C + R + I + J + V = 100,000+ monthly organic clicks`, where:
+
+- `P` = Personality cluster clicks
+- `C` = Compare cluster clicks
+- `R` = Careers cluster clicks
+- `I` = Insights cluster clicks
+- `J` = Jobs cluster clicks
+- `V` = future validated content-cluster clicks
+
+No variable receives a forecast until Search Console supplies a defensible baseline and query opportunity set.
+
+| Cluster | Current clicks | Target clicks | Gap | Priority |
+|---|---:|---:|---:|---|
+| Personality | GSC required | To set | To calculate | To set |
+| Compare | GSC required | To set | To calculate | To set |
+| Careers | GSC required | To set | To calculate | To set |
+| Insights | GSC required | To set | To calculate | To set |
+| Jobs | GSC required | To set | To calculate | To set |
+| Other | GSC required | To set | To calculate | To set |
+
+Opportunity selection, SQL templates, CTR experiments, cluster classification, and the content-expansion gate are defined in `GSC_GROWTH_PLAYBOOK.md`.

@@ -18,6 +18,22 @@ const pages = [
 
 function assert(condition, message) { if (!condition) throw new Error(message); }
 
+function visibleText(html) {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<!--([\s\S]*?)-->/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/(?:&#37;|&#x25;|&percnt;)/gi, '%');
+}
+
+function hasNumericalPercentageClaim(html) {
+  return /\b\d{1,3}\s*%/.test(visibleText(html));
+}
+
+assert(!hasNumericalPercentageClaim('<a href="/hi/jobs?q=%E0%A4%B8%E0%A5%89">भूमिकाएँ देखें</a>'), 'validator regression: encoded Hindi URL must not count as a visible percentage');
+assert(hasNumericalPercentageClaim('<p>INTJs are 85% suited to this career</p>'), 'validator regression: visible numerical percentage must be rejected');
+
 for (const [path, locale, visibleText] of pages) {
   const response = await fetch(`${baseUrl}${path}`);
   const html = await response.text();
@@ -58,7 +74,7 @@ for (const locale of ['en', 'hi']) for (const type of careerTypes) {
   assert(html.includes('<table'), `${locale}/${type} career guide: missing comparison table`);
   assert(html.includes('FAQPage'), `${locale}/${type} career guide: missing FAQ JSON-LD`);
   assert((html.match(/<details/g) || []).length >= 8, `${locale}/${type} career guide: fewer than eight visible FAQs`);
-  assert(!/\b\d{1,3}%\b/.test(html), `${locale}/${type} career guide: unexpected numerical score claim`);
+  assert(!hasNumericalPercentageClaim(html), `${locale}/${type} career guide: unexpected numerical score claim`);
   assert(html.includes(`https://kalqlater.com/${locale}/personality/${type}/careers`), `${locale}/${type} career guide: missing self canonical`);
   const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
   const description = html.match(/<meta[^>]+name="description"[^>]+content="([^"]+)"/)?.[1];

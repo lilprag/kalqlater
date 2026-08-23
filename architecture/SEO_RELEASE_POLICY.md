@@ -146,3 +146,14 @@ An `SEO_READY` or `INDEXABLE` change must include:
 - Audit legacy traffic and duplicate indexing throughout migration.
 - Do not close risk entries based solely on implementation; validate production-like behavior.
 
+## Jobs lifecycle and sitemap contract
+
+| State | Detail URL | Robots/schema | Sitemap |
+|---|---|---|---|
+| `active`, dated and recently verified | 200 | English canonical is indexable and may emit valid JobPosting | Included in English Jobs sitemap |
+| `possibly_closed` | 200 while retained for user context | noindex; no JobPosting | Excluded |
+| `closed` | 200 while the retained page remains useful | noindex; no JobPosting; unavailable message | Excluded |
+| Permanently expired with a retained tombstone | 410 when implemented and operationally supported | noindex; no JobPosting | Excluded |
+| Unknown or removed without a tombstone | 404 | noindex; no JobPosting | Excluded |
+
+Do not infer permanent expiry from a single failed source check. Two-step source status remains authoritative. The dynamic sitemap must return a retryable 5xx when inventory cannot be loaded; an honest zero-item 200 is permitted only after a successful inventory query.

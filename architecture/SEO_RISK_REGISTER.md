@@ -6,6 +6,8 @@ P0 batch 1 note: SEO-004, SEO-005, SEO-008, SEO-009, and SEO-010 are mitigated i
 
 Auth batch note: localized auth routes are implemented as `NOINDEX_PRIVATE`, excluded from sitemap and hreflang. Root auth compatibility URLs remain HTTP noindex; redirect activation is deliberately deferred until production parity validation.
 
+Traffic Growth Batch 1 note: SEO-007 and SEO-022 are mitigated for English by the verified-active Jobs sitemap and substantive Careers hub. SEO-011 now has an explicit lifecycle contract; 410 tombstone implementation remains deferred. Non-English Careers hubs remain unpublished rather than exposing English fallback content.
+
 | ID | Issue | Affected URLs | Severity | SEO impact | User impact | Recommended action | Target phase | Validation method |
 |---|---|---|---|---|---|---|---|---|
 | SEO-001 | Two personality assessment architectures | `/test`, `/{locale}/test` | Critical | Conflicting intent, indexability, content and canonical ownership | Different results/persistence by entry | Establish one durable current assessment; no redirect before parity | Phase 1 | Route tests, rendered robots, canonical crawl, result parity E2E |

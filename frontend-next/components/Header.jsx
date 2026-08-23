@@ -14,6 +14,7 @@ export function Header({ locale }) {
     { label: copy.home, href: localePath(locale), entityId: `language:${locale}` },
     { label: copy.test, href: localePath(locale, 'test') },
     { label: copy.types, href: localePath(locale, 'types') },
+    ...(locale === 'en' ? [{ label: 'Careers', href: localePath(locale, 'careers') }] : []),
     { label: copy.insights, href: localePath(locale, 'insights'), entityId: `language:${locale}` },
     { label: copy.about, href: productionAppUrl('/about') },
     { label: copy.compare, href: localePath(locale, 'compare'), entityId: `language:${locale}` },
