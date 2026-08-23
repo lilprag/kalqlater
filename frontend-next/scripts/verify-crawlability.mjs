@@ -14,7 +14,6 @@ const pages = [
   ['/en/insights/learning', 'en', 'Reflect on how you learn'], ['/hi/insights/learning', 'hi', 'सीखने के अपने तरीके पर विचार करें।'],
   ['/en/insights/leadership', 'en', 'See leadership in practice'], ['/hi/insights/leadership', 'hi', 'नेतृत्व को व्यवहार में देखें।'],
   ['/en/community', 'en', 'KalQLater Community'], ['/hi/community', 'hi', 'KalQLater कम्युनिटी'],
-  ['/en/jobs', 'en', 'KalQLater Jobs'], ['/hi/jobs', 'hi', 'KalQLater जॉब्स'],
 ];
 
 function assert(condition, message) { if (!condition) throw new Error(message); }
@@ -71,7 +70,7 @@ assert(careerTitles.size === 32, 'career guides: titles must be unique across al
 assert(careerDescriptions.size === 32, 'career guides: descriptions must be unique across all locales');
 const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
 const sitemapXml = await sitemap.text();
-for (const [locale, authoredText] of [['fr', 'Mieux vous comprendre pour avancer avec plus de clarté'], ['ja', '自分らしさを知り、これからの選択を少し軽やかに']]) {
+for (const [locale, authoredText] of [['fr', 'Mieux vous comprendre, pour avancer avec plus de clarté'], ['ja', '自分らしさを知り、これからの選択を少し軽やかに']]) {
   const response = await fetch(`${baseUrl}/${locale}`);
   const html = await response.text();
   assert(response.ok, `/${locale}: expected HTTP 200, received ${response.status}`);
@@ -84,6 +83,8 @@ for (const [locale, authoredText] of [['fr', 'Mieux vous comprendre pour avancer
 }
 assert(!sitemapXml.includes('<loc>https://kalqlater.com</loc>'), 'sitemap: root homepage must not be indexed separately');
 for (const locale of publishedLocales) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
+for (const locale of publishedLocales) assert(sitemapXml.includes(`https://kalqlater.com/${locale}/types</loc>`), `sitemap: missing /${locale}/types hub`);
+assert(!sitemapXml.includes('<lastmod>'), 'sitemap: must omit untrustworthy generated lastmod values');
 for (const locale of ['es', 'ar', 'pt-br', 'zh-hans']) assert(!sitemapXml.includes(`https://kalqlater.com/${locale}`), `sitemap: unpublished locale ${locale} must not be included`);
 for (const locale of publishedLocales) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);
 for (const locale of publishedLocales) {
@@ -94,7 +95,20 @@ for (const locale of publishedLocales) {
   assert(sitemapXml.includes(`/${locale}/insights/leadership`), `sitemap: missing ${locale} Leadership Insights landing`);
   assert(sitemapXml.includes(`/${locale}/insights/learning`), `sitemap: missing ${locale} Learning Insights landing`);
   assert(sitemapXml.includes(`/${locale}/community`), `sitemap: missing ${locale} Community landing`);
-  assert(sitemapXml.includes(`/${locale}/jobs`), `sitemap: missing ${locale} Jobs landing`);
+}
+assert(sitemapXml.includes('/en/jobs</loc>'), 'sitemap: missing English Jobs landing');
+for (const locale of ['hi', 'fr', 'ja']) assert(!sitemapXml.includes(`/${locale}/jobs</loc>`), `sitemap: incomplete ${locale} Jobs landing must be excluded`);
+for (const locale of ['en', 'hi']) {
+  const jobs = await fetch(`${baseUrl}/${locale}/jobs`);
+  const jobsHtml = await jobs.text();
+  if (jobs.ok) {
+    assert(jobsHtml.includes('KalQLater Jobs') || jobsHtml.includes('KalQLater जॉब्स'), `${locale} Jobs: missing visible directory`);
+    if (locale === 'en') assert(!jobsHtml.includes('noindex'), 'English Jobs directory must remain indexable');
+    else assert(jobsHtml.includes('noindex'), 'Incomplete Hindi Jobs directory must be noindex');
+  } else {
+    assert(jobs.status >= 500, `${locale} Jobs: upstream failure must produce a temporary 5xx`);
+    assert(!jobsHtml.includes('No fresh roles match these filters yet.'), `${locale} Jobs: upstream failure must not masquerade as empty inventory`);
+  }
 }
 for (const locale of ['en', 'hi']) {
   const hub = await fetch(`${baseUrl}/${locale}/insights`);

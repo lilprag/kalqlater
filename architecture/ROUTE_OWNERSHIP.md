@@ -2,6 +2,10 @@
 
 Audited at commit `6ca8b91`. This document and `route-registry.json` describe current behavior; they do not activate, redirect, or remove routes.
 
+## P0 batch 1 policy update
+
+Types is covered by the localized sitemap. Static sitemap entries omit modification dates without trustworthy authored timestamps. Jobs indexing is temporarily EN-only; non-English routes remain usable but noindex and outside hreflang/sitemap. Jobs upstream failures are temporary server errors, not empty canonical inventory. Legacy result/report families receive HTTP `X-Robots-Tag: noindex, nofollow`. Unsupported FR/JA Conflict, Leadership, and Learning start/session/result routes are guarded while informative landings remain published.
+
 ## Authority rules
 
 1. `frontend-next` owns localized public knowledge, current assessment UI, Insights, the external Jobs marketplace, and the transitional Dashboard.
@@ -195,4 +199,3 @@ Every route change must update, or explicitly confirm no change to:
 6. Authentication and data ownership
 7. Parent and child internal links
 8. Failure and expiry behavior
-

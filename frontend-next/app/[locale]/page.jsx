@@ -1,4 +1,5 @@
 import { pageMetadata } from '../../lib/metadata';
+import { schemaLanguage } from '../../lib/locales';
 import { isHomepagePreviewLocale, isLocale, localePath, siteUrl } from '../../lib/site';
 import { homepageContent } from '../../localization/homepage';
 import { JsonLd } from '../../components/JsonLd';
@@ -23,7 +24,7 @@ export default async function HomePage({ params }) {
   const canonicalHomeUrl = `${siteUrl()}${localePath(activeLocale)}`;
   const websiteSchema = {
     '@context': 'https://schema.org', '@graph': [
-      { '@type': 'WebSite', name: 'KalQLater', url: canonicalHomeUrl, inLanguage: activeLocale === 'es' ? 'es' : ['en-IN', 'hi-IN'] },
+      { '@type': 'WebSite', name: 'KalQLater', url: canonicalHomeUrl, inLanguage: schemaLanguage(activeLocale) },
       { '@type': 'Organization', name: 'KalQLater', url: canonicalHomeUrl },
     ],
   };

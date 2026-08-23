@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { conflictInsightsApi } from '../../lib/conflict-insights-api';
 import { conflictCopy } from '../../data/conflict-insights';
+import { dispatchBrowserAnalytics } from '../../lib/analytics';
 
 const storageKey = 'kalqlater.conflict-insights.session';
 const key = () => `${Date.now()}-${crypto.randomUUID()}`;
@@ -17,7 +18,7 @@ const errorText = (error, locale) => {
 
 export function ConflictStart({ locale }) {
   const router = useRouter(); const c = conflictCopy(locale); const [state, setState] = useState('idle'); const [error, setError] = useState('');
-  const begin = async () => { setState('loading'); setError(''); try { const created = await conflictInsightsApi.createSession(locale); save({ sessionId: created.session_id, accessToken: created.access_token, locale }); router.push(`/${locale}/insights/conflict/session/${created.session_id}`); } catch (issue) { setError(errorText(issue, locale)); setState('idle'); } };
+  const begin = async () => { setState('loading'); setError(''); try { const created = await conflictInsightsApi.createSession(locale); dispatchBrowserAnalytics('assessment_started', { analyzer: 'conflict', locale }); save({ sessionId: created.session_id, accessToken: created.access_token, locale }); router.push(`/${locale}/insights/conflict/session/${created.session_id}`); } catch (issue) { setError(errorText(issue, locale)); setState('idle'); } };
   return <section className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:py-16"><div className="content-hero rounded-[2rem] border border-brand-line px-6 py-9 sm:px-10 sm:py-12"><p className="section-kicker">KalQLater · {c.title}</p><h1 className="display-font mt-3 text-4xl text-brand-ink sm:text-5xl">{c.startTitle}</h1><p className="mt-5 max-w-2xl text-lg leading-relaxed text-brand-subtle">{c.startBody}</p><ul className="mt-8 grid gap-3 sm:grid-cols-3">{[[c.time, '◷'], [c.privacy, '◌'], [c.safety, '◇']].map(([text, icon]) => <li key={text} className="rounded-2xl bg-white p-4 text-sm leading-relaxed text-brand-subtle"><span aria-hidden="true" className="mr-2 font-bold text-brand-teal">{icon}</span>{text}</li>)}</ul><p className="mt-7 rounded-xl border-l-2 border-brand-saffron bg-brand-sand/20 px-4 py-3 text-sm text-brand-ink">{locale === 'hi' ? 'वही प्रतिक्रिया चुनें जो आप सामान्यतः करते/करती हैं, न कि जो आदर्श लगता है।' : 'Choose what you would usually do, not what seems ideal.'}</p>{error ? <p role="alert" className="mt-5 rounded-xl bg-brand-plum/10 p-4 text-sm text-brand-ink">{error}</p> : null}<button type="button" className="button-primary mt-8" onClick={begin} disabled={state === 'loading'}>{state === 'loading' ? (locale === 'hi' ? 'शुरू हो रहा है…' : 'Starting…') : c.start}<span aria-hidden="true">→</span></button></div></section>;
 }
 

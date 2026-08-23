@@ -40,3 +40,4 @@ export function localeConfig(locale) { return localeByCode[locale] || null; }
 export function isConfiguredLocale(locale) { return Boolean(localeConfig(locale)); }
 export function isPublishedLocale(locale) { return publishedLocales.includes(locale); }
 export function localeDirection(locale) { return localeConfig(locale)?.dir || 'ltr'; }
+export function schemaLanguage(locale) { return localeConfig(locale)?.hreflang || defaultLocale; }

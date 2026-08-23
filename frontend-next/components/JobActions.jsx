@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { jobsApiUrl } from '../lib/jobs-api';
 import { productionAppUrl } from '../lib/site';
+import { dispatchBrowserAnalytics } from '../lib/analytics';
 
 const auth = () => ({ Authorization: `Bearer ${localStorage.getItem('kalqlater_auth_token') || ''}`, 'Content-Type': 'application/json' });
 
@@ -15,6 +16,7 @@ export function JobActions({ jobId, applyUrl, locale = 'en', slug }) {
     window.location.assign(productionAppUrl(`/login?locale=${encodeURIComponent(locale)}&returnTo=${encodeURIComponent(intended)}`));
   }, [locale, returnPath]);
   const apply = useCallback(async () => {
+    dispatchBrowserAnalytics('apply_click', { locale });
     const response = await fetch(jobsApiUrl(`/${jobId}/apply`), { method: 'POST', headers: auth() });
     if (response.status === 401) { login('apply'); return; }
     if (!response.ok) {
@@ -26,10 +28,11 @@ export function JobActions({ jobId, applyUrl, locale = 'en', slug }) {
     window.location.assign(result.redirect_url || applyUrl);
   }, [applyUrl, jobId, locale, login, returnPath]);
   const save = useCallback(async () => {
+    dispatchBrowserAnalytics('save_job', { locale });
     const response = await fetch(jobsApiUrl(`/${jobId}/save`), { method: 'POST', headers: auth() });
     if (response.status === 401) { login('save'); return; }
     setMsg(response.ok ? 'Saved' : 'This job could not be saved.');
-  }, [jobId, login]);
+  }, [jobId, locale, login]);
   useEffect(() => {
     if (resumed.current) return;
     const params = new URLSearchParams(window.location.search);

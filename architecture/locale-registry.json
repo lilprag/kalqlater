@@ -82,5 +82,13 @@
     {"module":"Legal","locale":"hi","route_available":true,"content_actually_localized":true,"api_supported":"contact only","assessment_enabled":"not applicable","indexable":true,"sitemap_included":true,"hreflang_eligible":true,"structured_data_language_correct":true,"fallback_behavior":"application copy","publication_status":"published","notes":"Root legacy duplicates remain."},
     {"module":"Legal","locale":"fr","route_available":true,"content_actually_localized":true,"api_supported":"contact only","assessment_enabled":"not applicable","indexable":true,"sitemap_included":true,"hreflang_eligible":true,"structured_data_language_correct":true,"fallback_behavior":"French JSON package","publication_status":"published","notes":"Contact/privacy/terms package pages."},
     {"module":"Legal","locale":"ja","route_available":true,"content_actually_localized":true,"api_supported":"contact only","assessment_enabled":"not applicable","indexable":true,"sitemap_included":true,"hreflang_eligible":true,"structured_data_language_correct":true,"fallback_behavior":"Japanese JSON package","publication_status":"published","notes":"Contact/privacy/terms package pages."}
-  ]
+  ],
+  "implementation_overrides": {
+    "applied_in_p0_batch_1": true,
+    "schema_language": "EN/HI/FR/JA structured data uses central locale hreflang values.",
+    "types": "All four published Types hubs are sitemap-included.",
+    "jobs": "EN directory and active details are indexable; HI/FR/JA Jobs routes remain usable but are noindex, excluded from Jobs sitemap/hreflang, and emit no JobPosting schema.",
+    "insights": "Communication runs in EN/HI/FR/JA; Conflict, Leadership, and Learning start/session/result are guarded to EN/HI and unsupported direct routes return 404.",
+    "footer": "Visible language discovery lists every other published locale."
+  }
 }

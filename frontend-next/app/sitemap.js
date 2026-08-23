@@ -6,14 +6,14 @@ import { publicLocalesForEntity, publishedLanguageLocales } from '../lib/locale-
 
 export default function sitemap() {
   const routes = [
-    ['', null], ['privacy', null], ['terms', null], ['contact', null], ['compare', null], ['insights', null],
+    ['', null], ['privacy', null], ['terms', null], ['contact', null], ['types', null], ['compare', null], ['insights', null],
     ['insights/communication', 'insight:communication'], ['insights/conflict', 'insight:conflict'],
     ['insights/leadership', 'insight:leadership'], ['insights/learning', 'insight:learning'],
-    ['community', 'community:directory'], ['jobs', 'jobs:directory'],
+    ['community', 'community:directory'],
   ];
   const entry = (locale, path, priority, entityId) => ({
     url: `${siteUrl()}${localePath(locale, path)}`,
-    lastModified: new Date(), changeFrequency: path ? 'monthly' : 'weekly', priority,
+    changeFrequency: path ? 'monthly' : 'weekly', priority,
     alternates: { languages: pageAlternates(path, undefined, entityId) },
   });
   const base = routes.flatMap(([path, entityId]) => {
@@ -26,5 +26,6 @@ export default function sitemap() {
     .map((locale) => entry(locale, `personality/${type.toLowerCase()}/careers`, 0.7, `career-guide:${type.toLowerCase()}`)));
   const comparisons = allPairs().flatMap((pair) => publicLocalesForEntity(`compare:${pair.slug}`)
     .map((locale) => entry(locale, `compare/${pair.slug}`, 0.7, `compare:${pair.slug}`)));
-  return [...base, ...personalities, ...careers, ...comparisons];
+  const jobs = [entry('en', 'jobs', 0.6, undefined)];
+  return [...base, ...jobs, ...personalities, ...careers, ...comparisons];
 }

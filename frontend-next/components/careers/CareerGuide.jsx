@@ -3,6 +3,7 @@ import { JsonLd } from '../JsonLd';
 import { breadcrumbJsonLd } from '../../lib/metadata';
 import { localePath, productionAppUrl } from '../../lib/site';
 import { RelatedContent } from '../RelatedContent';
+import { schemaLanguage } from '../../lib/locales';
 
 const COPY = {
   en: { guide: 'Career Guide', top: 'Start here: directions worth investigating', explorer: 'Career Path Explorer', compare: 'Role comparison', environment: 'Where work may feel sustainable', formats: 'Choose the format, not a stereotype', skills: 'Skills that widen your options', stage: 'Choose by career stage', industries: 'Industries to explore', jobs: 'Current opportunities to explore', faq: 'Questions worth asking', use: 'How to use this guide', final: 'Use personality as a starting point—not the final answer.', test: 'Take the test', browse: 'Browse jobs', join: 'Join the Community', post: 'Post a job', profile: 'View personality profile', insights: 'Communication Insights', groups: ['Build and improve', 'Discover and analyse', 'Shape direction', 'Serve people and systems'], role: 'Role-specific work', demand: 'Real demand', skill: 'Skill to build' },
@@ -14,7 +15,7 @@ export function CareerGuide({ locale, guide }) {
   const c = COPY[locale];
   const es = locale === 'es';
   const groups = [guide.careers.slice(0, 3), guide.careers.slice(3, 6), guide.careers.slice(6, 9), guide.careers.slice(9, 12)];
-  const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', ...(es ? { inLanguage: 'es' } : {}), mainEntity: guide.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
+  const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: schemaLanguage(locale), mainEntity: guide.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
   return <><JsonLd data={{ '@context': 'https://schema.org', '@graph': [breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: guide.code, path: `personality/${guide.code.toLowerCase()}` }, { name: c.guide, path: `personality/${guide.code.toLowerCase()}/careers` }]), faqSchema] }} />
     <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
       <nav aria-label={es ? 'Ruta de navegación' : 'Breadcrumb'} className="text-sm text-brand-subtle"><Link href={`/${locale}`}>KalQLater</Link><span aria-hidden="true"> / </span><Link href={localePath(locale, `personality/${guide.code.toLowerCase()}`)}>{guide.code}</Link><span aria-hidden="true"> / </span>{c.guide}</nav>

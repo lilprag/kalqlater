@@ -42,6 +42,7 @@ function isRoute(value) {
 }
 
 const string = (validator) => (value) => typeof value === 'string' && validator(value);
+const integer = (value) => Number.isInteger(value) && value >= 0;
 
 /**
  * The event registry is the privacy allowlist. Any property absent from a
@@ -51,10 +52,19 @@ export const ANALYTICS_EVENT_REGISTRY = Object.freeze({
   page_view: Object.freeze({ route: string(isRoute), locale: string(isLocale) }),
   assessment_started: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale) }),
   assessment_completed: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale) }),
+  answer_selected: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale), step: integer }),
+  next_clicked: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale), step: integer }),
+  next_scenario_rendered: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale), step: integer, latency_ms: integer }),
+  answer_save_started: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale), step: integer, attempt: integer }),
+  answer_save_completed: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale), step: integer, latency_ms: integer }),
+  answer_save_failed: Object.freeze({ analyzer: string(isInsight), locale: string(isLocale), step: integer, attempt: integer }),
   guide_view: Object.freeze({ type: string(isType), locale: string(isLocale) }),
   career_view: Object.freeze({ type: string(isType), locale: string(isLocale) }),
   compare_view: Object.freeze({ pair: string(isPair), locale: string(isLocale) }),
   insight_view: Object.freeze({ insight: string(isInsight), locale: string(isLocale) }),
+  job_detail_view: Object.freeze({ locale: string(isLocale) }),
+  save_job: Object.freeze({ locale: string(isLocale) }),
+  apply_click: Object.freeze({ locale: string(isLocale) }),
   journey_continue: Object.freeze({ from_entity: string(isEntityId), to_entity: string(isEntityId), locale: string(isLocale) }),
   language_changed: Object.freeze({ from_locale: string(isLocale), to_locale: string(isLocale) }),
   bookmark_created: Object.freeze({ entity_id: string(isEntityId), locale: string(isLocale) }),
@@ -149,4 +159,20 @@ export function createProductionAnalyticsAdapter({ provider = 'ga4', measurement
   assert(ANALYTICS_PROVIDERS.includes(provider), `Unknown analytics provider: ${provider}`);
   if (provider === 'ga4') return createGa4Adapter(measurementId, documentRef, windowRef);
   throw new Error(`Unsupported analytics provider: ${provider}`);
+}
+
+let browserDispatcher;
+export function dispatchBrowserAnalytics(name, properties) {
+  if (typeof window === 'undefined' || typeof document === 'undefined') return;
+  if (!browserDispatcher) {
+    const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+    const enabled = analyticsEnabled({ environment: process.env.NODE_ENV, enabled: true, measurementId });
+    browserDispatcher = createAnalyticsDispatcher({
+      adapter: enabled ? createProductionAnalyticsAdapter({ measurementId }) : null,
+      enabled,
+      environment: process.env.NODE_ENV,
+      logger: console,
+    });
+  }
+  browserDispatcher.dispatch(name, properties);
 }

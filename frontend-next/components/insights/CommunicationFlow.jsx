@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { communicationInsightsApi } from '../../lib/communication-insights-api';
+import { dispatchBrowserAnalytics } from '../../lib/analytics';
 import { insightsCopy } from '../../data/communication-insights';
 
 const storageKey = 'kalqlater.communication-insights.session';
@@ -146,6 +147,7 @@ export function StartAssessment({ locale }) {
     abortRef.current?.abort(); const controller = new AbortController(); abortRef.current = controller; setState('loading'); setError('');
     try {
       const created = await communicationInsightsApi.createSession(locale, undefined, controller.signal);
+      dispatchBrowserAnalytics('assessment_started', { analyzer: 'communication', locale });
       saveSession({ sessionId: created.session_id, accessToken: created.access_token, locale, analyzerVersion: 'pending', currentStep: 0 });
       router.push(`/${locale}/insights/communication/session/${created.session_id}`);
     } catch (issue) { setError(messageFor(issue, locale)); setState('idle'); }

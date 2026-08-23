@@ -5,4 +5,5 @@ export function jobsBackendUrl({backendUrl=process.env.NEXT_PUBLIC_BACKEND_URL,n
   throw new Error('NEXT_PUBLIC_BACKEND_URL is required for KalQLater Jobs outside development.');
 }
 export const jobsApiUrl=(path='',environment)=>`${jobsBackendUrl(environment)}/api/jobs${path}`;
-export async function fetchJobs(path='',options={}){const r=await fetch(jobsApiUrl(path),{...options,cache:options.cache||'no-store'});if(!r.ok)throw new Error(`Jobs API ${r.status}`);return r.json()}
+export class JobsApiError extends Error { constructor(status, message = `Jobs API ${status}`) { super(message); this.name = 'JobsApiError'; this.status = status; } }
+export async function fetchJobs(path='',options={}){const r=await fetch(jobsApiUrl(path),{...options,cache:options.cache||'no-store'});if(!r.ok)throw new JobsApiError(r.status);return r.json()}

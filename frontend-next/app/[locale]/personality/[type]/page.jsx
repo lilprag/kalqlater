@@ -7,6 +7,7 @@ import { TYPE_ORDER, typeFromSlug } from '../../../../lib/personality';
 import { getPersonalityGuideContent } from '../../../../localization/personality-guide';
 import { pairSlug } from '../../../../lib/comparisons';
 import { RelatedContent } from '../../../../components/RelatedContent';
+import { schemaLanguage } from '../../../../lib/locales';
 import { LocalePackagePreview } from '../../../../components/LocalePackagePreview';
 import { loadLocalePage, localePreviewMetadata } from '../../../../localization/runtime';
 
@@ -19,7 +20,7 @@ const COPY = { en: { pattern: 'Core pattern', glance: 'Personality at a glance',
 export default async function PersonalityPage({ params }) {
   const { locale, type } = await params; const packagePage = await loadLocalePage(locale, `personality:${String(type).toLowerCase()}`); if (packagePage) return <LocalePackagePreview locale={locale} page={packagePage} path={`personality/${type}`} />; const preview = isPersonalityPreviewLocale(locale, type); if (!isLocale(locale) && !preview) notFound(); const code = typeFromSlug(type); let guide; try { guide = code && getPersonalityGuideContent(locale, type); } catch { notFound(); } const p = guide?.profile; if (!p) notFound();
   const c = COPY[locale], hi = locale === 'hi', es = locale === 'es', faq = guide.faq, compareTypes = p.relatedTypes.length ? p.relatedTypes : TYPE_ORDER.filter(x => x !== code).slice(0, 3), allCompareTypes = TYPE_ORDER.filter((candidate) => candidate !== code);
-  const jsonLd = { '@context': 'https://schema.org', '@graph': [breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: hi ? 'व्यक्तित्व' : es ? 'Personalidad' : 'Personality', path: 'personality' }, { name: `${p.code} ${p.displayName}`, path: `personality/${p.slug}` }]), { '@type': 'FAQPage', ...(es ? { inLanguage: 'es' } : {}), mainEntity: faq.map(item => ({ '@type': 'Question', name: Array.isArray(item) ? item[0] : item.q, acceptedAnswer: { '@type': 'Answer', text: Array.isArray(item) ? item[1] : item.a } })) }] };
+  const jsonLd = { '@context': 'https://schema.org', '@graph': [breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: hi ? 'व्यक्तित्व' : es ? 'Personalidad' : 'Personality', path: 'personality' }, { name: `${p.code} ${p.displayName}`, path: `personality/${p.slug}` }]), { '@type': 'FAQPage', inLanguage: schemaLanguage(locale), mainEntity: faq.map(item => ({ '@type': 'Question', name: Array.isArray(item) ? item[0] : item.q, acceptedAnswer: { '@type': 'Answer', text: Array.isArray(item) ? item[1] : item.a } })) }] };
   const lenses = [p.coreTraits[0], p.coreTraits[1], p.leadership?.style || p.coreTraits[2], p.workStyle[0]].filter(Boolean);
   const plan = hi ? ['बार-बार दिखने वाला पैटर्न नोट करें', 'एक वैकल्पिक प्रतिक्रिया आजमाएं', 'उपयोगी फीडबैक मांगें', 'असुविधाजनक कौशल का अभ्यास करें', 'देखें क्या बदला'] : es ? c.planItems : ['Notice one recurring pattern', 'Test one alternative response', 'Request useful feedback', 'Practise one uncomfortable skill', 'Review what changed'];
   return <><JsonLd data={jsonLd} /><main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">

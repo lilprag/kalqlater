@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { JsonLd } from '../../../components/JsonLd';
 import { insightsHubCopy } from '../../../data/insights-hub';
 import { breadcrumbJsonLd, pageMetadata } from '../../../lib/metadata';
+import { schemaLanguage } from '../../../lib/locales';
 import { isLocale, localePath } from '../../../lib/site';
 
 export const dynamicParams = true;
@@ -36,7 +37,7 @@ export default async function InsightsHubPage({ params }) {
         '@type': 'CollectionPage', name: c.eyebrow,
         description: c.body,
         url: `https://kalqlater.com${localePath(locale, 'insights')}`,
-        inLanguage: locale === 'hi' ? 'hi-IN' : 'en-IN',
+        inLanguage: schemaLanguage(locale),
       },
     ],
   };

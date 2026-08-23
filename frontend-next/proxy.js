@@ -6,7 +6,7 @@ import { localeRuntimeRegistry } from './localization/runtime-policy';
 const locales = new Set(publishedLanguageLocales());
 const previewLocales = new Set(Object.values(localeRuntimeRegistry).filter((runtime) => runtime.state === 'preview').map((runtime) => runtime.locale));
 const typeOrder = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP'];
-const legacyNoindexPaths = ['/community', '/login', '/signup', '/forgot-password', '/reset-password'];
+const legacyNoindexPaths = ['/community', '/login', '/signup', '/forgot-password', '/reset-password', '/result', '/report', '/premium-report'];
 
 function parsedPair(firstValue, secondValue) {
   const first = String(firstValue || '').toUpperCase();
@@ -104,4 +104,4 @@ export async function proxy(request) {
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
-export const config = { matcher: ['/:locale/:path*', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };
+export const config = { matcher: ['/:locale/:path*', '/types/:path*', '/compare', '/compare/:path*', '/community/:path*', '/result/:path*', '/report/:path*', '/premium-report/:path*', '/login', '/signup', '/forgot-password', '/reset-password'] };

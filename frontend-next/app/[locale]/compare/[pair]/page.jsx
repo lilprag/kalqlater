@@ -9,6 +9,7 @@ import { breadcrumbJsonLd, pageMetadata } from '../../../../lib/metadata';
 import { getPersonalityUrl, personalityProfile } from '../../../../lib/personality';
 import { isComparisonPreviewLocale, isLocale, localePath, productionAppUrl } from '../../../../lib/site';
 import { RelatedContent } from '../../../../components/RelatedContent';
+import { schemaLanguage } from '../../../../lib/locales';
 import { LocalePackagePreview } from '../../../../components/LocalePackagePreview';
 import { loadLocalePage, localePreviewMetadata } from '../../../../localization/runtime';
 
@@ -74,7 +75,7 @@ export default async function ComparisonPage({ params }) {
   const es = locale === 'es';
   const copy = es ? content.ui : null;
   const related = allPairs().filter((item) => item.slug !== parsed.slug && (item.first === firstCode || item.second === firstCode || item.first === secondCode || item.second === secondCode)).slice(0, 4);
-  const faqSchema = { '@type': 'FAQPage', ...(es ? { inLanguage: 'es' } : {}), mainEntity: content.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
+  const faqSchema = { '@type': 'FAQPage', inLanguage: schemaLanguage(locale), mainEntity: content.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
   const jsonLd = { '@context': 'https://schema.org', '@graph': [
     breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: hi ? 'तुलना' : es ? 'Comparar personalidades' : 'Compare', path: 'compare' }, { name: `${firstCode} vs ${secondCode}`, path: `compare/${parsed.slug}` }]),
     faqSchema,

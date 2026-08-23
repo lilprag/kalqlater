@@ -17,6 +17,16 @@ function routeLocale(pathname) {
   return localeConfig(locale) ? locale : 'en';
 }
 
+function routeEvent(pathname, locale) {
+  const segments = String(pathname || '').split('/').filter(Boolean);
+  if (segments[1] === 'personality' && segments[2]) return ['guide_view', { type: segments[2], locale }];
+  if (segments[1] === 'careers' && segments[2]) return ['career_view', { type: segments[2], locale }];
+  if (segments[1] === 'compare' && segments[2]) return ['compare_view', { pair: segments[2], locale }];
+  if (segments[1] === 'insights' && ['communication', 'conflict', 'leadership', 'learning'].includes(segments[2]) && !segments[3]) return ['insight_view', { insight: segments[2], locale }];
+  if (segments[1] === 'jobs' && segments[2] && segments[2] !== 'profile') return ['job_detail_view', { locale }];
+  return null;
+}
+
 export function Analytics() {
   const pathname = usePathname();
   const dispatcher = useRef(null);
@@ -38,10 +48,13 @@ export function Analytics() {
 
   useEffect(() => {
     if (!dispatcher.current) return;
+    const locale = routeLocale(pathname);
     dispatcher.current.dispatch('page_view', {
       route: normalizeAnalyticsRoute(pathname),
-      locale: routeLocale(pathname),
+      locale,
     });
+    const event = routeEvent(pathname, locale);
+    if (event) dispatcher.current.dispatch(event[0], event[1]);
   }, [pathname]);
 
   return null;
