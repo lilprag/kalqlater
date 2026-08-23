@@ -4,6 +4,8 @@ Audited at commit `6ca8b91`. Severity reflects current production exposure, not 
 
 P0 batch 1 note: SEO-004, SEO-005, SEO-008, SEO-009, and SEO-010 are mitigated in the current working tree. SEO-006 is contained by noindexing and removing sitemap/hreflang eligibility for HI/FR/JA Jobs. SEO-007 and redirect-dependent duplicate risks remain open.
 
+Auth batch note: localized auth routes are implemented as `NOINDEX_PRIVATE`, excluded from sitemap and hreflang. Root auth compatibility URLs remain HTTP noindex; redirect activation is deliberately deferred until production parity validation.
+
 | ID | Issue | Affected URLs | Severity | SEO impact | User impact | Recommended action | Target phase | Validation method |
 |---|---|---|---|---|---|---|---|---|
 | SEO-001 | Two personality assessment architectures | `/test`, `/{locale}/test` | Critical | Conflicting intent, indexability, content and canonical ownership | Different results/persistence by entry | Establish one durable current assessment; no redirect before parity | Phase 1 | Route tests, rendered robots, canonical crawl, result parity E2E |

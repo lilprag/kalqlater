@@ -6,10 +6,16 @@ Audited at commit `6ca8b91`. This document and `route-registry.json` describe cu
 
 Types is covered by the localized sitemap. Static sitemap entries omit modification dates without trustworthy authored timestamps. Jobs indexing is temporarily EN-only; non-English routes remain usable but noindex and outside hreflang/sitemap. Jobs upstream failures are temporary server errors, not empty canonical inventory. Legacy result/report families receive HTTP `X-Robots-Tag: noindex, nofollow`. Unsupported FR/JA Conflict, Leadership, and Learning start/session/result routes are guarded while informative landings remain published.
 
+## Auth and progressive-onboarding update
+
+`frontend-next` now owns localized EN/HI/FR/JA login, signup, recovery, and reset UI. The backend continues to authenticate the existing `community_users.id`; no identity store changed. New sessions receive an HttpOnly, Secure-by-default, SameSite=Lax cookie and a double-submit CSRF token, while bearer JWTs remain temporarily accepted so legacy Community and existing users continue working. Current signup collects credentials only and returns directly to an allowlisted initiating action or the locale dashboard. Community and career profiles are contextual, optional follow-up actions.
+
+Root auth routes remain noindex compatibility routes. Their locale-aware 308 mapping is ready but not activated until production parity monitoring passes.
+
 ## Authority rules
 
 1. `frontend-next` owns localized public knowledge, current assessment UI, Insights, the external Jobs marketplace, and the transitional Dashboard.
-2. `legacy-frontend` owns authentication and functional Community until their planned migration.
+2. `frontend-next` owns current authentication UI; `legacy-frontend` retains auth compatibility routes and functional Community until Community migration.
 3. `backend` owns APIs and data contracts, never a crawlable product page.
 4. The current localized route is the canonical owner whenever a legacy and current public content route overlap.
 5. A route may become indexable only after the SEO release policy passes.

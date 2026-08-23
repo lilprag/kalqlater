@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { jobsApiUrl } from '../lib/jobs-api';
-import { productionAppUrl } from '../lib/site';
 import { dispatchBrowserAnalytics } from '../lib/analytics';
+import { authHeaders } from '../lib/auth';
 
-const auth = () => ({ Authorization: `Bearer ${localStorage.getItem('kalqlater_auth_token') || ''}`, 'Content-Type': 'application/json' });
+const auth = () => authHeaders({ mutation: true });
 
 export function JobActions({ jobId, applyUrl, locale = 'en', slug }) {
   const [msg, setMsg] = useState('');
@@ -13,26 +13,30 @@ export function JobActions({ jobId, applyUrl, locale = 'en', slug }) {
   const returnPath = `/${locale}/jobs/${slug}`;
   const login = useCallback((action) => {
     const intended = `${returnPath}?${action}=1`;
-    window.location.assign(productionAppUrl(`/login?locale=${encodeURIComponent(locale)}&returnTo=${encodeURIComponent(intended)}`));
+    dispatchBrowserAnalytics('auth_continuation_started', { locale, kind: action === 'apply' ? 'job_apply' : 'job_save' });
+    window.location.assign(`/${locale}/login?returnTo=${encodeURIComponent(intended)}`);
   }, [locale, returnPath]);
   const apply = useCallback(async () => {
-    dispatchBrowserAnalytics('apply_click', { locale });
-    const response = await fetch(jobsApiUrl(`/${jobId}/apply`), { method: 'POST', headers: auth() });
+    const resumedAfterAuth = new URLSearchParams(window.location.search).get('apply') === '1';
+    if (!resumedAfterAuth) dispatchBrowserAnalytics('apply_click', { locale });
+    const response = await fetch(jobsApiUrl(`/${jobId}/apply`), { method: 'POST', headers: auth(), credentials: 'include' });
     if (response.status === 401) { login('apply'); return; }
     if (!response.ok) {
-      setMsg('Complete your career profile before applying.');
-      window.location.assign(`/${locale}/jobs/profile?returnTo=${encodeURIComponent(`${returnPath}?apply=1`)}`);
+      setMsg('This application could not be started. Please try again.');
       return;
     }
     const result = await response.json();
+    if (resumedAfterAuth) { dispatchBrowserAnalytics('job_apply_after_auth', { locale }); window.history.replaceState(null, '', returnPath); }
     window.location.assign(result.redirect_url || applyUrl);
   }, [applyUrl, jobId, locale, login, returnPath]);
   const save = useCallback(async () => {
-    dispatchBrowserAnalytics('save_job', { locale });
-    const response = await fetch(jobsApiUrl(`/${jobId}/save`), { method: 'POST', headers: auth() });
+    const resumedAfterAuth = new URLSearchParams(window.location.search).get('save') === '1';
+    if (!resumedAfterAuth) dispatchBrowserAnalytics('save_job', { locale });
+    const response = await fetch(jobsApiUrl(`/${jobId}/save`), { method: 'POST', headers: auth(), credentials: 'include' });
     if (response.status === 401) { login('save'); return; }
+    if (response.ok && resumedAfterAuth) { dispatchBrowserAnalytics('job_save_after_auth', { locale }); window.history.replaceState(null, '', returnPath); }
     setMsg(response.ok ? 'Saved' : 'This job could not be saved.');
-  }, [jobId, locale, login]);
+  }, [jobId, locale, login, returnPath]);
   useEffect(() => {
     if (resumed.current) return;
     const params = new URLSearchParams(window.location.search);

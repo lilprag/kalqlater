@@ -14,6 +14,7 @@
     "check:locale-availability": "node --experimental-default-type=module scripts/check-locale-availability.mjs",
     "check:analytics-privacy": "node --experimental-default-type=module scripts/check-analytics-privacy.mjs",
     "check:insights-save-queue": "node scripts/check-insights-save-queue.mjs",
+    "check:auth-security": "node scripts/check-auth-security.mjs",
     "check:recommendation-graph": "node --experimental-default-type=module scripts/check-recommendation-graph.mjs",
     "check:recommendation-resolver": "node --experimental-default-type=module scripts/check-recommendation-resolver.mjs",
     "check:recommendation-service": "node --experimental-default-type=module scripts/check-recommendation-service.mjs",
@@ -31,7 +32,7 @@
     "check:localization": "node --experimental-default-type=module scripts/check-localization-production.mjs",
     "check:localization-studio": "node --experimental-default-type=module scripts/check-localization-studio.mjs",
     "localization:report": "node --experimental-default-type=module scripts/localization-report.mjs",
-    "test": "npm run check:content-entities && npm run check:locale-availability && npm run check:analytics-privacy && npm run check:insights-save-queue && npm run check:recommendation-graph && npm run check:recommendation-resolver && npm run check:recommendation-service && npm run check:related-content && npm run check:language-bootstrap && npm run check:bootstrapped-locales && npm run check:translation-pipeline && npm run check:locale-runtime && node --experimental-default-type=module scripts/check-legacy-proxy-headers.mjs && node --experimental-default-type=module scripts/check-international-seo.mjs && node --experimental-default-type=module scripts/check-localization-production.mjs && node --experimental-default-type=module scripts/check-localization-studio.mjs && node --experimental-default-type=module scripts/check-content.mjs && node --experimental-default-type=module scripts/check-content-integrity.mjs && node --experimental-default-type=module scripts/verify-crawlability.mjs"
+    "test": "npm run check:content-entities && npm run check:locale-availability && npm run check:analytics-privacy && npm run check:auth-security && npm run check:insights-save-queue && npm run check:recommendation-graph && npm run check:recommendation-resolver && npm run check:recommendation-service && npm run check:related-content && npm run check:language-bootstrap && npm run check:bootstrapped-locales && npm run check:translation-pipeline && npm run check:locale-runtime && node --experimental-default-type=module scripts/check-legacy-proxy-headers.mjs && node --experimental-default-type=module scripts/check-international-seo.mjs && node --experimental-default-type=module scripts/check-localization-production.mjs && node --experimental-default-type=module scripts/check-localization-studio.mjs && node --experimental-default-type=module scripts/check-content.mjs && node --experimental-default-type=module scripts/check-content-integrity.mjs && node --experimental-default-type=module scripts/verify-crawlability.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",

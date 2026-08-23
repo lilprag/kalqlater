@@ -4,7 +4,7 @@ import { pageMetadata } from '../../../lib/metadata';
 import { isLocale } from '../../../lib/site';
 
 export const dynamicParams = false;
-export function generateStaticParams() { return ['en', 'hi'].map((locale) => ({ locale })); }
+export function generateStaticParams() { return ['en', 'hi', 'fr', 'ja'].map((locale) => ({ locale })); }
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;

@@ -37,16 +37,16 @@ export function DashboardAccess({ locale }) {
 
 function DashboardGate({ locale }) {
   const { status } = useAuthStatus();
-  const c = copy[locale];
+  const c = copy[locale] || copy.en;
   useEffect(() => {
-    if (status === 'guest') window.location.assign(productionAppUrl('/login'));
-  }, [status]);
+    if (status === 'guest') window.location.assign(`/${locale}/login?returnTo=${encodeURIComponent(`/${locale}/dashboard`)}`);
+  }, [locale, status]);
   if (status !== 'authenticated') return <PrivateNotice title={c.title} text={status === 'guest' ? c.login : c.loading} />;
   return <GrowthDashboard locale={locale} />;
 }
 
 function GrowthDashboard({ locale }) {
-  const c = copy[locale];
+  const c = copy[locale] || copy.en;
   const [state, setState] = useState({ status: 'loading', data: null });
   useEffect(() => {
     let active = true;

@@ -1,0 +1,3 @@
+import { Suspense } from 'react'; import { notFound } from 'next/navigation'; import { AuthFlow } from '../../../components/AuthFlow'; import { isLocale } from '../../../lib/site';
+const titles={en:'Reset password',hi:'पासवर्ड रीसेट करें',fr:'Réinitialiser le mot de passe',ja:'パスワードを再設定'};export async function generateMetadata({params}){const{locale}=await params;return{title:`${titles[locale]||titles.en} | KalQLater`,robots:{index:false,follow:false}}}
+export default async function Page({params}){const{locale}=await params;if(!isLocale(locale))notFound();return <Suspense><AuthFlow locale={locale} mode="forgot"/></Suspense>}

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Depends, Header
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Depends, Header
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -95,6 +95,9 @@ JWT_SECRET = os.environ.get("JWT_SECRET")
 if not JWT_SECRET:
     raise RuntimeError("JWT_SECRET must be configured")
 JWT_ALGORITHM = "HS256"
+AUTH_COOKIE = "kalqlater_session"
+CSRF_COOKIE = "kalqlater_csrf"
+AUTH_COOKIE_DAYS = 7
 RESERVED_USERNAMES = {"admin", "support", "contact", "about", "privacy", "terms", "compare", "community", "api", "kalqlater"}
 VALID_TYPES = {"INTJ","INTP","ENTJ","ENTP","INFJ","INFP","ENFJ","ENFP","ISTJ","ISFJ","ESTJ","ESFJ","ISTP","ISFP","ESTP","ESFP"}
 VALID_VISIBILITY = {"Public profile", "Community members only", "Hidden profile"}
@@ -279,7 +282,7 @@ def public_job(job, include_application=True):
 
 async def optional_user(request):
     try:
-        return await current_user(request.headers.get("authorization"))
+        return await current_user(request, request.headers.get("authorization"))
     except HTTPException:
         return None
 
@@ -339,10 +342,30 @@ async def connection_response(connection, viewer_user_id):
         "responded_at": connection.get("responded_at"),
         "member": member_summary(other_profile),
     }
-def token_for(user_id): return jwt.encode({"sub":user_id,"exp":datetime.now(timezone.utc).timestamp()+60*60*24*7}, JWT_SECRET, algorithm=JWT_ALGORITHM)
-async def current_user(authorization: Optional[str] = Header(None)):
+def token_for(user_id): return jwt.encode({"sub":user_id,"exp":datetime.now(timezone.utc).timestamp()+60*60*24*AUTH_COOKIE_DAYS}, JWT_SECRET, algorithm=JWT_ALGORITHM)
+
+def set_auth_cookies(response: Response, token: str):
+    secure = os.environ.get("AUTH_COOKIE_SECURE", "true").lower() != "false"
+    csrf = str(uuid.uuid4())
+    response.set_cookie(AUTH_COOKIE, token, max_age=60*60*24*AUTH_COOKIE_DAYS, httponly=True, secure=secure, samesite="lax", path="/")
+    response.set_cookie(CSRF_COOKIE, csrf, max_age=60*60*24*AUTH_COOKIE_DAYS, httponly=False, secure=secure, samesite="lax", path="/")
+    return csrf
+
+def clear_auth_cookies(response: Response):
+    response.delete_cookie(AUTH_COOKIE, path="/")
+    response.delete_cookie(CSRF_COOKIE, path="/")
+
+async def current_user(request: Request, authorization: Optional[str] = Header(None), x_csrf_token: Optional[str] = Header(None)):
     try:
-        token = authorization.split(" ",1)[1]; user_id = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])["sub"]
+        bearer = authorization.split(" ",1)[1] if authorization and authorization.lower().startswith("bearer ") else None
+        token = bearer or request.cookies.get(AUTH_COOKIE)
+        if not bearer and request.method.upper() not in {"GET", "HEAD", "OPTIONS"}:
+            csrf_cookie = request.cookies.get(CSRF_COOKIE)
+            if not csrf_cookie or not x_csrf_token or not hmac.compare_digest(csrf_cookie, x_csrf_token):
+                raise HTTPException(403, "CSRF validation failed")
+        user_id = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])["sub"]
+    except HTTPException:
+        raise
     except Exception: raise HTTPException(401, "Authentication required")
     user = await db.community_users.find_one({"id":user_id})
     if not user: raise HTTPException(401, "Authentication required")
@@ -479,12 +502,13 @@ async def type_stats():
 
 
 @api_router.post("/auth/signup")
-async def signup(payload: SignupPayload):
+async def signup(payload: SignupPayload, response: Response):
     email = str(payload.email).lower()
     if await db.community_users.find_one({"email": email}): raise HTTPException(409, "Account already exists")
     user = {"id":str(uuid.uuid4()), "email":email, "password_hash":bcrypt.hashpw(payload.password.encode(), bcrypt.gensalt()).decode(), "created_at":datetime.now(timezone.utc).isoformat()}
     await db.community_users.insert_one(user)
-    return {"token":token_for(user["id"]), "user":{"email":email}}
+    token = token_for(user["id"]); csrf = set_auth_cookies(response, token)
+    return {"token":token, "csrf_token":csrf, "user":{"id":user["id"], "email":email}}
 
 
 @api_router.get("/localization/reviewer/blocks")
@@ -544,10 +568,20 @@ async def qa_cleanup(payload: QACleanupPayload, request: Request, x_qa_cleanup_s
     return await cleanup_qa_account(payload.user_id)
 
 @api_router.post("/auth/login")
-async def login(payload: LoginPayload):
+async def login(payload: LoginPayload, response: Response):
     user = await db.community_users.find_one({"email":str(payload.email).lower()})
     if not user or not bcrypt.checkpw(payload.password.encode(), user["password_hash"].encode()): raise HTTPException(401, "Invalid email or password")
-    return {"token":token_for(user["id"]), "user":{"email":user["email"]}}
+    token = token_for(user["id"]); csrf = set_auth_cookies(response, token)
+    return {"token":token, "csrf_token":csrf, "user":{"id":user["id"], "email":user["email"]}}
+
+@api_router.get("/auth/session")
+async def auth_session(request: Request, user=Depends(current_user)):
+    return {"authenticated": True, "csrf_token": request.cookies.get(CSRF_COOKIE, ""), "user": {"id": user["id"], "email": user["email"]}}
+
+@api_router.post("/auth/logout")
+async def auth_logout(response: Response, user=Depends(current_user)):
+    clear_auth_cookies(response)
+    return {"authenticated": False}
 
 @api_router.post("/auth/forgot-password")
 async def forgot_password(payload: ResetRequest):
@@ -579,7 +613,7 @@ async def username_available(username: str):
 @api_router.get("/community/profiles")
 async def directory(request: Request, page:int=1, limit:int=18, search:Optional[str]=None, type:Optional[str]=None, intent:Optional[str]=None, country:Optional[str]=None, city:Optional[str]=None, profession:Optional[str]=None, industry:Optional[str]=None, skill:Optional[str]=None, language:Optional[str]=None, availability:Optional[str]=None, min_experience:Optional[int]=None, max_experience:Optional[int]=None, sort:Optional[str]="newest"):
     limit=max(1,min(limit,50)); authenticated=False
-    try: await current_user(request.headers.get("authorization")); authenticated=True
+    try: await current_user(request, request.headers.get("authorization")); authenticated=True
     except HTTPException: pass
     query={"visibility":{"$in":["Public profile","Community members only"] if authenticated else ["Public profile"]}}
     for field,value in [("personality_type",type),("connection_intents",intent),("country",country),("city",city),("profession",profession),("industries",industry),("skills",skill),("languages",language),("availability",availability)]:
@@ -596,7 +630,7 @@ async def profile_by_username(username:str, request:Request):
     doc=await db.community_profiles.find_one({"username":username.lower()})
     if not doc: raise HTTPException(404,"Profile unavailable")
     authenticated=False
-    try: await current_user(request.headers.get("authorization")); authenticated=True
+    try: await current_user(request, request.headers.get("authorization")); authenticated=True
     except HTTPException: pass
     if doc["visibility"]=="Hidden profile" or (doc["visibility"]=="Community members only" and not authenticated): raise HTTPException(404,"Profile unavailable")
     return public_profile(doc)

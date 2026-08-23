@@ -8,6 +8,12 @@ Audited at commit `6ca8b91`. The machine-readable contract is `profile-field-reg
 
 One semantic fact must have one canonical writer. Public visibility is a projection/consent decision, not a second copy of the fact.
 
+## Auth batch implementation
+
+Account creation now writes only the existing `community_users` credential record. It does not create or require `community_profiles` or `career_profiles`. Those collections retain their current schemas and synchronization behavior when a user explicitly enters the corresponding experience. Session cookies and CSRF values are credentials, not profile fields, and create no new user identity.
+
+Auth continuation now recognizes durable Insights result URLs as a future claim intent, but no result ownership is written in this batch. The personality continuation deliberately returns no claim target because the localized personality assessment remains browser-only and has no durable result identifier. Backend ownership fields and claim authorization remain deferred rather than fabricated.
+
 ## Data layers
 
 ### Core identity
@@ -132,4 +138,3 @@ Before adding or editing a user field:
 6. Which consumers read it?
 7. Is sync temporary migration behavior or the permanent design?
 8. What happens during export, deletion, deactivation, and consent withdrawal?
-

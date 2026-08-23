@@ -2,7 +2,7 @@ from datetime import datetime, timezone, timedelta
 from typing import List, Optional
 from urllib.parse import urlparse
 import re, uuid
-from fastapi import APIRouter, Depends, Header, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 from pymongo import ReturnDocument
 from behavior_engine.timestamps import normalize_utc
@@ -111,7 +111,7 @@ def create_job_marketplace_router(db,current_user):
         doc['has_community_profile']=bool(community);doc['has_career_profile']=True;doc['completeness']=profile_completeness(doc)
         return doc
     @r.get('')
-    async def jobs(keyword:Optional[str]=None,location:Optional[str]=None,work_mode:Optional[str]=None,experience:Optional[int]=None,department:Optional[str]=None,posted_within:int=Query(30,ge=1,le=30),limit:int=Query(50,ge=1,le=100),authorization:Optional[str]=Header(None)):
+    async def jobs(request:Request,keyword:Optional[str]=None,location:Optional[str]=None,work_mode:Optional[str]=None,experience:Optional[int]=None,department:Optional[str]=None,posted_within:int=Query(30,ge=1,le=30),limit:int=Query(50,ge=1,le=100),authorization:Optional[str]=Header(None)):
         q=active_job_query(); q['posted_at']={'$gte':now()-timedelta(days=posted_within)}
         if keyword:q['$text']={'$search':keyword}
         if location:q['location_text']={'$regex':re.escape(location),'$options':'i'}
@@ -119,8 +119,8 @@ def create_job_marketplace_router(db,current_user):
         if department:q['department']={'$regex':re.escape(department),'$options':'i'}
         if experience is not None:q['$and']=[{'$or':[{'experience_min':None},{'experience_min':{'$lte':experience}}]},{'$or':[{'experience_max':None},{'experience_max':{'$gte':experience}}]}]
         profile=None
-        if authorization:
-            try:u=await current_user(authorization);profile=await unified_profile(u['id'])
+        if authorization or request.cookies:
+            try:u=await current_user(request,authorization);profile=await unified_profile(u['id'])
             except HTTPException:pass
         docs=await db.jobs.find(q,{'_id':0}).sort([('posted_at',-1),('last_verified_at',-1)]).limit(limit).to_list(limit)
         items=[public_job(x,profile) for x in docs]; items.sort(key=lambda x:((x.get('match')or{}).get('overall_score',0),-x['posted_age_days']),reverse=True)

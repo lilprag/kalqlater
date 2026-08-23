@@ -5,6 +5,8 @@ import { TYPE_CODES } from '../data/types.js';
 
 const TYPE_SET = new Set(TYPE_CODES.map((type) => type.toLowerCase()));
 const INSIGHT_SET = new Set(['communication', 'conflict', 'leadership', 'learning']);
+const AUTH_MODE_SET = new Set(['forgot', 'reset']);
+const CONTINUATION_SET = new Set(['internal', 'job_save', 'job_apply', 'insight_claim', 'personality_claim']);
 const RECOMMENDATION_ENTITY_TYPE_SET = new Set(['personality-guide', 'career-guide', 'compare', 'insight', 'community', 'jobs', 'language']);
 const RECOMMENDATION_RELATIONSHIP_SET = new Set(['related_to', 'continue_to', 'learn_before', 'learn_after', 'recommended_after', 'supports', 'expands', 'contrasts_with', 'similar_to', 'career_for', 'compare_with']);
 const ENTITY_ID_PATTERN = /^[a-z][a-z0-9-]*:[a-z0-9][a-z0-9/-]*$/;
@@ -65,6 +67,20 @@ export const ANALYTICS_EVENT_REGISTRY = Object.freeze({
   job_detail_view: Object.freeze({ locale: string(isLocale) }),
   save_job: Object.freeze({ locale: string(isLocale) }),
   apply_click: Object.freeze({ locale: string(isLocale) }),
+  login_view: Object.freeze({ locale: string(isLocale), mode: string((value) => value === 'login') }),
+  login_success: Object.freeze({ locale: string(isLocale) }),
+  login_failure: Object.freeze({ locale: string(isLocale) }),
+  signup_view: Object.freeze({ locale: string(isLocale), mode: string((value) => value === 'signup') }),
+  signup_start: Object.freeze({ locale: string(isLocale) }),
+  signup_success: Object.freeze({ locale: string(isLocale) }),
+  signup_failure: Object.freeze({ locale: string(isLocale) }),
+  auth_recovery_view: Object.freeze({ locale: string(isLocale), mode: string((value) => AUTH_MODE_SET.has(value)) }),
+  forgot_password_start: Object.freeze({ locale: string(isLocale) }),
+  reset_password_success: Object.freeze({ locale: string(isLocale) }),
+  auth_continuation_started: Object.freeze({ locale: string(isLocale), kind: string((value) => CONTINUATION_SET.has(value)) }),
+  auth_continuation_completed: Object.freeze({ locale: string(isLocale), kind: string((value) => CONTINUATION_SET.has(value)) }),
+  job_save_after_auth: Object.freeze({ locale: string(isLocale) }),
+  job_apply_after_auth: Object.freeze({ locale: string(isLocale) }),
   journey_continue: Object.freeze({ from_entity: string(isEntityId), to_entity: string(isEntityId), locale: string(isLocale) }),
   language_changed: Object.freeze({ from_locale: string(isLocale), to_locale: string(isLocale) }),
   bookmark_created: Object.freeze({ entity_id: string(isEntityId), locale: string(isLocale) }),
