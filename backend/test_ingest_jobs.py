@@ -34,6 +34,22 @@ def test_partial_failure_only_advances_successful_source():
     assert ingest_jobs.missing_transition(failed,{'lever:alpha'},set()) is None
 
 
+def test_lever_content_uses_only_reliable_source_headings():
+    source={
+        'descriptionPlain':'Team and product introduction.',
+        'lists':[
+            {'text':"What you'll do",'content':'Build and operate creator APIs.'},
+            {'text':"Who you are",'content':'You have production Java experience.'},
+            {'text':'Benefits','content':'Flexible leave and learning support.'},
+        ],
+        'additionalPlain':'Equal opportunity statement.',
+    }
+    description,responsibilities,requirements=ingest_jobs.lever_content(source)
+    assert description == 'Team and product introduction. Benefits Flexible leave and learning support. Equal opportunity statement.'
+    assert responsibilities == 'Build and operate creator APIs.'
+    assert requirements == 'You have production Java experience.'
+
+
 class FakeJobs:
     def bulk_write(self,*args,**kwargs):raise AssertionError('No writes expected')
     def find(self,*args,**kwargs):return []

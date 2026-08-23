@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 from pymongo import ReturnDocument
 from behavior_engine.timestamps import normalize_utc
+from job_content import distinct_section, extract_job_skills
 
 REMOTE={'remote','hybrid','onsite','flexible'}; NOTICE={'immediate','15_days','30_days','60_days','90_days','other'}
 APP_STATUSES={'saved','started','applied','interview','offer','rejected','withdrawn','hired'}
@@ -65,23 +66,76 @@ def career_shared_update(payload):
 def active_job_query(at=None):
     at=at or now(); return {'status':'active','$or':[{'posted_at':{'$gte':at-timedelta(days=30)}},{'last_verified_at':{'$gte':at-timedelta(days=2)},'posted_at':{'$gte':at-timedelta(days=90)}}]}
 
+ROLE_STOP_WORDS={'a','an','and','associate','director','engineer','head','junior','lead','manager','of','principal','senior','specialist','the'}
+ROLE_FAMILIES={
+    'marketing':{'brand','content','crm','growth','marketing','paid','performance','seo','social'},
+    'backend':{'api','backend','distributed','platform','server','software'},
+    'tax':{'accountant','accounting','fiscal','tax'},
+}
+
+def _terms(value): return {x for x in re.findall(r'[a-z0-9+#.]+',str(value or '').lower()) if x not in ROLE_STOP_WORDS}
+def _normalized_skill(value): return re.sub(r'[^a-z0-9+#]+','',str(value or '').lower())
+
+def _role_relevance(profile,job):
+    targets=clean_list([*profile.get('target_roles',[]),profile.get('current_job_title','')]);job_terms=_terms(job.get('title',''))
+    if not targets or not job_terms:return None
+    best=0
+    for target in targets:
+        target_terms=_terms(target)
+        if not target_terms:continue
+        overlap=len(target_terms&job_terms)/max(len(target_terms),len(job_terms))
+        same_family=any(target_terms&family and job_terms&family for family in ROLE_FAMILIES.values())
+        best=max(best,overlap,0.8 if same_family else 0)
+    return best
+
+def _skill_relevance(profile,job):
+    profile_skills={_normalized_skill(x) for x in profile.get('skills',[]) if _normalized_skill(x)}
+    job_skills={_normalized_skill(x) for x in job.get('skills',[]) if _normalized_skill(x)}
+    if not profile_skills or not job_skills:return None,set()
+    matched=profile_skills&job_skills
+    return 2*len(matched)/(len(profile_skills)+len(job_skills)),matched
+
 def match_job(profile,job):
     if not profile:return None
-    ps={x.lower() for x in profile.get('skills',[])};js={x.lower() for x in job.get('skills',[])}
-    skills=100*len(ps&js)/max(1,len(js)); years=profile.get('years_experience',0); lo,hi=job.get('experience_min'),job.get('experience_max')
-    experience=100 if lo is None or years>=lo else max(0,100-(lo-years)*25)
-    if hi is not None and years>hi+4: experience=max(60,experience-(years-hi-4)*5)
-    pref=profile.get('remote_preference','flexible'); mode=job.get('work_mode','unknown'); locs={x.lower() for x in profile.get('preferred_locations',[])}|{profile.get('current_location','').lower()}
-    location=100 if pref=='flexible' or pref==mode or (job.get('location_text','').lower() in locs) else 35
-    notice=100 if profile.get('notice_period') in {'immediate','15_days','30_days'} else 65
-    title=job.get('title','').lower(); targets=profile.get('target_roles',[]); role=100 if any(t.lower() in title or title in t.lower() for t in targets) else 35
-    components={'skills':round(skills),'experience':round(experience),'location_work_mode':round(location),'availability':notice,'target_role':role}
-    score=round(skills*.35+experience*.20+location*.15+notice*.10+role*.20)
-    matched=', '.join(sorted(ps&js)[:4]); explanation=f"Matched skills: {matched}." if matched else 'Build profile skill overlap for a stronger match.'
-    return {'overall_score':score,'components':components,'explanation':explanation+' Freshness is used as a ranking signal; personality type is never a hiring filter.'}
+    if not clean_list([*profile.get('target_roles',[]),profile.get('current_job_title','')]) and len(clean_list(profile.get('skills',[])))<2:
+        return {'status':'insufficient_profile','overall_score':None,'components':{},'matched':[],'explanation':'Complete your target roles or add at least two skills for a reliable match.'}
+    signals=[];components={};evidence=[]
+    role=_role_relevance(profile,job)
+    if role is not None:signals.append((45,role));components['target_role']=round(role*100)
+    skills,matched_skills=_skill_relevance(profile,job)
+    if skills is not None:
+        signals.append((35,skills));components['skills']=round(skills*100)
+        if matched_skills:evidence.append(f"{len(matched_skills)} matched skill{'s' if len(matched_skills)!=1 else ''}")
+    years=profile.get('years_experience');lo,hi=job.get('experience_min'),job.get('experience_max')
+    if years is not None and (lo is not None or hi is not None):
+        experience=1 if lo is None or years>=lo else max(0,1-(lo-years)*.25)
+        if hi is not None and years>hi+4:experience=max(.6,experience-(years-hi-4)*.05)
+        signals.append((10,experience));components['experience']=round(experience*100)
+        if experience>=.8:evidence.append('Experience range')
+    locations={str(x).strip().lower() for x in [*profile.get('preferred_locations',[]),profile.get('current_location','')] if str(x).strip()};job_location=str(job.get('location_text') or '').strip().lower()
+    if locations and job_location:
+        location=float(any(place in job_location or job_location in place for place in locations));signals.append((5,location));components['location']=round(location*100)
+        if location:evidence.append('Location')
+    pref=profile.get('remote_preference');mode=job.get('work_mode')
+    if pref not in {None,'','flexible'} and mode not in {None,'','unknown'}:
+        work_mode=float(pref==mode);signals.append((5,work_mode));components['work_mode']=round(work_mode*100)
+        if work_mode:evidence.append('Work mode')
+    industries={str(x).strip().lower() for x in profile.get('industries',[]) if str(x).strip()};job_industry=' '.join(str(job.get(x) or '').lower() for x in ('industry','department'))
+    if industries and job_industry.strip():
+        industry=float(any(x in job_industry for x in industries));signals.append((5,industry));components['industry']=round(industry*100)
+        if industry:evidence.append('Industry')
+    score=round(100*sum(weight*value for weight,value in signals)/sum(weight for weight,_ in signals)) if signals else 0
+    if role and role>=.8:evidence.insert(0,'Target role')
+    explanation=', '.join(evidence)+'.' if evidence else 'No strong profile evidence matches this role yet.'
+    return {'status':'scored','overall_score':score,'components':components,'matched':evidence,'explanation':explanation+' Personality type is never used as a hiring filter.'}
 
 def public_job(job,profile=None):
-    x={k:iso(v) for k,v in job.items() if k not in {'_id'}}; x['posted_age_days']=age_days(job); x['match']=match_job(profile,job); return x
+    x={k:iso(v) for k,v in job.items() if k not in {'_id'}}
+    description=x.get('description','');responsibilities=distinct_section(description,x.get('responsibilities_text',''));requirements=distinct_section(description,x.get('requirements_text',''))
+    if responsibilities:requirements=distinct_section(responsibilities,requirements)
+    x['responsibilities_text']=responsibilities;x['requirements_text']=requirements
+    x['skills']=extract_job_skills(x.get('title',''),description)
+    x['posted_age_days']=age_days(job);x['match']=match_job(profile,{**job,'skills':x['skills']});return x
 
 def sitemap_job(job):
     """Use a stricter contract than browsing so crawlers only receive verified URLs."""
@@ -128,7 +182,7 @@ def create_job_marketplace_router(db,current_user):
             try:u=await current_user(request,authorization);profile=await unified_profile(u['id'])
             except HTTPException:pass
         docs=await db.jobs.find(q,{'_id':0}).sort([('posted_at',-1),('last_verified_at',-1)]).limit(limit).to_list(limit)
-        items=[public_job(x,profile) for x in docs]; items.sort(key=lambda x:((x.get('match')or{}).get('overall_score',0),-x['posted_age_days']),reverse=True)
+        items=[public_job(x,profile) for x in docs]; items.sort(key=lambda x:(((x.get('match')or{}).get('overall_score') or 0),-x['posted_age_days']),reverse=True)
         return {'items':items,'total':len(items)}
     @r.get('/sitemap')
     async def sitemap_jobs():

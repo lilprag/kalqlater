@@ -6,6 +6,7 @@ import requests
 from dotenv import load_dotenv
 from pymongo import MongoClient, UpdateOne
 from behavior_engine.timestamps import normalize_utc
+from job_content import extract_job_skills
 
 ROOT=Path(__file__).parent; load_dotenv(ROOT/'.env'); NOW=lambda:datetime.now(timezone.utc)
 KEYWORDS=re.compile(r'growth|marketing|seo|crm|retention|product|analytics|design|software|engineer|developer|data',re.I)
@@ -18,9 +19,16 @@ def mode(location,workplace=''):
     if 'hybrid' in s:return 'hybrid'
     if s.strip():return 'onsite'
     return 'unknown'
-def skills_for(title,body):
-    known=['SEO','CRM','SQL','Python','JavaScript','React','Node.js','TypeScript','Analytics','Figma','Product Marketing','Performance Marketing','Growth','Data','Design']
-    return [x for x in known if x.lower() in f'{title} {body}'.lower()]
+def skills_for(title,body):return extract_job_skills(title,body)
+def lever_content(job):
+    about=[job.get('descriptionPlain','')];responsibilities=[];requirements=[]
+    for item in job.get('lists',[]):
+        heading=text(item.get('text',''));content=item.get('content','')
+        if re.search(r"requirements?|qualifications?|what (?:we(?:'re| are) looking for|you(?:'ll| will) need)|who you are|you have",heading,re.I):requirements.append(content)
+        elif re.search(r"responsibilities|what you(?:'ll| will) do|your role|in this role",heading,re.I):responsibilities.append(content)
+        else:about.extend([heading,content])
+    about.append(job.get('additionalPlain',''))
+    return text(' '.join(about)),text(' '.join(responsibilities)),text(' '.join(requirements))
 def parse_ts(value):
     if value is None:return None
     try:
@@ -31,10 +39,10 @@ def source_scope(company):return f'{company["source"]}:{company["token"]}'
 def lever(company):
     scope=source_scope(company);url=f'https://api.lever.co/v0/postings/{company["token"]}?mode=json';res=requests.get(url,timeout=25);res.raise_for_status();out=[]
     for j in res.json():
-        posted=parse_ts(j.get('createdAt'));desc=text(' '.join([j.get('descriptionPlain',''),j.get('additionalPlain','')]+[x.get('content','') for x in j.get('lists',[])]));title=j.get('text','').strip()
-        if not posted or normalize_utc(NOW())-normalize_utc(posted)>timedelta(days=30) or not KEYWORDS.search(f'{title} {desc}'):continue
+        posted=parse_ts(j.get('createdAt'));desc,responsibilities,requirements=lever_content(j);full_text=' '.join(x for x in (desc,responsibilities,requirements) if x);title=j.get('text','').strip()
+        if not posted or normalize_utc(NOW())-normalize_utc(posted)>timedelta(days=30) or not KEYWORDS.search(f'{title} {full_text}'):continue
         loc=(j.get('categories')or{}).get('location','');jid=str(j.get('id'));apply=j.get('applyUrl') or j.get('hostedUrl')
-        out.append({'id':str(hashlib.sha256(f'lever:{jid}'.encode()).hexdigest()[:32]),'slug':slug(company['name'],title,jid),'title':title,'company_name':company['name'],'company_logo_url':None,'description':desc,'requirements_text':desc,'skills':skills_for(title,desc),'department':(j.get('categories')or{}).get('team'),'industry':None,'employment_type':(j.get('categories')or{}).get('commitment'),'experience_min':None,'experience_max':None,'country':'','city':None,'location_text':loc,'work_mode':mode(loc,j.get('workplaceType','')),'salary_min':None,'salary_max':None,'salary_currency':None,'posted_at':posted,'expires_at':None,'source_type':'external','source_name':'lever','source_board':scope,'source_job_id':jid,'source_url':j.get('hostedUrl'),'application_mode':'external_redirect','external_apply_url':apply,'status':'active'})
+        out.append({'id':str(hashlib.sha256(f'lever:{jid}'.encode()).hexdigest()[:32]),'slug':slug(company['name'],title,jid),'title':title,'company_name':company['name'],'company_logo_url':None,'description':desc,'responsibilities_text':responsibilities,'requirements_text':requirements,'skills':skills_for(title,full_text),'department':(j.get('categories')or{}).get('team'),'industry':None,'employment_type':(j.get('categories')or{}).get('commitment'),'experience_min':None,'experience_max':None,'country':'','city':None,'location_text':loc,'work_mode':mode(loc,j.get('workplaceType','')),'salary_min':None,'salary_max':None,'salary_currency':None,'posted_at':posted,'expires_at':None,'source_type':'external','source_name':'lever','source_board':scope,'source_job_id':jid,'source_url':j.get('hostedUrl'),'application_mode':'external_redirect','external_apply_url':apply,'status':'active'})
     return out
 def greenhouse(company):
     scope=source_scope(company);url=f'https://boards-api.greenhouse.io/v1/boards/{company["token"]}/jobs?content=true';res=requests.get(url,timeout=25);res.raise_for_status();out=[]
@@ -43,7 +51,7 @@ def greenhouse(company):
         title=j.get('title','').strip();desc=text(j.get('content',''))
         if not KEYWORDS.search(f'{title} {desc}'):continue
         loc=(j.get('location')or{}).get('name','');jid=str(j.get('id'))
-        out.append({'id':str(hashlib.sha256(f'greenhouse:{company["token"]}:{jid}'.encode()).hexdigest()[:32]),'slug':slug(company['name'],title,jid),'title':title,'company_name':company['name'],'company_logo_url':None,'description':desc,'requirements_text':desc,'skills':skills_for(title,desc),'department':None,'industry':None,'employment_type':None,'experience_min':None,'experience_max':None,'country':'','city':None,'location_text':loc,'work_mode':mode(loc),'salary_min':None,'salary_max':None,'salary_currency':None,'posted_at':None,'expires_at':None,'source_type':'external','source_name':'greenhouse','source_board':scope,'source_job_id':f'{company["token"]}:{jid}','source_url':j.get('absolute_url'),'application_mode':'external_redirect','external_apply_url':j.get('absolute_url'),'status':'possibly_closed'})
+        out.append({'id':str(hashlib.sha256(f'greenhouse:{company["token"]}:{jid}'.encode()).hexdigest()[:32]),'slug':slug(company['name'],title,jid),'title':title,'company_name':company['name'],'company_logo_url':None,'description':desc,'requirements_text':'','skills':skills_for(title,desc),'department':None,'industry':None,'employment_type':None,'experience_min':None,'experience_max':None,'country':'','city':None,'location_text':loc,'work_mode':mode(loc),'salary_min':None,'salary_max':None,'salary_currency':None,'posted_at':None,'expires_at':None,'source_type':'external','source_name':'greenhouse','source_board':scope,'source_job_id':f'{company["token"]}:{jid}','source_url':j.get('absolute_url'),'application_mode':'external_redirect','external_apply_url':j.get('absolute_url'),'status':'possibly_closed'})
     return out
 def ingestion_status(attempted,succeeded):
     if not succeeded:return 'failed'
