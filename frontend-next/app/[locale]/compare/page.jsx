@@ -33,5 +33,5 @@ export default async function LocalizedCompareSelectorPage({ params }) {
   return <><JsonLd data={{ '@context': 'https://schema.org', '@graph': [
     breadcrumbJsonLd(locale, [{ name: 'KalQLater' }, { name: title, path: 'compare' }]),
     { '@type': 'CollectionPage', name: title, url: `https://kalqlater.com/${locale}/compare`, inLanguage: localeConfig(locale)?.hreflang || locale },
-  ] }} /><CompareSelector locale={locale} />{['en', 'fr', 'ja'].includes(locale) ? <ComparisonDirectory locale={locale} /> : null}</>;
+  ] }} />{locale === 'en' ? <><ComparisonDirectory locale="en" /><CompareSelector locale="en" secondary /></> : <><CompareSelector locale={locale} />{['fr', 'ja'].includes(locale) ? <ComparisonDirectory locale={locale} /> : null}</>}</>;
 }

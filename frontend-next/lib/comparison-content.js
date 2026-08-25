@@ -1,4 +1,5 @@
 import { priorityComparison } from './priority-comparisons';
+import { testComparison } from './test-comparisons';
 
 const icon = ['♡', '☻', '↔', '◇', '↺', '↗'];
 const commonSearchNames = {
@@ -114,6 +115,8 @@ export function comparisonContent({ firstProfile, secondProfile, insight, locale
       ['Why does KalQLater not use compatibility percentages?', 'Relationships depend on communication, values, maturity, life stage, behaviour, and shared goals—not a fictional score.'],
     ],
   };
+  const experiment = locale === 'en' ? testComparison(a.code, b.code) : null;
+  if (experiment) return { ...base, ...experiment, experiment: 'test-b' };
   const authored = priorityComparison(a.code, b.code);
   return authored ? { ...base, ...authored } : base;
 }

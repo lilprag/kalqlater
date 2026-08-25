@@ -7,7 +7,7 @@ const pages = [
   ['/en/personality/intj', 'en', 'INTJ'], ['/hi/personality/intj', 'hi', 'INTJ'], ['/en/personality/enfp', 'en', 'ENFP'], ['/hi/personality/enfp', 'hi', 'ENFP'],
   ['/en/personality/intj/careers', 'en', 'Best Careers for INTJ'], ['/hi/personality/intj/careers', 'hi', 'INTJ के लिए करियर दिशाएँ'],
   ['/en/compare/intj-vs-enfp', 'en', 'INTJ'], ['/hi/compare/intj-vs-enfp', 'hi', 'INTJ'],
-  ['/en/compare', 'en', 'Explore a personality dynamic'], ['/hi/compare', 'hi', 'दो व्यक्तित्वों के डायनामिक को देखें'],
+  ['/en/compare', 'en', 'Compare Personality Types'], ['/hi/compare', 'hi', 'दो व्यक्तित्वों के डायनामिक को देखें'],
   ['/en/insights', 'en', 'Go beyond personality'], ['/hi/insights', 'hi', 'पर्सनैलिटी से आगे'],
   ['/en/insights/communication', 'en', 'Understand How You Communicate'], ['/hi/insights/communication', 'hi', 'जानें कि आप कैसे संवाद करते हैं'],
   ['/en/insights/conflict', 'en', 'Notice how you meet tension'], ['/hi/insights/conflict', 'hi', 'मतभेद में अपने तरीके पर विचार करें'],

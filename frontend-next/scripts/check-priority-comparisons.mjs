@@ -1,9 +1,17 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { priorityComparison } from '../lib/priority-comparisons.js';
 
 const pairs = [
   ['INFJ', 'ISFJ'], ['ENFJ', 'ISFJ'], ['ENTP', 'ESFP'], ['ENTP', 'INFJ'], ['INFP', 'ISFP'],
 ];
+const controlHashes = new Map([
+  ['INFJ-ISFJ', 'f61fc7d1424afa3690aa4d194b7936caf1f2517086e26ca3de5de1f44e90b58a'],
+  ['ENFJ-ISFJ', 'a40616fe82f3aa9a3271d4ef2ac7eecd8356bcc386a0afd196d527da1a305946'],
+  ['ENTP-ESFP', '7d4e1ccaf6d47754d8e13e24c0c1a564068f16943d88e0e835b661f6d444384e'],
+  ['ENTP-INFJ', '9002b8062b56c3378d287aafe4784493c368721eee428f3892a18cf0392f932c'],
+  ['INFP-ISFP', 'f8658195672e4068a0055cd65254b83c5f28d4e8356b6e1c6d20151a11ffe7f7'],
+]);
 const titles = new Set();
 const descriptions = new Set();
 for (const [first, second] of pairs) {
@@ -15,6 +23,8 @@ for (const [first, second] of pairs) {
   assert(page.faq.length >= 4, `${first}/${second}: insufficient visible FAQ content`);
   assert(!/\b\d{1,3}%\b/.test(JSON.stringify(page)), `${first}/${second}: fabricated compatibility percentage`);
   titles.add(page.title); descriptions.add(page.description);
+  const digest = createHash('sha256').update(JSON.stringify(page)).digest('hex');
+  assert.equal(digest, controlHashes.get(`${first}-${second}`), `${first}/${second}: Control A authored content changed`);
 }
 assert.equal(titles.size, pairs.length, 'priority titles must be unique');
 assert.equal(descriptions.size, pairs.length, 'priority descriptions must be unique');
