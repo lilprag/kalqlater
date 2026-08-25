@@ -53,7 +53,7 @@ export function ComparisonDirectory({ locale }) {
   if (!copy) return null;
   const headingId = locale === 'en' ? 'all-personality-comparisons' : `all-personality-comparisons-${locale}`;
   const pairs = allPairs();
-  const popularSlugs = ['intj-vs-entp', 'intj-vs-enfp', 'infj-vs-enfj', 'istj-vs-isfj', 'estp-vs-esfp'];
+  const popularSlugs = ['infj-vs-isfj', 'enfj-vs-isfj', 'entp-vs-esfp', 'entp-vs-infj', 'infp-vs-isfp'];
   const bySlug = new Map(pairs.map((pair) => [pair.slug, pair]));
   const popular = popularSlugs.map((slug) => bySlug.get(slug)).filter(Boolean);
   return <section aria-labelledby={headingId} className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">

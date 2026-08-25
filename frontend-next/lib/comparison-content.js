@@ -1,3 +1,5 @@
+import { priorityComparison } from './priority-comparisons';
+
 const icon = ['♡', '☻', '↔', '◇', '↺', '↗'];
 const commonSearchNames = {
   INTJ: 'Architect', INTP: 'Logician', ENTJ: 'Commander', ENTP: 'Debater',
@@ -70,7 +72,7 @@ export function comparisonContent({ firstProfile, secondProfile, insight, locale
     };
   }
 
-  return {
+  const base = {
     eyebrow: 'Compatibility • Relationship • Comparison',
       helper: `People also search for ${searchName(a, hi)} (${a.code}) and ${searchName(b, hi)} (${b.code}). These are secondary reference names; KalQLater keeps the focus on behaviour, context, and choice.`,
     intro: `People compare ${pair} because the pair can bring different strengths into the same relationship, friendship, or team: ${a.code} may lead with ${aStrength.toLowerCase()}, while ${b.code} may bring ${bStrength.toLowerCase()}. This guide turns those differences into practical conversations about connection, work, communication, conflict, and growth.`,
@@ -112,4 +114,6 @@ export function comparisonContent({ firstProfile, secondProfile, insight, locale
       ['Why does KalQLater not use compatibility percentages?', 'Relationships depend on communication, values, maturity, life stage, behaviour, and shared goals—not a fictional score.'],
     ],
   };
+  const authored = priorityComparison(a.code, b.code);
+  return authored ? { ...base, ...authored } : base;
 }

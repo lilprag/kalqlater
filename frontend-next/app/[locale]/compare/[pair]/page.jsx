@@ -12,6 +12,7 @@ import { RelatedContent } from '../../../../components/RelatedContent';
 import { schemaLanguage } from '../../../../lib/locales';
 import { LocalePackagePreview } from '../../../../components/LocalePackagePreview';
 import { loadLocalePage, localePreviewMetadata } from '../../../../localization/runtime';
+import { priorityComparison } from '../../../../lib/priority-comparisons';
 
 export function generateStaticParams() {
   return ['en', 'hi'].flatMap((locale) => allPairs().map((pair) => ({ locale, pair: pair.slug }))).concat(spanishComparisonSlugs.map((pair) => ({ locale: 'es', pair })));
@@ -37,15 +38,16 @@ export async function generateMetadata({ params }) {
   const first = personalityProfile(parsed.canonical[0], locale);
   const second = personalityProfile(parsed.canonical[1], locale);
   const hi = locale === 'hi';
+  const priority = locale === 'en' ? priorityComparison(parsed.canonical[0], parsed.canonical[1]) : null;
   return pageMetadata({
     locale,
     path: `compare/${parsed.slug}`,
     title: hi
       ? `${first.code} और ${second.code}: संगतता, रिश्ता और तुलना`
-      : `${first.code} vs ${second.code}: Personality, Relationships & Compatibility`,
+      : priority?.title || `${first.code} vs ${second.code}: Personality, Relationships & Compatibility`,
     description: hi
       ? `${first.displayName} और ${second.displayName} रिश्ते, दोस्ती, काम, संवाद, मतभेद और विकास में कैसे साथ आ सकते हैं—प्रतिशत के बिना व्यावहारिक मार्गदर्शन।`
-      : `Compare ${first.code} and ${second.code} personality types across communication, decision-making, relationships, work style, conflict, and growth.`,
+      : priority?.description || `Compare ${first.code} and ${second.code} personality types across communication, decision-making, relationships, work style, conflict, and growth.`,
     entityId: `compare:${parsed.slug}`,
   });
 }
@@ -85,7 +87,7 @@ export default async function ComparisonPage({ params }) {
     <nav aria-label="Breadcrumb" className="text-sm text-brand-subtle"><Link href={localePath(locale)}>KalQLater</Link><span aria-hidden="true"> / </span><Link href={localePath(locale, 'compare')}>{hi ? 'तुलना' : es ? 'Comparar' : 'Compare'}</Link><span aria-hidden="true"> / </span>{firstCode} {hi ? 'और' : es ? 'y' : 'and'} {secondCode}</nav>
     <header className="relative mt-5 overflow-hidden rounded-[2rem] bg-brand-ink p-7 text-white shadow-[0_24px_70px_rgba(45,40,37,.2)] sm:p-10 lg:p-14">
       <span aria-hidden="true" className="absolute -right-12 -top-16 h-64 w-64 rounded-full bg-brand-teal/35 blur-3xl" /><span aria-hidden="true" className="absolute -bottom-24 left-1/4 h-64 w-64 rounded-full bg-brand-plum/35 blur-3xl" />
-      <div className="relative"><p className="section-kicker text-brand-sand">{content.eyebrow}</p><h1 className="display-font mt-4 text-4xl leading-tight sm:text-6xl">{hi || es ? <>{first.code} <span className="text-brand-sand">{hi ? 'और' : 'y'}</span> {second.code}</> : <>{first.code} vs {second.code} Personality Comparison</>}</h1>
+      <div className="relative"><p className="section-kicker text-brand-sand">{content.eyebrow}</p><h1 className="display-font mt-4 text-4xl leading-tight sm:text-6xl">{hi || es ? <>{first.code} <span className="text-brand-sand">{hi ? 'और' : 'y'}</span> {second.code}</> : content.title || <>{first.code} vs {second.code} Personality Comparison</>}</h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/85">{content.helper}</p><p className="mt-5 max-w-3xl text-base leading-relaxed text-white/70">{content.intro}</p>
         <div className="mt-7 grid gap-3 sm:grid-cols-2"><TypePanel profile={first} align="left" /><TypePanel profile={second} align="right" /></div>
       </div>
