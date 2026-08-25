@@ -1,5 +1,6 @@
 import { priorityComparison } from './priority-comparisons';
 import { testComparison } from './test-comparisons';
+import { comparisonV3 } from './comparison-v3';
 
 const icon = ['♡', '☻', '↔', '◇', '↺', '↗'];
 const commonSearchNames = {
@@ -116,7 +117,7 @@ export function comparisonContent({ firstProfile, secondProfile, insight, locale
     ],
   };
   const experiment = locale === 'en' ? testComparison(a.code, b.code) : null;
-  if (experiment) return { ...base, ...experiment, experiment: 'test-b' };
-  const authored = priorityComparison(a.code, b.code);
-  return authored ? { ...base, ...authored } : base;
+  const authored = locale === 'en' ? priorityComparison(a.code, b.code) : null;
+  const foundation = experiment ? { ...base, ...experiment } : authored ? { ...base, ...authored } : base;
+  return locale === 'en' ? comparisonV3({ firstProfile:a, secondProfile:b, insight, foundation, authoredFoundation:experiment || authored }) : foundation;
 }
