@@ -3,6 +3,7 @@ import { pageAlternates } from '../lib/metadata';
 import { TYPE_ORDER } from '../lib/personality';
 import { allPairs } from '../lib/comparisons';
 import { publicLocalesForEntity, publishedLanguageLocales } from '../lib/locale-availability';
+import { CHARACTER_GUIDES, CONCEPT_GUIDES } from '../data/traffic-sprint';
 
 export default function sitemap() {
   const routes = [
@@ -28,5 +29,8 @@ export default function sitemap() {
     .map((locale) => entry(locale, `compare/${pair.slug}`, 0.7, `compare:${pair.slug}`)));
   const jobs = [entry('en', 'jobs', 0.6, undefined)];
   const careersHub = [{ ...entry('en', 'careers', 0.8, undefined), alternates: { languages: { en: `${siteUrl()}/en/careers`, 'x-default': `${siteUrl()}/en/careers` } } }];
-  return [...base, ...careersHub, ...jobs, ...personalities, ...careers, ...comparisons];
+  const englishOnly = (path, priority) => ({ ...entry('en', path, priority, undefined), alternates: { languages: { en: `${siteUrl()}${localePath('en', path)}`, 'x-default': `${siteUrl()}${localePath('en', path)}` } } });
+  const sprintGuides = Object.keys(CONCEPT_GUIDES).map((slug) => englishOnly(`guides/${slug}`, 0.7));
+  const characterGuides = Object.keys(CHARACTER_GUIDES).map((type) => englishOnly(`personality/${type.toLowerCase()}/characters`, 0.7));
+  return [...base, ...careersHub, ...jobs, ...personalities, ...careers, ...comparisons, ...sprintGuides, ...characterGuides];
 }

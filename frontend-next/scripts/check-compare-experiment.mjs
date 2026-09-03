@@ -37,7 +37,7 @@ if (baseUrl) {
   assert.equal(unique.size, 120, 'hub must expose all 120 unique canonical pair links');
   for (const slug of unique) assert(canonical.has(slug), `${slug}: hub contains reverse or invalid pair URL`);
   for (const slug of canonical) assert(unique.has(slug), `${slug}: orphaned from Compare hub`);
-  assert(hub.indexOf('Featured personality comparisons') < hub.indexOf('Compare any two types'), 'selector must be secondary to crawlable navigation');
+  assert(hub.indexOf('Frequently searched personality comparisons') < hub.indexOf('Compare any two types'), 'selector must be secondary to crawlable navigation');
   for (const [first, second, slug] of tests) {
     const response = await fetch(`${baseUrl}/en/compare/${slug}`);
     const html = await response.text();
