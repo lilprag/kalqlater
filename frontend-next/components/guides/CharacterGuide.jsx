@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { JsonLd } from '../JsonLd';
 import { breadcrumbJsonLd } from '../../lib/metadata';
 import { localePath, siteUrl } from '../../lib/site';
+import { PersonalityExploreNav } from '../GuideDiscovery';
 
 export function CharacterGuide({ code, guide }) {
   const slug = code.toLowerCase();
@@ -17,6 +18,7 @@ export function CharacterGuide({ code, guide }) {
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
       <nav aria-label="Breadcrumb" className="text-sm text-brand-subtle"><Link href="/en">KalQLater</Link><span aria-hidden="true"> / </span><Link href={`/en/personality/${slug}`}>{code} personality</Link><span aria-hidden="true"> / </span>Characters</nav>
       <header className="relative mt-5 overflow-hidden rounded-[2rem] bg-brand-ink p-8 text-white sm:p-11 lg:p-14"><span aria-hidden="true" className="absolute -right-16 -top-24 h-72 w-72 rounded-full bg-brand-teal/40 blur-3xl" /><div className="relative max-w-4xl"><p className="section-kicker text-brand-sand">Fictional character interpretations</p><h1 className="display-font mt-3 text-4xl sm:text-6xl">{guide.heading}</h1><p className="mt-5 text-lg leading-relaxed text-white/80">{guide.intro}</p></div></header>
+      <PersonalityExploreNav code={code} current="characters" />
 
       <section className="mt-10 rounded-[2rem] bg-brand-cream p-7 sm:p-9"><p className="section-kicker">Quick answer</p><h2 className="display-font mt-2 text-3xl text-brand-ink">What makes a {code} character interpretation credible?</h2><p className="mt-4 max-w-4xl text-lg leading-relaxed text-brand-subtle">{guide.quick}</p><p className="mt-4 max-w-4xl border-l-2 border-brand-plum pl-4 text-sm text-brand-subtle">These are editorial interpretations of fictional behaviour, not official classifications or claims about actors and creators.</p></section>
 

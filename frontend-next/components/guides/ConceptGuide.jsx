@@ -4,6 +4,7 @@ import { JsonLd } from '../JsonLd';
 import { breadcrumbJsonLd } from '../../lib/metadata';
 import { localePath, siteUrl } from '../../lib/site';
 import { pairSlug } from '../../lib/comparisons';
+import { GuidePageNavigation } from '../GuideDiscovery';
 
 export function ConceptGuide({ guide, slug }) {
   const path = `guides/${slug}`;
@@ -26,16 +27,17 @@ export function ConceptGuide({ guide, slug }) {
 
   return <>
     <JsonLd data={{ '@context': 'https://schema.org', '@graph': [
-      breadcrumbJsonLd('en', [{ name: 'KalQLater' }, { name: 'Personality guides', path: 'types' }, { name: guide.heading, path }]),
+      breadcrumbJsonLd('en', [{ name: 'KalQLater' }, { name: 'Personality Guides', path: 'guides' }, { name: guide.heading, path }]),
       webPage,
       faqSchema,
     ] }} />
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <nav aria-label="Breadcrumb" className="text-sm text-brand-subtle"><Link href="/en">KalQLater</Link><span aria-hidden="true"> / </span><Link href="/en/types">Personality types</Link><span aria-hidden="true"> / </span>{guide.heading}</nav>
+      <nav aria-label="Breadcrumb" className="text-sm text-brand-subtle"><Link href="/en">KalQLater</Link><span aria-hidden="true"> / </span><Link href="/en/guides">Personality Guides</Link><span aria-hidden="true"> / </span>{guide.heading}</nav>
       <header className="content-hero relative mt-5 overflow-hidden rounded-[2rem] border border-brand-line p-7 sm:p-10 lg:p-12">
         <span className="absolute -right-14 -top-16 h-64 w-64 rounded-full bg-brand-plum/20 blur-3xl" aria-hidden="true" />
         <div className="relative max-w-4xl"><p className="section-kicker">{guide.eyebrow}</p><h1 className="display-font mt-3 text-4xl text-brand-ink sm:text-6xl">{guide.heading}</h1><p className="mt-5 text-lg leading-relaxed text-brand-subtle">{guide.intro}</p></div>
       </header>
+      <GuidePageNavigation currentSlug={slug} />
 
       <section aria-labelledby="quick-answer" className="mt-10 rounded-[2rem] bg-brand-ink p-7 text-white sm:p-9">
         <p className="section-kicker text-brand-sand">Quick answer</p><h2 id="quick-answer" className="display-font mt-2 text-3xl">The distinction in one minute</h2><p className="mt-4 max-w-4xl text-lg leading-relaxed text-white/85">{guide.quick}</p>

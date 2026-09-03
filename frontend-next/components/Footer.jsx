@@ -10,6 +10,7 @@ export function Footer({ locale }) {
   const communication = copy.links.communicationInsights || (locale === 'hi' ? 'कम्युनिकेशन इनसाइट्स' : 'Communication Insights');
   const alternateLocales = publishedLanguageLocales().filter((candidate) => candidate !== locale);
   const links = filterPublicNavigation(locale, [
+    ...(locale === 'en' ? [{ label: 'Personality Guides', href: localePath('en', 'guides') }] : []),
     { label: copy.nav.insights, href: localePath(locale, 'insights'), entityId: `language:${locale}` },
     { label: communication, href: localePath(locale, 'insights/communication'), entityId: 'insight:communication' },
     { label: copy.nav.compare, href: localePath(locale, 'compare'), entityId: `language:${locale}` },

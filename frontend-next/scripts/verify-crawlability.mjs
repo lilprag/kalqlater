@@ -100,6 +100,31 @@ for (const [locale, authoredText] of [['fr', 'Mieux vous comprendre, pour avance
 assert(!sitemapXml.includes('<loc>https://kalqlater.com</loc>'), 'sitemap: root homepage must not be indexed separately');
 for (const locale of publishedLocales) assert(sitemapXml.includes(`https://kalqlater.com/${locale}</loc>`), `sitemap: missing /${locale} homepage`);
 for (const locale of publishedLocales) assert(sitemapXml.includes(`https://kalqlater.com/${locale}/types</loc>`), `sitemap: missing /${locale}/types hub`);
+const guideSlugs = ['mbti-letters-meaning', 'sensing-vs-intuition', 'thinking-vs-feeling'];
+const characterTypes = ['intp', 'intj', 'enfj', 'istp'];
+const guidesHubResponse = await fetch(`${baseUrl}/en/guides`);
+const guidesHubHtml = await guidesHubResponse.text();
+assert(guidesHubResponse.ok, 'English Personality Guides hub must resolve');
+assert(guidesHubHtml.includes('rel="canonical" href="https://kalqlater.com/en/guides"'), 'Personality Guides hub must self-canonicalize');
+assert(guidesHubHtml.includes('BreadcrumbList') && guidesHubHtml.includes('Personality Guides'), 'Personality Guides hub must render its breadcrumb and visible heading');
+for (const slug of guideSlugs) assert(guidesHubHtml.includes(`href="/en/guides/${slug}"`), `Personality Guides hub: missing ${slug}`);
+for (const locale of ['hi', 'fr', 'ja']) {
+  const unavailable = await fetch(`${baseUrl}/${locale}/guides`);
+  assert(unavailable.status === 404, `${locale} Personality Guides hub must remain unavailable`);
+  assert(!sitemapXml.includes(`/${locale}/guides</loc>`), `${locale} Personality Guides hub must remain outside sitemap`);
+}
+assert(sitemapXml.includes('/en/guides</loc>'), 'sitemap: missing English Personality Guides hub');
+const discoveryHome = await (await fetch(`${baseUrl}/en`)).text();
+assert(discoveryHome.includes('Explore Personality Guides') && discoveryHome.includes('href="/en/guides"'), 'English homepage must visibly discover Personality Guides');
+for (const slug of guideSlugs) assert(discoveryHome.includes(`href="/en/guides/${slug}"`), `English homepage: missing guide ${slug}`);
+const typesDiscovery = await (await fetch(`${baseUrl}/en/types`)).text();
+assert(typesDiscovery.includes('Learn the basics') && typesDiscovery.includes('href="/en/guides"'), 'English Types page must include compact guide discovery');
+for (const type of characterTypes) {
+  const profileHtml = await (await fetch(`${baseUrl}/en/personality/${type}`)).text();
+  assert(profileHtml.includes(`href="/en/personality/${type}/characters"`), `${type}: profile must visibly link its Character guide`);
+  const characterHtml = await (await fetch(`${baseUrl}/en/personality/${type}/characters`)).text();
+  assert(characterHtml.includes(`href="/en/personality/${type}"`) && characterHtml.includes(`href="/en/personality/${type}/careers"`) && characterHtml.includes('href="/en/compare"') && characterHtml.includes('href="/en/guides"'), `${type}: Character page exploration navigation incomplete`);
+}
 assert(!sitemapXml.includes('<lastmod>'), 'sitemap: must omit untrustworthy generated lastmod values');
 for (const locale of ['es', 'ar', 'pt-br', 'zh-hans']) assert(!sitemapXml.includes(`https://kalqlater.com/${locale}`), `sitemap: unpublished locale ${locale} must not be included`);
 for (const locale of publishedLocales) for (const type of careerTypes) assert(sitemapXml.includes(`/${locale}/personality/${type}/careers`), `sitemap: missing ${locale}/${type} career guide`);

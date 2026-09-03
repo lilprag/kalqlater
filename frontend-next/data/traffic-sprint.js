@@ -69,6 +69,12 @@ export const CAREER_QUICK_WINS = Object.freeze({
   }),
 });
 
+export const GUIDE_DISCOVERY = Object.freeze([
+  Object.freeze({ slug: 'mbti-letters-meaning', label: 'MBTI Letters Meaning', description: 'Learn what I/E, S/N, T/F, and J/P describe—and what the four-letter code cannot tell you.' }),
+  Object.freeze({ slug: 'sensing-vs-intuition', label: 'Sensing vs Intuition', description: 'See how S and N preferences may differ when noticing information, learning, and solving problems.' }),
+  Object.freeze({ slug: 'thinking-vs-feeling', label: 'Thinking vs Feeling', description: 'Explore how T and F preferences may weigh logic, values, feedback, and human impact.' }),
+]);
+
 export const CONCEPT_GUIDES = Object.freeze({
   'sensing-vs-intuition': Object.freeze({
     title: 'Sensing vs Intuition: S vs N in MBTI Explained',

@@ -30,7 +30,8 @@ export default function sitemap() {
   const jobs = [entry('en', 'jobs', 0.6, undefined)];
   const careersHub = [{ ...entry('en', 'careers', 0.8, undefined), alternates: { languages: { en: `${siteUrl()}/en/careers`, 'x-default': `${siteUrl()}/en/careers` } } }];
   const englishOnly = (path, priority) => ({ ...entry('en', path, priority, undefined), alternates: { languages: { en: `${siteUrl()}${localePath('en', path)}`, 'x-default': `${siteUrl()}${localePath('en', path)}` } } });
+  const guidesHub = [englishOnly('guides', 0.7)];
   const sprintGuides = Object.keys(CONCEPT_GUIDES).map((slug) => englishOnly(`guides/${slug}`, 0.7));
   const characterGuides = Object.keys(CHARACTER_GUIDES).map((type) => englishOnly(`personality/${type.toLowerCase()}/characters`, 0.7));
-  return [...base, ...careersHub, ...jobs, ...personalities, ...careers, ...comparisons, ...sprintGuides, ...characterGuides];
+  return [...base, ...careersHub, ...guidesHub, ...jobs, ...personalities, ...careers, ...comparisons, ...sprintGuides, ...characterGuides];
 }
