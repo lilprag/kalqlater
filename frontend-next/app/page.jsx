@@ -20,6 +20,10 @@ export default function HomePage() {
     <div className="page-shell">
       <header className="site-header">
         <Link className="brand" href="/" aria-label="KalQLater home">KalQLater</Link>
+        <nav className="site-nav" aria-label="Primary navigation">
+          <Link href="/test">Test</Link>
+          <Link href="/compare">Compare</Link>
+        </nav>
       </header>
 
       <main>
