@@ -1,1 +1,0 @@
-import{ApplicationsClient}from'../../../../components/ApplicationsClient';export const metadata={title:'My applications | KalQLater Jobs',robots:{index:false,follow:false}};export default function Page(){return <ApplicationsClient/>}

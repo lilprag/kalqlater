@@ -1,18 +1,34 @@
-import { headers } from 'next/headers';
 import './globals.css';
-import { Analytics } from '../components/Analytics';
-import { localeDirection } from '../lib/site';
-import { isRuntimePreviewLocale } from '../localization/runtime-policy';
+import Script from 'next/script';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalqlater.com';
+const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const gaEnabled = /^G-[A-Z0-9]+$/.test(measurementId || '');
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://kalqlater.com'),
-  title: { default: 'KalQLater', template: '%s | KalQLater' },
-  description: 'An original personality insight platform for reflection, growth, and community.',
+  metadataBase: new URL(siteUrl),
+  title: 'KalQLater',
+  description: 'Something new is being built.',
+  alternates: { canonical: '/' },
 };
 
-export default async function RootLayout({ children }) {
-  const requestHeaders = await headers();
-  const locale = requestHeaders.get('x-kalqlater-locale') || 'en';
-  const skipLink = locale === 'es' ? 'Ir al contenido' : locale === 'fr' ? 'Aller au contenu' : locale === 'ja' ? '本文へ移動' : isRuntimePreviewLocale(locale) ? null : 'Skip to content';
-  return <html lang={locale} dir={localeDirection(locale)}><body>{skipLink && <a className="skip-link" href="#main-content">{skipLink}</a>}{children}<Analytics /></body></html>;
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        {gaEnabled && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', ${JSON.stringify(measurementId)});`}
+            </Script>
+          </>
+        )}
+      </body>
+    </html>
+  );
 }

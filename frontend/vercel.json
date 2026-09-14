@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/compare", "destination": "/api/legacy-compare" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}

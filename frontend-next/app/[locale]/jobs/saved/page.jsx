@@ -1,1 +1,0 @@
-import{SavedJobsClient}from'../../../../components/SavedJobsClient';export const metadata={title:'Saved jobs | KalQLater',robots:{index:false,follow:false}};export default async function Page({params}){const{locale}=await params;return <SavedJobsClient locale={locale}/>}
